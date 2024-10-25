@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=10 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="2_e3ys1"]
-[ext_resource type="Texture2D" uid="uid://bcegwx5rl2hfa" path="res://art/Apple_Button.png" id="3_04o8w"]
-[ext_resource type="Texture2D" uid="uid://s2g8n2hiuc4d" path="res://art/Orange_Button.png" id="4_x5kq6"]
 [ext_resource type="PackedScene" uid="uid://dk1c32pis7cb6" path="res://scenes/place_pickup_button.tscn" id="5_dsf6q"]
-[ext_resource type="PackedScene" uid="uid://dhguxfqqurpyb" path="res://scenes/customer.tscn" id="6_aqsne"]
+[ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="5_ndhh7"]
+[ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="6_7cuv1"]
+[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="7_663xw"]
+[ext_resource type="Texture2D" uid="uid://ci04814knhh8k" path="res://art/fruit/Banana.png" id="7_m1uln"]
+[ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="8_ggxtx"]
+[ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="9_366gr"]
 
 [node name="World" type="Node2D"]
 
@@ -15,26 +18,20 @@
 visible = false
 offset_right = 91.0
 offset_bottom = 91.0
+disabled = true
 toggle_mode = true
 text = "I am button"
 script = ExtResource("1_v8fo4")
 
-[node name="GrabButtonApple" parent="." instance=ExtResource("2_e3ys1")]
-offset_left = 400.0
-offset_top = 140.0
-offset_right = 536.0
-offset_bottom = 212.0
-icon = ExtResource("3_04o8w")
+[node name="CustomerManager" type="Node2D" parent="."]
+script = ExtResource("7_663xw")
 
-[node name="GrabButtonOrange" parent="." instance=ExtResource("2_e3ys1")]
-offset_left = 400.0
-offset_top = 220.0
-offset_right = 536.0
-offset_bottom = 292.0
-icon = ExtResource("4_x5kq6")
-fruit = 1
+[node name="CustomerTimer" type="Timer" parent="CustomerManager"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
-[node name="PlacePickupButton" parent="." instance=ExtResource("5_dsf6q")]
+[node name="CuttingBoardButton" parent="." instance=ExtResource("5_dsf6q")]
 offset_left = 133.0
 offset_top = 148.0
 offset_right = 205.0
@@ -42,7 +39,7 @@ offset_bottom = 220.0
 is_chop = true
 action_speed = 2.0
 
-[node name="PlacePickupButton2" parent="." instance=ExtResource("5_dsf6q")]
+[node name="BlenderButton" parent="." instance=ExtResource("5_dsf6q")]
 offset_left = 4.0
 offset_top = 150.0
 offset_right = 76.0
@@ -50,7 +47,44 @@ offset_bottom = 222.0
 is_blend = true
 action_speed = 5.0
 
-[node name="Customer" parent="." instance=ExtResource("6_aqsne")]
-position = Vector2(-123, -42)
+[node name="AppleButton" parent="." instance=ExtResource("2_e3ys1")]
+offset_left = 410.0
+offset_top = -90.0
+offset_right = 546.0
+offset_bottom = -18.0
+icon = ExtResource("5_ndhh7")
+
+[node name="OrangeButton" parent="." instance=ExtResource("2_e3ys1")]
+offset_left = 410.0
+offset_top = -10.0
+offset_right = 546.0
+offset_bottom = 62.0
+icon = ExtResource("6_7cuv1")
+fruit = 1
+
+[node name="BananaButton" parent="." instance=ExtResource("2_e3ys1")]
+offset_left = 410.0
+offset_top = 70.0
+offset_right = 546.0
+offset_bottom = 142.0
+icon = ExtResource("7_m1uln")
+fruit = 2
+
+[node name="BlueberriesButton" parent="." instance=ExtResource("2_e3ys1")]
+offset_left = 410.0
+offset_top = 150.0
+offset_right = 546.0
+offset_bottom = 222.0
+icon = ExtResource("8_ggxtx")
+fruit = 3
+
+[node name="PlumButton" parent="." instance=ExtResource("2_e3ys1")]
+offset_left = 410.0
+offset_top = 230.0
+offset_right = 546.0
+offset_bottom = 302.0
+icon = ExtResource("9_366gr")
+fruit = 4
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
+[connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

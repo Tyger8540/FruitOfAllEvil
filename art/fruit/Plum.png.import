@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgcpa0xbi34pu"
-path="res://.godot/imported/Orange3.png-2d864da38fe884b50c65150a82eb9b3d.ctex"
+uid="uid://2v4o3pbq7le5"
+path="res://.godot/imported/Plum.png-c8349705e843b68cb48e666ac1ab6a94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Orange3.png"
-dest_files=["res://.godot/imported/Orange3.png-2d864da38fe884b50c65150a82eb9b3d.ctex"]
+source_file="res://art/fruit/Plum.png"
+dest_files=["res://.godot/imported/Plum.png-c8349705e843b68cb48e666ac1ab6a94.ctex"]
 
 [params]
 

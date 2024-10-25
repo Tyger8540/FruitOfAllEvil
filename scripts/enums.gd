@@ -3,6 +3,9 @@ extends Node
 enum Fruit_Type {
 	APPLE,
 	ORANGE,
+	BANANA,
+	BLUEBERRIES,
+	PLUM,
 	NONE,
 }
 

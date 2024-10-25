@@ -1,24 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhguxfqqurpyb"]
+[gd_scene load_steps=7 format=3 uid="uid://dhguxfqqurpyb"]
 
 [ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="1_iqa8q"]
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
-[ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://art/Checkmark.png" id="7_2eesi"]
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
+[ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_2eesi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b204h"]
 size = Vector2(76, 152)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
-
 [node name="Customer" type="CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, -54)
-scale = Vector2(0.6, 1.1875)
-texture = ExtResource("1_iqa8q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -54)
-shape = SubResource("RectangleShape2D_b204h")
+script = ExtResource("1_rovlt")
 
 [node name="CustomerButton" type="Button" parent="."]
 offset_left = -38.0
@@ -27,6 +20,14 @@ offset_right = 38.0
 offset_bottom = 22.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2b33s")
 script = ExtResource("1_m2x0k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CustomerButton"]
+layout_mode = 0
+offset_top = -90.0
+offset_right = 76.0
+offset_bottom = -81.0
+tint_under = Color(0.176471, 0.176471, 0.176471, 1)
+tint_progress = Color(0, 0.807843, 0, 1)
 
 [node name="Panel" type="Panel" parent="CustomerButton"]
 layout_mode = 0
@@ -103,11 +104,19 @@ horizontal_alignment = 1
 [node name="TempTimer" type="Timer" parent="CustomerButton"]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="LeaveTimer" type="Timer" parent="CustomerButton"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, -54)
+scale = Vector2(0.6, 1.1875)
+texture = ExtResource("1_iqa8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54)
+shape = SubResource("RectangleShape2D_b204h")
 
 [connection signal="button_up" from="CustomerButton" to="CustomerButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerButton/TempTimer" to="CustomerButton" method="_on_temp_timer_timeout"]

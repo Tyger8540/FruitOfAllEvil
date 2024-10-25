@@ -2,14 +2,22 @@ class_name Grabbable
 extends Node2D
 
 
+const APPLE = preload("res://art/fruit/Apple.png")
+const CHOPPED_APPLE = preload("res://art/fruit/AppleSlices.png")
+const BLENDED_APPLE = preload("res://placeholder_art/Apple3.png")
 
-const APPLE = preload("res://art/Apple1.png")
-const CHOPPED_APPLE = preload("res://art/Apple2.png")
-const BLENDED_APPLE = preload("res://art/Apple3.png")
+const ORANGE = preload("res://art/fruit/Orange.png")
+const CHOPPED_ORANGE = preload("res://placeholder_art/Orange2.png")
+const BLENDED_ORANGE = preload("res://placeholder_art/Orange3.png")
 
-const ORANGE = preload("res://art/Orange1.png")
-const CHOPPED_ORANGE = preload("res://art/Orange2.png")
-const BLENDED_ORANGE = preload("res://art/Orange3.png")
+const BANANA = preload("res://art/fruit/Banana.png")
+const CHOPPED_BANANA = preload("res://art/fruit/BananaSlices.png")
+
+const BLUEBERRIES = preload("res://art/fruit/Blueberries.png")
+const CHOPPED_BLUEBERRIES = preload("res://art/fruit/BlueberrySlices.png")
+
+const PLUM = preload("res://art/fruit/Plum.png")
+const CHOPPED_PLUM = preload("res://art/fruit/PlumSlices.png")
 
 var fruit: Enums.Fruit_Type
 var grab_type: Enums.Grabbable_Type
@@ -51,6 +59,39 @@ func initialize(fruit_type: Enums.Fruit_Type, grabbable_type: Enums.Grabbable_Ty
 				Enums.Grabbable_Type.BLENDED_FRUIT:
 					$Sprite2D.texture = BLENDED_ORANGE
 					Globals.grabbable_sprite = $Sprite2D.texture
+		Enums.Fruit_Type.BANANA:
+			match grab_type:
+				Enums.Grabbable_Type.FRUIT:
+					$Sprite2D.texture = BANANA
+					Globals.grabbable_sprite = $Sprite2D.texture
+				Enums.Grabbable_Type.CHOPPED_FRUIT:
+					$Sprite2D.texture = CHOPPED_BANANA
+					Globals.grabbable_sprite = $Sprite2D.texture
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#$Sprite2D.texture = BLENDED_BANANA
+					#Globals.grabbable_sprite = $Sprite2D.texture
+		Enums.Fruit_Type.BLUEBERRIES:
+			match grab_type:
+				Enums.Grabbable_Type.FRUIT:
+					$Sprite2D.texture = BLUEBERRIES
+					Globals.grabbable_sprite = $Sprite2D.texture
+				Enums.Grabbable_Type.CHOPPED_FRUIT:
+					$Sprite2D.texture = CHOPPED_BLUEBERRIES
+					Globals.grabbable_sprite = $Sprite2D.texture
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#$Sprite2D.texture = BLENDED_BLUEBERRIES
+					#Globals.grabbable_sprite = $Sprite2D.texture
+		Enums.Fruit_Type.PLUM:
+			match grab_type:
+				Enums.Grabbable_Type.FRUIT:
+					$Sprite2D.texture = PLUM
+					Globals.grabbable_sprite = $Sprite2D.texture
+				Enums.Grabbable_Type.CHOPPED_FRUIT:
+					$Sprite2D.texture = CHOPPED_PLUM
+					Globals.grabbable_sprite = $Sprite2D.texture
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#$Sprite2D.texture = BLENDED_PLUM
+					#Globals.grabbable_sprite = $Sprite2D.texture
 
 
 func on_grabbable_placed() -> void:

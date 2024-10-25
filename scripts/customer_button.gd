@@ -1,9 +1,6 @@
 class_name CustomerButton
 extends Button
 
-
-const CHOPPED_APPLE = preload("res://art/Apple2.png")
-
 var slots: Array[TextureRect]
 var checkmarks: Array[TextureRect]
 
@@ -12,6 +9,7 @@ var grab_type: Array[Enums.Grabbable_Type]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("hi")
 	slots = [$Panel/ItemGrid/Slot1, $Panel/ItemGrid/Slot2, $Panel/ItemGrid/Slot3, $Panel/ItemGrid/Slot4]
 	checkmarks = [$Panel/Checkmark1, $Panel/Checkmark2, $Panel/Checkmark3, $Panel/Checkmark4]
 
@@ -21,7 +19,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_grid(texture_array: Array[CompressedTexture2D], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type]) -> void:
+func set_grid(texture_array: Array[Texture2D], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type]) -> void:
 	for i in range(0, texture_array.size()):
 		slots[i].texture = texture_array[i]
 		fruit.append(fruit_array[i])
@@ -54,7 +52,7 @@ func _on_button_up() -> void:
 
 
 func _on_temp_timer_timeout() -> void:
-	var t: Array[CompressedTexture2D] = [load("res://art/Apple2.png"), load("res://art/Apple3.png"), load("res://art/Orange2.png"), load("res://art/Orange1.png")]
+	var t: Array[Texture2D] = [load("res://art/Apple2.png"), load("res://art/Apple3.png"), load("res://art/Orange2.png"), load("res://art/Orange1.png")]
 	var f: Array[Enums.Fruit_Type] = [Enums.Fruit_Type.APPLE, Enums.Fruit_Type.APPLE, Enums.Fruit_Type.ORANGE, Enums.Fruit_Type.ORANGE]
 	var g: Array[Enums.Grabbable_Type] = [Enums.Grabbable_Type.CHOPPED_FRUIT, Enums.Grabbable_Type.BLENDED_FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT, Enums.Grabbable_Type.FRUIT]
 	set_grid(t, f, g)
@@ -62,4 +60,5 @@ func _on_temp_timer_timeout() -> void:
 
 func _on_leave_timer_timeout() -> void:
 	# this seems like not good practice
+	SignalManager.new_customer_spawned.emit()
 	$"..".queue_free()

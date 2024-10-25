@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcegwx5rl2hfa"
-path="res://.godot/imported/Apple_Button.png-42b8f23f983adcd5ff09ab1e828b045f.ctex"
+uid="uid://c1w1v7hyve4ta"
+path="res://.godot/imported/BananaSlices.png-36d1ef9ca52c4da225e09641a360d5d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Apple_Button.png"
-dest_files=["res://.godot/imported/Apple_Button.png-42b8f23f983adcd5ff09ab1e828b045f.ctex"]
+source_file="res://art/fruit/BananaSlices.png"
+dest_files=["res://.godot/imported/BananaSlices.png-36d1ef9ca52c4da225e09641a360d5d7.ctex"]
 
 [params]
 

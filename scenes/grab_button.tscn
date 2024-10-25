@@ -5,8 +5,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ba4kq"]
 
 [node name="GrabButton" type="Button"]
-offset_right = 200.0
-offset_bottom = 100.0
+offset_right = 136.0
+offset_bottom = 72.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ba4kq")
 icon_alignment = 1
 script = ExtResource("1_a4374")

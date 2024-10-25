@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v0jamhwf1jt5"
-path="res://.godot/imported/Orange2.png-da11638b3b757a377ec18a817c738edb.ctex"
+uid="uid://dqkhmo51pfv3e"
+path="res://.godot/imported/Checkmark.png-3a9cd1debf963a61f8701fcbda081df3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Orange2.png"
-dest_files=["res://.godot/imported/Orange2.png-da11638b3b757a377ec18a817c738edb.ctex"]
+source_file="res://placeholder_art/Checkmark.png"
+dest_files=["res://.godot/imported/Checkmark.png-3a9cd1debf963a61f8701fcbda081df3.ctex"]
 
 [params]
 
