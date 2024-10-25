@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk1c32pis7cb6"]
+
+[ext_resource type="Script" path="res://scripts/place_pickup_button.gd" id="1_lbssq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58cmm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuso3"]
+
+[node name="PlacePickupButton" type="Button"]
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_58cmm")
+icon_alignment = 1
+script = ExtResource("1_lbssq")
+
+[node name="ActionButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 74.0
+offset_right = 72.0
+offset_bottom = 92.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kuso3")
+icon_alignment = 1
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 72.0
+offset_bottom = -2.0
+show_percentage = false
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

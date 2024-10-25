@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhguxfqqurpyb"]
+
+[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="1_iqa8q"]
+[ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
+[ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://art/Checkmark.png" id="7_2eesi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b204h"]
+size = Vector2(76, 152)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
+
+[node name="Customer" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, -54)
+scale = Vector2(0.6, 1.1875)
+texture = ExtResource("1_iqa8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54)
+shape = SubResource("RectangleShape2D_b204h")
+
+[node name="CustomerButton" type="Button" parent="."]
+offset_left = -38.0
+offset_top = -130.0
+offset_right = 38.0
+offset_bottom = 22.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2b33s")
+script = ExtResource("1_m2x0k")
+
+[node name="Panel" type="Panel" parent="CustomerButton"]
+layout_mode = 0
+offset_top = -79.0
+offset_right = 76.0
+offset_bottom = -3.0
+
+[node name="ItemGrid" type="GridContainer" parent="CustomerButton/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 72.0
+columns = 2
+
+[node name="Slot1" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+layout_mode = 2
+
+[node name="Slot2" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+layout_mode = 2
+
+[node name="Slot3" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+layout_mode = 2
+
+[node name="Slot4" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+layout_mode = 2
+
+[node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("7_2eesi")
+
+[node name="Checkmark2" type="TextureRect" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 2
+offset_left = 40.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 36.0
+texture = ExtResource("7_2eesi")
+
+[node name="Checkmark3" type="TextureRect" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 2
+offset_left = 4.0
+offset_top = 40.0
+offset_right = 36.0
+offset_bottom = 72.0
+texture = ExtResource("7_2eesi")
+
+[node name="Checkmark4" type="TextureRect" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 2
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("7_2eesi")
+
+[node name="Label" type="Label" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 235.0
+offset_right = 58.0
+offset_bottom = 258.0
+text = "Bye"
+horizontal_alignment = 1
+
+[node name="TempTimer" type="Timer" parent="CustomerButton"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="LeaveTimer" type="Timer" parent="CustomerButton"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="button_up" from="CustomerButton" to="CustomerButton" method="_on_button_up"]
+[connection signal="timeout" from="CustomerButton/TempTimer" to="CustomerButton" method="_on_temp_timer_timeout"]
+[connection signal="timeout" from="CustomerButton/LeaveTimer" to="CustomerButton" method="_on_leave_timer_timeout"]
