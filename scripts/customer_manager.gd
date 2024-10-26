@@ -3,11 +3,13 @@ extends Node2D
 
 const CUSTOMER_SCENE = preload("res://scenes/customer.tscn")
 
+var customer_array: Array[Customer]
+
 @onready var customer_timer: Timer = $CustomerTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalManager.new_customer_spawned.connect(on_new_customer_spawned)
+	SignalManager.customer_left.connect(on_customer_left)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,17 +20,25 @@ func _process(delta: float) -> void:
 func create_customer() -> void:
 	var customer = CUSTOMER_SCENE.instantiate()
 	var customer_sprite: Texture2D
-	customer_sprite = load("res://art/customers/Demon.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
+	var i = randi_range(1, 2)
+	if i == 1:
+		customer_sprite = load("res://art/customers/Demon.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
+	else:
+		customer_sprite = load("res://art/customers/mehDemon2.png")
 	var difficulty_level: int
-	difficulty_level = 0  # CHANGE THIS TO BE SOMEWHAT RANDOM (BASED ON ROUND)
+	difficulty_level = randi_range(1, 12)  # CHANGE THIS TO BE SOMEWHAT RANDOM (BASED ON ROUND)
+	customer_array.append(customer)
 	add_child(customer)
-	customer.initialize(customer_sprite, difficulty_level)
-	pass
+	customer.initialize(customer_sprite, difficulty_level, customer_array.size() - 1)
+	if customer_array.size() <= 4 and customer_timer.is_stopped():
+		customer_timer.start()
+
+
+func on_customer_left(index: int) -> void:
+	customer_array.pop_at(index)
+	if customer_timer.is_stopped():
+		customer_timer.start()
 
 
 func _on_customer_timer_timeout() -> void:
 	create_customer()
-
-
-func on_new_customer_spawned() -> void:
-	customer_timer.start()

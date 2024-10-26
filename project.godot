@@ -21,6 +21,10 @@ Enums="*res://scripts/enums.gd"
 Globals="*res://scripts/globals.gd"
 SignalManager="*res://scripts/signal_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

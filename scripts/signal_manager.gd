@@ -2,4 +2,4 @@ extends Node
 
 
 signal grabbable_placed
-signal new_customer_spawned
+signal customer_left

@@ -3,23 +3,8 @@ extends Button
 
 
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")
-
-const APPLE = preload("res://art/fruit/Apple.png")
-const CHOPPED_APPLE = preload("res://art/fruit/AppleSlices.png")
-const BLENDED_APPLE = preload("res://placeholder_art/Apple3.png")
-
-const ORANGE = preload("res://art/fruit/Orange.png")
-const CHOPPED_ORANGE = preload("res://placeholder_art/Orange2.png")
-const BLENDED_ORANGE = preload("res://placeholder_art/Orange3.png")
-
-const BANANA = preload("res://art/fruit/Banana.png")
-const CHOPPED_BANANA = preload("res://art/fruit/BananaSlices.png")
-
-const BLUEBERRIES = preload("res://art/fruit/Blueberries.png")
-const CHOPPED_BLUEBERRIES = preload("res://art/fruit/BlueberrySlices.png")
-
-const PLUM = preload("res://art/fruit/Plum.png")
-const CHOPPED_PLUM = preload("res://art/fruit/PlumSlices.png")
+const BLEND_BUTTON = preload("res://art/other/BlendButton.png")
+const CHOP_BUTTON = preload("res://art/other/ChopButton.png")
 
 @export var is_chop: bool
 @export var is_blend: bool
@@ -38,9 +23,9 @@ var is_in_action:= false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if is_chop:
-		action_button.text = "CHOP"
+		action_button.icon = CHOP_BUTTON
 	elif is_blend:
-		action_button.text = "BLEND"
+		action_button.icon = BLEND_BUTTON
 	
 	action_timer.wait_time = action_speed
 	progress_bar.max_value = action_timer.wait_time
@@ -74,7 +59,7 @@ func _on_button_up() -> void:
 
 
 func _on_action_button_button_up() -> void:
-	if !is_in_action and grab_type == Enums.Grabbable_Type.FRUIT:
+	if !is_in_action and is_occupied and grab_type == Enums.Grabbable_Type.FRUIT:
 		is_in_action = true
 		progress_bar.visible = true
 		action_timer.start()
@@ -86,47 +71,47 @@ func _on_action_timer_timeout() -> void:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = CHOPPED_APPLE
+						icon = Globals.CHOPPED_APPLE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = BLENDED_APPLE
+						icon = Globals.BLENDED_APPLE
 						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.ORANGE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = CHOPPED_ORANGE
+						icon = Globals.CHOPPED_ORANGE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = BLENDED_ORANGE
+						icon = Globals.BLENDED_ORANGE
 						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BANANA:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = CHOPPED_BANANA
+						icon = Globals.CHOPPED_BANANA
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					#elif is_blend:
-						#icon = BLENDED_BANANA
-						#grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+					elif is_blend:
+						icon = Globals.BLENDED_BANANA
+						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BLUEBERRIES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = CHOPPED_BLUEBERRIES
+						icon = Globals.CHOPPED_BLUEBERRIES
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					#elif is_blend:
-						#icon = BLENDED_BLUEBERRIES
-						#grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+					elif is_blend:
+						icon = Globals.BLENDED_BLUEBERRIES
+						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.PLUM:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = CHOPPED_PLUM
+						icon = Globals.CHOPPED_PLUM
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					#elif is_blend:
-						#icon = BLENDED_PLUM
-						#grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+					elif is_blend:
+						icon = Globals.BLENDED_PLUM
+						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 	is_in_action = false
 	progress_bar.value = progress_bar.min_value
 	progress_bar.visible = false
