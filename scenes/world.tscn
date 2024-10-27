@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=12 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="2_e3ys1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ci04814knhh8k" path="res://art/fruit/Banana.png" id="7_m1uln"]
 [ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="8_ggxtx"]
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="9_366gr"]
+[ext_resource type="Script" path="res://scripts/gui.gd" id="11_jjuhh"]
 
 [node name="World" type="Node2D"]
 
@@ -30,26 +31,23 @@ position = Vector2(615, -113)
 script = ExtResource("7_663xw")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
-autostart = true
 
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_5808l")
 
 [node name="CuttingBoardButton" parent="." instance=ExtResource("5_dsf6q")]
-offset_left = 133.0
-offset_top = 148.0
-offset_right = 205.0
-offset_bottom = 220.0
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 222.0
+offset_bottom = 222.0
 is_chop = true
 action_speed = 2.0
 
 [node name="BlenderButton" parent="." instance=ExtResource("5_dsf6q")]
-offset_left = 4.0
 offset_top = 150.0
-offset_right = 76.0
 offset_bottom = 222.0
 is_blend = true
 action_speed = 5.0
@@ -92,6 +90,29 @@ offset_right = 576.0
 offset_bottom = 324.0
 icon = ExtResource("9_366gr")
 fruit = 4
+
+[node name="GUI" type="Panel" parent="."]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -414.0
+offset_bottom = -247.0
+script = ExtResource("11_jjuhh")
+
+[node name="Day" type="Label" parent="GUI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 160.0
+offset_bottom = 26.0
+text = "Day: #"
+
+[node name="Money" type="Label" parent="GUI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 26.0
+offset_right = 160.0
+offset_bottom = 49.0
+text = "Money: $"
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

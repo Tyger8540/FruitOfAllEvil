@@ -7,10 +7,13 @@ var checkmarks: Array[TextureRect]
 var fruit: Array[Enums.Fruit_Type]
 var grab_type: Array[Enums.Grabbable_Type]
 
+var late_order_strings: Array[String]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	slots = [$Panel/ItemGrid/Slot1, $Panel/ItemGrid/Slot2, $Panel/ItemGrid/Slot3, $Panel/ItemGrid/Slot4]
 	checkmarks = [$Panel/Checkmark1, $Panel/Checkmark2, $Panel/Checkmark3, $Panel/Checkmark4]
+	late_order_strings = ["I'll let it slide this time", "Thanks but I'm not paying you", "Speed it up", "Finally", "Took you long enough"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +38,18 @@ func check_completed() -> void:
 
 
 func start_leave_sequence() -> void:
-	print("start_leave_sequence")
+	if $GreenPatienceBar.value > 0:
+		$GreenPatienceTimer.stop()
+		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
+			$Panel/Label.text = "+" + str(get_parent().sell_value)
+			Globals.money += get_parent().sell_value
+		else:
+			$Panel/Label.text = "+" + str(get_parent().sell_value / 2)
+			Globals.money += get_parent().sell_value / 2
+	elif $RedPatienceBar.value > 0:
+		$RedPatienceTimer.stop()
+		var i = randi_range(0, late_order_strings.size() - 1)
+		$Panel/Label.text = late_order_strings[i]
 	$Panel/Label.visible = true
 	$LeaveTimer.start()
 
