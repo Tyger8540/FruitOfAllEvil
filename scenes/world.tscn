@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=11 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="2_e3ys1"]
+[ext_resource type="Script" path="res://scripts/wave_manager.gd" id="3_5808l"]
 [ext_resource type="PackedScene" uid="uid://dk1c32pis7cb6" path="res://scenes/place_pickup_button.tscn" id="5_dsf6q"]
 [ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="5_ndhh7"]
 [ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="6_7cuv1"]
@@ -24,6 +25,7 @@ text = "I am button"
 script = ExtResource("1_v8fo4")
 
 [node name="CustomerManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(615, -113)
 script = ExtResource("7_663xw")
 
@@ -31,6 +33,10 @@ script = ExtResource("7_663xw")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="WaveManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_5808l")
 
 [node name="CuttingBoardButton" parent="." instance=ExtResource("5_dsf6q")]
 offset_left = 133.0
