@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=17 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="2_e3ys1"]
+[ext_resource type="PackedScene" uid="uid://nwb4n4gtqpwn" path="res://scenes/shop_button.tscn" id="2_jrmtt"]
+[ext_resource type="Script" path="res://scripts/shop_manager.gd" id="2_molrn"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="3_5808l"]
+[ext_resource type="Script" path="res://scripts/start_day_button.gd" id="4_88f4h"]
 [ext_resource type="PackedScene" uid="uid://dk1c32pis7cb6" path="res://scenes/place_pickup_button.tscn" id="5_dsf6q"]
 [ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="5_ndhh7"]
 [ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="6_7cuv1"]
@@ -11,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="8_ggxtx"]
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="9_366gr"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="11_jjuhh"]
+[ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_ohpbo"]
+[ext_resource type="Texture2D" uid="uid://h6m078f3nurw" path="res://placeholder_art/Heart.png" id="13_edprl"]
 
 [node name="World" type="Node2D"]
 
@@ -25,6 +30,62 @@ toggle_mode = true
 text = "I am button"
 script = ExtResource("1_v8fo4")
 
+[node name="ShopManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_molrn")
+
+[node name="Background" type="Panel" parent="ShopManager"]
+visible = false
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -76.0
+
+[node name="ShopButton" parent="ShopManager/Background" instance=ExtResource("2_jrmtt")]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 86.0
+offset_right = 344.0
+offset_bottom = 222.0
+
+[node name="ShopButton2" parent="ShopManager/Background" instance=ExtResource("2_jrmtt")]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 86.0
+offset_right = 544.0
+offset_bottom = 222.0
+
+[node name="ShopButton3" parent="ShopManager/Background" instance=ExtResource("2_jrmtt")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 86.0
+offset_right = 744.0
+offset_bottom = 222.0
+
+[node name="ShopButton4" parent="ShopManager/Background" instance=ExtResource("2_jrmtt")]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 86.0
+offset_right = 944.0
+offset_bottom = 222.0
+
+[node name="ShopLabel" type="Label" parent="ShopManager/Background"]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 4.0
+offset_right = 596.0
+offset_bottom = 27.0
+text = "Shop"
+
+[node name="StartDayButton" type="Button" parent="ShopManager/Background"]
+offset_top = 172.0
+offset_right = 136.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 24
+text = "Start Next Day"
+autowrap_mode = 1
+script = ExtResource("4_88f4h")
+
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(615, -113)
@@ -38,19 +99,69 @@ one_shot = true
 unique_name_in_owner = true
 script = ExtResource("3_5808l")
 
+[node name="TrashButton" parent="." instance=ExtResource("12_ohpbo")]
+offset_left = -576.0
+offset_top = 252.0
+offset_right = -504.0
+offset_bottom = 324.0
+
 [node name="CuttingBoardButton" parent="." instance=ExtResource("5_dsf6q")]
+is_chop = true
+action_speed = 2.0
+
+[node name="CuttingBoardButton2" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
+offset_left = 150.0
+offset_right = 222.0
+is_chop = true
+index = 1
+
+[node name="CuttingBoardButton3" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
+offset_top = 150.0
+offset_bottom = 222.0
+is_chop = true
+index = 2
+
+[node name="CuttingBoardButton4" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
 offset_left = 150.0
 offset_top = 150.0
 offset_right = 222.0
 offset_bottom = 222.0
 is_chop = true
-action_speed = 2.0
+index = 3
 
 [node name="BlenderButton" parent="." instance=ExtResource("5_dsf6q")]
-offset_top = 150.0
-offset_bottom = 222.0
+offset_left = -150.0
+offset_right = -78.0
 is_blend = true
 action_speed = 5.0
+
+[node name="BlenderButton2" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
+offset_left = -300.0
+offset_right = -228.0
+is_blend = true
+index = 1
+
+[node name="BlenderButton3" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
+offset_left = -150.0
+offset_top = 150.0
+offset_right = -78.0
+offset_bottom = 222.0
+is_blend = true
+index = 2
+
+[node name="BlenderButton4" parent="." instance=ExtResource("5_dsf6q")]
+visible = false
+offset_left = -300.0
+offset_top = 150.0
+offset_right = -228.0
+offset_bottom = 222.0
+is_blend = true
+index = 3
 
 [node name="AppleButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
@@ -94,25 +205,50 @@ fruit = 4
 [node name="GUI" type="Panel" parent="."]
 offset_left = -576.0
 offset_top = -324.0
-offset_right = -414.0
-offset_bottom = -247.0
+offset_right = -440.0
+offset_bottom = -226.0
 script = ExtResource("11_jjuhh")
+
+[node name="Heart1" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 44.0
+texture = ExtResource("13_edprl")
+
+[node name="Heart2" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 44.0
+texture = ExtResource("13_edprl")
+
+[node name="Heart3" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 44.0
+texture = ExtResource("13_edprl")
 
 [node name="Day" type="Label" parent="GUI"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 160.0
-offset_bottom = 26.0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 132.0
+offset_bottom = 71.0
 text = "Day: #"
 
 [node name="Money" type="Label" parent="GUI"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 26.0
-offset_right = 160.0
-offset_bottom = 49.0
+offset_left = 4.0
+offset_top = 71.0
+offset_right = 132.0
+offset_bottom = 94.0
 text = "Money: $"
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
+[connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

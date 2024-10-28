@@ -18,9 +18,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Checks if the all customers for the day have left
 	if customer_array.is_empty() and difficulty_queue.is_empty() and day_started:
+		day_started = false
 		%WaveManager.finish_day()
 
 

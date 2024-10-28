@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbqx7nohubue7"]
+
+[ext_resource type="Script" path="res://scripts/trash_button.gd" id="1_mqvll"]
+[ext_resource type="Texture2D" uid="uid://d2crngt0332lp" path="res://art/other/Trashcan.png" id="1_y3o3s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1swk"]
+
+[node name="TrashButton" type="Button"]
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y1swk")
+icon = ExtResource("1_y3o3s")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_mqvll")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

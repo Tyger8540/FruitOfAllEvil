@@ -9,6 +9,7 @@ const CHOP_BUTTON = preload("res://art/other/ChopButton.png")
 @export var is_chop: bool
 @export var is_blend: bool
 @export var action_speed: float
+@export var index: int
 
 var fruit: Enums.Fruit_Type
 var grab_type: Enums.Grabbable_Type
@@ -22,14 +23,13 @@ var is_in_action:= false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalManager.day_started.connect(on_day_start)
+	SignalManager.upgrade_purchased.connect(on_upgrade_purchased)
 	if is_chop:
 		action_button.icon = CHOP_BUTTON
 	elif is_blend:
 		action_button.icon = BLEND_BUTTON
-	
-	action_timer.wait_time = action_speed
-	progress_bar.max_value = action_timer.wait_time
-	progress_bar.visible = false
+	on_day_start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,3 +115,22 @@ func _on_action_timer_timeout() -> void:
 	is_in_action = false
 	progress_bar.value = progress_bar.min_value
 	progress_bar.visible = false
+
+
+func on_day_start() -> void:
+	if is_chop:
+		action_speed = 5 - (1.5 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
+		clampf(action_speed, 0.0, 5.0)
+	elif is_blend:
+		action_speed = 8 - (2 * Globals.upgrade_level[Enums.Upgrade_Type.BLEND_SPEED])
+		clampf(action_speed, 0.0, 8.0)
+	action_timer.wait_time = action_speed
+	progress_bar.max_value = action_timer.wait_time
+	progress_bar.visible = false
+
+
+func on_upgrade_purchased() -> void:
+	if is_chop and Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
+		visible = true
+	elif is_blend and Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:
+		visible = true

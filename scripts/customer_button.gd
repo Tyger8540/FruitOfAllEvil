@@ -41,10 +41,10 @@ func start_leave_sequence() -> void:
 	if $GreenPatienceBar.value > 0:
 		$GreenPatienceTimer.stop()
 		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
-			$Panel/Label.text = "+" + str(get_parent().sell_value)
+			$Panel/Label.text = "$" + str(get_parent().sell_value)
 			Globals.money += get_parent().sell_value
 		else:
-			$Panel/Label.text = "+" + str(get_parent().sell_value / 2)
+			$Panel/Label.text = "$" + str(get_parent().sell_value / 2)
 			Globals.money += get_parent().sell_value / 2
 	elif $RedPatienceBar.value > 0:
 		$RedPatienceTimer.stop()

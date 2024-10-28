@@ -15,3 +15,12 @@ enum Grabbable_Type {
 	BLENDED_FRUIT,
 	NONE,
 }
+
+enum Upgrade_Type {
+	MORE_PATIENCE,
+	CHOPPING_BOARD,
+	CHOP_SPEED,
+	BLENDER,
+	BLEND_SPEED,
+	NONE,
+}
