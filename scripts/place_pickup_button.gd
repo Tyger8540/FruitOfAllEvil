@@ -3,19 +3,27 @@ extends Button
 
 
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")
-const BLEND_BUTTON = preload("res://art/other/BlendButton.png")
-const CHOP_BUTTON = preload("res://art/other/ChopButton.png")
+const BLENDER_OPEN = preload("res://art/other/Blender Open.png")
+const BLENDER_EMPTY = preload("res://art/other/Blender Empty.png")
+const CUTTING_BOARD = preload("res://art/other/Cutting Board.png")
+const BLEND_BUTTON = preload("res://art/other/Blend Button.png")
+const CHOP_BUTTON = preload("res://art/other/Chop Button.png")
 
 @export var is_chop: bool
 @export var is_blend: bool
 @export var action_speed: float
 @export var index: int
 
-var fruit: Enums.Fruit_Type
+var fruit:= Enums.Fruit_Type.NONE
+var fruit2:= Enums.Fruit_Type.NONE
 var grab_type: Enums.Grabbable_Type
+var grab_type2: Enums.Grabbable_Type
 
 var is_occupied:= false
 var is_in_action:= false
+var is_half_occupied:= false
+
+var pickup_icon: Texture2D
 
 @onready var action_button: Button = $ActionButton
 @onready var action_timer: Timer = $ActionTimer
@@ -26,8 +34,10 @@ func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
 	SignalManager.upgrade_purchased.connect(on_upgrade_purchased)
 	if is_chop:
+		icon = CUTTING_BOARD
 		action_button.icon = CHOP_BUTTON
 	elif is_blend:
+		icon = BLENDER_OPEN
 		action_button.icon = BLEND_BUTTON
 	on_day_start()
 
@@ -41,28 +51,97 @@ func _process(_delta: float) -> void:
 func _on_button_up() -> void:
 	if Globals.is_grabbing and !is_occupied:
 		# player is holding a grabbable and this button is to be placed on
-		icon = Globals.grabbable_sprite
-		is_occupied = true
-		fruit = Globals.grabbable_fruit_type
-		grab_type = Globals.grabbable_grab_type
+		if is_blend and is_half_occupied:
+			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
+				return
+			$GrabbableTexture.texture = Globals.grabbable_sprite
+			is_occupied = true
+			is_half_occupied = false
+			fruit2 = Globals.grabbable_fruit_type
+			grab_type2 = Globals.grabbable_grab_type
+		elif is_blend:
+			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
+				return  # THIS SHOULD FILL THE BLENDER BACK UP IN THEORY, BUT NOT ENOUGH TIME
+			$GrabbableTexture2.texture = Globals.grabbable_sprite
+			is_half_occupied = true
+			fruit = Globals.grabbable_fruit_type
+			fruit2 = Globals.grabbable_fruit_type2
+			grab_type = Globals.grabbable_grab_type
+		else:
+			$GrabbableTexture.texture = Globals.grabbable_sprite
+			is_occupied = true
+			fruit = Globals.grabbable_fruit_type
+			fruit2 = Globals.grabbable_fruit_type2
+			grab_type = Globals.grabbable_grab_type
 		SignalManager.grabbable_placed.emit()
-	elif !Globals.is_grabbing and is_occupied and !is_in_action:
+	elif !Globals.is_grabbing and !is_in_action:
 		# player is not holding anything and this button has something on it to be picked up
-		var grabbable = GRABBABLE_SCENE.instantiate()
-		grabbable.initialize(fruit, grab_type)
-		add_child(grabbable)
-		Globals.grabbable_fruit_type = grabbable.fruit
-		Globals.grabbable_grab_type = grabbable.grab_type
-		icon = null
-		is_occupied = false
-		Globals.is_grabbing = true
+		if is_occupied and is_chop:
+			var grabbable = GRABBABLE_SCENE.instantiate()
+			grabbable.initialize(fruit, grab_type, fruit2)
+			add_child(grabbable)
+			Globals.grabbable_fruit_type = grabbable.fruit
+			Globals.grabbable_fruit_type2 = grabbable.fruit2
+			Globals.grabbable_grab_type = grabbable.grab_type
+			$GrabbableTexture.texture = null
+			is_occupied = false
+			Globals.is_grabbing = true
+			fruit = Enums.Fruit_Type.NONE
+			fruit2 = Enums.Fruit_Type.NONE
+		elif is_blend and is_half_occupied:
+			var grabbable = GRABBABLE_SCENE.instantiate()
+			grabbable.initialize(fruit, grab_type, Enums.Fruit_Type.NONE)
+			add_child(grabbable)
+			Globals.grabbable_fruit_type = grabbable.fruit
+			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			Globals.grabbable_grab_type = grabbable.grab_type
+			$GrabbableTexture2.texture = null
+			is_half_occupied = false
+			Globals.is_grabbing = true
+			fruit = Enums.Fruit_Type.NONE
+		elif is_blend and is_occupied:
+			var grabbable = GRABBABLE_SCENE.instantiate()
+			if grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
+				grabbable.initialize(fruit, grab_type, fruit2)
+				add_child(grabbable)
+				Globals.grabbable_fruit_type = grabbable.fruit
+				Globals.grabbable_grab_type = grabbable.grab_type
+				Globals.grabbable_fruit_type2 = grabbable.fruit2
+				is_occupied = false
+				icon = BLENDER_EMPTY
+				fruit = Enums.Fruit_Type.NONE
+				fruit2 = Enums.Fruit_Type.NONE
+				$GrabbableTexture.texture = null
+			else:  # filled with 2 fruits but not blended
+				grabbable.initialize(fruit2, grab_type2, Enums.Fruit_Type.NONE)
+				add_child(grabbable)
+				Globals.grabbable_fruit_type = grabbable.fruit
+				Globals.grabbable_fruit_type2 = grabbable.fruit2
+				Globals.grabbable_grab_type = grabbable.grab_type
+				is_half_occupied = true
+				is_occupied = false
+				$GrabbableTexture.texture = null
+				fruit2 = Enums.Fruit_Type.NONE
+			Globals.is_grabbing = true
 
 
 func _on_action_button_button_up() -> void:
-	if !is_in_action and is_occupied and grab_type == Enums.Grabbable_Type.FRUIT:
-		is_in_action = true
-		progress_bar.visible = true
-		action_timer.start()
+	print(fruit2 == Enums.Fruit_Type.NONE)
+	if !is_in_action and (is_occupied or (is_blend and is_half_occupied)):
+		if is_chop and grab_type == Enums.Grabbable_Type.FRUIT:
+			is_in_action = true
+			progress_bar.visible = true
+			action_timer.start()
+		elif is_blend and grab_type == Enums.Grabbable_Type.FRUIT:
+			if is_occupied:
+				if grab_type2 == Enums.Grabbable_Type.FRUIT:
+					is_in_action = true
+					progress_bar.visible = true
+					action_timer.start()
+			elif is_half_occupied:
+				is_in_action = true
+				progress_bar.visible = true
+				action_timer.start()
 
 
 func _on_action_timer_timeout() -> void:
@@ -71,47 +150,162 @@ func _on_action_timer_timeout() -> void:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = Globals.CHOPPED_APPLE
+						$GrabbableTexture.texture = Globals.CHOPPED_APPLE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = Globals.BLENDED_APPLE
-						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+						$GrabbableTexture2.texture = null
+						if is_half_occupied: # blended a single fruit
+							icon = Globals.BLENDER_APPLE
+							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							is_half_occupied = false
+							is_occupied = true
+							fruit2 = Enums.Fruit_Type.NONE
+						else:  # blended two fruits
+							$GrabbableTexture.texture = null
+							match fruit2:
+								Enums.Fruit_Type.APPLE:
+									icon = Globals.BLENDER_APPLE_APPLE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.ORANGE:
+									icon = Globals.BLENDER_APPLE_ORANGE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BANANA:
+									icon = Globals.BLENDER_APPLE_BANANA
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BLUEBERRIES:
+									icon = Globals.BLENDER_APPLE_BLUEBERRY
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.PLUM:
+									icon = Globals.BLENDER_APPLE_PLUM
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.ORANGE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = Globals.CHOPPED_ORANGE
+						$GrabbableTexture.texture = Globals.CHOPPED_ORANGE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = Globals.BLENDED_ORANGE
-						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+						$GrabbableTexture2.texture = null
+						if is_half_occupied: # blended a single fruit
+							icon = Globals.BLENDER_ORANGE
+							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							is_half_occupied = false
+							is_occupied = true
+							fruit2 = Enums.Fruit_Type.NONE
+						else:  # blended two fruits
+							$GrabbableTexture.texture = null
+							match fruit2:
+								Enums.Fruit_Type.APPLE:
+									icon = Globals.BLENDER_ORANGE_APPLE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.ORANGE:
+									icon = Globals.BLENDER_ORANGE_ORANGE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BANANA:
+									icon = Globals.BLENDER_ORANGE_BANANA
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BLUEBERRIES:
+									icon = Globals.BLENDER_ORANGE_BLUEBERRY
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.PLUM:
+									icon = Globals.BLENDER_ORANGE_PLUM
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BANANA:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = Globals.CHOPPED_BANANA
+						$GrabbableTexture.texture = Globals.CHOPPED_BANANA
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = Globals.BLENDED_BANANA
-						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+						$GrabbableTexture2.texture = null
+						if is_half_occupied: # blended a single fruit
+							icon = Globals.BLENDER_BANANA
+							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							is_half_occupied = false
+							is_occupied = true
+							fruit2 = Enums.Fruit_Type.NONE
+						else:  # blended two fruits
+							$GrabbableTexture.texture = null
+							match fruit2:
+								Enums.Fruit_Type.APPLE:
+									icon = Globals.BLENDER_BANANA_APPLE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.ORANGE:
+									icon = Globals.BLENDER_BANANA_ORANGE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BANANA:
+									icon = Globals.BLENDER_BANANA_BANANA
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BLUEBERRIES:
+									icon = Globals.BLENDER_BANANA_BLUEBERRY
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.PLUM:
+									icon = Globals.BLENDER_BANANA_PLUM
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BLUEBERRIES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = Globals.CHOPPED_BLUEBERRIES
+						$GrabbableTexture.texture = Globals.CHOPPED_BLUEBERRIES
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = Globals.BLENDED_BLUEBERRIES
-						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+						$GrabbableTexture2.texture = null
+						if is_half_occupied: # blended a single fruit
+							icon = Globals.BLENDER_BLUEBERRY
+							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							is_half_occupied = false
+							is_occupied = true
+							fruit2 = Enums.Fruit_Type.NONE
+						else:  # blended two fruits
+							$GrabbableTexture.texture = null
+							match fruit2:
+								Enums.Fruit_Type.APPLE:
+									icon = Globals.BLENDER_BLUEBERRY_APPLE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.ORANGE:
+									icon = Globals.BLENDER_BLUEBERRY_ORANGE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BANANA:
+									icon = Globals.BLENDER_BLUEBERRY_BANANA
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BLUEBERRIES:
+									icon = Globals.BLENDER_BLUEBERRY_BLUEBERRY
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.PLUM:
+									icon = Globals.BLENDER_BLUEBERRY_PLUM
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.PLUM:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
 					if is_chop:
-						icon = Globals.CHOPPED_PLUM
+						$GrabbableTexture.texture = Globals.CHOPPED_PLUM
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif is_blend:
-						icon = Globals.BLENDED_PLUM
-						grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+						$GrabbableTexture2.texture = null
+						if is_half_occupied: # blended a single fruit
+							icon = Globals.BLENDER_PLUM
+							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							is_half_occupied = false
+							is_occupied = true
+							fruit2 = Enums.Fruit_Type.NONE
+						else:  # blended two fruits
+							$GrabbableTexture.texture = null
+							match fruit2:
+								Enums.Fruit_Type.APPLE:
+									icon = Globals.BLENDER_PLUM_APPLE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.ORANGE:
+									icon = Globals.BLENDER_PLUM_ORANGE
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BANANA:
+									icon = Globals.BLENDER_PLUM_BANANA
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.BLUEBERRIES:
+									icon = Globals.BLENDER_PLUM_BLUEBERRY
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+								Enums.Fruit_Type.PLUM:
+									icon = Globals.BLENDER_PLUM_PLUM
+									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
 	is_in_action = false
 	progress_bar.value = progress_bar.min_value
 	progress_bar.visible = false

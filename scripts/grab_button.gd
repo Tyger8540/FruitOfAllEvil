@@ -22,7 +22,7 @@ func _on_button_up() -> void:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		Globals.grabbable_fruit_type = fruit
 		Globals.grabbable_grab_type = grab_type
-		grabbable.initialize(fruit, grab_type)
+		grabbable.initialize(fruit, grab_type, Enums.Fruit_Type.NONE)
 		add_child(grabbable)
 		Globals.is_grabbing = true
 	elif Globals.is_grabbing and Globals.grabbable_fruit_type == fruit and Globals.grabbable_grab_type == grab_type:

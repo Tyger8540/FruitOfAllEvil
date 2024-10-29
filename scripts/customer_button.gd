@@ -6,6 +6,7 @@ var checkmarks: Array[TextureRect]
 
 var fruit: Array[Enums.Fruit_Type]
 var grab_type: Array[Enums.Grabbable_Type]
+var fruit2: Array[Enums.Fruit_Type]
 
 var late_order_strings: Array[String]
 
@@ -21,11 +22,12 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func set_grid(texture_array: Array[Texture2D], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type]) -> void:
+func set_grid(texture_array: Array[Texture2D], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type], fruit_array2: Array[Enums.Fruit_Type]) -> void:
 	for i in range(0, texture_array.size()):
 		slots[i].texture = texture_array[i]
 		fruit.append(fruit_array[i])
 		grab_type.append(grab_type_array[i])
+		fruit2.append(fruit_array2[i])
 
 
 func check_completed() -> void:
@@ -57,7 +59,7 @@ func start_leave_sequence() -> void:
 func _on_button_up() -> void:
 	if Globals.is_grabbing:
 		for i in range(0, fruit.size()):
-			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type and grab_type[i] == Globals.grabbable_grab_type:
+			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type2:
 				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				checkmarks[i].visible = true
 				SignalManager.grabbable_placed.emit()

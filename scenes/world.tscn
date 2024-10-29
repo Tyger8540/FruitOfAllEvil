@@ -78,6 +78,7 @@ offset_bottom = 27.0
 text = "Shop"
 
 [node name="StartDayButton" type="Button" parent="ShopManager/Background"]
+layout_mode = 0
 offset_top = 172.0
 offset_right = 136.0
 offset_bottom = 248.0

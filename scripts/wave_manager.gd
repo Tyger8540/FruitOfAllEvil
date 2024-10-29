@@ -3,7 +3,7 @@ extends Node2D
 
 
 @export var num_days: int
-var cur_day:= 0
+var cur_day:= 14
 
 
 # Called when the node enters the scene tree for the first time.

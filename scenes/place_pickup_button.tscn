@@ -11,6 +11,7 @@ offset_right = 72.0
 offset_bottom = 72.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_58cmm")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("1_lbssq")
 
 [node name="ActionButton" type="Button" parent="."]
@@ -31,6 +32,21 @@ offset_top = -11.0
 offset_right = 72.0
 offset_bottom = -2.0
 show_percentage = false
+
+[node name="GrabbableTexture2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 52.0
+offset_bottom = 56.0
+
+[node name="GrabbableTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 52.0
+offset_bottom = 36.0
+stretch_mode = 3
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]

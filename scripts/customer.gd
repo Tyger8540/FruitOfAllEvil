@@ -81,6 +81,7 @@ func form_options() -> void:
 	var textures: Array[Texture2D]
 	var fruits: Array[Enums.Fruit_Type]
 	var grab_types: Array[Enums.Grabbable_Type]
+	var fruits2: Array[Enums.Fruit_Type]
 	var num_items: int
 	var num_grab_types: int
 	
@@ -129,8 +130,16 @@ func form_options() -> void:
 		var i = randi_range(1, 5)
 		fruits.append(get_random_fruit(i))
 		grab_types.append(get_random_grab_type(num_grab_types))
-		textures.append(get_texture(fruits.back(), grab_types.back()))
-	$CustomerButton.set_grid(textures, fruits, grab_types)
+		if grab_types.back() == Enums.Grabbable_Type.BLENDED_FRUIT:
+			var j = randi_range(1, 6)
+			if j == 6:
+				fruits2.append(Enums.Fruit_Type.NONE)
+			else:
+				fruits2.append(get_random_fruit(i))
+		else:
+			fruits2.append(Enums.Fruit_Type.NONE)
+		textures.append(get_texture(fruits.back(), grab_types.back(), fruits2.back()))
+	$CustomerButton.set_grid(textures, fruits, grab_types, fruits2)
 
 
 func get_random_fruit(index: int) -> Enums.Fruit_Type:
@@ -159,7 +168,7 @@ func get_random_grab_type(num_types: int) -> Enums.Grabbable_Type:
 	return Enums.Grabbable_Type.NONE
 
 
-func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Texture2D:
+func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit2: Enums.Fruit_Type) -> Texture2D:
 	match fruit:
 		Enums.Fruit_Type.APPLE:
 			match grab_type:
@@ -168,7 +177,19 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Te
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
 					return Globals.CHOPPED_APPLE
 				Enums.Grabbable_Type.BLENDED_FRUIT:
-					return Globals.BLENDED_APPLE
+					match fruit2:
+						Enums.Fruit_Type.APPLE:
+							return Globals.CUP_APPLE_APPLE
+						Enums.Fruit_Type.ORANGE:
+							return Globals.CUP_APPLE_ORANGE
+						Enums.Fruit_Type.BANANA:
+							return Globals.CUP_APPLE_BANANA
+						Enums.Fruit_Type.BLUEBERRIES:
+							return Globals.CUP_APPLE_BLUEBERRY
+						Enums.Fruit_Type.PLUM:
+							return Globals.CUP_APPLE_PLUM
+						Enums.Fruit_Type.NONE:
+							return Globals.CUP_APPLE
 		Enums.Fruit_Type.ORANGE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -176,7 +197,19 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Te
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
 					return Globals.CHOPPED_ORANGE
 				Enums.Grabbable_Type.BLENDED_FRUIT:
-					return Globals.BLENDED_ORANGE
+					match fruit2:
+						Enums.Fruit_Type.APPLE:
+							return Globals.CUP_ORANGE_APPLE
+						Enums.Fruit_Type.ORANGE:
+							return Globals.CUP_ORANGE_ORANGE
+						Enums.Fruit_Type.BANANA:
+							return Globals.CUP_ORANGE_BANANA
+						Enums.Fruit_Type.BLUEBERRIES:
+							return Globals.CUP_ORANGE_BLUEBERRY
+						Enums.Fruit_Type.PLUM:
+							return Globals.CUP_ORANGE_PLUM
+						Enums.Fruit_Type.NONE:
+							return Globals.CUP_ORANGE
 		Enums.Fruit_Type.BANANA:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -184,7 +217,19 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Te
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
 					return Globals.CHOPPED_BANANA
 				Enums.Grabbable_Type.BLENDED_FRUIT:
-					return Globals.BLENDED_BANANA
+					match fruit2:
+						Enums.Fruit_Type.APPLE:
+							return Globals.CUP_BANANA_APPLE
+						Enums.Fruit_Type.ORANGE:
+							return Globals.CUP_BANANA_ORANGE
+						Enums.Fruit_Type.BANANA:
+							return Globals.CUP_BANANA_BANANA
+						Enums.Fruit_Type.BLUEBERRIES:
+							return Globals.CUP_BANANA_BLUEBERRY
+						Enums.Fruit_Type.PLUM:
+							return Globals.CUP_BANANA_PLUM
+						Enums.Fruit_Type.NONE:
+							return Globals.CUP_BANANA
 		Enums.Fruit_Type.BLUEBERRIES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -192,7 +237,19 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Te
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
 					return Globals.CHOPPED_BLUEBERRIES
 				Enums.Grabbable_Type.BLENDED_FRUIT:
-					return Globals.BLENDED_BLUEBERRIES
+					match fruit2:
+						Enums.Fruit_Type.APPLE:
+							return Globals.CUP_BLUEBERRY_APPLE
+						Enums.Fruit_Type.ORANGE:
+							return Globals.CUP_BLUEBERRY_ORANGE
+						Enums.Fruit_Type.BANANA:
+							return Globals.CUP_BLUEBERRY_BANANA
+						Enums.Fruit_Type.BLUEBERRIES:
+							return Globals.CUP_BLUEBERRY_BLUEBERRY
+						Enums.Fruit_Type.PLUM:
+							return Globals.CUP_BLUEBERRY_PLUM
+						Enums.Fruit_Type.NONE:
+							return Globals.CUP_BLUEBERRY
 		Enums.Fruit_Type.PLUM:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -200,7 +257,19 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type) -> Te
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
 					return Globals.CHOPPED_PLUM
 				Enums.Grabbable_Type.BLENDED_FRUIT:
-					return Globals.BLENDED_PLUM
+					match fruit2:
+						Enums.Fruit_Type.APPLE:
+							return Globals.CUP_PLUM_APPLE
+						Enums.Fruit_Type.ORANGE:
+							return Globals.CUP_PLUM_ORANGE
+						Enums.Fruit_Type.BANANA:
+							return Globals.CUP_PLUM_BANANA
+						Enums.Fruit_Type.BLUEBERRIES:
+							return Globals.CUP_PLUM_BLUEBERRY
+						Enums.Fruit_Type.PLUM:
+							return Globals.CUP_PLUM_PLUM
+						Enums.Fruit_Type.NONE:
+							return Globals.CUP_PLUM
 	return null
 
 
