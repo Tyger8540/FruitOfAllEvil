@@ -9,12 +9,14 @@ var grab_type: Array[Enums.Grabbable_Type]
 var fruit2: Array[Enums.Fruit_Type]
 
 var late_order_strings: Array[String]
+var damage_strings: Array[String]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	slots = [$Panel/ItemGrid/Slot1, $Panel/ItemGrid/Slot2, $Panel/ItemGrid/Slot3, $Panel/ItemGrid/Slot4]
 	checkmarks = [$Panel/Checkmark1, $Panel/Checkmark2, $Panel/Checkmark3, $Panel/Checkmark4]
 	late_order_strings = ["I'll let it slide this time", "Thanks but I'm not paying you", "Speed it up", "Finally", "Took you long enough"]
+	damage_strings = ["Thanks for your heart", "Ha! Take that", "Hehehe I've got your heart"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,8 +54,21 @@ func start_leave_sequence() -> void:
 		$RedPatienceTimer.stop()
 		var i = randi_range(0, late_order_strings.size() - 1)
 		$Panel/Label.text = late_order_strings[i]
+	else:
+		var i = randi_range(0, damage_strings.size() - 1)
+		$Panel/Label.text = damage_strings[i]
 	$Panel/Label.visible = true
 	$LeaveTimer.start()
+
+
+func play_eat_sound() -> void:
+	var i = randi_range(1, 3)
+	if i == 1:
+		%Eat1.play()
+	elif i == 2:
+		%Eat2.play()
+	else:
+		%Eat3.play()
 
 
 func _on_button_up() -> void:
@@ -62,6 +77,7 @@ func _on_button_up() -> void:
 			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type2:
 				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				checkmarks[i].visible = true
+				play_eat_sound()
 				SignalManager.grabbable_placed.emit()
 				check_completed()
 				break

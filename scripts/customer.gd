@@ -132,10 +132,7 @@ func form_options() -> void:
 		grab_types.append(get_random_grab_type(num_grab_types))
 		if grab_types.back() == Enums.Grabbable_Type.BLENDED_FRUIT:
 			var j = randi_range(1, 6)
-			if j == 6:
-				fruits2.append(Enums.Fruit_Type.NONE)
-			else:
-				fruits2.append(get_random_fruit(i))
+			fruits2.append(get_random_fruit(j))
 		else:
 			fruits2.append(Enums.Fruit_Type.NONE)
 		textures.append(get_texture(fruits.back(), grab_types.back(), fruits2.back()))
@@ -154,6 +151,8 @@ func get_random_fruit(index: int) -> Enums.Fruit_Type:
 			return Enums.Fruit_Type.BLUEBERRIES
 		5:
 			return Enums.Fruit_Type.PLUM
+		6:
+			return Enums.Fruit_Type.NONE
 	return Enums.Fruit_Type.NONE
 
 
@@ -279,5 +278,5 @@ func _on_green_patience_timer_timeout() -> void:
 
 
 func _on_red_patience_timer_timeout() -> void:
-	# deal damage to the player or make player lose a life or something
-	pass # Replace with function body.
+	SignalManager.life_lost.emit()
+	$CustomerButton.start_leave_sequence()

@@ -85,10 +85,10 @@ const CUP_PLUM = preload("res://art/fruit/cup_combinations/Cup Plum.png")
 
 var is_grabbing:= false
 var grabbable_sprite: CompressedTexture2D
-var grabbable_fruit_type: Enums.Fruit_Type
-var grabbable_grab_type: Enums.Grabbable_Type
-var grabbable_fruit_type2: Enums.Fruit_Type
+var grabbable_fruit_type:= Enums.Fruit_Type.NONE
+var grabbable_grab_type:= Enums.Grabbable_Type.NONE
+var grabbable_fruit_type2:= Enums.Fruit_Type.NONE
 
-var money:= 500
+var money:= 0
 
 var upgrade_level = {Enums.Upgrade_Type.MORE_PATIENCE: 0, Enums.Upgrade_Type.CHOPPING_BOARD: 0, Enums.Upgrade_Type.CHOP_SPEED: 0, Enums.Upgrade_Type.BLENDER: 0, Enums.Upgrade_Type.BLEND_SPEED: 0}

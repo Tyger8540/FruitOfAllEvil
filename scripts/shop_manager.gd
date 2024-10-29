@@ -12,6 +12,8 @@ func on_day_start() -> void:
 
 
 func on_day_end() -> void:
+	if %WaveManager.cur_day == 15:
+		get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
 	var upgrades_indices_picked: Array[int]
 	for i in range(0, 4):
 		var r = randi_range(0, Enums.Upgrade_Type.size() - 2)  # random int that gets an upgrade that is not NONE

@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=27 format=3 uid="uid://bh2218a8swqql"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_6smcu"]
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="2_e3ys1"]
 [ext_resource type="PackedScene" uid="uid://nwb4n4gtqpwn" path="res://scenes/shop_button.tscn" id="2_jrmtt"]
@@ -15,9 +16,19 @@
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="9_366gr"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="11_jjuhh"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_ohpbo"]
-[ext_resource type="Texture2D" uid="uid://h6m078f3nurw" path="res://placeholder_art/Heart.png" id="13_edprl"]
+[ext_resource type="Texture2D" uid="uid://bctsutcb1kgd7" path="res://art/other/Crate.png" id="13_a0ohq"]
+[ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="16_tan7k"]
+[ext_resource type="Texture2D" uid="uid://br358l5rxcggl" path="res://art/other/Counter.png" id="18_5ygcl"]
+[ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="19_jk3y4"]
+[ext_resource type="AudioStream" uid="uid://b38u0comlejwc" path="res://audio/music/Fruit evail BG_1.wav" id="20_gxueh"]
+[ext_resource type="AudioStream" uid="uid://cl3jq3nbl471b" path="res://audio/sfx/Blender.wav" id="20_hdpbc"]
+[ext_resource type="AudioStream" uid="uid://c6j3f1w7s3j3b" path="res://audio/sfx/Cut.wav" id="21_ajtk2"]
+[ext_resource type="AudioStream" uid="uid://dtj68c0gb0wb2" path="res://audio/sfx/Drop.wav" id="22_c8dq7"]
+[ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="23_paol0"]
+[ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="24_i5etv"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_6smcu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -28,7 +39,22 @@ offset_bottom = 91.0
 disabled = true
 toggle_mode = true
 text = "I am button"
+icon = ExtResource("18_5ygcl")
 script = ExtResource("1_v8fo4")
+
+[node name="BrownBackground" type="TextureRect" parent="."]
+offset_left = 576.0
+offset_top = 1805.0
+offset_right = 1728.0
+offset_bottom = 3642.0
+rotation = 3.14159
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7.15256e-06, -151.25)
+scale = Vector2(7.2, 3.83889)
+texture = ExtResource("18_5ygcl")
 
 [node name="ShopManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -89,12 +115,46 @@ script = ExtResource("4_88f4h")
 
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(615, -113)
+position = Vector2(615, -110)
 script = ExtResource("7_663xw")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
 wait_time = 10.0
 one_shot = true
+
+[node name="Counter" type="Node2D" parent="."]
+
+[node name="Counter8" type="Sprite2D" parent="Counter"]
+position = Vector2(624, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter7" type="Sprite2D" parent="Counter"]
+position = Vector2(464, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter6" type="Sprite2D" parent="Counter"]
+position = Vector2(304, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter5" type="Sprite2D" parent="Counter"]
+position = Vector2(144, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter4" type="Sprite2D" parent="Counter"]
+position = Vector2(-16, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter3" type="Sprite2D" parent="Counter"]
+position = Vector2(-176, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter2" type="Sprite2D" parent="Counter"]
+position = Vector2(-336, -77)
+texture = ExtResource("19_jk3y4")
+
+[node name="Counter" type="Sprite2D" parent="Counter"]
+position = Vector2(-496, -77)
+texture = ExtResource("19_jk3y4")
 
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -169,39 +229,140 @@ offset_left = 440.0
 offset_top = -68.0
 offset_right = 576.0
 offset_bottom = 4.0
-icon = ExtResource("5_ndhh7")
+icon = ExtResource("13_a0ohq")
+expand_icon = true
+
+[node name="GridContainer" type="GridContainer" parent="AppleButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_ndhh7")
+
+[node name="TextureRect2" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_ndhh7")
+
+[node name="TextureRect3" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_ndhh7")
 
 [node name="OrangeButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
 offset_top = 12.0
 offset_right = 576.0
 offset_bottom = 84.0
-icon = ExtResource("6_7cuv1")
+icon = ExtResource("13_a0ohq")
+expand_icon = true
 fruit = 1
+
+[node name="GridContainer" type="GridContainer" parent="OrangeButton"]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_7cuv1")
+
+[node name="TextureRect2" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_7cuv1")
+
+[node name="TextureRect3" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_7cuv1")
 
 [node name="BananaButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
 offset_top = 92.0
 offset_right = 576.0
 offset_bottom = 164.0
-icon = ExtResource("7_m1uln")
+icon = ExtResource("13_a0ohq")
+expand_icon = true
 fruit = 2
+
+[node name="GridContainer" type="GridContainer" parent="BananaButton"]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_m1uln")
+
+[node name="TextureRect2" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_m1uln")
+
+[node name="TextureRect3" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_m1uln")
 
 [node name="BlueberriesButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
 offset_top = 172.0
 offset_right = 576.0
 offset_bottom = 244.0
-icon = ExtResource("8_ggxtx")
+icon = ExtResource("13_a0ohq")
+expand_icon = true
 fruit = 3
+
+[node name="GridContainer" type="GridContainer" parent="BlueberriesButton"]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_ggxtx")
+
+[node name="TextureRect2" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_ggxtx")
+
+[node name="TextureRect3" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_ggxtx")
 
 [node name="PlumButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
 offset_top = 252.0
 offset_right = 576.0
 offset_bottom = 324.0
-icon = ExtResource("9_366gr")
+icon = ExtResource("13_a0ohq")
+expand_icon = true
 fruit = 4
+
+[node name="GridContainer" type="GridContainer" parent="PlumButton"]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_366gr")
+
+[node name="TextureRect2" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_366gr")
+
+[node name="TextureRect3" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_366gr")
 
 [node name="GUI" type="Panel" parent="."]
 offset_left = -576.0
@@ -216,7 +377,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 44.0
 offset_bottom = 44.0
-texture = ExtResource("13_edprl")
+texture = ExtResource("16_tan7k")
 
 [node name="Heart2" type="TextureRect" parent="GUI"]
 layout_mode = 0
@@ -224,7 +385,7 @@ offset_left = 48.0
 offset_top = 4.0
 offset_right = 88.0
 offset_bottom = 44.0
-texture = ExtResource("13_edprl")
+texture = ExtResource("16_tan7k")
 
 [node name="Heart3" type="TextureRect" parent="GUI"]
 layout_mode = 0
@@ -232,7 +393,7 @@ offset_left = 92.0
 offset_top = 4.0
 offset_right = 132.0
 offset_bottom = 44.0
-texture = ExtResource("13_edprl")
+texture = ExtResource("16_tan7k")
 
 [node name="Day" type="Label" parent="GUI"]
 layout_mode = 0
@@ -249,6 +410,35 @@ offset_top = 71.0
 offset_right = 132.0
 offset_bottom = 94.0
 text = "Money: $"
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="FruitEvailBg1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("20_gxueh")
+autoplay = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Blender" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("20_hdpbc")
+volume_db = -10.0
+
+[node name="Cut" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("21_ajtk2")
+
+[node name="Drop" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("22_c8dq7")
+
+[node name="Grab" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("23_paol0")
+
+[node name="PlaceOrGrabBackup" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("24_i5etv")
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]

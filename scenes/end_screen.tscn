@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsqsqu4gckgna"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_6fjmf"]
+
+[node name="EndScreen" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+script = ExtResource("1_6fjmf")
+
+[node name="RestartButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 400.0
+offset_right = 373.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 48
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+offset_left = 780.0
+offset_top = 400.0
+offset_right = 1003.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 200.0
+offset_right = 820.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 48
+text = "Better luck next time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Panel/RestartButton" to="Panel" method="_on_restart_button_button_up"]
+[connection signal="button_up" from="Panel/QuitButton" to="Panel" method="_on_quit_button_button_up"]

@@ -46,7 +46,7 @@ func create_customer_queue(difficulty_array: Array[int], patience_array: Array[i
 	value_queue = value_array
 	customer_timer.wait_time = waiting_time
 	day_started = true
-	customer_timer.start()
+	_on_customer_timer_timeout()
 
 
 func on_customer_left(index: int) -> void:

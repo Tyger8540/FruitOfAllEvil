@@ -55,24 +55,36 @@ func _on_button_up() -> void:
 			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
 				return
 			$GrabbableTexture.texture = Globals.grabbable_sprite
+			%Drop.play()
 			is_occupied = true
 			is_half_occupied = false
 			fruit2 = Globals.grabbable_fruit_type
 			grab_type2 = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		elif is_blend:
 			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
 				return  # THIS SHOULD FILL THE BLENDER BACK UP IN THEORY, BUT NOT ENOUGH TIME
 			$GrabbableTexture2.texture = Globals.grabbable_sprite
+			%Drop.play()
 			is_half_occupied = true
 			fruit = Globals.grabbable_fruit_type
 			fruit2 = Globals.grabbable_fruit_type2
 			grab_type = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		else:
 			$GrabbableTexture.texture = Globals.grabbable_sprite
+			%Drop.play()
 			is_occupied = true
 			fruit = Globals.grabbable_fruit_type
 			fruit2 = Globals.grabbable_fruit_type2
 			grab_type = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		SignalManager.grabbable_placed.emit()
 	elif !Globals.is_grabbing and !is_in_action:
 		# player is not holding anything and this button has something on it to be picked up
@@ -80,30 +92,39 @@ func _on_button_up() -> void:
 			var grabbable = GRABBABLE_SCENE.instantiate()
 			grabbable.initialize(fruit, grab_type, fruit2)
 			add_child(grabbable)
+			%Grab.play()
 			Globals.grabbable_fruit_type = grabbable.fruit
 			Globals.grabbable_fruit_type2 = grabbable.fruit2
 			Globals.grabbable_grab_type = grabbable.grab_type
+			if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
+				Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
 			$GrabbableTexture.texture = null
 			is_occupied = false
 			Globals.is_grabbing = true
 			fruit = Enums.Fruit_Type.NONE
 			fruit2 = Enums.Fruit_Type.NONE
+			grab_type = Enums.Grabbable_Type.NONE
+			grab_type2 = Enums.Grabbable_Type.NONE
 		elif is_blend and is_half_occupied:
 			var grabbable = GRABBABLE_SCENE.instantiate()
 			grabbable.initialize(fruit, grab_type, Enums.Fruit_Type.NONE)
 			add_child(grabbable)
+			%Grab.play()
 			Globals.grabbable_fruit_type = grabbable.fruit
-			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type2 = grabbable.fruit2
 			Globals.grabbable_grab_type = grabbable.grab_type
 			$GrabbableTexture2.texture = null
 			is_half_occupied = false
 			Globals.is_grabbing = true
 			fruit = Enums.Fruit_Type.NONE
+			fruit2 = Enums.Fruit_Type.NONE
+			grab_type = Enums.Grabbable_Type.NONE
 		elif is_blend and is_occupied:
 			var grabbable = GRABBABLE_SCENE.instantiate()
 			if grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
 				grabbable.initialize(fruit, grab_type, fruit2)
 				add_child(grabbable)
+				%Grab.play()
 				Globals.grabbable_fruit_type = grabbable.fruit
 				Globals.grabbable_grab_type = grabbable.grab_type
 				Globals.grabbable_fruit_type2 = grabbable.fruit2
@@ -111,10 +132,13 @@ func _on_button_up() -> void:
 				icon = BLENDER_EMPTY
 				fruit = Enums.Fruit_Type.NONE
 				fruit2 = Enums.Fruit_Type.NONE
+				grab_type = Enums.Grabbable_Type.NONE
+				grab_type2 = Enums.Grabbable_Type.NONE
 				$GrabbableTexture.texture = null
 			else:  # filled with 2 fruits but not blended
 				grabbable.initialize(fruit2, grab_type2, Enums.Fruit_Type.NONE)
 				add_child(grabbable)
+				%Grab.play()
 				Globals.grabbable_fruit_type = grabbable.fruit
 				Globals.grabbable_fruit_type2 = grabbable.fruit2
 				Globals.grabbable_grab_type = grabbable.grab_type
@@ -122,29 +146,36 @@ func _on_button_up() -> void:
 				is_occupied = false
 				$GrabbableTexture.texture = null
 				fruit2 = Enums.Fruit_Type.NONE
+				grab_type2 = Enums.Grabbable_Type.NONE
 			Globals.is_grabbing = true
 
 
 func _on_action_button_button_up() -> void:
-	print(fruit2 == Enums.Fruit_Type.NONE)
 	if !is_in_action and (is_occupied or (is_blend and is_half_occupied)):
 		if is_chop and grab_type == Enums.Grabbable_Type.FRUIT:
 			is_in_action = true
 			progress_bar.visible = true
 			action_timer.start()
+			%Cut.play()
 		elif is_blend and grab_type == Enums.Grabbable_Type.FRUIT:
 			if is_occupied:
 				if grab_type2 == Enums.Grabbable_Type.FRUIT:
 					is_in_action = true
 					progress_bar.visible = true
 					action_timer.start()
+					%Blender.play()
 			elif is_half_occupied:
 				is_in_action = true
 				progress_bar.visible = true
 				action_timer.start()
+				%Blender.play()
 
 
 func _on_action_timer_timeout() -> void:
+	if is_chop:
+		%Cut.stop()
+	elif is_blend:
+		%Blender.stop()
 	match fruit:
 		Enums.Fruit_Type.APPLE:
 			match grab_type:
