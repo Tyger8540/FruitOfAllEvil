@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=28 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_6smcu"]
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://dtj68c0gb0wb2" path="res://audio/sfx/Drop.wav" id="22_c8dq7"]
 [ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="23_paol0"]
 [ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="24_i5etv"]
+[ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="27_k2y37"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6smcu")
@@ -262,6 +263,7 @@ expand_icon = true
 fruit = 1
 
 [node name="GridContainer" type="GridContainer" parent="OrangeButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 20.0
 offset_right = 48.0
@@ -290,6 +292,7 @@ expand_icon = true
 fruit = 2
 
 [node name="GridContainer" type="GridContainer" parent="BananaButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 20.0
 offset_right = 48.0
@@ -318,6 +321,7 @@ expand_icon = true
 fruit = 3
 
 [node name="GridContainer" type="GridContainer" parent="BlueberriesButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 20.0
 offset_right = 48.0
@@ -346,6 +350,7 @@ expand_icon = true
 fruit = 4
 
 [node name="GridContainer" type="GridContainer" parent="PlumButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 20.0
 offset_right = 48.0
@@ -415,6 +420,7 @@ text = "Money: $"
 
 [node name="FruitEvailBg1" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("20_gxueh")
+volume_db = -25.0
 autoplay = true
 
 [node name="Sounds" type="Node2D" parent="."]
@@ -439,6 +445,11 @@ stream = ExtResource("23_paol0")
 [node name="PlaceOrGrabBackup" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("24_i5etv")
+
+[node name="DingCustomer" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("27_k2y37")
+volume_db = -20.0
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]

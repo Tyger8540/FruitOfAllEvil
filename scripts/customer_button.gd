@@ -62,13 +62,11 @@ func start_leave_sequence() -> void:
 
 
 func play_eat_sound() -> void:
-	var i = randi_range(1, 3)
+	var i = randi_range(1, 2)
 	if i == 1:
 		%Eat1.play()
-	elif i == 2:
-		%Eat2.play()
 	else:
-		%Eat3.play()
+		%Eat2.play()
 
 
 func _on_button_up() -> void:

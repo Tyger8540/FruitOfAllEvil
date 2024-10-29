@@ -36,6 +36,7 @@ func create_customer(difficulty_level: int, patience_level: int, value: int) -> 
 	customer_array.append(customer)
 	add_child(customer)
 	customer.initialize(customer_sprite, difficulty_level, patience_level, value, customer_array.size() - 1)
+	%DingCustomer.play()
 	if customer_array.size() <= 4 and customer_timer.is_stopped() and !difficulty_queue.is_empty():
 		customer_timer.start()
 

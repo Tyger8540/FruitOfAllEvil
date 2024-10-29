@@ -23,6 +23,7 @@ theme_override_font_sizes/font_size = 48
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 780.0
 offset_top = 400.0
 offset_right = 1003.0
