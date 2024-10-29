@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhguxfqqurpyb"]
+[gd_scene load_steps=15 format=3 uid="uid://dhguxfqqurpyb"]
 
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="5_mumj0"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_2eesi"]
 [ext_resource type="AudioStream" uid="uid://nxeueatcx5gq" path="res://audio/sfx/Eat_1.wav" id="8_nkqr7"]
+[ext_resource type="AudioStream" uid="uid://diquffq3fp0gi" path="res://audio/sfx/Hungry.wav" id="8_ovxc0"]
+[ext_resource type="AudioStream" uid="uid://dehy6nd1injy2" path="res://audio/sfx/Coin_Get.wav" id="8_t2gr1"]
 [ext_resource type="AudioStream" uid="uid://bppalx81duhnf" path="res://audio/sfx/Eat_3.wav" id="9_2p3ax"]
 [ext_resource type="AudioStream" uid="uid://us8yjjkrrd1s" path="res://audio/sfx/Eat_2.wav" id="9_d21vj"]
 
@@ -145,6 +147,15 @@ texture = ExtResource("4_frltw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -54)
 shape = SubResource("RectangleShape2D_b204h")
+
+[node name="Hungry" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_ovxc0")
+volume_db = -10.0
+
+[node name="CoinGet" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_t2gr1")
 
 [node name="Eat1" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

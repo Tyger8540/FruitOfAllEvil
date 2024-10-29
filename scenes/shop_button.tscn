@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nwb4n4gtqpwn"]
+[gd_scene load_steps=3 format=3 uid="uid://nwb4n4gtqpwn"]
 
 [ext_resource type="Script" path="res://scripts/shop_button.gd" id="1_8ncxb"]
+[ext_resource type="AudioStream" uid="uid://cvntlds3habf6" path="res://audio/sfx/Coin_Spend.wav" id="2_isx73"]
 
 [node name="ShopButton" type="Button"]
 offset_right = 136.0
@@ -36,5 +37,9 @@ offset_right = 132.0
 offset_bottom = 27.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CoinSpend" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_isx73")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

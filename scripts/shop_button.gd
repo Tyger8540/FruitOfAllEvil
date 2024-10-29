@@ -10,6 +10,7 @@ func _on_button_up() -> void:
 	if Globals.money >= price:
 		Globals.money -= price
 		Globals.upgrade_level[upgrade] += 1
+		%CoinSpend.play()
 		SignalManager.upgrade_purchased.emit()
 		set_up_button()
 

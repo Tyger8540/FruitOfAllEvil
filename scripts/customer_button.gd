@@ -38,6 +38,7 @@ func check_completed() -> void:
 		if !checkmarks[i].visible:
 			return
 	# the for loop finished, so everything was checked off
+	%CoinGet.play()
 	start_leave_sequence()
 
 

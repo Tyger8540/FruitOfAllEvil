@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=30 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_6smcu"]
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
@@ -27,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="23_paol0"]
 [ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="24_i5etv"]
 [ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="27_k2y37"]
+[ext_resource type="Script" path="res://scripts/hover_button.gd" id="28_u26h8"]
+[ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="29_qkxon"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6smcu")
@@ -451,6 +453,26 @@ unique_name_in_owner = true
 stream = ExtResource("27_k2y37")
 volume_db = -20.0
 
+[node name="HoverButton" type="Button" parent="." node_paths=PackedStringArray("child")]
+offset_left = -576.0
+offset_top = -1.0
+offset_right = -534.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 24
+text = "?"
+script = ExtResource("28_u26h8")
+child = NodePath("FruitGuide")
+
+[node name="FruitGuide" type="TextureRect" parent="HoverButton"]
+visible = false
+layout_mode = 0
+offset_left = 59.0
+offset_right = 155.0
+offset_bottom = 192.0
+texture = ExtResource("29_qkxon")
+
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
+[connection signal="mouse_entered" from="HoverButton" to="HoverButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HoverButton" to="HoverButton" method="_on_mouse_exited"]

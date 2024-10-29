@@ -274,6 +274,7 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit
 
 func _on_green_patience_timer_timeout() -> void:
 	# remove the reward gained from completing this customer's order
+	%Hungry.play()
 	red_patience_timer.start()
 
 
