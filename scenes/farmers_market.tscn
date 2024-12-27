@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b16mrjlcqcw2s"]
+
+[ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
+[ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
+
+[node name="FarmersMarket" type="Node2D"]
+
+[node name="SidescrollingPlayer" parent="." instance=ExtResource("1_un1fx")]
+position = Vector2(-1, 6)
+
+[node name="FarmersMarketCamera" parent="." instance=ExtResource("2_ial2i")]

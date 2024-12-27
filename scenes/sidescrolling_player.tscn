@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbgw5mfukn2xf"]
+
+[ext_resource type="Script" path="res://scripts/sidescrolling_player.gd" id="1_j26or"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a1l2"]
+
+[node name="SidescrollingPlayer" type="CharacterBody2D"]
+script = ExtResource("1_j26or")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8a1l2")

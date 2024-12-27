@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccbc0jxtrsw51"]
+
+[ext_resource type="Script" path="res://scripts/farmers_market_camera.gd" id="1_njjqu"]
+
+[node name="FarmersMarketCamera" type="Camera2D"]
+script = ExtResource("1_njjqu")
