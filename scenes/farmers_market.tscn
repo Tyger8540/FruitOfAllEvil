@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=5 format=3 uid="uid://b16mrjlcqcw2s"]
 
 [ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
 [ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
 [ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="3_d87nm"]
+[ext_resource type="PackedScene" uid="uid://b6al4vk5kbell" path="res://scenes/sidescroll_button.tscn" id="4_be2uh"]
 
 [node name="FarmersMarket" type="Node2D"]
 
@@ -16,23 +17,36 @@ visible = false
 position = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 4)
+scale = Vector2(6, 4)
 texture = ExtResource("3_d87nm")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
 position = Vector2(1152, 0)
-scale = Vector2(8, 4)
+scale = Vector2(6, 4)
 texture = ExtResource("3_d87nm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(2304, 0)
-scale = Vector2(8, 4)
+scale = Vector2(6, 4)
 texture = ExtResource("3_d87nm")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 1)
 position = Vector2(3456, 0)
-scale = Vector2(8, 4)
+scale = Vector2(6, 4)
 texture = ExtResource("3_d87nm")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LeftSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+
+[node name="RightSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
+offset_right = 0.0
+grow_horizontal = 0
+direction = 3

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6al4vk5kbell"]
+
+[ext_resource type="Script" path="res://scripts/sidescroll_button.gd" id="1_jdi3s"]
+[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="1_r6nkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn21f"]
+
+[node name="SidescrollButton" type="Button"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 136.0
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nn21f")
+icon = ExtResource("1_r6nkl")
+script = ExtResource("1_jdi3s")
+direction = 2
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
