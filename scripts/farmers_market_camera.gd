@@ -2,7 +2,8 @@ class_name FarmersMarketCamera
 extends Camera2D
 
 
-const PAN_SPEED = 200.0
+const PAN_SPEED = 1152.0
+const PAN_DISTANCE = 1152.0
 
 var new_position: Vector2
 
@@ -14,17 +15,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("move_left"):
-		set_camera_position(new_position + Vector2(-500.0, 0.0))
-	if Input.is_action_just_pressed("move_right"):
-		set_camera_position(new_position + Vector2(500.0, 0.0))
-
-	
-	# Pan camera to new position
-	if position != new_position:
-		print("new_position: " + str(new_position))
-		print("")
-		print("position: " + str(position))
+	if position == new_position:
+		if Input.is_action_just_pressed("move_left"):
+			set_camera_position(new_position + Vector2(-PAN_DISTANCE, 0.0))
+		if Input.is_action_just_pressed("move_right"):
+			set_camera_position(new_position + Vector2(PAN_DISTANCE, 0.0))
+	else:
+		# Pan camera toward new position
 		position = position.move_toward(new_position, PAN_SPEED * delta)
 
 

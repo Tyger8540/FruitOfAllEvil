@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=4 format=3 uid="uid://b16mrjlcqcw2s"]
 
 [ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
 [ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
+[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="3_d87nm"]
 
 [node name="FarmersMarket" type="Node2D"]
 
@@ -9,3 +10,29 @@
 position = Vector2(-1, 6)
 
 [node name="FarmersMarketCamera" parent="." instance=ExtResource("2_ial2i")]
+
+[node name="FarmersMarketCamera2" parent="." instance=ExtResource("2_ial2i")]
+visible = false
+position = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 4)
+texture = ExtResource("3_d87nm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(1152, 0)
+scale = Vector2(8, 4)
+texture = ExtResource("3_d87nm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(2304, 0)
+scale = Vector2(8, 4)
+texture = ExtResource("3_d87nm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(3456, 0)
+scale = Vector2(8, 4)
+texture = ExtResource("3_d87nm")
