@@ -29,8 +29,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if position == new_position:
 		if sidescrolling:
+			# Finished sidescrolling, set buttons to correct visibility
 			sidescrolling = false
 			set_sidescroll_button_visibility()
+		
+		# OUTDATED - scrolling using A/D
 		#if Input.is_action_just_pressed("move_left"):
 			#set_camera_position(new_position + Vector2(-PAN_DISTANCE, 0.0))
 		#if Input.is_action_just_pressed("move_right"):
@@ -41,6 +44,7 @@ func _process(delta: float) -> void:
 
 
 func set_camera_position(pos: Vector2) -> void:
+	# Set the new position for the camera to move to
 	new_position = pos
 
 
