@@ -33,6 +33,9 @@ var pickup_icon: Texture2D
 func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
 	SignalManager.upgrade_purchased.connect(on_upgrade_purchased)
+	# Sets icons for the different appliances
+	# TODO make this into a function that each child class will inherit to make things more concise
+	#      once there are many appliances
 	if is_chop:
 		icon = CUTTING_BOARD
 		action_button.icon = CHOP_BUTTON
@@ -44,11 +47,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Provides a visual for the duration of an appliance's use
 	if is_in_action:
 		progress_bar.value = action_timer.wait_time - action_timer.time_left
 
 
 func _on_button_up() -> void:
+	# Triggers when the PlacePickupButton is clicked; accounts for if the player is holding an item
+	# TODO figure out a way for the addition of multiple fruits to be handled in the appliances
+	#      that are able to take multiple fruits, it is too complicated just in this function
 	if Globals.is_grabbing and !is_occupied:
 		# player is holding a grabbable and this button is to be placed on
 		if is_blend and is_half_occupied:
@@ -151,6 +158,12 @@ func _on_button_up() -> void:
 
 
 func _on_action_button_button_up() -> void:
+	# Triggers when the appliance's power button is pressed
+	# TODO similar to _on_button_up, make it simpler in this class to only deal with things
+	#      that are single items, the half_occupied stuff will get very complicated with
+	#      the addition of more appliances, which could possibly hold more than two
+	#      fruits, which would make this even more complicated
+	print("hi")
 	if !is_in_action and (is_occupied or (is_blend and is_half_occupied)):
 		if is_chop and grab_type == Enums.Grabbable_Type.FRUIT:
 			is_in_action = true
@@ -172,6 +185,10 @@ func _on_action_button_button_up() -> void:
 
 
 func _on_action_timer_timeout() -> void:
+	# Triggers when the action has finished, i.e. chopping or blending
+	# TODO simplify this function by calling another function that each child class will inherit,
+	#      it can do simple stuff like the match statements, but the rest should be done within
+	#      the subclasses I think
 	if is_chop:
 		%Cut.stop()
 	elif is_blend:
@@ -343,6 +360,7 @@ func _on_action_timer_timeout() -> void:
 
 
 func on_day_start() -> void:
+	# Sets the speed of appliances after the shopping phase has ended, as they could be upgraded
 	if is_chop:
 		action_speed = 5 - (1.5 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
 		clampf(action_speed, 0.0, 5.0)
@@ -355,6 +373,7 @@ func on_day_start() -> void:
 
 
 func on_upgrade_purchased() -> void:
+	# Checks if an appliance has been purchased, in which case a new one should be visible
 	if is_chop and Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
 		visible = true
 	elif is_blend and Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:

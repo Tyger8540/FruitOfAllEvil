@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nwb4n4gtqpwn"]
+[gd_scene load_steps=4 format=3 uid="uid://nwb4n4gtqpwn"]
 
 [ext_resource type="Script" path="res://scripts/shop_button.gd" id="1_8ncxb"]
 [ext_resource type="AudioStream" uid="uid://cvntlds3habf6" path="res://audio/sfx/Coin_Spend.wav" id="2_isx73"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pett0"]
+
 [node name="ShopButton" type="Button"]
 offset_right = 136.0
 offset_bottom = 136.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pett0")
 script = ExtResource("1_8ncxb")
 
 [node name="Label" type="Label" parent="."]

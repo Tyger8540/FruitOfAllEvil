@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2eul6xmbt8yw"]
+
+[ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
+[ext_resource type="Texture2D" uid="uid://oswywjlhhh6o" path="res://art/other/Blender Empty.png" id="1_kpins"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3x0o6"]
+
+[node name="BlenderButton" type="Button"]
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1o4xf")
+icon = ExtResource("1_kpins")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_7psl8")
+is_blend = true
+
+[node name="ActionButton" type="Button" parent="."]
+offset_top = 74.0
+offset_right = 72.0
+offset_bottom = 92.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3x0o6")
+icon_alignment = 1
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_top = -11.0
+offset_right = 72.0
+offset_bottom = -2.0
+show_percentage = false
+
+[node name="GrabbableTexture2" type="TextureRect" parent="."]
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 52.0
+offset_bottom = 56.0
+
+[node name="GrabbableTexture" type="TextureRect" parent="."]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 52.0
+offset_bottom = 36.0
+stretch_mode = 3
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

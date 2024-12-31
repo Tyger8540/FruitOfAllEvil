@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=33 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_6smcu"]
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="9_366gr"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="11_jjuhh"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_ohpbo"]
+[ext_resource type="PackedScene" uid="uid://bsm5cve406wkh" path="res://scenes/chopping_board_button.tscn" id="12_yegh3"]
 [ext_resource type="Texture2D" uid="uid://bctsutcb1kgd7" path="res://art/other/Crate.png" id="13_a0ohq"]
 [ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="16_tan7k"]
 [ext_resource type="Texture2D" uid="uid://br358l5rxcggl" path="res://art/other/Counter.png" id="18_5ygcl"]
@@ -29,6 +30,9 @@
 [ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="27_k2y37"]
 [ext_resource type="Script" path="res://scripts/hover_button.gd" id="28_u26h8"]
 [ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="29_qkxon"]
+[ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="30_4udm6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iaimh"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6smcu")
@@ -112,6 +116,7 @@ offset_top = 172.0
 offset_right = 136.0
 offset_bottom = 248.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iaimh")
 text = "Start Next Day"
 autowrap_mode = 1
 script = ExtResource("4_88f4h")
@@ -196,6 +201,12 @@ offset_bottom = 222.0
 is_chop = true
 index = 3
 
+[node name="ChoppingBoardButton" parent="." instance=ExtResource("12_yegh3")]
+offset_left = 59.0
+offset_top = 179.0
+offset_right = 131.0
+offset_bottom = 251.0
+
 [node name="BlenderButton" parent="." instance=ExtResource("5_dsf6q")]
 offset_left = -150.0
 offset_right = -78.0
@@ -226,6 +237,12 @@ offset_right = -228.0
 offset_bottom = 222.0
 is_blend = true
 index = 3
+
+[node name="BlenderButton5" parent="." instance=ExtResource("30_4udm6")]
+offset_left = -151.0
+offset_top = 207.0
+offset_right = -79.0
+offset_bottom = 279.0
 
 [node name="AppleButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0
