@@ -16,6 +16,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_7psl8")
 appliance_type = 2
+num_slots = 2
 appliance_icon = ExtResource("1_kpins")
 action_icon = ExtResource("3_wa07b")
 
