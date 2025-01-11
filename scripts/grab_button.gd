@@ -21,13 +21,15 @@ func _on_button_up() -> void:
 	if !Globals.is_grabbing:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		%Grab.play()
-		Globals.grabbable_fruit_type = fruit
+		Globals.grabbable_fruit_type[0] = fruit
 		Globals.grabbable_grab_type = grab_type
 		if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
-			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
-		grabbable.initialize(fruit, grab_type, Enums.Fruit_Type.NONE)
+			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
+		var fruit_array: Array[Enums.Fruit_Type]
+		fruit_array.append(fruit)
+		grabbable.initialize(fruit_array, grab_type)
 		add_child(grabbable)
 		Globals.is_grabbing = true
-	elif Globals.is_grabbing and Globals.grabbable_fruit_type == fruit and Globals.grabbable_grab_type == grab_type:
+	elif Globals.is_grabbing and Globals.grabbable_fruit_type[0] == fruit and Globals.grabbable_grab_type == grab_type:
 		SignalManager.grabbable_placed.emit()
 		%PlaceOrGrabBackup.play()

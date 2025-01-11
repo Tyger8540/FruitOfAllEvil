@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsm5cve406wkh"]
+[gd_scene load_steps=6 format=3 uid="uid://bsm5cve406wkh"]
 
 [ext_resource type="Texture2D" uid="uid://dad66oi5wp5af" path="res://art/other/Cutting Board.png" id="1_e2mf8"]
 [ext_resource type="Script" path="res://scripts/chopping_board_button.gd" id="1_s00hn"]
+[ext_resource type="Texture2D" uid="uid://bvh74wvvc3yn0" path="res://art/other/Chop Button.png" id="3_sotc4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv6kk"]
 
@@ -15,9 +16,12 @@ icon = ExtResource("1_e2mf8")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_s00hn")
-is_chop = true
+appliance_type = 1
+appliance_icon = ExtResource("1_e2mf8")
+action_icon = ExtResource("3_sotc4")
 
 [node name="ActionButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 74.0
 offset_right = 72.0
 offset_bottom = 92.0
@@ -29,18 +33,21 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_top = -11.0
 offset_right = 72.0
 offset_bottom = -2.0
 show_percentage = false
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 24.0
 offset_right = 52.0
 offset_bottom = 56.0
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 4.0
 offset_right = 52.0

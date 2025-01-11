@@ -85,9 +85,8 @@ const CUP_PLUM = preload("res://art/fruit/cup_combinations/Cup Plum.png")
 
 var is_grabbing:= false
 var grabbable_sprite: CompressedTexture2D
-var grabbable_fruit_type:= Enums.Fruit_Type.NONE
+var grabbable_fruit_type: Array[Enums.Fruit_Type]
 var grabbable_grab_type:= Enums.Grabbable_Type.NONE
-var grabbable_fruit_type2:= Enums.Fruit_Type.NONE
 
 var money:= 0
 

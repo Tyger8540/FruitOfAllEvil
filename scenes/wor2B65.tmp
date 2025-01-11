@@ -243,8 +243,6 @@ offset_right = 576.0
 offset_bottom = 4.0
 icon = ExtResource("13_a0ohq")
 expand_icon = true
-fruit = 1
-grab_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="AppleButton"]
 layout_mode = 0
@@ -273,8 +271,6 @@ offset_right = 576.0
 offset_bottom = 84.0
 icon = ExtResource("13_a0ohq")
 expand_icon = true
-fruit = 2
-grab_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="OrangeButton"]
 layout_mode = 0
@@ -303,8 +299,6 @@ offset_right = 576.0
 offset_bottom = 164.0
 icon = ExtResource("13_a0ohq")
 expand_icon = true
-fruit = 3
-grab_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="BananaButton"]
 layout_mode = 0
@@ -333,8 +327,6 @@ offset_right = 576.0
 offset_bottom = 244.0
 icon = ExtResource("13_a0ohq")
 expand_icon = true
-fruit = 4
-grab_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="BlueberriesButton"]
 layout_mode = 0
@@ -363,8 +355,6 @@ offset_right = 576.0
 offset_bottom = 324.0
 icon = ExtResource("13_a0ohq")
 expand_icon = true
-fruit = 5
-grab_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="PlumButton"]
 layout_mode = 0

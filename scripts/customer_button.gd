@@ -73,7 +73,7 @@ func play_eat_sound() -> void:
 func _on_button_up() -> void:
 	if Globals.is_grabbing:
 		for i in range(0, fruit.size()):
-			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type2:
+			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type[0] and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type[1]:
 				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				checkmarks[i].visible = true
 				play_eat_sound()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2eul6xmbt8yw"]
+[gd_scene load_steps=6 format=3 uid="uid://d2eul6xmbt8yw"]
 
 [ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
 [ext_resource type="Texture2D" uid="uid://oswywjlhhh6o" path="res://art/other/Blender Empty.png" id="1_kpins"]
+[ext_resource type="Texture2D" uid="uid://bkkqq06shvlnm" path="res://art/other/Blend Button.png" id="3_wa07b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
 
@@ -11,13 +12,15 @@
 offset_right = 72.0
 offset_bottom = 72.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1o4xf")
-icon = ExtResource("1_kpins")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_7psl8")
-is_blend = true
+appliance_type = 2
+appliance_icon = ExtResource("1_kpins")
+action_icon = ExtResource("3_wa07b")
 
 [node name="ActionButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 74.0
 offset_right = 72.0
 offset_bottom = 92.0
@@ -29,18 +32,21 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_top = -11.0
 offset_right = 72.0
 offset_bottom = -2.0
 show_percentage = false
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 24.0
 offset_right = 52.0
 offset_bottom = 56.0
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 4.0
 offset_right = 52.0

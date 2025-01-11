@@ -1,26 +1,26 @@
 extends Node
 
 enum Fruit_Type {
+	NONE,
 	APPLE,
 	ORANGE,
 	BANANA,
 	BLUEBERRIES,
 	PLUM,
-	NONE,
 }
 
 enum Grabbable_Type {
+	NONE,
 	FRUIT,
 	CHOPPED_FRUIT,
 	BLENDED_FRUIT,
-	NONE,
 }
 
 enum Upgrade_Type {
+	NONE,
 	MORE_PATIENCE,
 	CHOPPING_BOARD,
 	CHOP_SPEED,
 	BLENDER,
 	BLEND_SPEED,
-	NONE,
 }

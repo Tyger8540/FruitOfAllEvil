@@ -2,6 +2,13 @@ class_name PlacePickupButton
 extends Button
 
 
+enum Appliance_Type {
+	NONE,
+	CHOPPING_BOARD,
+	BLENDER,
+	OVEN,
+}
+
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")
 const BLENDER_OPEN = preload("res://art/other/Blender Open.png")
 const BLENDER_EMPTY = preload("res://art/other/Blender Empty.png")
@@ -9,15 +16,22 @@ const CUTTING_BOARD = preload("res://art/other/Cutting Board.png")
 const BLEND_BUTTON = preload("res://art/other/Blend Button.png")
 const CHOP_BUTTON = preload("res://art/other/Chop Button.png")
 
-@export var is_chop: bool
-@export var is_blend: bool
+@export var appliance_type: Appliance_Type
+#@export var is_chop: bool
+#@export var is_blend: bool
 @export var action_speed: float
 @export var index: int
+@export var appliance_icon: CompressedTexture2D
+@export var action_icon: CompressedTexture2D
 
 var fruit:= Enums.Fruit_Type.NONE
 var fruit2:= Enums.Fruit_Type.NONE
 var grab_type: Enums.Grabbable_Type
 var grab_type2: Enums.Grabbable_Type
+
+# Arrays that hold the fruits and grab types of those fruits
+var fruits: Array[Enums.Fruit_Type]
+var grab_types: Array[Enums.Grabbable_Type]
 
 var is_occupied:= false
 var is_in_action:= false
@@ -29,6 +43,7 @@ var pickup_icon: Texture2D
 @onready var action_timer: Timer = $ActionTimer
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
@@ -36,12 +51,23 @@ func _ready() -> void:
 	# Sets icons for the different appliances
 	# TODO make this into a function that each child class will inherit to make things more concise
 	#      once there are many appliances
-	if is_chop:
-		icon = CUTTING_BOARD
-		action_button.icon = CHOP_BUTTON
-	elif is_blend:
-		icon = BLENDER_OPEN
-		action_button.icon = BLEND_BUTTON
+	# DONE BELOW
+	icon = appliance_icon
+	action_button.icon = action_icon
+	#if is_chop:
+		#icon = CUTTING_BOARD
+		#action_button.icon = CHOP_BUTTON
+	#elif is_blend:
+		#icon = BLENDER_OPEN
+		#action_button.icon = BLEND_BUTTON
+		
+	fruits.append(Enums.Fruit_Type.NONE)
+	fruits.append(Enums.Fruit_Type.NONE)
+	grab_types.append(Enums.Fruit_Type.NONE)
+	grab_types.append(Enums.Fruit_Type.NONE)
+	
+	print("FRUITS:")
+	print(fruits)
 	on_day_start()
 
 
@@ -58,102 +84,102 @@ func _on_button_up() -> void:
 	#      that are able to take multiple fruits, it is too complicated just in this function
 	if Globals.is_grabbing and !is_occupied:
 		# player is holding a grabbable and this button is to be placed on
-		if is_blend and is_half_occupied:
+		if appliance_type == Appliance_Type.BLENDER and is_half_occupied:
 			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
 				return
 			$GrabbableTexture.texture = Globals.grabbable_sprite
 			%Drop.play()
 			is_occupied = true
 			is_half_occupied = false
-			fruit2 = Globals.grabbable_fruit_type
-			grab_type2 = Globals.grabbable_grab_type
-			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
-			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			fruits[1] = Globals.grabbable_fruit_type[1]
+			grab_types[1] = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type[0] = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
-		elif is_blend:
+		elif appliance_type == Appliance_Type.BLENDER:
 			if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
 				return  # THIS SHOULD FILL THE BLENDER BACK UP IN THEORY, BUT NOT ENOUGH TIME
 			$GrabbableTexture2.texture = Globals.grabbable_sprite
 			%Drop.play()
 			is_half_occupied = true
-			fruit = Globals.grabbable_fruit_type
-			fruit2 = Globals.grabbable_fruit_type2
-			grab_type = Globals.grabbable_grab_type
-			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
-			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			fruits[0] = Globals.grabbable_fruit_type[0]
+			fruits[1] = Globals.grabbable_fruit_type[1]
+			grab_types[0] = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type[0] = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		else:
 			$GrabbableTexture.texture = Globals.grabbable_sprite
 			%Drop.play()
 			is_occupied = true
-			fruit = Globals.grabbable_fruit_type
-			fruit2 = Globals.grabbable_fruit_type2
-			grab_type = Globals.grabbable_grab_type
-			Globals.grabbable_fruit_type = Enums.Fruit_Type.NONE
-			Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			fruits[0] = Globals.grabbable_fruit_type[0]
+			fruits[1] = Globals.grabbable_fruit_type[1]
+			grab_types[0] = Globals.grabbable_grab_type
+			Globals.grabbable_fruit_type[0] = Enums.Fruit_Type.NONE
+			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		SignalManager.grabbable_placed.emit()
 	elif !Globals.is_grabbing and !is_in_action:
 		# player is not holding anything and this button has something on it to be picked up
-		if is_occupied and is_chop:
+		if is_occupied and appliance_type == Appliance_Type.CHOPPING_BOARD:
 			var grabbable = GRABBABLE_SCENE.instantiate()
-			grabbable.initialize(fruit, grab_type, fruit2)
+			grabbable.initialize(fruits, grab_types[0])
 			add_child(grabbable)
 			%Grab.play()
-			Globals.grabbable_fruit_type = grabbable.fruit
-			Globals.grabbable_fruit_type2 = grabbable.fruit2
+			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
+			Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 			Globals.grabbable_grab_type = grabbable.grab_type
-			if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
-				Globals.grabbable_fruit_type2 = Enums.Fruit_Type.NONE
+			if grab_types[0] == Enums.Grabbable_Type.FRUIT or grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
+				Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 			$GrabbableTexture.texture = null
 			is_occupied = false
 			Globals.is_grabbing = true
-			fruit = Enums.Fruit_Type.NONE
-			fruit2 = Enums.Fruit_Type.NONE
-			grab_type = Enums.Grabbable_Type.NONE
-			grab_type2 = Enums.Grabbable_Type.NONE
-		elif is_blend and is_half_occupied:
+			fruits[0] = Enums.Fruit_Type.NONE
+			fruits[1] = Enums.Fruit_Type.NONE
+			grab_types[0] = Enums.Grabbable_Type.NONE
+			grab_types[1] = Enums.Grabbable_Type.NONE
+		elif appliance_type == Appliance_Type.BLENDER and is_half_occupied:
 			var grabbable = GRABBABLE_SCENE.instantiate()
-			grabbable.initialize(fruit, grab_type, Enums.Fruit_Type.NONE)
+			grabbable.initialize(fruits, grab_types[0])
 			add_child(grabbable)
 			%Grab.play()
-			Globals.grabbable_fruit_type = grabbable.fruit
-			Globals.grabbable_fruit_type2 = grabbable.fruit2
+			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
+			Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 			Globals.grabbable_grab_type = grabbable.grab_type
 			$GrabbableTexture2.texture = null
 			is_half_occupied = false
 			Globals.is_grabbing = true
-			fruit = Enums.Fruit_Type.NONE
-			fruit2 = Enums.Fruit_Type.NONE
-			grab_type = Enums.Grabbable_Type.NONE
-		elif is_blend and is_occupied:
+			fruits[0] = Enums.Fruit_Type.NONE
+			fruits[1] = Enums.Fruit_Type.NONE
+			grab_types[0] = Enums.Grabbable_Type.NONE
+		elif appliance_type == Appliance_Type.BLENDER and is_occupied:
 			var grabbable = GRABBABLE_SCENE.instantiate()
-			if grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
-				grabbable.initialize(fruit, grab_type, fruit2)
+			if grab_types[0] == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
+				grabbable.initialize(fruits, grab_types[0])
 				add_child(grabbable)
 				%Grab.play()
-				Globals.grabbable_fruit_type = grabbable.fruit
+				Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 				Globals.grabbable_grab_type = grabbable.grab_type
-				Globals.grabbable_fruit_type2 = grabbable.fruit2
+				Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 				is_occupied = false
 				icon = BLENDER_EMPTY
-				fruit = Enums.Fruit_Type.NONE
-				fruit2 = Enums.Fruit_Type.NONE
-				grab_type = Enums.Grabbable_Type.NONE
-				grab_type2 = Enums.Grabbable_Type.NONE
+				fruits[0] = Enums.Fruit_Type.NONE
+				fruits[1] = Enums.Fruit_Type.NONE
+				grab_types[0] = Enums.Grabbable_Type.NONE
+				grab_types[1] = Enums.Grabbable_Type.NONE
 				$GrabbableTexture.texture = null
 			else:  # filled with 2 fruits but not blended
-				grabbable.initialize(fruit2, grab_type2, Enums.Fruit_Type.NONE)
+				grabbable.initialize(fruits[fruits.size() - 1], grab_types[1])
 				add_child(grabbable)
 				%Grab.play()
-				Globals.grabbable_fruit_type = grabbable.fruit
-				Globals.grabbable_fruit_type2 = grabbable.fruit2
+				Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
+				Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 				Globals.grabbable_grab_type = grabbable.grab_type
 				is_half_occupied = true
 				is_occupied = false
 				$GrabbableTexture.texture = null
-				fruit2 = Enums.Fruit_Type.NONE
-				grab_type2 = Enums.Grabbable_Type.NONE
+				fruits[1] = Enums.Fruit_Type.NONE
+				grab_types[1] = Enums.Grabbable_Type.NONE
 			Globals.is_grabbing = true
 
 
@@ -164,13 +190,13 @@ func _on_action_button_button_up() -> void:
 	#      the addition of more appliances, which could possibly hold more than two
 	#      fruits, which would make this even more complicated
 	print("hi")
-	if !is_in_action and (is_occupied or (is_blend and is_half_occupied)):
-		if is_chop and grab_type == Enums.Grabbable_Type.FRUIT:
+	if !is_in_action and (is_occupied or (appliance_type == Appliance_Type.BLENDER and is_half_occupied)):
+		if appliance_type == Appliance_Type.CHOPPING_BOARD and grab_type == Enums.Grabbable_Type.FRUIT:
 			is_in_action = true
 			progress_bar.visible = true
 			action_timer.start()
 			%Cut.play()
-		elif is_blend and grab_type == Enums.Grabbable_Type.FRUIT:
+		elif appliance_type == Appliance_Type.BLENDER and grab_type == Enums.Grabbable_Type.FRUIT:
 			if is_occupied:
 				if grab_type2 == Enums.Grabbable_Type.FRUIT:
 					is_in_action = true
@@ -189,18 +215,18 @@ func _on_action_timer_timeout() -> void:
 	# TODO simplify this function by calling another function that each child class will inherit,
 	#      it can do simple stuff like the match statements, but the rest should be done within
 	#      the subclasses I think
-	if is_chop:
+	if appliance_type == Appliance_Type.CHOPPING_BOARD:
 		%Cut.stop()
-	elif is_blend:
+	elif appliance_type == Appliance_Type.BLENDER:
 		%Blender.stop()
 	match fruit:
 		Enums.Fruit_Type.APPLE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					if is_chop:
+					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_APPLE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					elif is_blend:
+					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_APPLE
@@ -229,10 +255,10 @@ func _on_action_timer_timeout() -> void:
 		Enums.Fruit_Type.ORANGE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					if is_chop:
+					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_ORANGE
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					elif is_blend:
+					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_ORANGE
@@ -261,10 +287,10 @@ func _on_action_timer_timeout() -> void:
 		Enums.Fruit_Type.BANANA:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					if is_chop:
+					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_BANANA
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					elif is_blend:
+					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_BANANA
@@ -293,10 +319,10 @@ func _on_action_timer_timeout() -> void:
 		Enums.Fruit_Type.BLUEBERRIES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					if is_chop:
+					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_BLUEBERRIES
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					elif is_blend:
+					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_BLUEBERRY
@@ -325,10 +351,10 @@ func _on_action_timer_timeout() -> void:
 		Enums.Fruit_Type.PLUM:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					if is_chop:
+					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_PLUM
 						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
-					elif is_blend:
+					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_PLUM
@@ -361,10 +387,10 @@ func _on_action_timer_timeout() -> void:
 
 func on_day_start() -> void:
 	# Sets the speed of appliances after the shopping phase has ended, as they could be upgraded
-	if is_chop:
+	if appliance_type == Appliance_Type.CHOPPING_BOARD:
 		action_speed = 5 - (1.5 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
 		clampf(action_speed, 0.0, 5.0)
-	elif is_blend:
+	elif appliance_type == Appliance_Type.BLENDER:
 		action_speed = 8 - (2 * Globals.upgrade_level[Enums.Upgrade_Type.BLEND_SPEED])
 		clampf(action_speed, 0.0, 8.0)
 	action_timer.wait_time = action_speed
@@ -374,7 +400,7 @@ func on_day_start() -> void:
 
 func on_upgrade_purchased() -> void:
 	# Checks if an appliance has been purchased, in which case a new one should be visible
-	if is_chop and Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
+	if appliance_type == Appliance_Type.CHOPPING_BOARD and Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
 		visible = true
-	elif is_blend and Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:
+	elif appliance_type == Appliance_Type.BLENDER and Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:
 		visible = true
