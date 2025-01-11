@@ -5,8 +5,8 @@ extends PlacePickupButton
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	fruits.append(Enums.Fruit_Type.NONE)
-	fruits.append(Enums.Fruit_Type.NONE)
+	#fruits.append(Enums.Fruit_Type.NONE)
+	#fruits.append(Enums.Fruit_Type.NONE)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

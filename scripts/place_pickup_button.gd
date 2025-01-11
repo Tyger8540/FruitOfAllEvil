@@ -24,10 +24,10 @@ const CHOP_BUTTON = preload("res://art/other/Chop Button.png")
 @export var appliance_icon: CompressedTexture2D
 @export var action_icon: CompressedTexture2D
 
-var fruit:= Enums.Fruit_Type.NONE
-var fruit2:= Enums.Fruit_Type.NONE
-var grab_type: Enums.Grabbable_Type
-var grab_type2: Enums.Grabbable_Type
+#var fruit:= Enums.Fruit_Type.NONE
+#var fruit2:= Enums.Fruit_Type.NONE
+#var grab_type: Enums.Grabbable_Type
+#var grab_type2: Enums.Grabbable_Type
 
 # Arrays that hold the fruits and grab types of those fruits
 var fruits: Array[Enums.Fruit_Type]
@@ -91,7 +91,7 @@ func _on_button_up() -> void:
 			%Drop.play()
 			is_occupied = true
 			is_half_occupied = false
-			fruits[1] = Globals.grabbable_fruit_type[1]
+			fruits[1] = Globals.grabbable_fruit_type[0]
 			grab_types[1] = Globals.grabbable_grab_type
 			Globals.grabbable_fruit_type[0] = Enums.Fruit_Type.NONE
 			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
@@ -169,7 +169,7 @@ func _on_button_up() -> void:
 				grab_types[1] = Enums.Grabbable_Type.NONE
 				$GrabbableTexture.texture = null
 			else:  # filled with 2 fruits but not blended
-				grabbable.initialize(fruits[fruits.size() - 1], grab_types[1])
+				grabbable.initialize(fruits, grab_types[1])
 				add_child(grabbable)
 				%Grab.play()
 				Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
@@ -189,16 +189,15 @@ func _on_action_button_button_up() -> void:
 	#      that are single items, the half_occupied stuff will get very complicated with
 	#      the addition of more appliances, which could possibly hold more than two
 	#      fruits, which would make this even more complicated
-	print("hi")
 	if !is_in_action and (is_occupied or (appliance_type == Appliance_Type.BLENDER and is_half_occupied)):
-		if appliance_type == Appliance_Type.CHOPPING_BOARD and grab_type == Enums.Grabbable_Type.FRUIT:
+		if appliance_type == Appliance_Type.CHOPPING_BOARD and grab_types[0] == Enums.Grabbable_Type.FRUIT:
 			is_in_action = true
 			progress_bar.visible = true
 			action_timer.start()
 			%Cut.play()
-		elif appliance_type == Appliance_Type.BLENDER and grab_type == Enums.Grabbable_Type.FRUIT:
+		elif appliance_type == Appliance_Type.BLENDER and grab_types[0] == Enums.Grabbable_Type.FRUIT:
 			if is_occupied:
-				if grab_type2 == Enums.Grabbable_Type.FRUIT:
+				if grab_types[1] == Enums.Grabbable_Type.FRUIT:
 					is_in_action = true
 					progress_bar.visible = true
 					action_timer.start()
@@ -219,167 +218,175 @@ func _on_action_timer_timeout() -> void:
 		%Cut.stop()
 	elif appliance_type == Appliance_Type.BLENDER:
 		%Blender.stop()
-	match fruit:
+		print("fruits:")
+		print(fruits)
+		print("grab_types:")
+		print(grab_types)
+		#print("grabbable fruit type")
+		#print(Globals.grabbable_fruit_type)
+		#print("grabbable grab type")
+		#print(Globals.grabbable_grab_type)
+	match fruits[0]:
 		Enums.Fruit_Type.APPLE:
-			match grab_type:
+			match grab_types[0]:
 				Enums.Grabbable_Type.FRUIT:
 					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_APPLE
-						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
+						grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_APPLE
-							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 							is_half_occupied = false
 							is_occupied = true
-							fruit2 = Enums.Fruit_Type.NONE
+							fruits[1] = Enums.Fruit_Type.NONE
 						else:  # blended two fruits
 							$GrabbableTexture.texture = null
-							match fruit2:
+							match fruits[1]:
 								Enums.Fruit_Type.APPLE:
 									icon = Globals.BLENDER_APPLE_APPLE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.ORANGE:
 									icon = Globals.BLENDER_APPLE_ORANGE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BANANA:
 									icon = Globals.BLENDER_APPLE_BANANA
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BLUEBERRIES:
 									icon = Globals.BLENDER_APPLE_BLUEBERRY
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.PLUM:
 									icon = Globals.BLENDER_APPLE_PLUM
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.ORANGE:
-			match grab_type:
+			match grab_types[0]:
 				Enums.Grabbable_Type.FRUIT:
 					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_ORANGE
-						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
+						grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_ORANGE
-							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 							is_half_occupied = false
 							is_occupied = true
-							fruit2 = Enums.Fruit_Type.NONE
+							fruits[1] = Enums.Fruit_Type.NONE
 						else:  # blended two fruits
 							$GrabbableTexture.texture = null
-							match fruit2:
+							match fruits[1]:
 								Enums.Fruit_Type.APPLE:
 									icon = Globals.BLENDER_ORANGE_APPLE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.ORANGE:
 									icon = Globals.BLENDER_ORANGE_ORANGE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BANANA:
 									icon = Globals.BLENDER_ORANGE_BANANA
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BLUEBERRIES:
 									icon = Globals.BLENDER_ORANGE_BLUEBERRY
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.PLUM:
 									icon = Globals.BLENDER_ORANGE_PLUM
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BANANA:
-			match grab_type:
+			match grab_types[0]:
 				Enums.Grabbable_Type.FRUIT:
 					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_BANANA
-						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
+						grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_BANANA
-							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 							is_half_occupied = false
 							is_occupied = true
-							fruit2 = Enums.Fruit_Type.NONE
+							fruits[1] = Enums.Fruit_Type.NONE
 						else:  # blended two fruits
 							$GrabbableTexture.texture = null
-							match fruit2:
+							match fruits[1]:
 								Enums.Fruit_Type.APPLE:
 									icon = Globals.BLENDER_BANANA_APPLE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.ORANGE:
 									icon = Globals.BLENDER_BANANA_ORANGE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BANANA:
 									icon = Globals.BLENDER_BANANA_BANANA
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BLUEBERRIES:
 									icon = Globals.BLENDER_BANANA_BLUEBERRY
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.PLUM:
 									icon = Globals.BLENDER_BANANA_PLUM
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BLUEBERRIES:
-			match grab_type:
+			match grab_types[0]:
 				Enums.Grabbable_Type.FRUIT:
 					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_BLUEBERRIES
-						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
+						grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_BLUEBERRY
-							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 							is_half_occupied = false
 							is_occupied = true
-							fruit2 = Enums.Fruit_Type.NONE
+							fruits[1] = Enums.Fruit_Type.NONE
 						else:  # blended two fruits
 							$GrabbableTexture.texture = null
-							match fruit2:
+							match fruits[1]:
 								Enums.Fruit_Type.APPLE:
 									icon = Globals.BLENDER_BLUEBERRY_APPLE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.ORANGE:
 									icon = Globals.BLENDER_BLUEBERRY_ORANGE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BANANA:
 									icon = Globals.BLENDER_BLUEBERRY_BANANA
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BLUEBERRIES:
 									icon = Globals.BLENDER_BLUEBERRY_BLUEBERRY
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.PLUM:
 									icon = Globals.BLENDER_BLUEBERRY_PLUM
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.PLUM:
-			match grab_type:
+			match grab_types[0]:
 				Enums.Grabbable_Type.FRUIT:
 					if appliance_type == Appliance_Type.CHOPPING_BOARD:
 						$GrabbableTexture.texture = Globals.CHOPPED_PLUM
-						grab_type = Enums.Grabbable_Type.CHOPPED_FRUIT
+						grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 					elif appliance_type == Appliance_Type.BLENDER:
 						$GrabbableTexture2.texture = null
 						if is_half_occupied: # blended a single fruit
 							icon = Globals.BLENDER_PLUM
-							grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+							grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 							is_half_occupied = false
 							is_occupied = true
-							fruit2 = Enums.Fruit_Type.NONE
+							fruits[1] = Enums.Fruit_Type.NONE
 						else:  # blended two fruits
 							$GrabbableTexture.texture = null
-							match fruit2:
+							match fruits[1]:
 								Enums.Fruit_Type.APPLE:
 									icon = Globals.BLENDER_PLUM_APPLE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.ORANGE:
 									icon = Globals.BLENDER_PLUM_ORANGE
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BANANA:
 									icon = Globals.BLENDER_PLUM_BANANA
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.BLUEBERRIES:
 									icon = Globals.BLENDER_PLUM_BLUEBERRY
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 								Enums.Fruit_Type.PLUM:
 									icon = Globals.BLENDER_PLUM_PLUM
-									grab_type = Enums.Grabbable_Type.BLENDED_FRUIT
+									grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 	is_in_action = false
 	progress_bar.value = progress_bar.min_value
 	progress_bar.visible = false
