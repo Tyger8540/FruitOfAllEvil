@@ -12,6 +12,18 @@ func _process(_delta: float) -> void:
 	super(_delta)
 
 
+func on_day_start() -> void:
+	action_speed = 5 - (1.5 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
+	clampf(action_speed, 0.0, 5.0)
+	
+	super()
+
+
+func on_upgrade_purchased() -> void:
+	if Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
+		visible = true
+
+
 func place() -> void:
 	if Globals.grabbable_grab_type == Enums.Grabbable_Type.FRUIT:
 		$GrabbableTexture.texture = Globals.grabbable_sprite

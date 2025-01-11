@@ -63,12 +63,7 @@ func _process(_delta: float) -> void:
 
 func on_day_start() -> void:
 	# Sets the speed of appliances after the shopping phase has ended, as they could be upgraded
-	if appliance_type == Appliance_Type.CHOPPING_BOARD:
-		action_speed = 5 - (1.5 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
-		clampf(action_speed, 0.0, 5.0)
-	elif appliance_type == Appliance_Type.BLENDER:
-		action_speed = 8 - (2 * Globals.upgrade_level[Enums.Upgrade_Type.BLEND_SPEED])
-		clampf(action_speed, 0.0, 8.0)
+	
 	action_timer.wait_time = action_speed
 	progress_bar.max_value = action_timer.wait_time
 	progress_bar.visible = false
@@ -76,10 +71,7 @@ func on_day_start() -> void:
 
 func on_upgrade_purchased() -> void:
 	# Checks if an appliance has been purchased, in which case a new one should be visible
-	if appliance_type == Appliance_Type.CHOPPING_BOARD and Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
-		visible = true
-	elif appliance_type == Appliance_Type.BLENDER and Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:
-		visible = true
+	pass
 
 
 func place() -> void:
