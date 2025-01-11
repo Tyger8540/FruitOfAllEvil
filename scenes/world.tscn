@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bh2218a8swqql"]
+[gd_scene load_steps=32 format=3 uid="uid://bh2218a8swqql"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_6smcu"]
 [ext_resource type="Script" path="res://scripts/toggle_button.gd" id="1_v8fo4"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="2_molrn"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="3_5808l"]
 [ext_resource type="Script" path="res://scripts/start_day_button.gd" id="4_88f4h"]
-[ext_resource type="PackedScene" uid="uid://dk1c32pis7cb6" path="res://scenes/place_pickup_button.tscn" id="5_dsf6q"]
 [ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="5_ndhh7"]
 [ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="6_7cuv1"]
 [ext_resource type="Script" path="res://scripts/customer_manager.gd" id="7_663xw"]
@@ -174,47 +173,39 @@ offset_top = 252.0
 offset_right = -504.0
 offset_bottom = 324.0
 
-[node name="CuttingBoardButton" parent="." instance=ExtResource("5_dsf6q")]
-action_speed = 2.0
-
-[node name="CuttingBoardButton2" parent="." instance=ExtResource("5_dsf6q")]
-visible = false
-offset_left = 150.0
-offset_right = 222.0
-index = 1
-
-[node name="CuttingBoardButton3" parent="." instance=ExtResource("5_dsf6q")]
-visible = false
-offset_top = 150.0
-offset_bottom = 222.0
-index = 2
-
-[node name="CuttingBoardButton4" parent="." instance=ExtResource("5_dsf6q")]
-visible = false
-offset_left = 150.0
-offset_top = 150.0
-offset_right = 222.0
-offset_bottom = 222.0
-index = 3
-
 [node name="ChoppingBoardButton" parent="." instance=ExtResource("12_yegh3")]
-offset_left = 59.0
-offset_top = 179.0
-offset_right = 131.0
-offset_bottom = 251.0
 
-[node name="BlenderButton" parent="." instance=ExtResource("5_dsf6q")]
+[node name="ChoppingBoardButton2" parent="." instance=ExtResource("12_yegh3")]
+visible = false
+offset_left = 150.0
+offset_right = 222.0
+index = 1
+
+[node name="ChoppingBoardButton3" parent="." instance=ExtResource("12_yegh3")]
+visible = false
+offset_top = 150.0
+offset_bottom = 222.0
+index = 2
+
+[node name="ChoppingBoardButton4" parent="." instance=ExtResource("12_yegh3")]
+visible = false
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 222.0
+offset_bottom = 222.0
+index = 3
+
+[node name="BlenderButton" parent="." instance=ExtResource("30_4udm6")]
 offset_left = -150.0
 offset_right = -78.0
-action_speed = 5.0
 
-[node name="BlenderButton2" parent="." instance=ExtResource("5_dsf6q")]
+[node name="BlenderButton2" parent="." instance=ExtResource("30_4udm6")]
 visible = false
 offset_left = -300.0
 offset_right = -228.0
 index = 1
 
-[node name="BlenderButton3" parent="." instance=ExtResource("5_dsf6q")]
+[node name="BlenderButton3" parent="." instance=ExtResource("30_4udm6")]
 visible = false
 offset_left = -150.0
 offset_top = 150.0
@@ -222,19 +213,13 @@ offset_right = -78.0
 offset_bottom = 222.0
 index = 2
 
-[node name="BlenderButton4" parent="." instance=ExtResource("5_dsf6q")]
+[node name="BlenderButton4" parent="." instance=ExtResource("30_4udm6")]
 visible = false
 offset_left = -300.0
 offset_top = 150.0
 offset_right = -228.0
 offset_bottom = 222.0
 index = 3
-
-[node name="BlenderButton5" parent="." instance=ExtResource("30_4udm6")]
-offset_left = -151.0
-offset_top = 207.0
-offset_right = -79.0
-offset_bottom = 279.0
 
 [node name="AppleButton" parent="." instance=ExtResource("2_e3ys1")]
 offset_left = 440.0

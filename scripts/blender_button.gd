@@ -59,11 +59,12 @@ func pickup() -> void:
 	if is_part_occupied:
 		# not blended (changes to occupied once blended)
 		var grabbable = GRABBABLE_SCENE.instantiate()
-		grabbable.initialize(fruits, grab_types[0])
+		var fruit_array: Array[Enums.Fruit_Type]
+		fruit_array.append(fruits[0])
+		grabbable.initialize(fruit_array, grab_types[0])
 		add_child(grabbable)
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
-		Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		$GrabbableTexture2.texture = null
 		is_part_occupied = false
@@ -88,7 +89,12 @@ func pickup() -> void:
 			grab_types[0] = Enums.Grabbable_Type.NONE
 			grab_types[1] = Enums.Grabbable_Type.NONE
 			$GrabbableTexture.texture = null
-			num_slots_filled -= 2
+			
+			# Checks for if it was a full blender or half-full
+			if Globals.grabbable_fruit_type[1] == Enums.Fruit_Type.NONE:
+				num_slots_filled -= 1
+			else:
+				num_slots_filled -= 2
 		else:  # filled with 2 fruits but not blended
 			var fruit_array: Array[Enums.Fruit_Type]
 			fruit_array.append(fruits[1])

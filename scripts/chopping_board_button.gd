@@ -36,6 +36,8 @@ func place() -> void:
 	else:
 		return
 	
+	num_slots_filled += 1
+	
 	# If this line was reached, the grabbable was able to be placed
 	SignalManager.grabbable_placed.emit()
 
@@ -48,8 +50,8 @@ func pickup() -> void:
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
-		#if grab_types[0] == Enums.Grabbable_Type.FRUIT or grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
-			#Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
+		if grab_types[0] == Enums.Grabbable_Type.FRUIT or grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
+			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 		$GrabbableTexture.texture = null
 		is_occupied = false
 		Globals.is_grabbing = true
@@ -57,6 +59,7 @@ func pickup() -> void:
 		#fruits[1] = Enums.Fruit_Type.NONE
 		grab_types[0] = Enums.Grabbable_Type.NONE
 		#grab_types[1] = Enums.Grabbable_Type.NONE
+		num_slots_filled -= 1
 
 
 func start_action() -> void:

@@ -88,6 +88,6 @@ var grabbable_sprite: CompressedTexture2D
 var grabbable_fruit_type: Array[Enums.Fruit_Type]
 var grabbable_grab_type:= Enums.Grabbable_Type.NONE
 
-var money:= 0
+var money:= 500
 
 var upgrade_level = {Enums.Upgrade_Type.MORE_PATIENCE: 0, Enums.Upgrade_Type.CHOPPING_BOARD: 0, Enums.Upgrade_Type.CHOP_SPEED: 0, Enums.Upgrade_Type.BLENDER: 0, Enums.Upgrade_Type.BLEND_SPEED: 0}
