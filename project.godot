@@ -24,6 +24,7 @@ SignalManager="*res://scripts/signal_manager.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://art/other/Cursor.png"
 
 [input]

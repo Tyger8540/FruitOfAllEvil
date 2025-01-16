@@ -1,0 +1,494 @@
+[gd_scene load_steps=35 format=3 uid="uid://b404ka0y0mvfw"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_a4547"]
+[ext_resource type="Texture2D" uid="uid://br358l5rxcggl" path="res://art/other/Counter.png" id="1_paqaw"]
+[ext_resource type="Script" path="res://scripts/toggle_button.gd" id="2_6ok24"]
+[ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="3_bnwvp"]
+[ext_resource type="Script" path="res://scripts/shop_manager.gd" id="4_p8axm"]
+[ext_resource type="PackedScene" uid="uid://nwb4n4gtqpwn" path="res://scenes/shop_button.tscn" id="5_0lcog"]
+[ext_resource type="Script" path="res://scripts/start_day_button.gd" id="6_ik8hm"]
+[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="7_wen4g"]
+[ext_resource type="Script" path="res://scripts/wave_manager.gd" id="8_6e1tj"]
+[ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="9_8yjsv"]
+[ext_resource type="PackedScene" uid="uid://bsm5cve406wkh" path="res://scenes/chopping_board_button.tscn" id="10_0rt6q"]
+[ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="11_dkd0h"]
+[ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="12_2fdh5"]
+[ext_resource type="Texture2D" uid="uid://bctsutcb1kgd7" path="res://art/other/Crate.png" id="13_xmxkn"]
+[ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="14_nmawg"]
+[ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="15_vi7i1"]
+[ext_resource type="Texture2D" uid="uid://ci04814knhh8k" path="res://art/fruit/Banana.png" id="16_cmmyw"]
+[ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="17_c03pd"]
+[ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="18_ax0je"]
+[ext_resource type="Script" path="res://scripts/gui.gd" id="19_nr1j6"]
+[ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="20_47abn"]
+[ext_resource type="AudioStream" uid="uid://b38u0comlejwc" path="res://audio/music/Fruit evail BG_1.wav" id="21_3jbal"]
+[ext_resource type="AudioStream" uid="uid://cl3jq3nbl471b" path="res://audio/sfx/Blender.wav" id="22_x8wmh"]
+[ext_resource type="AudioStream" uid="uid://c6j3f1w7s3j3b" path="res://audio/sfx/Cut.wav" id="23_8nj6x"]
+[ext_resource type="AudioStream" uid="uid://dtj68c0gb0wb2" path="res://audio/sfx/Drop.wav" id="24_6p8gk"]
+[ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="25_857j7"]
+[ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="26_5tkyw"]
+[ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="27_yavgx"]
+[ext_resource type="Script" path="res://scripts/hover_button.gd" id="28_0leif"]
+[ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="29_bnnhh"]
+[ext_resource type="Texture2D" uid="uid://dooyfgc7qhdp4" path="res://final_art/Apple.png" id="31_qwc4l"]
+[ext_resource type="Texture2D" uid="uid://cq4spdesgcapk" path="res://final_art/Apple (2).png" id="32_d8i4e"]
+[ext_resource type="Texture2D" uid="uid://c1x5g6576ls47" path="res://final_art/rsz_apple.png" id="33_lcvia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68bps"]
+
+[node name="Limbo" type="Node2D"]
+script = ExtResource("1_a4547")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ToggleButton" type="Button" parent="."]
+visible = false
+offset_right = 91.0
+offset_bottom = 91.0
+disabled = true
+toggle_mode = true
+text = "I am button"
+icon = ExtResource("1_paqaw")
+script = ExtResource("2_6ok24")
+
+[node name="BrownBackground" type="TextureRect" parent="."]
+offset_left = 576.0
+offset_top = 1805.0
+offset_right = 1728.0
+offset_bottom = 3642.0
+rotation = 3.14159
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7.15256e-06, -151.25)
+scale = Vector2(7.2, 3.83889)
+texture = ExtResource("1_paqaw")
+
+[node name="ShopManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_p8axm")
+
+[node name="Background" type="Panel" parent="ShopManager"]
+visible = false
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -76.0
+
+[node name="ShopButton" parent="ShopManager/Background" instance=ExtResource("5_0lcog")]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 86.0
+offset_right = 344.0
+offset_bottom = 222.0
+
+[node name="ShopButton2" parent="ShopManager/Background" instance=ExtResource("5_0lcog")]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 86.0
+offset_right = 544.0
+offset_bottom = 222.0
+
+[node name="ShopButton3" parent="ShopManager/Background" instance=ExtResource("5_0lcog")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 86.0
+offset_right = 744.0
+offset_bottom = 222.0
+
+[node name="ShopButton4" parent="ShopManager/Background" instance=ExtResource("5_0lcog")]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 86.0
+offset_right = 944.0
+offset_bottom = 222.0
+
+[node name="ShopLabel" type="Label" parent="ShopManager/Background"]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 4.0
+offset_right = 596.0
+offset_bottom = 27.0
+text = "Shop"
+
+[node name="StartDayButton" type="Button" parent="ShopManager/Background"]
+layout_mode = 0
+offset_top = 172.0
+offset_right = 136.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_68bps")
+text = "Start Next Day"
+autowrap_mode = 1
+script = ExtResource("6_ik8hm")
+
+[node name="CustomerManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(615, -110)
+script = ExtResource("7_wen4g")
+
+[node name="CustomerTimer" type="Timer" parent="CustomerManager"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Counter" type="Node2D" parent="."]
+
+[node name="Counter8" type="Sprite2D" parent="Counter"]
+position = Vector2(624, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter7" type="Sprite2D" parent="Counter"]
+position = Vector2(464, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter6" type="Sprite2D" parent="Counter"]
+position = Vector2(304, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter5" type="Sprite2D" parent="Counter"]
+position = Vector2(144, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter4" type="Sprite2D" parent="Counter"]
+position = Vector2(-16, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter3" type="Sprite2D" parent="Counter"]
+position = Vector2(-176, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter2" type="Sprite2D" parent="Counter"]
+position = Vector2(-336, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="Counter" type="Sprite2D" parent="Counter"]
+position = Vector2(-496, -77)
+texture = ExtResource("3_bnwvp")
+
+[node name="WaveManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_6e1tj")
+
+[node name="TrashButton" parent="." instance=ExtResource("9_8yjsv")]
+offset_left = -576.0
+offset_top = 252.0
+offset_right = -504.0
+offset_bottom = 324.0
+
+[node name="ChoppingBoardButton" parent="." instance=ExtResource("10_0rt6q")]
+
+[node name="ChoppingBoardButton2" parent="." instance=ExtResource("10_0rt6q")]
+visible = false
+offset_left = 150.0
+offset_right = 222.0
+index = 1
+
+[node name="ChoppingBoardButton3" parent="." instance=ExtResource("10_0rt6q")]
+visible = false
+offset_top = 150.0
+offset_bottom = 222.0
+index = 2
+
+[node name="ChoppingBoardButton4" parent="." instance=ExtResource("10_0rt6q")]
+visible = false
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 222.0
+offset_bottom = 222.0
+index = 3
+
+[node name="BlenderButton" parent="." instance=ExtResource("11_dkd0h")]
+offset_left = -150.0
+offset_right = -78.0
+
+[node name="BlenderButton2" parent="." instance=ExtResource("11_dkd0h")]
+visible = false
+offset_left = -300.0
+offset_right = -228.0
+index = 1
+
+[node name="BlenderButton3" parent="." instance=ExtResource("11_dkd0h")]
+visible = false
+offset_left = -150.0
+offset_top = 150.0
+offset_right = -78.0
+offset_bottom = 222.0
+index = 2
+
+[node name="BlenderButton4" parent="." instance=ExtResource("11_dkd0h")]
+visible = false
+offset_left = -300.0
+offset_top = 150.0
+offset_right = -228.0
+offset_bottom = 222.0
+index = 3
+
+[node name="AppleButton" parent="." instance=ExtResource("12_2fdh5")]
+offset_left = 440.0
+offset_top = -68.0
+offset_right = 576.0
+offset_bottom = 4.0
+icon = ExtResource("13_xmxkn")
+expand_icon = true
+fruit = 1
+grab_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="AppleButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("14_nmawg")
+
+[node name="TextureRect2" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("14_nmawg")
+
+[node name="TextureRect3" type="TextureRect" parent="AppleButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("14_nmawg")
+
+[node name="OrangeButton" parent="." instance=ExtResource("12_2fdh5")]
+offset_left = 440.0
+offset_top = 12.0
+offset_right = 576.0
+offset_bottom = 84.0
+icon = ExtResource("13_xmxkn")
+expand_icon = true
+fruit = 2
+grab_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="OrangeButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("15_vi7i1")
+
+[node name="TextureRect2" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("15_vi7i1")
+
+[node name="TextureRect3" type="TextureRect" parent="OrangeButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("15_vi7i1")
+
+[node name="BananaButton" parent="." instance=ExtResource("12_2fdh5")]
+offset_left = 440.0
+offset_top = 92.0
+offset_right = 576.0
+offset_bottom = 164.0
+icon = ExtResource("13_xmxkn")
+expand_icon = true
+fruit = 3
+grab_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="BananaButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("16_cmmyw")
+
+[node name="TextureRect2" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("16_cmmyw")
+
+[node name="TextureRect3" type="TextureRect" parent="BananaButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("16_cmmyw")
+
+[node name="BlueberriesButton" parent="." instance=ExtResource("12_2fdh5")]
+offset_left = 440.0
+offset_top = 172.0
+offset_right = 576.0
+offset_bottom = 244.0
+icon = ExtResource("13_xmxkn")
+expand_icon = true
+fruit = 4
+grab_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="BlueberriesButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("17_c03pd")
+
+[node name="TextureRect2" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("17_c03pd")
+
+[node name="TextureRect3" type="TextureRect" parent="BlueberriesButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("17_c03pd")
+
+[node name="PlumButton" parent="." instance=ExtResource("12_2fdh5")]
+offset_left = 440.0
+offset_top = 252.0
+offset_right = 576.0
+offset_bottom = 324.0
+icon = ExtResource("13_xmxkn")
+expand_icon = true
+fruit = 5
+grab_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="PlumButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 48.0
+offset_bottom = 52.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("18_ax0je")
+
+[node name="TextureRect2" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("18_ax0je")
+
+[node name="TextureRect3" type="TextureRect" parent="PlumButton/GridContainer"]
+layout_mode = 2
+texture = ExtResource("18_ax0je")
+
+[node name="GUI" type="Panel" parent="."]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -440.0
+offset_bottom = -226.0
+script = ExtResource("19_nr1j6")
+
+[node name="Heart1" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 44.0
+texture = ExtResource("20_47abn")
+
+[node name="Heart2" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 44.0
+texture = ExtResource("20_47abn")
+
+[node name="Heart3" type="TextureRect" parent="GUI"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 44.0
+texture = ExtResource("20_47abn")
+
+[node name="Day" type="Label" parent="GUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 132.0
+offset_bottom = 71.0
+text = "Day: #"
+
+[node name="Money" type="Label" parent="GUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 71.0
+offset_right = 132.0
+offset_bottom = 94.0
+text = "Money: $"
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="FruitEvailBg1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("21_3jbal")
+volume_db = -25.0
+autoplay = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Blender" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("22_x8wmh")
+volume_db = -10.0
+
+[node name="Cut" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("23_8nj6x")
+
+[node name="Drop" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("24_6p8gk")
+
+[node name="Grab" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("25_857j7")
+
+[node name="PlaceOrGrabBackup" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("26_5tkyw")
+
+[node name="DingCustomer" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("27_yavgx")
+volume_db = -20.0
+
+[node name="HoverButton" type="Button" parent="." node_paths=PackedStringArray("child")]
+offset_left = -576.0
+offset_top = -1.0
+offset_right = -534.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 24
+text = "?"
+script = ExtResource("28_0leif")
+child = NodePath("FruitGuide")
+
+[node name="FruitGuide" type="TextureRect" parent="HoverButton"]
+visible = false
+layout_mode = 0
+offset_left = 59.0
+offset_right = 155.0
+offset_bottom = 192.0
+texture = ExtResource("29_bnnhh")
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(166, 100)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("31_qwc4l")
+
+[node name="Apple(2)" type="Sprite2D" parent="."]
+position = Vector2(-332, 59)
+texture = ExtResource("32_d8i4e")
+
+[node name="RszApple" type="Sprite2D" parent="."]
+position = Vector2(-51, 182)
+texture = ExtResource("33_lcvia")
+
+[connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
+[connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
+[connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
+[connection signal="mouse_entered" from="HoverButton" to="HoverButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HoverButton" to="HoverButton" method="_on_mouse_exited"]
