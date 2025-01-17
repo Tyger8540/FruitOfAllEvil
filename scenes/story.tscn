@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv1lth3dysl8p"]
+
+[ext_resource type="Script" path="res://scripts/Story.cs" id="1_85lxy"]
+[ext_resource type="Resource" uid="uid://bjd4f7s8mescw" path="res://ink/Prototype Script.ink" id="2_ro6uv"]
+
+[node name="Story" type="VBoxContainer"]
+alignment = 2
+script = ExtResource("1_85lxy")
+story = ExtResource("2_ro6uv")
