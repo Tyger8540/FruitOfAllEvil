@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv02qhd4mc6br"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_manager.gd" id="1_7vq3o"]
+[ext_resource type="PackedScene" uid="uid://dv1lth3dysl8p" path="res://scenes/story.tscn" id="2_8g4f1"]
+[ext_resource type="Resource" uid="uid://bic2eyd28vmcc" path="res://ink/Prototype Script - rev.ink" id="3_y7kes"]
+
+[node name="DialogueManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vq3o")
+
+[node name="Story" parent="." instance=ExtResource("2_8g4f1")]
+layout_mode = 0
+story = ExtResource("3_y7kes")

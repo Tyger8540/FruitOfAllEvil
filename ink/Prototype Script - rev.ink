@@ -18,7 +18,7 @@ Some comments will be included to talk about how certain text may be integrated 
 = intro
 
 // ideally, this would just be shown visually without text
-Midway along the journey of life, Danny Pilgrim ran a fruit stand.
+Midway along the journey of life, Danny Pilgrim ran a fruit stand. # Virgil
 Peaceful and unassuming...
 Until the ground opened up below and swallowed them up.
 Danny Pilgrim woke to find themselves in a dark wood...
@@ -30,11 +30,12 @@ Of a red, juicy apple.
 The leopard was pleased.
 It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and his unassuming fruit stand.
 
+    * [Continue] -> level_virgil
 
 = level_virgil
 
 // Virgil likely shows up at the end of the level, with no other customers present
-Oh greetings! 
+Oh greetings! # Charon
 What a nice fruit stand you have there...
 You must be the destined traveler, called upon by Lucifer.
 Oh, Lucifer?
@@ -43,7 +44,7 @@ The ruler of Hell has requested an exquisite drink from the fruits of humanity.
 I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
 //Be warned though, my services aren't for free.
 
-    -> market_virgil
+    * [Continue] -> market_virgil
     
 = market_virgil
 
@@ -59,7 +60,7 @@ Where are you?
 Why, you're at the entrance of Hell!
 We shall make make haste in our journey, and venture into the First Circle of Hell.
 
-    -> market_virgil_default
+  * [Continue]  -> market_virgil_default
     
 = market_virgil_default
 // this is currently made to appease the logic of ink, I'm not sure how exactly you can integrate these flow of choices within the game, but technically it makes logical sense here in Ink.
@@ -103,7 +104,7 @@ Now everyone in Hell will be craving for a taste of your fruits.
 Since yours had broken during your great fall, I suggest you take this trusty blender of mines.
 Go ahead.
 
-    -> market_virgil_end2
+  * [Continue] -> market_virgil_end2
 
 = market_virgil_end2
 // The player will drag and "purchase" the blender, which will be used for gameplay in the next Circle
@@ -116,3 +117,18 @@ For my services as your guide, and for the goods you have taken from me...
 Everything you earn shall be forfeited to me by the end of your journey!
 But enough talk, we shall move onward!
     -> END
+    
++ [Shop] -> shopping_phase
+
+= shopping_phase
++ [Buy] -> thanks_text
++ [Back] -> come_again_soon_text
+
+= thanks_text
+thanks for shopping with me
+    -> market_virgil_default
+= come_again_soon_text
+nothing of interest?
+    -> market_virgil_default
+
+

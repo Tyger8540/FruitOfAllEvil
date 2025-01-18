@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://bic2eyd28vmcc"
+path="res://.godot/imported/Prototype Script - rev.ink-debd713bd22614f666ca5b50e7f1c228.res"
+
+[deps]
+
+source_file="res://ink/Prototype Script - rev.ink"
+dest_files=["res://.godot/imported/Prototype Script - rev.ink-debd713bd22614f666ca5b50e7f1c228.res"]
+
+[params]
+
+is_main_file=true
+compress=true

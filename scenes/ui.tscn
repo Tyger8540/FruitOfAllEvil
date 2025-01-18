@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7n3hnlm0woy6"]
-
-[ext_resource type="PackedScene" uid="uid://dv1lth3dysl8p" path="res://scenes/story.tscn" id="1_b8021"]
-[ext_resource type="Script" path="res://scripts/test_story.gd" id="1_n4i54"]
-
-[node name="Ui" type="CanvasLayer"]
-script = ExtResource("1_n4i54")
-
-[node name="Story" parent="." instance=ExtResource("1_b8021")]

@@ -6,6 +6,8 @@ public partial class Story : VBoxContainer
 	[Export]
 	private InkStory story;
 	
+	private string text_block = "";
+	
 	public override void _Ready()
 	{
 		ContinueStory();
@@ -16,8 +18,23 @@ public partial class Story : VBoxContainer
 		foreach (Node child in GetChildren())
 			child.QueueFree();
 
+		//GD.Print(story);
+		//InkStory saved_story = story;
+		//story.ContinueMaximally();
+		//if (story == saved_story)
+		//{
+			//text_block = "";
+			//return;
+		//}
+		//else
+		//{
+			//story = saved_story;
+		//}
+		//text_block = text_block + story.Continue();
+		//Label content = new() { Text = text_block };
 		Label content = new() { Text = story.Continue() };
 		AddChild(content);
+		//GD.Print(story.TagsForContentAtPath(content.Text));
 
 		foreach (InkChoice choice in story.CurrentChoices)
 		{
@@ -28,7 +45,7 @@ public partial class Story : VBoxContainer
 				ContinueStory();
 			};
 			AddChild(button);
-			GD.Print(button.Position);
+			//GD.Print(button.Position);
 		}
 	}
 }
