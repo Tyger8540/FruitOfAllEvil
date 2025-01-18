@@ -22,6 +22,10 @@ Globals="*res://scripts/globals.gd"
 SignalManager="*res://scripts/signal_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+general/uses_dotnet=true
+
 [display]
 
 window/stretch/mode="viewport"

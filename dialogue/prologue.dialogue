@@ -1,12 +1,99 @@
-~ this_is_a_node_title
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
-# comments like this again
-=> END
+# CX_ = circle number
+# intro_ = any "cutscene" for the incoming circle
+# level_ = any text during the fruit stand gameplay, including specific characters
+# market = any text during the farmer's market, including specific vendors
+# Some comments will be included to talk about how certain text may be integrated into the game
+
+~ C0_intro
+# ideally, this would just be shown visually without text
+Midway along the journey of life, Danny Pilgrim ran a fruit stand.
+Peaceful and unassuming...
+Until the ground opened up below and swallowed them up.
+Danny Pilgrim woke to find themselves in a dark wood...
+With nothing but their fruit stand...
+And a leopard staring at them, hungry.
+It lept forward, straight at Danny Pilgrim!
+It sunk its teeth into flesh...
+Of a red, juicy apple. 
+The leopard was pleased.
+It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and his unassuming fruit stand...
+- Continue => C0_level_virgil
+
+~ C0_level_virgil
+# Virgil likely shows up at the end of the level, with no other customers present
+Virgil: Oh greetings! 
+Virgil: What a nice fruit stand you have there...
+Virgil: You must be the destined traveler, called upon by Lucifer.
+Virgil: Oh, Lucifer?
+Virgil: Don't you know?
+Virgil: The ruler of Hell has requested an exquisite drink from the fruits of humanity.
+Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
+- Continue => C0_market
+
+~ C0_market
+- Virgil's Stand => market_virgil_intro
+
+~ market_virgil_intro
+# Upon first interacting with Virgil's stand, which is mandatory before moving on
+Virgil: Oh salutations, destined traveler!
+Virgil: Welcome to my humble shop.
+Virgil: You shall have the opportunity to restock produce and fancy up your stand.
+Virgil: Hm?
+Virgil: Where are you?
+Virgil: Why, you're at the entrance of Hell!
+Virgil: We shall make make haste in our journey, and venture into the First Circle of Hell...
+- Continue => market_virgil_default
+
+~ market_virgil_default
+Welcome to my humble shop, destined traveler.
+- Chat => market_virgil_chat
+- Exit => market_virgil_end
+
+~ market_virgil_chat
+# These are various choices the player can choose and talk about with
+- This can't be real.
+	Virgil: Foolishness, traveler.
+	Virgil: All of this is very much real.
+	Virgil: Ask the leopards and lions.
+	Virgil: They'll tear you apart if you're not careful.
+	=> market_virgil_chat
+- How am I supposed to survive?
+	Virgil: That is a fabulous question, traveler.
+	Virgil: I don't know.
+	Virgil: ...What?
+	Virgil: I'm merely a guide.
+	Virgil: It's up to you to fend for youself.
+	Virgil: Hm, though I will say...
+	Virgil: It seems that fruit stand of yours saved you back there.
+	Virgil: It may save you again.
+	=> market_virgil_chat
+- Who are you?
+	Virgil: I am Virgil.
+	Virgil: ...
+	Virgil: Oh, you wanted more?
+	Virgil: I am Virgil, who sells fruits and appliances.
+	Virgil: ...
+	Virgil: You don't seem satisfied by my answer.
+	=> market_virgil_chat
+- Back => market_virgil_default
+
+~ market_virgil_end
+# Once you are done and want to exit Virgil's stand, this mandatory text begins.
+Virgil: Destined traveler, I believe it would be in your best interest to invest in that fruit stand of yours.
+Virgil: Your arrival has been making ripples across the Circles.
+Virgil: Now everyone in Hell will be craving for a taste of your fruits.
+Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mines.
+Virgil: Go ahead.
+- Continue => market_virgil_end2 
+
+~ market_virgil_end2
+# The player will drag and "purchase" the blender, which will be used for gameplay in the next Circle
+Virgil: Perfect.
+Virgil: Now how will you pay for it?
+Virgil: Hm...?
+Virgil: You don't have any money? Nothing?
+Virgil: Oh no, I suppose then you are now indebted to me.
+Virgil: For my services as your guide, and for the goods you have taken from me...
+Virgil: Everything you earn shall be forfeited to me by the end of your journey!
+Virgil: But enough talk, we shall move onward!
+- Continue => END
