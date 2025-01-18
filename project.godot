@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Enums="*res://scripts/enums.gd"
 Globals="*res://scripts/globals.gd"
 SignalManager="*res://scripts/signal_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -33,7 +34,7 @@ project/assembly_name="Fruit Of All Evil"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -54,6 +55,10 @@ space={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/prologue.dialogue")
 
 [rendering]
 
