@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b7cj2qc05ejul"
+path="res://.godot/imported/circle1.dialogue-164c02af87a889eedce4cbdeeab6b6c7.tres"
+
+[deps]
+
+source_file="res://dialogue/circle1.dialogue"
+dest_files=["res://.godot/imported/circle1.dialogue-164c02af87a889eedce4cbdeeab6b6c7.tres"]
+
+[params]
+
+defaults=true

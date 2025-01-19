@@ -32,6 +32,13 @@ Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's ch
 
 ~ C0_market
 - Virgil's Stand => market_virgil_intro
+# technically the option below SHOULD BE UNLOCKED after you complete market_virgil_end2
+- Onward to Next Circle => market_end
+
+~ market_end
+Are you sure you want to leave?
+- No => C0_market
+- Yes => END
 
 ~ market_virgil_intro
 # Upon first interacting with Virgil's stand, which is mandatory before moving on
@@ -45,7 +52,7 @@ Virgil: We shall make make haste in our journey, and venture into the First Circ
 - Continue => market_virgil_default
 
 ~ market_virgil_default
-Welcome to my humble shop, destined traveler.
+Virgil: Welcome to my humble stand, destined traveler.
 - Chat => market_virgil_chat
 - Exit => market_virgil_end
 
@@ -96,4 +103,4 @@ Virgil: Oh no, I suppose then you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: Everything you earn shall be forfeited to me by the end of your journey!
 Virgil: But enough talk, we shall move onward!
-- Continue => END
+- Continue => C0_market
