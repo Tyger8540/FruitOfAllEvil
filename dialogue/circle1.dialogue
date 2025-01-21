@@ -1,3 +1,5 @@
+# Start with transition text saying Circle I: Limbo that fades in and out
+
 ~ C1_intro
 # once again, visuals would be nice, but I think at this point, that's a lot extensive work
 # realistically, we'll probably just put the character stills / sprites on screen
@@ -24,14 +26,14 @@ set get_tree().change_scene_to_file("res://scenes/world.tscn")
 => END
 
 ~ C1_level_charon
-# intro text, when charon first appears on screen
+# intro text, when charon first appears on screen, maybe wave 3 or 4
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
 Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
 - Continue => C1_level_charon2
 
 ~ C1_level_charon2
-# level complete
+# level complete, after defeating Charon
 Charon: You have earned the rite to pass through.
 Charon: Come aboard my boat, and I shall bring you across the river.
 Charon: And regarding Virgil...

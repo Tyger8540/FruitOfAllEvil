@@ -7,7 +7,7 @@ const PAN_DISTANCE = 1152.0
 
 var new_position: Vector2
 var position_index:= 0
-var num_vendors:= 1
+var num_vendors:= 3
 var max_index:= num_vendors - 1
 
 var sidescrolling:= false
