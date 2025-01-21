@@ -1,0 +1,139 @@
+~ C1_intro
+# once again, visuals would be nice, but I think at this point, that's a lot extensive work
+# realistically, we'll probably just put the character stills / sprites on screen
+"...ABANDON EVERY HOPE, ALL YOU WHO ENTER."
+"Oh, don't worry about that, destined traveler," Virgil said to Danny Pilgrim.
+"They use that to scare away anyone with common sense," he continued, "it doesn't apply to us."
+Suddenly, a booming voice came bellowing in front of them.
+"Woe to you, perveted souls, who dare disregard this harrowing sign—"
+A man with ancient white hair came floating by on a boat, across the River of Acheron.
+"What's up, Charon," Virgil said.
+The infernal boatman, Charon, groaned in disgust.
+"Not this lunatic..."
+Charon recomposed himself and grew fierce upon seeing Danny Pilgrim.
+"You, living soul! You do not belong to the world of the dead. Return to whence you came!"
+"Chill Charon," Virgil said, "this traveler here got a date with THE devil."
+"Do not slander the name of Lucifer! None who is living shall pass through this river!"
+Virgil grinned. "Not even if we pay a fee?"
+"You see, this traveler here is on a journey to give Lucifer the greatest drink of all kind..."
+"Don't you and your folks want a little sample?"
+Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
+
+~ C1_level_charon
+# intro text, when charon first appears on screen
+Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
+Charon: Do not disappoint these tormented souls.
+Charon: And do not disappoint me.
+- Continue => C1_level_charon2
+
+~ C1_level_charon2
+# level complete
+Charon: You have earned the rite to pass through.
+Charon: Come aboard my boat, and I shall bring you across the river.
+Charon: And regarding Virgil...
+Charon: Let us hope you do not meet the same fates as the previous ones he brought over.
+- Continue => C1_market
+
+~ C1_market
+- Virgil's Stand => market_virgil_intro
+- Ovid's Stand => market_ovid_default
+- Onward to Next Circle => market_end
+
+~ market_end
+Are you sure you want to leave?
+- No => C1_market
+- Yes => END
+
+~ market_virgil_intro
+Virgil: Oh, how low can you go, destined traveler?
+Virgil: Welcome to the First Circle of Hell, Limbo!
+Virgil: Enjoy this nice reprieve in the castle meadows.
+Virgil: The rest of Hell won't look this pretty.
+# it would be interesting here if you could possibly change dialogue depending on whether
+# the player had checked out Ovid's Stand FIRST.
+Virgil: Enough talk, why don't you talk to the other vendor here?
+Virgil: After you purchase something from me, of course.
+# ALT DIALOGUE:
+# Virgil: Oh, it seems you've already talked to the other vendor?
+# Virgil: I hope you still have enough to purchase my wares as well.
+
+~ market_virgil_default
+Virgil: Welcome to my humble stand, destined traveler.
+- Shop => market_virgil_shop
+- Chat => market_virgil_chat
+- Exit => market_virgil_end
+
+~ market_virgil_shop
+Virgil: What seems ripe for the picking?
+- Buy => market_virgil_shop_thanks
+- Back => market_virgil_default
+
+~ market_virgil_shop_thanks
+Virgil: Thank you for your patronage.
+- Continue => market_virgil_shop
+
+~ market_virgil_chat
+- Charon was an interesting fellow.
+	Virgil: Indeed, he is. It's a shame he despises me so much.
+	Virgil: That's the price you pay for going in and out of Hell...
+	Virgil: Anyways, it's likely you'll encounter unfriendly characters like him.
+	Virgil: Be prepared for any shakeups to your ways of fruit preparation.
+	=> market_virgil_chat
+- About the other ones you've guided...
+	Virgil: Oh? Did Charon tell you about that?
+	Virgil: Pay no mind to his hateful remarks.
+	Virgil: Every human I've brought over is not dead.
+	Virgil: They're just toiling endlessly in Hell to repay their debts to me.
+	=> market_virgil_chat
+- Who do you work for?
+	Virgil: I work with many clients.
+	Virgil: ...
+	Virgil: Not satisfied? Fine.
+	Virgil: I currently work for Lucifer—to bring you over, of course.
+	Virgil: Angels, devils, humans... I'm not picky, as long as you have what I want.
+	=> market_virgil_chat
+- Back => market_virgil_default
+
+~ market_virgil_end
+Virgil: Until next time, destined traveler.
+- Continue => C1_market
+
+~ market_ovid_default
+Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
+- Shop => market_ovid_shop
+- Chat => market_ovid_chat
+- Exit => market_ovid_end
+
+~ market_ovid_shop
+Ovid: These goods shall transform you...
+- Buy => market_ovid_shop_thanks
+- Back => market_ovid_default
+
+~ market_ovid_shop_thanks
+Ovid: And your payments shall transform me!
+- Continue => market_ovid_shop
+
+~ market_ovid_chat
+- Why are you here?
+	Ovid: That is quite a broad question. From what I understand, many of us here did not believe in God.
+	Ovid: But none of us have commited any vice in His eyes.
+	Ovid: Thus, we are relegated to this quiet area for eternity...
+	Ovid: I suppose we should be honored to have such a pleasant resting place.
+	=> market_ovid_chat
+- What were you doing before you died?
+	Ovid: Hm... Forgive me, it has been such a long time.
+	Ovid: I would like to believe I had been writing poetry...
+	Ovid: Something about tragic lovers, finding each other in death, in different forms...
+	Ovid: Perhaps my works still exist somewhere on Earth...
+	=> market_ovid_chat
+- Have you met Virgil before?
+	Ovid: Oh, that man that follows you around?
+	Ovid: Hm... His face seems quite familiar...
+	Ovid: He and I might've known each other, when we were both living on Earth.
+	Ovid: But I suppose that's been a long time ago... We're complete strangers now.
+	=> market_ovid_chat
+- Back => market_ovid_default
+
+~ market_ovid_end
+Ovid: Safe travels, I hope you soar through the depths of Hell...
+- Continue => C1_market
