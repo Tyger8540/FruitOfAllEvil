@@ -26,7 +26,7 @@ if location == "intro":
 
 ~ C0_level_virgil
 # Virgil likely shows up at the end of the level, with no other customers present
-if location == "level"
+if location == "level" and level_defeated
 	???: Oh greetings! 
 	???: What a nice fruit stand you have there...
 	???: You must be the destined traveler, called upon by Lucifer.
@@ -37,6 +37,7 @@ if location == "level"
 	set location = "market"
 	set section = "C0_market"
 	set vendor = "Virgil"
+	set State.level_defeated = false
 	=> C0_market
 
 ~ C0_market

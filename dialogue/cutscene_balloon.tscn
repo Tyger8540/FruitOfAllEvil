@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_edapu"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://c738k3r7crb6o" path="res://final_art/Grotesquelimbo_ok.png" id="4_q0fej"]
+[ext_resource type="Texture2D" uid="uid://hbmg3cdhvk3x" path="res://final_art/Virgil_Test_256.png" id="4_vt73q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -150,8 +150,8 @@ theme_override_font_sizes/font_size = 26
 text = "Response example"
 
 [node name="Speaker" type="Sprite2D" parent="."]
-position = Vector2(1026, 123)
-texture = ExtResource("4_q0fej")
+position = Vector2(1026, 121)
+texture = ExtResource("4_vt73q")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

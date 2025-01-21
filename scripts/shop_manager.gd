@@ -13,6 +13,7 @@ func on_day_start() -> void:
 
 func on_day_end() -> void:
 	if %WaveManager.cur_day == %WaveManager.num_days:
+		State.level_defeated = true
 		State.dialogue_ready = true
 		return
 		# TODO make this check for which circle you are in

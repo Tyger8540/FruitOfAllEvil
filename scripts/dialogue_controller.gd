@@ -41,7 +41,10 @@ func handle_input() -> void:
 		"intro":
 			balloon = FULLSCREEN_BALLOON.instantiate()
 		"level":
-			balloon = CUTSCENE_BALLOON.instantiate()
+			if State.level_defeated:
+				balloon = CUTSCENE_BALLOON.instantiate()
+			else:
+				return
 		"market":
 			balloon = FARMERS_MARKET_BALLOON.instantiate()
 			match State.vendor:
