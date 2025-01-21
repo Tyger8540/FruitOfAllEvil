@@ -6,39 +6,45 @@
 
 ~ C0_intro
 # ideally, this would just be shown visually without text
-Midway along the journey of life, Danny Pilgrim ran a fruit stand.
-Peaceful and unassuming...
-Until the ground opened up below and swallowed them up.
-Danny Pilgrim woke to find themselves in a dark wood...
-With nothing but their fruit stand...
-And a leopard staring at them, hungry.
-It lept forward, straight at Danny Pilgrim!
-It sunk its teeth into flesh...
-Of a red, juicy apple. 
-The leopard was pleased.
-It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and his unassuming fruit stand...
-- Continue => C0_level_virgil
+if location == "intro":
+	Midway along the journey of life, Danny Pilgrim ran a fruit stand.
+	Peaceful and unassuming...
+	Until the ground opened up below and swallowed them up.
+	Danny Pilgrim woke to find themselves in a dark wood...
+	With nothing but their fruit stand...
+	And a leopard staring at them, hungry.
+	It lept forward, straight at Danny Pilgrim!
+	It sunk its teeth into flesh...
+	Of a red, juicy apple. 
+	The leopard was pleased.
+	It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and his unassuming fruit stand...
+	set location = "level"
+	set section = "C0_level_virgil"
+	set get_tree().change_scene_to_file("res://scenes/limbo.tscn")
+	=> END
+	#- Continue => C0_level_virgil
 
 ~ C0_level_virgil
 # Virgil likely shows up at the end of the level, with no other customers present
-Virgil: Oh greetings! 
-Virgil: What a nice fruit stand you have there...
-Virgil: You must be the destined traveler, called upon by Lucifer.
-Virgil: Oh, Lucifer?
-Virgil: Don't you know?
-Virgil: The ruler of Hell has requested an exquisite drink from the fruits of humanity.
-Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
-- Continue => C0_market
+if location == "level"
+	???: Oh greetings! 
+	???: What a nice fruit stand you have there...
+	???: You must be the destined traveler, called upon by Lucifer.
+	???: Oh, Lucifer?
+	???: Don't you know?
+	???: The ruler of Hell has requested an exquisite drink from the fruits of humanity.
+	Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
+	set location = "market"
+	set section = "C0_market"
+	set vendor = "Virgil"
+	=> C0_market
 
 ~ C0_market
-- Virgil's Stand => market_virgil_intro
-# technically the option below SHOULD BE UNLOCKED after you complete market_virgil_end2
-- Onward to Next Circle => market_end
-
-~ market_end
-Are you sure you want to leave?
-- No => C0_market
-- Yes => END
+if location == "market" and vendor == "Virgil"
+	- Virgil's Stand
+		set section = "market_virgil_intro"
+		set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+		=> END
 
 ~ market_virgil_intro
 # Upon first interacting with Virgil's stand, which is mandatory before moving on
@@ -52,7 +58,7 @@ Virgil: We shall make make haste in our journey, and venture into the First Circ
 - Continue => market_virgil_default
 
 ~ market_virgil_default
-Virgil: Welcome to my humble stand, destined traveler.
+Welcome to my humble shop, destined traveler.
 - Chat => market_virgil_chat
 - Exit => market_virgil_end
 
@@ -103,4 +109,10 @@ Virgil: Oh no, I suppose then you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: Everything you earn shall be forfeited to me by the end of your journey!
 Virgil: But enough talk, we shall move onward!
-- Continue => C0_market
+- Continue
+	set State.dialogue_file = "res://dialogue/circle1.dialogue"
+	set State.dialogue_ready = true
+	set State.location = "intro"
+	set State.section = "C1_intro"
+	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END

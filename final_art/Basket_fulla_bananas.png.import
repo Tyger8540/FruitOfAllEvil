@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbqxldv1fbdqy"
-path="res://.godot/imported/Basket (Front Planks).png-dcccb0961715b79cf1b59f445d157c66.ctex"
+uid="uid://celcap3mtlsux"
+path="res://.godot/imported/Basket_fulla_bananas.png-d3372a2f680245d53e3f5052284eeb68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/Basket (Front Planks).png"
-dest_files=["res://.godot/imported/Basket (Front Planks).png-dcccb0961715b79cf1b59f445d157c66.ctex"]
+source_file="res://final_art/Basket_fulla_bananas.png"
+dest_files=["res://.godot/imported/Basket_fulla_bananas.png-d3372a2f680245d53e3f5052284eeb68.ctex"]
 
 [params]
 

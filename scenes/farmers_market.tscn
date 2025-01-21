@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=6 format=3 uid="uid://b16mrjlcqcw2s"]
 
+[ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="1_qn2do"]
 [ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
 [ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
 [ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="3_d87nm"]
 [ext_resource type="PackedScene" uid="uid://b6al4vk5kbell" path="res://scenes/sidescroll_button.tscn" id="4_be2uh"]
 
 [node name="FarmersMarket" type="Node2D"]
+
+[node name="DialogueController" parent="." instance=ExtResource("1_qn2do")]
 
 [node name="SidescrollingPlayer" parent="." instance=ExtResource("1_un1fx")]
 position = Vector2(-1, 6)

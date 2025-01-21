@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh424al3l7ylc"
-path="res://.godot/imported/SideScroll Arrow (Left).png-f58bf810fc1e9ff6bb4cd4ab599e1a04.ctex"
+uid="uid://bj5looinflmnm"
+path="res://.godot/imported/Grotesque(Limbo-ok).png-288b5c7e095dc5e0aed1427b6cf1f834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/SideScroll Arrow (Left).png"
-dest_files=["res://.godot/imported/SideScroll Arrow (Left).png-f58bf810fc1e9ff6bb4cd4ab599e1a04.ctex"]
+source_file="res://final_art/Grotesque(Limbo-ok).png"
+dest_files=["res://.godot/imported/Grotesque(Limbo-ok).png-288b5c7e095dc5e0aed1427b6cf1f834.ctex"]
 
 [params]
 

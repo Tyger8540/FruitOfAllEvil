@@ -1,15 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://cobwelrxc74e6"]
 
-[ext_resource type="Texture2D" uid="uid://dcjsttvvw3oma" path="res://final_art/Basket (Back).png" id="1_yq8a8"]
-[ext_resource type="Texture2D" uid="uid://dooyfgc7qhdp4" path="res://final_art/Apple.png" id="2_a574v"]
-[ext_resource type="Texture2D" uid="uid://bbqxldv1fbdqy" path="res://final_art/Basket (Front Planks).png" id="3_5mjvg"]
-[ext_resource type="Texture2D" uid="uid://c1x5g6576ls47" path="res://final_art/rsz_apple.png" id="4_hqiwb"]
+[ext_resource type="Texture2D" uid="uid://c1x5g6576ls47" path="res://final_art/Apple.png" id="4_hqiwb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dc7j"]
+load_path = "res://.godot/imported/Basket (Back).png-5454d5e0b21581bba61ff4e89f4f5e01.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q52q1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brkei"]
+load_path = "res://.godot/imported/Basket (Front Planks).png-dcccb0961715b79cf1b59f445d157c66.ctex"
 
 [node name="FruitBasket" type="Node2D"]
 
 [node name="Back" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_yq8a8")
+texture = SubResource("CompressedTexture2D_3dc7j")
 
 [node name="Fruits" type="Node2D" parent="."]
 position = Vector2(-200, 100)
@@ -17,16 +22,16 @@ position = Vector2(-200, 100)
 [node name="Fruit" type="Sprite2D" parent="Fruits"]
 visible = false
 position = Vector2(-776, -336)
-texture = ExtResource("2_a574v")
+texture = SubResource("CompressedTexture2D_q52q1")
 
 [node name="Fruit2" type="Sprite2D" parent="Fruits"]
 visible = false
 position = Vector2(261, -426)
-texture = ExtResource("2_a574v")
+texture = SubResource("CompressedTexture2D_q52q1")
 
 [node name="FrontPlanks" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_5mjvg")
+texture = SubResource("CompressedTexture2D_brkei")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

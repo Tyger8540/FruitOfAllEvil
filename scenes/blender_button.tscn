@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2eul6xmbt8yw"]
 
 [ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
-[ext_resource type="Texture2D" uid="uid://oswywjlhhh6o" path="res://art/other/Blender Empty.png" id="1_kpins"]
+[ext_resource type="Texture2D" uid="uid://bxqb8ca84yfxl" path="res://final_art/Blender.png" id="2_tq5sm"]
 [ext_resource type="Texture2D" uid="uid://bkkqq06shvlnm" path="res://art/other/Blend Button.png" id="3_wa07b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
@@ -17,7 +17,7 @@ expand_icon = true
 script = ExtResource("1_7psl8")
 appliance_type = 2
 num_slots = 2
-appliance_icon = ExtResource("1_kpins")
+appliance_icon = ExtResource("2_tq5sm")
 action_icon = ExtResource("3_wa07b")
 
 [node name="ActionButton" type="Button" parent="."]

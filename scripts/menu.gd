@@ -12,7 +12,10 @@ func _process(delta: float) -> void:
 
 
 func _on_restart_button_button_up() -> void:
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	if State.location == "intro":
+		get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 
 func _on_quit_button_button_up() -> void:

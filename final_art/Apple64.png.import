@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqm6vkwr2oun"
-path="res://.godot/imported/SideScroll Arrow (Up).png-9347478ecda8ec3dfe06f5d7991a725e.ctex"
+uid="uid://b7bymqpnxkevu"
+path="res://.godot/imported/Apple64.png-31bc36c37448dcfa0f283a606b6c20ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/SideScroll Arrow (Up).png"
-dest_files=["res://.godot/imported/SideScroll Arrow (Up).png-9347478ecda8ec3dfe06f5d7991a725e.ctex"]
+source_file="res://final_art/Apple64.png"
+dest_files=["res://.godot/imported/Apple64.png-31bc36c37448dcfa0f283a606b6c20ae.ctex"]
 
 [params]
 

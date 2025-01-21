@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\tymat\\Documents\\GitHub\\fruit-of-all-evil\\FruitOfAllEvil\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E64CF50E-4EB9-4D7F-A3DE-AB5F3BE4949E}|Fruit Of All Evil.csproj|c:\\users\\tymat\\documents\\github\\fruit-of-all-evil\\fruitofallevil\\fruit of all evil.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E64CF50E-4EB9-4D7F-A3DE-AB5F3BE4949E}|Fruit Of All Evil.csproj|solutionrelative:fruit of all evil.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Fruit Of All Evil",
+              "DocumentMoniker": "C:\\Users\\tymat\\Documents\\GitHub\\fruit-of-all-evil\\FruitOfAllEvil\\Fruit Of All Evil.csproj",
+              "RelativeDocumentMoniker": "Fruit Of All Evil.csproj",
+              "ToolTip": "C:\\Users\\tymat\\Documents\\GitHub\\fruit-of-all-evil\\FruitOfAllEvil\\Fruit Of All Evil.csproj",
+              "RelativeToolTip": "Fruit Of All Evil.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-17T07:59:00.918Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

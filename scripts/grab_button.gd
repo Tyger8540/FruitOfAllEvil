@@ -1,5 +1,5 @@
 class_name GrabButton
-extends Button
+extends TextureButton
 
 
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")

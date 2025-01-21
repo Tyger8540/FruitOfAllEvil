@@ -2,7 +2,7 @@ class_name Customer
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 350.0
 
 var stand_position: Vector2
 var customer_index: int
@@ -127,9 +127,11 @@ func form_options() -> void:
 	num_items = ceili(float(difficulty) / 3)
 	num_grab_types = difficulty - (3 * (num_items - 1))
 	for entry in num_items:
-		var i = randi_range(1, 5)
-		fruits.append(get_random_fruit(i))
 		grab_types.append(get_random_grab_type(num_grab_types))
+		var i = randi_range(1, 5)
+		while i == 5 and grab_types.back() == Enums.Grabbable_Type.CHOPPED_FRUIT:  # don't have sprite for chopped grapes
+			i = randi_range(1, 5)
+		fruits.append(get_random_fruit(i))
 		if grab_types.back() == Enums.Grabbable_Type.BLENDED_FRUIT:
 			var j = randi_range(1, 6)
 			fruits2.append(get_random_fruit(j))

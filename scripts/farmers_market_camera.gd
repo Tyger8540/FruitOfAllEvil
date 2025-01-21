@@ -7,7 +7,7 @@ const PAN_DISTANCE = 1152.0
 
 var new_position: Vector2
 var position_index:= 0
-var num_vendors:= 4
+var num_vendors:= 1
 var max_index:= num_vendors - 1
 
 var sidescrolling:= false
@@ -23,6 +23,7 @@ func _ready() -> void:
 	SignalManager.sidescrolled_right.connect(on_sidescrolled_right)
 	set_camera_position(position)
 	set_sidescroll_button_visibility()
+	State.dialogue_ready = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

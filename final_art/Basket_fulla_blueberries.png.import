@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0xbjk674cp8l"
-path="res://.godot/imported/SideScroll Arrow (Right).png-43751e2e530162250702106f8bc57c67.ctex"
+uid="uid://bd0h02n4b7a3w"
+path="res://.godot/imported/Basket_fulla_blueberries.png-30226acea0e72fad6193942376466150.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/SideScroll Arrow (Right).png"
-dest_files=["res://.godot/imported/SideScroll Arrow (Right).png-43751e2e530162250702106f8bc57c67.ctex"]
+source_file="res://final_art/Basket_fulla_blueberries.png"
+dest_files=["res://.godot/imported/Basket_fulla_blueberries.png-30226acea0e72fad6193942376466150.ctex"]
 
 [params]
 

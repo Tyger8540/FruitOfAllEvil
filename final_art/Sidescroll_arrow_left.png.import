@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1x5g6576ls47"
-path="res://.godot/imported/Apple.png-066635359f766d2c2ac6095c4fac44ea.ctex"
+uid="uid://bv0m8nnkexs2d"
+path="res://.godot/imported/Sidescroll_arrow_left.png-febe98289348ff9cb35f2f8d84b61789.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/Apple.png"
-dest_files=["res://.godot/imported/Apple.png-066635359f766d2c2ac6095c4fac44ea.ctex"]
+source_file="res://final_art/Sidescroll_arrow_left.png"
+dest_files=["res://.godot/imported/Sidescroll_arrow_left.png-febe98289348ff9cb35f2f8d84b61789.ctex"]
 
 [params]
 

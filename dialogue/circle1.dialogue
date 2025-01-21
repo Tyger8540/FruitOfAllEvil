@@ -18,6 +18,10 @@ Virgil grinned. "Not even if we pay a fee?"
 "You see, this traveler here is on a journey to give Lucifer the greatest drink of all kind..."
 "Don't you and your folks want a little sample?"
 Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
+set location = "level"
+set section = "C1_level_charon"
+set get_tree().change_scene_to_file("res://scenes/world.tscn")
+=> END
 
 ~ C1_level_charon
 # intro text, when charon first appears on screen

@@ -30,9 +30,9 @@ func create_customer(difficulty_level: int, patience_level: int, value: int) -> 
 	var customer_sprite: Texture2D
 	var i = randi_range(1, 2)
 	if i == 1:
-		customer_sprite = load("res://art/customers/Demon1.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
+		customer_sprite = load("res://final_art/Grotesquelimbo_ok.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
 	else:
-		customer_sprite = load("res://art/customers/Demon2.png")
+		customer_sprite = load("res://final_art/Grotesquelimbo_sadge.png")
 	customer_array.append(customer)
 	add_child(customer)
 	customer.initialize(customer_sprite, difficulty_level, patience_level, value, customer_array.size() - 1)

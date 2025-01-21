@@ -21,10 +21,13 @@ Enums="*res://scripts/enums.gd"
 Globals="*res://scripts/globals.gd"
 SignalManager="*res://scripts/signal_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+State="*res://scripts/state.gd"
 
 [dialogue_manager]
 
 general/uses_dotnet=true
+general/states=["State"]
+general/balloon_path="res://dialogue/cutscene_balloon.tscn"
 
 [display]
 

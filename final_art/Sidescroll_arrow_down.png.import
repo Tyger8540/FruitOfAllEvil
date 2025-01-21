@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchtvsscb508n"
-path="res://.godot/imported/Basket (Full).png-3edeaa7cb29bd414cc511d60ade0f688.ctex"
+uid="uid://dvt53ihscorqp"
+path="res://.godot/imported/Sidescroll_arrow_down.png-a8b5fa80bf3c58d225bd67630d7ca3c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/Basket (Full).png"
-dest_files=["res://.godot/imported/Basket (Full).png-3edeaa7cb29bd414cc511d60ade0f688.ctex"]
+source_file="res://final_art/Sidescroll_arrow_down.png"
+dest_files=["res://.godot/imported/Sidescroll_arrow_down.png-a8b5fa80bf3c58d225bd67630d7ca3c5.ctex"]
 
 [params]
 

@@ -1,14 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2oc4k6cal0bp"]
+[gd_scene load_steps=2 format=3 uid="uid://c2oc4k6cal0bp"]
 
 [ext_resource type="Script" path="res://scripts/grab_button.gd" id="1_a4374"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ba4kq"]
-
-[node name="GrabButton" type="Button"]
+[node name="GrabButton" type="TextureButton"]
 offset_right = 136.0
 offset_bottom = 72.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ba4kq")
-icon_alignment = 1
 script = ExtResource("1_a4374")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
