@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Fruit Of All Evil"
 run/main_scene="res://scenes/start_screen.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,7 +25,6 @@ State="*res://scripts/state.gd"
 
 [dialogue_manager]
 
-general/uses_dotnet=true
 general/states=["State"]
 general/balloon_path="res://dialogue/cutscene_balloon.tscn"
 
@@ -42,7 +41,7 @@ project/assembly_name="Fruit Of All Evil"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 

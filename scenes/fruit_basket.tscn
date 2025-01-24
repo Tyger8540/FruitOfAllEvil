@@ -3,12 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c1x5g6576ls47" path="res://final_art/Apple.png" id="4_hqiwb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dc7j"]
-load_path = "res://.godot/imported/Basket (Back).png-5454d5e0b21581bba61ff4e89f4f5e01.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q52q1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brkei"]
-load_path = "res://.godot/imported/Basket (Front Planks).png-dcccb0961715b79cf1b59f445d157c66.ctex"
 
 [node name="FruitBasket" type="Node2D"]
 
