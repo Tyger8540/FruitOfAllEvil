@@ -1,5 +1,3 @@
-# Start with transition text saying Circle I: Limbo that fades in and out
-
 ~ C1_intro
 # once again, visuals would be nice, but I think at this point, that's a lot extensive work
 # realistically, we'll probably just put the character stills / sprites on screen
@@ -7,8 +5,8 @@
 "Oh, don't worry about that, destined traveler," Virgil said to Danny Pilgrim.
 "They use that to scare away anyone with common sense," he continued, "it doesn't apply to us."
 Suddenly, a booming voice came bellowing in front of them.
-"Woe to you, perveted souls, who dare disregard this harrowing sign—"
-A man with ancient white hair came floating by on a boat, across the River of Acheron.
+"Woe to you, perverted souls, who dare disregard this harrowing sign—"
+An old man with white hair came by on a boat, floating on the River of Acheron.
 "What's up, Charon," Virgil said.
 The infernal boatman, Charon, groaned in disgust.
 "Not this lunatic..."
@@ -18,23 +16,19 @@ Charon recomposed himself and grew fierce upon seeing Danny Pilgrim.
 "Do not slander the name of Lucifer! None who is living shall pass through this river!"
 Virgil grinned. "Not even if we pay a fee?"
 "You see, this traveler here is on a journey to give Lucifer the greatest drink of all kind..."
-"Don't you and your folks want a little sample?"
+"Don't you and your folks want a little sip?"
 Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
-set location = "level"
-set section = "C1_level_charon"
-set get_tree().change_scene_to_file("res://scenes/world.tscn")
-=> END
 
 ~ C1_level_charon
-# intro text, when charon first appears on screen, maybe wave 3 or 4
+# intro text, when charon first appears on screen
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
 Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
 - Continue => C1_level_charon2
 
 ~ C1_level_charon2
-# level complete, after defeating Charon
-Charon: You have earned the rite to pass through.
+# level complete
+Charon: You have earned the right to pass through.
 Charon: Come aboard my boat, and I shall bring you across the river.
 Charon: And regarding Virgil...
 Charon: Let us hope you do not meet the same fates as the previous ones he brought over.
@@ -81,14 +75,14 @@ Virgil: Thank you for your patronage.
 ~ market_virgil_chat
 - Charon was an interesting fellow.
 	Virgil: Indeed, he is. It's a shame he despises me so much.
-	Virgil: That's the price you pay for going in and out of Hell...
+	Virgil: That's the price I pay for always going in and out of Hell...
 	Virgil: Anyways, it's likely you'll encounter unfriendly characters like him.
-	Virgil: Be prepared for any shakeups to your ways of fruit preparation.
+	Virgil: Be prepared for any disturbances to your ways of fruit preparation.
 	=> market_virgil_chat
 - About the other ones you've guided...
 	Virgil: Oh? Did Charon tell you about that?
 	Virgil: Pay no mind to his hateful remarks.
-	Virgil: Every human I've brought over is not dead.
+	Virgil: Every human I've brought over is in good shape.
 	Virgil: They're just toiling endlessly in Hell to repay their debts to me.
 	=> market_virgil_chat
 - Who do you work for?
@@ -129,14 +123,14 @@ Ovid: And your payments shall transform me!
 - What were you doing before you died?
 	Ovid: Hm... Forgive me, it has been such a long time.
 	Ovid: I would like to believe I had been writing poetry...
-	Ovid: Something about tragic lovers, finding each other in death, in different forms...
+	Ovid: Maybe something about tragic lovers, finding each other in death, in different forms...
 	Ovid: Perhaps my works still exist somewhere on Earth...
 	=> market_ovid_chat
 - Have you met Virgil before?
-	Ovid: Oh, that man that follows you around?
+	Ovid: Oh, the man who follows you around?
 	Ovid: Hm... His face seems quite familiar...
 	Ovid: He and I might've known each other, when we were both living on Earth.
-	Ovid: But I suppose that's been a long time ago... We're complete strangers now.
+	Ovid: But I suppose that's been a long time ago... We're complete strangers at this point.
 	=> market_ovid_chat
 - Back => market_ovid_default
 
