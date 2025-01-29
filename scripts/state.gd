@@ -7,3 +7,6 @@ var vendor: String = ""
 var dialogue_ready: bool = true
 var dialogue_file: String = "res://dialogue/prologue.dialogue"
 var level_defeated: bool = false
+
+var circle_num: int = 0
+var next_boss: String = "Charon"

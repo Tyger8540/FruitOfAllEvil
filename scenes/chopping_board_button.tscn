@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsm5cve406wkh"]
 
-[ext_resource type="Texture2D" uid="uid://dev33w53rpk7w" path="res://final_art/Cuttingboard.png" id="1_l64tn"]
+[ext_resource type="Texture2D" uid="uid://rpy2knnaoj7f" path="res://final_art/Cuttingboard.png" id="1_l64tn"]
 [ext_resource type="Script" path="res://scripts/chopping_board_button.gd" id="1_s00hn"]
 [ext_resource type="Texture2D" uid="uid://bvh74wvvc3yn0" path="res://art/other/Chop Button.png" id="3_sotc4"]
 
@@ -9,12 +9,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64oab"]
 
 [node name="ChoppingBoardButton" type="Button"]
-offset_right = 72.0
-offset_bottom = 72.0
+offset_right = 144.0
+offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qv6kk")
 icon = ExtResource("1_l64tn")
 icon_alignment = 1
-expand_icon = true
+vertical_icon_alignment = 2
 script = ExtResource("1_s00hn")
 appliance_type = 1
 num_slots = 1
@@ -23,9 +23,9 @@ action_icon = ExtResource("3_sotc4")
 
 [node name="ActionButton" type="Button" parent="."]
 layout_mode = 0
-offset_top = 74.0
-offset_right = 72.0
-offset_bottom = 92.0
+offset_top = 146.0
+offset_right = 144.0
+offset_bottom = 182.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_64oab")
 icon_alignment = 1
 
@@ -35,8 +35,8 @@ one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = -11.0
-offset_right = 72.0
+offset_top = -20.0
+offset_right = 144.0
 offset_bottom = -2.0
 show_percentage = false
 
@@ -49,10 +49,10 @@ offset_bottom = 56.0
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 4.0
-offset_right = 52.0
-offset_bottom = 36.0
+offset_left = 44.0
+offset_top = 14.0
+offset_right = 108.0
+offset_bottom = 78.0
 stretch_mode = 3
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

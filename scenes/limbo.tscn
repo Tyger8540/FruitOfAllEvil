@@ -41,10 +41,14 @@
 [ext_resource type="Texture2D" uid="uid://bhy425qyqicob" path="res://final_art/Blueberry.png" id="34_m620v"]
 [ext_resource type="Texture2D" uid="uid://b0urjdne3orsw" path="res://final_art/Grape.png" id="35_calnf"]
 [ext_resource type="Texture2D" uid="uid://cl5ap3r1bgmwj" path="res://final_art/Orange.png" id="36_u0wm1"]
-[ext_resource type="Texture2D" uid="uid://dev33w53rpk7w" path="res://final_art/Cuttingboard.png" id="38_2gret"]
-[ext_resource type="Texture2D" uid="uid://bxqb8ca84yfxl" path="res://final_art/Blender.png" id="39_rhl27"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68bps"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3kkr7"]
+load_path = "res://.godot/imported/Cuttingboard.png-e2a104c9730a6bb55d92e963b918e19f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_53e0q"]
+load_path = "res://.godot/imported/Blender.png-542f389abfd0e8c35cdff6faf6471c86.ctex"
 
 [node name="Limbo" type="Node2D"]
 script = ExtResource("1_a4547")
@@ -196,8 +200,8 @@ offset_right = -888.0
 offset_bottom = 540.0
 
 [node name="ChoppingBoardButton" parent="." instance=ExtResource("10_0rt6q")]
-offset_left = -36.0
-offset_right = 36.0
+offset_left = 16.0
+offset_right = 160.0
 
 [node name="ChoppingBoardButton2" parent="." instance=ExtResource("10_0rt6q")]
 visible = false
@@ -529,12 +533,19 @@ texture = ExtResource("33_lcvia")
 [node name="Cuttingboard" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-97, 43)
-texture = ExtResource("38_2gret")
+texture = SubResource("CompressedTexture2D_3kkr7")
 
 [node name="Blender" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-165, 31)
-texture = ExtResource("39_rhl27")
+texture = SubResource("CompressedTexture2D_53e0q")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -753.0
+offset_top = -179.0
+offset_right = 747.0
+offset_bottom = 421.0
+columns = 4
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]

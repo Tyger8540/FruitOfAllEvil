@@ -10,3 +10,4 @@ signal life_lost
 signal player_lost
 signal sidescrolled_left
 signal sidescrolled_right
+signal boss_fight_started

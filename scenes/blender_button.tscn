@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2eul6xmbt8yw"]
 
 [ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
-[ext_resource type="Texture2D" uid="uid://bxqb8ca84yfxl" path="res://final_art/Blender.png" id="2_tq5sm"]
+[ext_resource type="Texture2D" uid="uid://b0x0lm6547qno" path="res://final_art/Blender.png" id="2_tq5sm"]
 [ext_resource type="Texture2D" uid="uid://bkkqq06shvlnm" path="res://art/other/Blend Button.png" id="3_wa07b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
@@ -9,9 +9,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3x0o6"]
 
 [node name="BlenderButton" type="Button"]
-offset_right = 72.0
-offset_bottom = 72.0
+offset_right = 144.0
+offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1o4xf")
+icon = ExtResource("2_tq5sm")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_7psl8")
@@ -22,9 +23,9 @@ action_icon = ExtResource("3_wa07b")
 
 [node name="ActionButton" type="Button" parent="."]
 layout_mode = 0
-offset_top = 74.0
-offset_right = 72.0
-offset_bottom = 92.0
+offset_top = 146.0
+offset_right = 144.0
+offset_bottom = 182.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3x0o6")
 icon_alignment = 1
 
@@ -34,25 +35,24 @@ one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = -11.0
-offset_right = 72.0
+offset_top = -20.0
+offset_right = 144.0
 offset_bottom = -2.0
 show_percentage = false
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 24.0
-offset_right = 52.0
-offset_bottom = 56.0
+offset_left = 37.0
+offset_top = 44.0
+offset_right = 101.0
+offset_bottom = 108.0
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 4.0
-offset_right = 52.0
-offset_bottom = 36.0
-stretch_mode = 3
+offset_left = 48.0
+offset_top = 26.0
+offset_right = 112.0
+offset_bottom = 90.0
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]

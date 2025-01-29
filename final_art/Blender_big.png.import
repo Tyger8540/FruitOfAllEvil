@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0x0lm6547qno"
-path="res://.godot/imported/Blender.png-542f389abfd0e8c35cdff6faf6471c86.ctex"
+uid="uid://vp5la8x31mt4"
+path="res://.godot/imported/Blender_big.png-9891e1c0d8e0756e89ba16243a377734.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/Blender.png"
-dest_files=["res://.godot/imported/Blender.png-542f389abfd0e8c35cdff6faf6471c86.ctex"]
+source_file="res://final_art/Blender_big.png"
+dest_files=["res://.godot/imported/Blender_big.png-9891e1c0d8e0756e89ba16243a377734.ctex"]
 
 [params]
 

@@ -183,7 +183,7 @@ offset_bottom = 324.0
 
 [node name="ChoppingBoardButton" parent="." instance=ExtResource("12_yegh3")]
 offset_left = 40.0
-offset_right = 112.0
+offset_right = 184.0
 
 [node name="ChoppingBoardButton2" parent="." instance=ExtResource("12_yegh3")]
 visible = false
@@ -209,7 +209,7 @@ index = 3
 
 [node name="BlenderButton" parent="." instance=ExtResource("30_4udm6")]
 offset_left = -110.0
-offset_right = -38.0
+offset_right = 34.0
 
 [node name="BlenderButton2" parent="." instance=ExtResource("30_4udm6")]
 visible = false
