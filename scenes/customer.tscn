@@ -18,7 +18,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_428fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b204h"]
-size = Vector2(64, 128)
+size = Vector2(80, 180)
 
 [node name="Customer" type="CharacterBody2D"]
 script = ExtResource("1_rovlt")
@@ -28,10 +28,10 @@ position = Vector2(20, 0)
 texture = ExtResource("7_lxnvm")
 
 [node name="CustomerButton" type="Button" parent="."]
-offset_left = -32.0
+offset_left = -40.0
 offset_top = -118.0
-offset_right = 32.0
-offset_bottom = 10.0
+offset_right = 40.0
+offset_bottom = 62.0
 theme_type_variation = &"FlatButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2b33s")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_428fe")
@@ -148,7 +148,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -54)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_b204h")
 
 [node name="Hungry" type="AudioStreamPlayer" parent="."]
