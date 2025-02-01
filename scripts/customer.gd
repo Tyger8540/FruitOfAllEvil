@@ -61,7 +61,7 @@ func die() -> void:
 
 
 func set_stand_position(index: int) -> void:
-	stand_position = Vector2(-915.0 + (index * 150), 0.0)
+	stand_position = Vector2(-1015.0 + (index * 200), 0.0)
 
 
 func set_patience_timers() -> void:

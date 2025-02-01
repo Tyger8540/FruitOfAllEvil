@@ -137,7 +137,7 @@ script = ExtResource("6_ik8hm")
 
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(615, -220)
+position = Vector2(615, -230)
 script = ExtResource("7_wen4g")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]

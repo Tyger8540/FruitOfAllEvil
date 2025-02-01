@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
+[ext_resource type="Texture2D" uid="uid://bsf31fmn7d04t" path="res://final_art/grotesquelimbo_ok_360.png" id="2_iefj7"]
 [ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="3_s65ms"]
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="4_j4383"]
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="5_mumj0"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_2eesi"]
-[ext_resource type="Texture2D" uid="uid://c738k3r7crb6o" path="res://final_art/Grotesquelimbo_ok.png" id="7_lxnvm"]
 [ext_resource type="AudioStream" uid="uid://nxeueatcx5gq" path="res://audio/sfx/Eat_1.wav" id="8_nkqr7"]
 [ext_resource type="AudioStream" uid="uid://diquffq3fp0gi" path="res://audio/sfx/Hungry.wav" id="8_ovxc0"]
 [ext_resource type="AudioStream" uid="uid://dehy6nd1injy2" path="res://audio/sfx/Coin_Get.wav" id="8_t2gr1"]
@@ -24,14 +24,14 @@ size = Vector2(80, 180)
 script = ExtResource("1_rovlt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(20, 0)
-texture = ExtResource("7_lxnvm")
+position = Vector2(40, 48)
+texture = ExtResource("2_iefj7")
 
 [node name="CustomerButton" type="Button" parent="."]
-offset_left = -40.0
-offset_top = -118.0
-offset_right = 40.0
-offset_bottom = 62.0
+offset_left = -68.0
+offset_top = -257.0
+offset_right = 68.0
+offset_bottom = 143.0
 theme_type_variation = &"FlatButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2b33s")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_428fe")
@@ -40,10 +40,11 @@ script = ExtResource("1_m2x0k")
 [node name="RedPatienceBar" type="TextureProgressBar" parent="CustomerButton"]
 visible = false
 layout_mode = 0
-offset_top = 131.0
-offset_right = 32.0
-offset_bottom = 139.0
-scale = Vector2(2, 2)
+offset_left = 4.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = -28.0
+scale = Vector2(4, 4)
 value = 100.0
 texture_under = ExtResource("3_s65ms")
 texture_progress = ExtResource("4_j4383")
@@ -51,10 +52,11 @@ texture_progress = ExtResource("4_j4383")
 [node name="GreenPatienceBar" type="TextureProgressBar" parent="CustomerButton"]
 visible = false
 layout_mode = 0
-offset_top = 131.0
-offset_right = 32.0
-offset_bottom = 139.0
-scale = Vector2(2, 2)
+offset_left = 4.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = -28.0
+scale = Vector2(4, 4)
 value = 100.0
 texture_progress = ExtResource("5_mumj0")
 
@@ -72,17 +74,18 @@ anchor_left = -0.062
 anchor_top = -0.023
 anchor_right = -0.062
 anchor_bottom = -0.023
-offset_left = -0.0319998
-offset_top = -72.056
-offset_right = 71.968
-offset_bottom = -0.0559998
+offset_left = 8.432
+offset_top = 9.2
+offset_right = 144.432
+offset_bottom = 145.2
+mouse_filter = 2
 
 [node name="ItemGrid" type="GridContainer" parent="CustomerButton/Panel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 70.0
-offset_bottom = 70.0
+offset_right = 134.0
+offset_bottom = 134.0
 columns = 2
 
 [node name="Slot1" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
@@ -102,35 +105,35 @@ visible = false
 layout_mode = 2
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 34.0
-offset_bottom = 34.0
+offset_right = 66.0
+offset_bottom = 66.0
 texture = ExtResource("7_2eesi")
 
 [node name="Checkmark2" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false
 layout_mode = 2
-offset_left = 38.0
+offset_left = 70.0
 offset_top = 2.0
-offset_right = 70.0
-offset_bottom = 34.0
+offset_right = 134.0
+offset_bottom = 66.0
 texture = ExtResource("7_2eesi")
 
 [node name="Checkmark3" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false
 layout_mode = 2
 offset_left = 2.0
-offset_top = 38.0
-offset_right = 34.0
-offset_bottom = 70.0
+offset_top = 70.0
+offset_right = 66.0
+offset_bottom = 134.0
 texture = ExtResource("7_2eesi")
 
 [node name="Checkmark4" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false
 layout_mode = 2
-offset_left = 38.0
-offset_top = 38.0
-offset_right = 70.0
-offset_bottom = 70.0
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 134.0
+offset_bottom = 134.0
 texture = ExtResource("7_2eesi")
 
 [node name="Label" type="Label" parent="CustomerButton/Panel"]
@@ -148,7 +151,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -28)
+visible = false
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_b204h")
 
 [node name="Hungry" type="AudioStreamPlayer" parent="."]
