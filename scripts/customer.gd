@@ -1,8 +1,14 @@
 class_name Customer
 extends CharacterBody2D
 
+enum CustomerType {
+	DEFAULT,
+	STATIONARY,
+}
 
 const SPEED = 350.0
+
+@export var customer_type: CustomerType
 
 var stand_position: Vector2
 var customer_index: int
@@ -30,17 +36,25 @@ func _process(delta: float) -> void:
 	elif !red_patience_timer.is_stopped():
 		red_patience_bar.value = red_patience_timer.time_left
 	
-	if position.x > stand_position.x:
-		position.x = move_toward(position.x, stand_position.x, SPEED * delta)
-	elif position.x < stand_position.x:
-		position = stand_position
-	else:
-		# set the order panel once the customer reaches their stand_position, if panel not already visible
+	# check for the type of customer to determine how they should process
+	if customer_type == CustomerType.DEFAULT:
+		if position.x > stand_position.x:
+			position.x = move_toward(position.x, stand_position.x, SPEED * delta)
+		elif position.x < stand_position.x:
+			position = stand_position
+		else:
+			# set the order panel once the customer reaches their stand_position, if panel not already visible
+			if !panel.visible:
+				panel.visible = true
+				green_patience_bar.visible = true
+				red_patience_bar.visible = true
+				green_patience_timer.start()
+	elif customer_type == CustomerType.STATIONARY:
 		if !panel.visible:
-			panel.visible = true
-			green_patience_bar.visible = true
-			red_patience_bar.visible = true
-			green_patience_timer.start()
+					panel.visible = true
+					green_patience_bar.visible = true
+					red_patience_bar.visible = true
+					green_patience_timer.start()
 	move_and_slide()
 
 
@@ -55,6 +69,15 @@ func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, 
 	form_options()
 
 
+func initialize_stationary(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int) -> void:
+	$Sprite2D.texture = texture
+	difficulty = difficulty_level
+	patience = patience_level
+	sell_value = value
+	set_patience_timers(patience_time)
+	form_options()
+
+
 func die() -> void:
 	SignalManager.customer_left.emit(customer_index)
 	queue_free()
@@ -64,8 +87,8 @@ func set_stand_position(index: int) -> void:
 	stand_position = Vector2(-1015.0 + (index * 200), 0.0)
 
 
-func set_patience_timers() -> void:
-	green_patience_timer.wait_time = 32.0 - (2 * patience)
+func set_patience_timers(base_time: float = 32.0) -> void:
+	green_patience_timer.wait_time = base_time - (2 * patience)
 	green_patience_bar.max_value = green_patience_timer.wait_time
 	red_patience_timer.wait_time = 2 * green_patience_timer.wait_time
 	red_patience_bar.max_value = red_patience_timer.wait_time

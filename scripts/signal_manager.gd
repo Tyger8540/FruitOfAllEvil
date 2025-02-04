@@ -11,3 +11,5 @@ signal player_lost
 signal sidescrolled_left
 signal sidescrolled_right
 signal boss_fight_started
+signal charon_on_screen_timer_ended
+signal charon_off_screen_timer_ended

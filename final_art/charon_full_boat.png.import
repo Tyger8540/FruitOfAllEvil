@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uwlq7p86wwyq"
-path="res://.godot/imported/basket_fulla_bananas.png-23d8c894e9d3c5924edf72325e683177.ctex"
+uid="uid://dsur7a3g06ecg"
+path="res://.godot/imported/charon_full_boat.png-d046ca14a07c825265bd37b668ca4de1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/basket_fulla_bananas.png"
-dest_files=["res://.godot/imported/basket_fulla_bananas.png-23d8c894e9d3c5924edf72325e683177.ctex"]
+source_file="res://final_art/charon_full_boat.png"
+dest_files=["res://.godot/imported/charon_full_boat.png-d046ca14a07c825265bd37b668ca4de1.ctex"]
 
 [params]
 

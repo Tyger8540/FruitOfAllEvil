@@ -1,127 +1,134 @@
-[gd_scene load_steps=6 format=3 uid="uid://deyl37osklxet"]
+[gd_scene load_steps=7 format=3 uid="uid://deyl37osklxet"]
 
 [ext_resource type="Script" path="res://scripts/charon_boss.gd" id="1_7j0h7"]
 [ext_resource type="Script" path="res://scripts/charon_pathing.gd" id="2_jwt5x"]
 [ext_resource type="PackedScene" uid="uid://dhguxfqqurpyb" path="res://scenes/customer.tscn" id="2_vvyxg"]
-[ext_resource type="Texture2D" uid="uid://lr64urssr721" path="res://final_art/Virgil_Test_512.png" id="3_5rufs"]
+[ext_resource type="Texture2D" uid="uid://d26givsmpp58u" path="res://final_art/rsz_charonfull_boat_-_tester.png" id="3_6rfho"]
+[ext_resource type="Texture2D" uid="uid://dsur7a3g06ecg" path="res://final_art/charon_full_boat.png" id="3_ky87n"]
 
 [sub_resource type="Curve2D" id="Curve2D_6w5sd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1900, -200, 0, 0, 0, 0, 500, 200, 0, 0, 0, 0, -1300, -132)
+"points": PackedVector2Array(0, 0, 0, 0, 2123, -202, 0, 0, 0, 0, 258, 241, 0, 0, 0, 0, -1607, -215)
 }
 point_count = 3
 
-[node name="Charon Boss" type="Node2D"]
+[node name="Charon Boss" type="Node2D" node_paths=PackedStringArray("customers")]
 script = ExtResource("1_7j0h7")
-
-[node name="Boat" type="Node2D" parent="."]
-position = Vector2(2521, -35)
+customers = [NodePath("Path2D2/PathFollow2D/Customer"), NodePath("Path2D3/PathFollow2D/Customer2"), NodePath("Path2D4/PathFollow2D/Customer3"), NodePath("Path2D5/PathFollow2D/Customer4"), NodePath("Path2D6/PathFollow2D/Customer5"), NodePath("Path2D7/PathFollow2D/Customer6")]
+boss_name = "Charon"
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(390, 160)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
+is_charon = true
 
-[node name="Charon" type="Sprite2D" parent="Path2D/PathFollow2D"]
-texture = ExtResource("3_5rufs")
+[node name="CharonFullBoat" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(313.365, -89.6926)
+texture = ExtResource("3_6rfho")
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(671, 65)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer" parent="Path2D2/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(-324, -5)
+customer_type = 1
 
 [node name="Path2D3" type="Path2D" parent="."]
 position = Vector2(921, 65)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer2" parent="Path2D3/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(-437, 62)
+customer_type = 1
 
 [node name="Path2D4" type="Path2D" parent="."]
 position = Vector2(1171, 65)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer3" parent="Path2D4/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(-521, -5)
+customer_type = 1
 
 [node name="Path2D5" type="Path2D" parent="."]
 position = Vector2(1421, 65)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer4" parent="Path2D5/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(-611, 68)
+customer_type = 1
 
 [node name="Path2D6" type="Path2D" parent="."]
 position = Vector2(796, 265)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer5" parent="Path2D6/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(187, -202)
+customer_type = 1
 
 [node name="Path2D7" type="Path2D" parent="."]
 position = Vector2(1046, 265)
 curve = SubResource("Curve2D_6w5sd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
-position = Vector2(1900, -200)
+position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="Customer6" parent="Path2D7/PathFollow2D" instance=ExtResource("2_vvyxg")]
+position = Vector2(99, -139)
+customer_type = 1
 
-[node name="Path2D8" type="Path2D" parent="."]
-position = Vector2(1296, 265)
-curve = SubResource("Curve2D_6w5sd")
+[node name="CharonFullBoat" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 1, 1)
+position = Vector2(960, 275)
+texture = ExtResource("3_ky87n")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
-position = Vector2(1900, -200)
-rotates = false
-loop = false
-script = ExtResource("2_jwt5x")
+[node name="OnScreenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
-[node name="Customer7" parent="Path2D8/PathFollow2D" instance=ExtResource("2_vvyxg")]
+[node name="OffScreenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
-[node name="Path2D9" type="Path2D" parent="."]
-position = Vector2(1546, 265)
-curve = SubResource("Curve2D_6w5sd")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D9"]
-position = Vector2(1900, -200)
-rotates = false
-loop = false
-script = ExtResource("2_jwt5x")
-
-[node name="Customer8" parent="Path2D9/PathFollow2D" instance=ExtResource("2_vvyxg")]
+[connection signal="timeout" from="OnScreenTimer" to="Path2D/PathFollow2D" method="_on_on_screen_timer_timeout"]
+[connection signal="timeout" from="OffScreenTimer" to="Path2D/PathFollow2D" method="_on_off_screen_timer_timeout"]

@@ -19,7 +19,7 @@ The leopard was pleased.
 It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and their unassuming fruit stand...
 set location = "level"
 set section = "C0_level_virgil"
-set get_tree().change_scene_to_file("res://scenes/limbo.tscn")
+set get_tree().change_scene_to_file("res://scenes/prologue.tscn")
 => END
 #- Continue => C0_level_virgil
 
