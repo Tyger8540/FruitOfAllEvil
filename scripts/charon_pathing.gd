@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		progress_ratio = 0.0
 		paused_off_screen = false
 	
-	if moving_in and progress_ratio >= 0.5:
+	if moving_in and progress_ratio >= 0.49:
 		progress_ratio = 0.5
 		moving_in = false
 		paused_on_screen = true
