@@ -20,7 +20,7 @@ Virgil grinned. "Not even if we pay a fee?"
 Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
 set location = "level"
 set section = "C1_level_charon"
-set get_tree().change_scene_to_file("res://scenes/world.tscn")
+set get_tree().change_scene_to_file("res://scenes/circle1.tscn")
 => END
 
 ~ C1_level_charon

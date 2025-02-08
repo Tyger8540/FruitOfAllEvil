@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhguxfqqurpyb"]
+[gd_scene load_steps=15 format=3 uid="uid://dhguxfqqurpyb"]
 
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
@@ -16,9 +16,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_428fe"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b204h"]
-size = Vector2(80, 180)
 
 [node name="Customer" type="CharacterBody2D"]
 script = ExtResource("1_rovlt")
@@ -149,11 +146,6 @@ horizontal_alignment = 1
 [node name="LeaveTimer" type="Timer" parent="CustomerButton"]
 wait_time = 2.0
 one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 20)
-shape = SubResource("RectangleShape2D_b204h")
 
 [node name="Hungry" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
