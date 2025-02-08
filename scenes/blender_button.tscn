@@ -9,6 +9,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3x0o6"]
 
 [node name="BlenderButton" type="Button"]
+custom_minimum_size = Vector2(144, 144)
+layout_direction = 2
 offset_right = 144.0
 offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1o4xf")
