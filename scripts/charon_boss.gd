@@ -20,4 +20,4 @@ func start_boss_fight() -> void:
 	
 	for customer in customers:
 		var rand_difficulty := randi_range(7, 12)
-		customer.initialize_stationary(null, rand_difficulty, 1, 62.0, 0)
+		customer.initialize(null, rand_difficulty, 1, 62.0, 0, 0)

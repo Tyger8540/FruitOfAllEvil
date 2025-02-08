@@ -1,14 +1,14 @@
 class_name Customer
 extends CharacterBody2D
 
-enum CustomerType {
-	DEFAULT,
-	STATIONARY,
-}
+#enum CustomerType {
+	#DEFAULT,
+	#STATIONARY,
+#}
 
 const SPEED = 350.0
 
-@export var customer_type: CustomerType
+#@export var customer_type: CustomerType
 
 var stand_position: Vector2
 var customer_index: int
@@ -26,6 +26,7 @@ var sell_value:= 0
 @onready var green_patience_timer: Timer = $CustomerButton/GreenPatienceTimer
 @onready var red_patience_timer: Timer = $CustomerButton/RedPatienceTimer
 
+
 func _ready() -> void:
 	SignalManager.customer_left.connect(on_customer_left)
 
@@ -36,40 +37,25 @@ func _process(delta: float) -> void:
 	elif !red_patience_timer.is_stopped():
 		red_patience_bar.value = red_patience_timer.time_left
 	
-	# check for the type of customer to determine how they should process
-	if customer_type == CustomerType.DEFAULT:
-		if position.x > stand_position.x:
-			position.x = move_toward(position.x, stand_position.x, SPEED * delta)
-		elif position.x < stand_position.x:
-			position = stand_position
-		else:
-			# set the order panel once the customer reaches their stand_position, if panel not already visible
-			if !panel.visible:
-				panel.visible = true
-				green_patience_bar.visible = true
-				red_patience_bar.visible = true
-				green_patience_timer.start()
-	elif customer_type == CustomerType.STATIONARY:
-		if !panel.visible:
-					panel.visible = true
-					green_patience_bar.visible = true
-					red_patience_bar.visible = true
-					green_patience_timer.start()
 	move_and_slide()
 
 
-func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, value: int, new_customer_index: int) -> void:
-	$Sprite2D.texture = texture
-	difficulty = difficulty_level
-	patience = patience_level
-	sell_value = value
-	customer_index = new_customer_index
-	set_patience_timers()
-	set_stand_position(customer_index)
-	form_options()
+#region initialize args:
+# USED FOR ALL CUSTOMERS
+# texture == customer sprite
+# difficulty_level == difficulty level of the customer's order
+# patience_level == how patient the customer is, larger patience_level means less patience
+# value == sell value of the customer's order
+
+# USED FOR DEFAULT CUSTOMERS
+# new_customer_index == index for this new customer being initialized
+
+# USED FOR CHARON CUSTOMERS
+# patience_time == base time used for the customer's patience calculation
+#endregion
 
 
-func initialize_stationary(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int) -> void:
+func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:
 	$Sprite2D.texture = texture
 	difficulty = difficulty_level
 	patience = patience_level

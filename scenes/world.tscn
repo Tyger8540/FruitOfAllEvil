@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="16_tan7k"]
 [ext_resource type="Texture2D" uid="uid://dnq7c6kvmrj0g" path="res://final_art/Basket_fulla_oranges.png" id="17_n0qxn"]
 [ext_resource type="Texture2D" uid="uid://br358l5rxcggl" path="res://art/other/Counter.png" id="18_5ygcl"]
-[ext_resource type="Texture2D" uid="uid://uwlq7p86wwyq" path="res://final_art/Basket_fulla_bananas.png" id="19_8l132"]
+[ext_resource type="Texture2D" uid="uid://uwlq7p86wwyq" path="res://final_art/basket_fulla_bananas.png" id="19_8l132"]
 [ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="19_jk3y4"]
 [ext_resource type="AudioStream" uid="uid://b38u0comlejwc" path="res://audio/music/Fruit evail BG_1.wav" id="20_gxueh"]
 [ext_resource type="AudioStream" uid="uid://cl3jq3nbl471b" path="res://audio/sfx/Blender.wav" id="20_hdpbc"]

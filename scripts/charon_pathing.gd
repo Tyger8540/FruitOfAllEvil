@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 @export var is_charon: bool
+@export var customer_index: int
 
 var speed := 0.2
 var paused_on_screen := false
@@ -21,13 +22,13 @@ func _process(delta: float) -> void:
 		progress_ratio = 0.0
 		paused_off_screen = false
 	
-	if moving_in and progress_ratio >= 0.49:
+	if moving_in and progress_ratio >= 0.499:
 		progress_ratio = 0.5
 		moving_in = false
 		paused_on_screen = true
 		if is_charon:
 			%OnScreenTimer.start(5.0)
-	elif not moving_in and progress_ratio >= 0.99 and not paused_off_screen:
+	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:
 			%OffScreenTimer.start(5.0)
@@ -48,6 +49,11 @@ func off_screen_timeout() -> void:
 	paused_off_screen = false
 	progress_ratio = 0.0
 	moving_in = true
+
+
+func create_customer() -> void:
+	# Creates a customer at this path
+	pass
 
 
 func _on_on_screen_timer_timeout() -> void:

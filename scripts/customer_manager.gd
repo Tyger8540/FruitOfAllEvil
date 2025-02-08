@@ -1,7 +1,7 @@
 class_name CustomerManager
 extends Node2D
 
-const CUSTOMER_SCENE = preload("res://scenes/customer.tscn")
+const DEFAULT_CUSTOMER_SCENE = preload("res://scenes/default_customer.tscn")
 
 var customer_array: Array[Customer]
 var difficulty_queue: Array[int]
@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 
 
 func create_customer(difficulty_level: int, patience_level: int, value: int) -> void:
-	var customer = CUSTOMER_SCENE.instantiate()
+	var customer = DEFAULT_CUSTOMER_SCENE.instantiate()
 	var customer_sprite: Texture2D
 	var i = randi_range(1, 2)
 	if i == 1:
@@ -35,7 +35,7 @@ func create_customer(difficulty_level: int, patience_level: int, value: int) -> 
 		customer_sprite = load("res://final_art/Grotesquelimbo_sadge_360.png")
 	customer_array.append(customer)
 	add_child(customer)
-	customer.initialize(customer_sprite, difficulty_level, patience_level, value, customer_array.size() - 1)
+	customer.initialize(customer_sprite, difficulty_level, patience_level, 32.0, value, customer_array.size() - 1)
 	%DingCustomer.play()
 	if customer_array.size() <= 4 and customer_timer.is_stopped() and !difficulty_queue.is_empty():
 		customer_timer.start()
