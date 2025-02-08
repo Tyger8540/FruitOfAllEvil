@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		moving_in = false
 		paused_on_screen = true
 		if is_charon:
-			%OnScreenTimer.start(5.0)
+			%OnScreenTimer.start(25.0)
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:

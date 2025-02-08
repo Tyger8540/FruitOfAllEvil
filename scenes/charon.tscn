@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://deyl37osklxet"]
+[gd_scene load_steps=8 format=3 uid="uid://deyl37osklxet"]
 
 [ext_resource type="Script" path="res://scripts/charon_boss.gd" id="1_7j0h7"]
 [ext_resource type="Script" path="res://scripts/charon_pathing.gd" id="2_jwt5x"]
-[ext_resource type="Texture2D" uid="uid://d26givsmpp58u" path="res://final_art/rsz_charonfull_boat_-_tester.png" id="3_6rfho"]
 [ext_resource type="Texture2D" uid="uid://dsur7a3g06ecg" path="res://final_art/charon_full_boat.png" id="3_ky87n"]
+[ext_resource type="Texture2D" uid="uid://83mxm87dreea" path="res://final_art/boat_back.png" id="3_lbkjg"]
 [ext_resource type="PackedScene" uid="uid://cy5nws6pu8ury" path="res://scenes/charon_customer.tscn" id="4_uo1a7"]
+[ext_resource type="Texture2D" uid="uid://d4hpx6yvu8rbi" path="res://final_art/charon_full_boat_no_back.png" id="5_0cwbg"]
 
 [sub_resource type="Curve2D" id="Curve2D_6w5sd"]
 _data = {
@@ -28,9 +29,9 @@ loop = false
 script = ExtResource("2_jwt5x")
 is_charon = true
 
-[node name="CharonFullBoat" type="Sprite2D" parent="Path2D/PathFollow2D"]
+[node name="BoatBack" type="Sprite2D" parent="Path2D/PathFollow2D"]
 position = Vector2(313.365, -89.6926)
-texture = ExtResource("3_6rfho")
+texture = ExtResource("3_lbkjg")
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(671, 65)
@@ -69,7 +70,7 @@ loop = false
 script = ExtResource("2_jwt5x")
 
 [node name="CharonCustomer" parent="Path2D4/PathFollow2D" instance=ExtResource("4_uo1a7")]
-position = Vector2(-521, -5)
+position = Vector2(-521, 4)
 
 [node name="Path2D5" type="Path2D" parent="."]
 position = Vector2(1421, 65)
@@ -109,6 +110,21 @@ script = ExtResource("2_jwt5x")
 
 [node name="CharonCustomer" parent="Path2D7/PathFollow2D" instance=ExtResource("4_uo1a7")]
 position = Vector2(99, -139)
+
+[node name="Path2D8" type="Path2D" parent="."]
+position = Vector2(390, 160)
+curve = SubResource("Curve2D_6w5sd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+position = Vector2(2123, -202)
+rotates = false
+loop = false
+script = ExtResource("2_jwt5x")
+is_charon = true
+
+[node name="CharonFullBoatNoBack" type="Sprite2D" parent="Path2D8/PathFollow2D"]
+position = Vector2(313.365, -89.6926)
+texture = ExtResource("5_0cwbg")
 
 [node name="CharonFullBoat" type="Sprite2D" parent="."]
 visible = false

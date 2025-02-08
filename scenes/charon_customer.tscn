@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cy5nws6pu8ury"]
 
 [ext_resource type="Script" path="res://scripts/charon_customer.gd" id="1_8shtn"]
-[ext_resource type="Texture2D" uid="uid://bsf31fmn7d04t" path="res://final_art/grotesquelimbo_ok_360.png" id="2_6e2rk"]
+[ext_resource type="Texture2D" uid="uid://b8b6hf1rf2kye" path="res://final_art/grotesquelimbo_sadge_360.png" id="2_7h746"]
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="3_61vco"]
 [ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="4_bo1m8"]
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="5_v3tci"]
@@ -22,7 +22,7 @@ script = ExtResource("1_8shtn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(40, 48)
-texture = ExtResource("2_6e2rk")
+texture = ExtResource("2_7h746")
 
 [node name="CustomerButton" type="Button" parent="."]
 offset_left = -68.0
