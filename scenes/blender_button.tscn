@@ -14,7 +14,6 @@ offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1o4xf")
 icon = ExtResource("2_tq5sm")
 icon_alignment = 1
-expand_icon = true
 script = ExtResource("1_7psl8")
 appliance_type = 2
 num_slots = 2

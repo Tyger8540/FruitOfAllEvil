@@ -199,55 +199,38 @@ offset_top = 468.0
 offset_right = -888.0
 offset_bottom = 540.0
 
-[node name="ChoppingBoardButton" parent="." instance=ExtResource("13_0ruly")]
-offset_left = 16.0
-offset_right = 160.0
+[node name="ApplianceGridContainer" type="GridContainer" parent="."]
+offset_left = -275.0
+offset_top = -167.0
+offset_right = 281.0
+offset_bottom = 433.0
+columns = 4
 
-[node name="ChoppingBoardButton2" parent="." instance=ExtResource("13_0ruly")]
-visible = false
-offset_left = 150.0
-offset_right = 222.0
+[node name="BlenderButton" parent="ApplianceGridContainer" instance=ExtResource("14_ky63j")]
+layout_mode = 2
+
+[node name="BlenderButton2" parent="ApplianceGridContainer" instance=ExtResource("14_ky63j")]
+layout_mode = 2
+
+[node name="ChoppingBoardButton" parent="ApplianceGridContainer" instance=ExtResource("13_0ruly")]
+layout_mode = 2
+
+[node name="ChoppingBoardButton2" parent="ApplianceGridContainer" instance=ExtResource("13_0ruly")]
+layout_mode = 2
 index = 1
 
-[node name="ChoppingBoardButton3" parent="." instance=ExtResource("13_0ruly")]
-visible = false
-offset_top = 150.0
-offset_bottom = 222.0
+[node name="BlenderButton3" parent="ApplianceGridContainer" instance=ExtResource("14_ky63j")]
+layout_mode = 2
+
+[node name="BlenderButton4" parent="ApplianceGridContainer" instance=ExtResource("14_ky63j")]
+layout_mode = 2
+
+[node name="ChoppingBoardButton3" parent="ApplianceGridContainer" instance=ExtResource("13_0ruly")]
+layout_mode = 2
 index = 2
 
-[node name="ChoppingBoardButton4" parent="." instance=ExtResource("13_0ruly")]
-visible = false
-offset_left = 150.0
-offset_top = 150.0
-offset_right = 222.0
-offset_bottom = 222.0
-index = 3
-
-[node name="BlenderButton" parent="." instance=ExtResource("14_ky63j")]
-visible = false
-offset_left = -150.0
-offset_right = -78.0
-
-[node name="BlenderButton2" parent="." instance=ExtResource("14_ky63j")]
-visible = false
-offset_left = -300.0
-offset_right = -228.0
-index = 1
-
-[node name="BlenderButton3" parent="." instance=ExtResource("14_ky63j")]
-visible = false
-offset_left = -150.0
-offset_top = 150.0
-offset_right = -78.0
-offset_bottom = 222.0
-index = 2
-
-[node name="BlenderButton4" parent="." instance=ExtResource("14_ky63j")]
-visible = false
-offset_left = -300.0
-offset_top = 150.0
-offset_right = -228.0
-offset_bottom = 222.0
+[node name="ChoppingBoardButton4" parent="ApplianceGridContainer" instance=ExtResource("13_0ruly")]
+layout_mode = 2
 index = 3
 
 [node name="AppleButton" parent="." instance=ExtResource("15_sgfmh")]
@@ -539,14 +522,6 @@ texture = SubResource("CompressedTexture2D_3kkr7")
 visible = false
 position = Vector2(-165, 31)
 texture = SubResource("CompressedTexture2D_53e0q")
-
-[node name="GridContainer" type="GridContainer" parent="."]
-visible = false
-offset_left = -753.0
-offset_top = -179.0
-offset_right = 747.0
-offset_bottom = 421.0
-columns = 4
 
 [connection signal="toggled" from="ToggleButton" to="ToggleButton" method="_on_toggled"]
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
