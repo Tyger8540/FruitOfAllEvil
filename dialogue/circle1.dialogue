@@ -23,6 +23,31 @@ set section = "C1_level_charon"
 set get_tree().change_scene_to_file("res://scenes/circle1.tscn")
 => END
 
+~ C1_level_virgil1
+# additional tutorialization, at the START of the stand gameplay
+Virgil: Pardon my intrusion, destined traveler.
+Virgil: Since you have purchased the blender from me, I suppose I owe you a piece of advice.
+Virgil: Some customers will desire a fruit in a liquid format, what you call a "smoothie".
+Virgil: Some customers will want a smoothie of two fruits mixed together.
+Virgil: Some customers will even want a smoothie, sliced fruit, and a whole fruit all at once.
+Virgil: Be prepared to prepare your customer's order as efficiently as possible.
+Virgil: I hear the faster you serve, the more they give in return.
+Virgil: Until next time, destined traveler.
+
+~ C1_level_virgil2
+# THE FIRST TIME THE UPGRADE / VIRGIL'S RENTAL STAND is introduced, after round complete
+Virgil: Oh, I have returned, destined traveler!
+Virgil: You see, I am quite lonely  at my stand, waiting for you to serve all these customers...
+Virgil: So I have decided to open up a special stand, exclusively for you!
+Virgil: Whenever you get the chance to take a break, I'll be here to offer you some exquisite deals.
+Virgil: These deals can upgrade your equipment, fruit stand, you name it...
+Virgil: ...of course, for a small fee...
+Virgil: ...and for a limited time.
+Virgil: These effects shall only last until you finish up for the day, so don't get too attached!
+Virgil: Oh, and just a reminder: disatisfied customers may leave disgruntled and damage your stand.
+Virgil: I, of course, shall repair your cart at the end of the day...
+Virgil: And yes, for a small fee.
+
 ~ C1_level_charon
 # intro text, when charon first appears on screen
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
