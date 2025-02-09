@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 	if State.dialogue_ready:
 		handle_input()
 		State.dialogue_ready = false
-		print("handling input")
 	#if State.location == "intro" and not intro_started and State.section == "C0_intro":
 		#handle_input()
 		#intro_started = true
@@ -45,6 +44,10 @@ func handle_input() -> void:
 				balloon = CUTSCENE_BALLOON.instantiate()
 			else:
 				return
+		"boss":
+			match State.next_boss:
+				"Charon":
+					pass
 		"market":
 			balloon = FARMERS_MARKET_BALLOON.instantiate()
 			match State.vendor:

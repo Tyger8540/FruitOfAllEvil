@@ -2,6 +2,10 @@ extends PathFollow2D
 
 @export var is_charon: bool
 @export var customer_index: int
+@export var customer_position: Vector2
+@export var charon: CharonBoss
+
+const CHARON_CUSTOMER_SCENE = preload("res://scenes/charon_customer.tscn")
 
 var speed := 0.2
 var paused_on_screen := false
@@ -13,6 +17,7 @@ var moving_in := false
 func _ready() -> void:
 	SignalManager.charon_on_screen_timer_ended.connect(on_screen_timeout)
 	SignalManager.charon_off_screen_timer_ended.connect(off_screen_timeout)
+	SignalManager.charon_started.connect(create_customer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,9 +56,17 @@ func off_screen_timeout() -> void:
 	moving_in = true
 
 
-func create_customer() -> void:
+func create_customer(customer_indices: Array[int]) -> void:
+	if is_charon:
+		return
+	
 	# Creates a customer at this path
-	pass
+	if customer_index in customer_indices:
+		var customer = CHARON_CUSTOMER_SCENE.instantiate()
+		customer.position = customer_position
+		add_child(customer)
+		charon.customers.append(customer)
+		SignalManager.charon_customer_created.emit()
 
 
 func _on_on_screen_timer_timeout() -> void:

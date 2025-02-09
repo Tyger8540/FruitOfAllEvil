@@ -53,6 +53,7 @@ Virgil: And yes, for a small fee.
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
 Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
+set boss_queued = true
 - Continue => C1_level_charon2
 
 ~ C1_level_charon2

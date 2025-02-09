@@ -196,20 +196,24 @@ columns = 2
 
 [node name="ChoppingBoardButton2" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("13_0ruly")]
 visible = false
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 
 [node name="ChoppingBoardButton3" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("13_0ruly")]
 visible = false
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 index = 1
 
 [node name="ChoppingBoardButton4" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("13_0ruly")]
 visible = false
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 index = 2
 
 [node name="ChoppingBoardButton5" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("13_0ruly")]
 visible = false
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 index = 3
 
