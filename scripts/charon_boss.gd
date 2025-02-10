@@ -78,7 +78,7 @@ func start_boss_fight() -> void:
 	
 	for customer in customers:
 		# TODO Make the difficulties and stuff revolve around the wave number
-		var rand_difficulty := randi_range(1, 12)
+		var rand_difficulty := randi_range(12, 12)
 		var customer_sprite: Texture2D
 		var i = randi_range(1, 2)
 		if i == 1:

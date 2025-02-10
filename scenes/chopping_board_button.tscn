@@ -17,6 +17,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_qv6kk")
 icon = ExtResource("1_l64tn")
 icon_alignment = 1
 vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_s00hn")
 appliance_type = 1
 num_slots = 1

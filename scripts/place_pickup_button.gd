@@ -10,8 +10,8 @@ enum Appliance_Type {
 }
 
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")
-const BLENDER_OPEN = preload("res://art/other/Blender Open.png")
-const BLENDER_EMPTY = preload("res://art/other/Blender Empty.png")
+const BLENDER_OPEN = preload("res://final_art/Blender.png")
+const BLENDER_EMPTY = preload("res://final_art/Blender.png")
 const CUTTING_BOARD = preload("res://art/other/Cutting Board.png")
 const BLEND_BUTTON = preload("res://art/other/Blend Button.png")
 const CHOP_BUTTON = preload("res://art/other/Chop Button.png")
