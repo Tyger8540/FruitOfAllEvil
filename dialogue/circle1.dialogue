@@ -20,7 +20,7 @@ Virgil grinned. "Not even if we pay a fee?"
 Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
 set location = "level"
 set section = "C1_level_charon"
-set get_tree().change_scene_to_file("res://scenes/circle1.tscn")
+set get_tree().change_scene_to_file("res://scenes/circle_one.tscn")
 => END
 
 ~ C1_level_virgil1
@@ -53,8 +53,11 @@ Virgil: And yes, for a small fee.
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
 Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
+set location = "boss"
+set next_boss = "Charon"
 set boss_queued = true
-- Continue => C1_level_charon2
+=> END
+#- Continue => C1_level_charon2
 
 ~ C1_level_charon2
 # level complete

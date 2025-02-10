@@ -18,14 +18,15 @@ func _ready() -> void:
 	SignalManager.charon_on_screen_timer_ended.connect(on_screen_timeout)
 	SignalManager.charon_off_screen_timer_ended.connect(off_screen_timeout)
 	SignalManager.charon_started.connect(create_customer)
+	SignalManager.boss_fight_started.connect(on_boss_fight_started)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("space"):
-		moving_in = true
-		progress_ratio = 0.0
-		paused_off_screen = false
+	#if Input.is_action_just_pressed("space"):
+		#moving_in = true
+		#progress_ratio = 0.0
+		#paused_off_screen = false
 	
 	if moving_in and progress_ratio >= 0.499:
 		progress_ratio = 0.5
@@ -67,6 +68,12 @@ func create_customer(customer_indices: Array[int]) -> void:
 		add_child(customer)
 		charon.customers.append(customer)
 		SignalManager.charon_customer_created.emit()
+
+
+func on_boss_fight_started() -> void:
+	moving_in = true
+	progress_ratio = 0.0
+	paused_off_screen = false
 
 
 func _on_on_screen_timer_timeout() -> void:

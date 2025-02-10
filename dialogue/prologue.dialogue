@@ -51,16 +51,16 @@ set get_tree().change_scene_to_file("res://scenes/prologue.tscn")
 Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
 set location = "market"
 set section = "C0_market"
-set vendor = "Virgil"
+set vendor = "Virgil"  # TODO This should not be Virgil in full implementation, as you do not start at his stand but at the farmers market entrance, not yet implemented
 set State.level_defeated = false
-- Continue => C0_market
+- Continue
+	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+	=> END
 
 ~ C0_market
 if location == "market" and vendor == "Virgil"
-	- Virgil's Stand
-		set section = "market_virgil_intro"
-		set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
-		=> END
+	set section = "market_virgil_intro"
+	=> market_virgil_intro
 - Virgil's Stand => market_virgil_intro
 # technically the option below SHOULD BE UNLOCKED after you complete market_virgil_end2
 - Onward to Next Circle => market_end

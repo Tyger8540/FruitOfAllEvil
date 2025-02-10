@@ -47,7 +47,7 @@ func handle_input() -> void:
 		"boss":
 			match State.next_boss:
 				"Charon":
-					pass
+					return
 		"market":
 			balloon = FARMERS_MARKET_BALLOON.instantiate()
 			match State.vendor:

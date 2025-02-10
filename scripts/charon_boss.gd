@@ -78,6 +78,7 @@ func start_boss_fight() -> void:
 		else:
 			customer_sprite = load("res://final_art/Grotesquelimbo_sadge_360.png")
 		customer.initialize(customer_sprite, rand_difficulty, 1, 62.0, 0, 0)  # TODO CHANGE FROM ALWAYS 62.0
+	SignalManager.boss_fight_started.emit()
 
 
 func on_customer_created() -> void:
