@@ -15,3 +15,5 @@ signal charon_on_screen_timer_ended
 signal charon_off_screen_timer_ended
 signal charon_started
 signal charon_customer_created
+signal charon_customer_finished
+signal charon_defeated

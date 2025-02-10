@@ -12,20 +12,22 @@ _data = {
 }
 point_count = 3
 
-[node name="Charon Boss" type="Node2D"]
+[node name="Charon Boss" type="Node2D" node_paths=PackedStringArray("charon_path")]
 script = ExtResource("1_7j0h7")
+charon_path = NodePath("Path2D/PathFollow2D")
 boss_name = "Charon"
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(390, 160)
 curve = SubResource("Curve2D_6w5sd")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("charon")]
 position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 is_charon = true
+charon = NodePath("../..")
 
 [node name="BoatBack" type="Sprite2D" parent="Path2D/PathFollow2D"]
 position = Vector2(313.365, -89.6926)
@@ -112,12 +114,13 @@ charon = NodePath("../..")
 position = Vector2(390, 160)
 curve = SubResource("Curve2D_6w5sd")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8" node_paths=PackedStringArray("charon")]
 position = Vector2(2123, -202)
 rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 is_charon = true
+charon = NodePath("../..")
 
 [node name="CharonFullBoatNoBack" type="Sprite2D" parent="Path2D8/PathFollow2D"]
 position = Vector2(313.365, -89.6926)
@@ -137,5 +140,10 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
+[node name="WaveIntermissionTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
 [connection signal="timeout" from="OnScreenTimer" to="Path2D/PathFollow2D" method="_on_on_screen_timer_timeout"]
 [connection signal="timeout" from="OffScreenTimer" to="Path2D/PathFollow2D" method="_on_off_screen_timer_timeout"]
+[connection signal="timeout" from="WaveIntermissionTimer" to="." method="_on_wave_intermission_timer_timeout"]

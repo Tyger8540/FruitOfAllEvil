@@ -37,7 +37,9 @@ func _process(delta: float) -> void:
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:
-			%OffScreenTimer.start(5.0)
+			if charon.wave_in_progress:
+				# Only wait off screen if the wave is still in progress
+				%OffScreenTimer.start(5.0)
 	
 	if not paused_on_screen and not paused_off_screen:
 		loop_movement(delta)
@@ -74,6 +76,10 @@ func on_boss_fight_started() -> void:
 	moving_in = true
 	progress_ratio = 0.0
 	paused_off_screen = false
+
+
+func start_on_screen_timer(time: float) -> void:
+	%OnScreenTimer.start(time)
 
 
 func _on_on_screen_timer_timeout() -> void:

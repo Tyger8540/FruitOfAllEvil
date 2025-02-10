@@ -3,27 +3,34 @@ extends Boss
 
 @export var customers: Array[Customer]
 @export var num_waves: int = 5
+@export var charon_path: PathFollow2D
 
 var num_customers_spawned: int = 0
 var num_customers: int = 6
 var customers_spawning: bool = false
 var new_wave_queued: bool = false
 var cur_wave: int = 1
+var wave_in_progress: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.charon_customer_created.connect(on_customer_created)
+	SignalManager.charon_customer_finished.connect(on_customer_finished)
 	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("space"):
-		#start_boss_fight()
+	if wave_in_progress and customers.size() == 0:
+		wave_in_progress = false
+		charon_path.start_on_screen_timer(0.01)
+		%WaveIntermissionTimer.start(10.0)
+	
 	if State.boss_queued or new_wave_queued:
 		if cur_wave > num_waves:
 			new_wave_queued = false
+			State.dialogue_ready = true
 		elif not customers_spawning:
 			customers_spawning = true
 			var customer_indices: Array[int]
@@ -62,6 +69,7 @@ func _process(delta: float) -> void:
 		elif num_customers_spawned == num_customers:
 			State.boss_queued = false
 			new_wave_queued = false
+			customers_spawning = false
 			start_boss_fight()
 
 
@@ -78,6 +86,7 @@ func start_boss_fight() -> void:
 		else:
 			customer_sprite = load("res://final_art/Grotesquelimbo_sadge_360.png")
 		customer.initialize(customer_sprite, rand_difficulty, 1, 62.0, 0, 0)  # TODO CHANGE FROM ALWAYS 62.0
+	wave_in_progress = true
 	SignalManager.boss_fight_started.emit()
 
 
@@ -85,7 +94,16 @@ func on_customer_created() -> void:
 	num_customers_spawned += 1
 
 
+func on_customer_finished(customer: Customer) -> void:
+	customers.erase(customer)
+	customer.queue_free()
+
+
 func reset_customers() -> void:
 	num_customers_spawned = 0
 	cur_wave += 1
 	new_wave_queued = true
+
+
+func _on_wave_intermission_timer_timeout() -> void:
+	reset_customers()

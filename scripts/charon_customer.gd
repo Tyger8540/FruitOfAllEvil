@@ -20,3 +20,9 @@ func _process(delta: float) -> void:
 # Don't really need this since it just calls its parent's functionality
 func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:
 	super(texture, difficulty_level, patience_level, patience_time, value, new_customer_index)
+
+
+func die() -> void:
+	SignalManager.charon_customer_finished.emit(self)
+	#queue_free()
+	
