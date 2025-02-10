@@ -2,19 +2,19 @@ class_name FarmersMarketCamera
 extends Camera2D
 
 
-const PAN_SPEED = 1152.0
-const PAN_DISTANCE = 1152.0
+const PAN_SPEED = 1920.0
+const PAN_DISTANCE = 1920.0
+
+@export var num_vendors:= 1
 
 var new_position: Vector2
 var position_index:= 0
-var num_vendors:= 3
 var max_index:= num_vendors - 1
 
 var sidescrolling:= false
 
 @onready var left_sidescroll_button: SidescrollButton = $"../UI/LeftSidescrollButton"
 @onready var right_sidescroll_button: SidescrollButton = $"../UI/RightSidescrollButton"
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -59,6 +59,12 @@ func set_sidescroll_button_visibility() -> void:
 		right_sidescroll_button.visible = false
 	else:
 		right_sidescroll_button.visible = true
+
+
+func update_num_vendors(_num_vendors: int) -> void:
+	num_vendors = _num_vendors
+	max_index = num_vendors - 1
+	set_sidescroll_button_visibility()
 
 
 func on_sidescrolled_left() -> void:

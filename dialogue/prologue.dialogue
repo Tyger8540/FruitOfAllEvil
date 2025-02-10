@@ -28,7 +28,7 @@ set get_tree().change_scene_to_file("res://scenes/prologue.tscn")
 # these do not have to be all integrated, but I'm including them just so we have text
 # AFTER a 10/20 seconds, IF THE PLAYER DOES NOT MOVE CURSOR TO BRING FRUIT TO CUSTOMER
 ???: Pssst. It seems you are caught in a bind.
-???: Move your mouse cursor, click and hold onto the fruit, and drag it to your devilish customers!
+???: Move your mouse cursor, click onto the fruit, and drag it to your devilish customers!
 ???: What is this "cursor" that I speak of? 
 ???: Hmmm, let's not break that fourth wall...
 

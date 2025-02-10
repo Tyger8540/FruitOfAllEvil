@@ -91,3 +91,11 @@ var grabbable_grab_type:= Enums.Grabbable_Type.NONE
 var money:= 0
 
 var upgrade_level = {Enums.Upgrade_Type.MORE_PATIENCE: 0, Enums.Upgrade_Type.CHOPPING_BOARD: 0, Enums.Upgrade_Type.CHOP_SPEED: 0, Enums.Upgrade_Type.BLENDER: 0, Enums.Upgrade_Type.BLEND_SPEED: 0}
+
+const VIRGIL_TEST_512 = preload("res://final_art/Virgil_Test_512.png")
+const OVID_512 = preload("res://final_art/Ovid_512.png")
+
+var vendor_sprites: Dictionary = {
+	"Virgil": VIRGIL_TEST_512,
+	"Ovid": OVID_512,
+}

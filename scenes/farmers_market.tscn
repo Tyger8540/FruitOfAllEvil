@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=8 format=3 uid="uid://b16mrjlcqcw2s"]
 
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="1_qn2do"]
 [ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
 [ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
-[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="3_d87nm"]
-[ext_resource type="Texture2D" uid="uid://lr64urssr721" path="res://final_art/Virgil_Test_512.png" id="4_7tgrj"]
 [ext_resource type="PackedScene" uid="uid://b6al4vk5kbell" path="res://scenes/sidescroll_button.tscn" id="4_be2uh"]
+[ext_resource type="PackedScene" uid="uid://bi8oa6h4bi3il" path="res://scenes/vendor_controller.tscn" id="4_htn5s"]
+[ext_resource type="Texture2D" uid="uid://bv0m8nnkexs2d" path="res://final_art/Sidescroll_arrow_left.png" id="6_o0jw3"]
+[ext_resource type="Texture2D" uid="uid://c2nk5q4x8qs2o" path="res://final_art/Sidescroll_arrow_right.png" id="7_7b3oy"]
 
 [node name="FarmersMarket" type="Node2D"]
 
@@ -15,35 +16,14 @@
 position = Vector2(-1, 6)
 
 [node name="FarmersMarketCamera" parent="." instance=ExtResource("2_ial2i")]
+unique_name_in_owner = true
 
-[node name="FarmersMarketCamera2" parent="." instance=ExtResource("2_ial2i")]
-visible = false
-position = Vector2(1152, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_7tgrj")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(1152, 0)
-scale = Vector2(6, 4)
-texture = ExtResource("3_d87nm")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(2304, 0)
-scale = Vector2(6, 4)
-texture = ExtResource("3_d87nm")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(3456, 0)
-scale = Vector2(6, 4)
-texture = ExtResource("3_d87nm")
+[node name="VendorController" parent="." instance=ExtResource("4_htn5s")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="LeftSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+icon = ExtResource("6_o0jw3")
 
 [node name="RightSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
 anchors_preset = 11
@@ -52,4 +32,5 @@ anchor_right = 1.0
 offset_left = -136.0
 offset_right = 0.0
 grow_horizontal = 0
+icon = ExtResource("7_7b3oy")
 direction = 3

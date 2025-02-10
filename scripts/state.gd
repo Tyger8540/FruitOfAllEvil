@@ -10,4 +10,7 @@ var level_defeated: bool = false
 
 var circle_num: int = 0
 var next_boss: String = "Charon"
-var boss_queued: bool = true
+var boss_queued: bool = false
+
+var next_vendor: String = ""
+var previous_vendor: String = ""
