@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://kxklfpqb7v32"]
+[gd_scene load_steps=9 format=3 uid="uid://kxklfpqb7v32"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_waxj0"]
-[ext_resource type="Texture2D" uid="uid://bjmbu3x6ewmoq" path="res://art/customers/Demon1.png" id="2_bw2vp"]
-[ext_resource type="Texture2D" uid="uid://c0hxwbhw0s8f2" path="res://art/customers/Demon2.png" id="3_2hio7"]
-[ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="4_agvst"]
-[ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="5_i67ji"]
+[ext_resource type="Texture2D" uid="uid://yk6wou7t43aa" path="res://final_art/Virgil_Test_360.png" id="2_ssyl2"]
+[ext_resource type="Texture2D" uid="uid://cavu3a3ei5o0k" path="res://final_art/Charon_Solo_360h.png" id="3_2nytx"]
+[ext_resource type="Texture2D" uid="uid://b0urjdne3orsw" path="res://final_art/Grape.png" id="4_i8ch6"]
+[ext_resource type="Texture2D" uid="uid://cl5ap3r1bgmwj" path="res://final_art/Orange.png" id="5_7sbib"]
+[ext_resource type="Texture2D" uid="uid://44ehebn7lptd" path="res://final_art/Banana.png" id="6_sns3k"]
+[ext_resource type="Texture2D" uid="uid://bhy425qyqicob" path="res://final_art/Blueberry.png" id="7_gqobx"]
+[ext_resource type="Texture2D" uid="uid://c1x5g6576ls47" path="res://final_art/Apple.png" id="8_5f5en"]
 
 [node name="StartScreen" type="Node2D"]
 
@@ -16,6 +19,67 @@ offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 324.0
 script = ExtResource("1_waxj0")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 288.0
+offset_right = 702.0
+offset_bottom = 648.0
+texture = ExtResource("2_ssyl2")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 288.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_2nytx")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 891.0
+offset_top = 39.0
+offset_right = 955.0
+offset_bottom = 103.0
+texture = ExtResource("4_i8ch6")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 64.0
+offset_right = 312.0
+offset_bottom = 128.0
+texture = ExtResource("5_7sbib")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 149.0
+offset_right = 480.0
+offset_bottom = 213.0
+texture = ExtResource("6_sns3k")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 84.0
+offset_right = 647.0
+offset_bottom = 148.0
+texture = ExtResource("7_gqobx")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 159.0
+offset_right = 831.0
+offset_bottom = 223.0
+texture = ExtResource("8_5f5en")
+stretch_mode = 2
 
 [node name="RestartButton" type="Button" parent="Panel"]
 layout_mode = 0
@@ -42,43 +106,9 @@ offset_top = 200.0
 offset_right = 1025.0
 offset_bottom = 337.0
 theme_override_font_sizes/font_size = 48
-text = "Fruit of All Evil Demo"
+text = "Fruit of All Evil Playtest #2"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 334.0
-offset_right = 576.0
-offset_bottom = 398.0
-texture = ExtResource("2_bw2vp")
-
-[node name="TextureRect" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 334.0
-offset_right = 616.0
-offset_bottom = 398.0
-texture = ExtResource("3_2hio7")
-
-[node name="TextureRect3" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 540.0
-offset_top = 398.0
-offset_right = 572.0
-offset_bottom = 430.0
-texture = ExtResource("4_agvst")
-stretch_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 580.0
-offset_top = 398.0
-offset_right = 612.0
-offset_bottom = 430.0
-texture = ExtResource("5_i67ji")
-stretch_mode = 2
 
 [connection signal="button_up" from="Panel/RestartButton" to="Panel" method="_on_restart_button_button_up"]
 [connection signal="button_up" from="Panel/QuitButton" to="Panel" method="_on_quit_button_button_up"]

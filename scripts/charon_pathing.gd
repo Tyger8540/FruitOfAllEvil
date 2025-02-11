@@ -33,13 +33,13 @@ func _process(delta: float) -> void:
 		moving_in = false
 		paused_on_screen = true
 		if is_charon:
-			%OnScreenTimer.start(25.0)
+			%OnScreenTimer.start(randf_range(15.0, 25.0))
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:
 			if charon.wave_in_progress:
 				# Only wait off screen if the wave is still in progress
-				%OffScreenTimer.start(5.0)
+				%OffScreenTimer.start(randf_range(5.0, 15.0))
 	elif paused_off_screen and not is_charon and get_child_count() > 0 and not get_child(0) in charon.customers:
 		get_child(0).queue_free()
 	

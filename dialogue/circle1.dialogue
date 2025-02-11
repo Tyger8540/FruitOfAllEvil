@@ -76,11 +76,24 @@ Charon: You have earned the right to pass through.
 Charon: Come aboard my boat, and I shall bring you across the river.
 Charon: And regarding Virgil...
 Charon: Let us hope you do not meet the same fates as the previous ones he brought over.
-- Continue => C1_market
+- Continue
+	set location = "market"
+	set section = "C1_market"
+	set level_defeated = false
+	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+	=> END
 
 ~ C1_market
-- Virgil's Stand => market_virgil_intro
-- Ovid's Stand => market_ovid_default
+- Virgil's Stand
+	set location = "market_virgil_intro"
+	set vendor = "Virgil"
+#	=> END
+	=> market_virgil_intro
+- Ovid's Stand
+	set location = "market_ovid_default"
+	set vendor = "Ovid"
+#	=> END
+	=> market_ovid_default
 - Onward to Next Circle => market_end
 
 ~ market_end
@@ -140,7 +153,10 @@ Virgil: Thank you for your patronage.
 
 ~ market_virgil_end
 Virgil: Until next time, destined traveler.
-- Continue => C1_market
+- Continue
+	set vendor = ""
+	set section = "C1_market"
+	=> C1_market
 
 ~ market_ovid_default
 Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
@@ -180,4 +196,7 @@ Ovid: And your payments shall transform me!
 
 ~ market_ovid_end
 Ovid: Safe travels, I hope you soar through the depths of Hell...
-- Continue => C1_market
+- Continue
+	set vendor = ""
+	set section = "C1_market"
+	=> C1_market

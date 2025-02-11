@@ -28,6 +28,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if State.vendor == "Virgil" and position_index != 0:
+		position_index = 0
+		set_camera_position(Vector2(0.0, 0.0))
+	elif State.vendor == "Ovid" and position_index != 1:
+		position_index = 1
+		set_camera_position(Vector2(PAN_DISTANCE, 0.0))
+	
 	if position == new_position:
 		if sidescrolling:
 			# Finished sidescrolling, set buttons to correct visibility

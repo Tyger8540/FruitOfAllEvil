@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpu76gg5x622u"]
+
+[ext_resource type="Texture2D" uid="uid://4uuctwhhm3uo" path="res://final_art/placeholder/prologue_art1.png" id="1_28tjr"]
+[ext_resource type="Script" path="res://scripts/intro_falling_cutscene.gd" id="1_ylris"]
+[ext_resource type="Texture2D" uid="uid://de1h1avbxgm48" path="res://final_art/placeholder/prologue_art2.png" id="2_isnyl"]
+[ext_resource type="Texture2D" uid="uid://f4slctppcpdu" path="res://final_art/placeholder/prologue_art3.png" id="3_f6d64"]
+[ext_resource type="Texture2D" uid="uid://irjoraef7wvd" path="res://final_art/placeholder/prologue_art4.png" id="4_wbqcv"]
+[ext_resource type="Texture2D" uid="uid://b78d1uwh6lps6" path="res://final_art/placeholder/prologue_art5.png" id="5_1umbc"]
+[ext_resource type="Texture2D" uid="uid://o6sddjmnts2o" path="res://final_art/placeholder/prologue_art6.png" id="6_secvd"]
+[ext_resource type="Texture2D" uid="uid://d81ucqkochpd" path="res://final_art/placeholder/prologue_art7.png" id="7_iihiw"]
+[ext_resource type="Texture2D" uid="uid://ce6usbxjngnrx" path="res://final_art/placeholder/prologue_art8.png" id="8_d231r"]
+
+[node name="IntroFallingCutscene" type="Panel"]
+script = ExtResource("1_ylris")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="PrologueArt1" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_28tjr")
+
+[node name="PrologueArt2" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_isnyl")
+
+[node name="PrologueArt3" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_f6d64")
+
+[node name="PrologueArt4" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_wbqcv")
+
+[node name="PrologueArt5" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_1umbc")
+
+[node name="PrologueArt6" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_secvd")
+
+[node name="PrologueArt7" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_iihiw")
+
+[node name="PrologueArt8" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_d231r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1252.0
+offset_top = 816.0
+offset_right = 1891.0
+offset_bottom = 861.0
+theme_override_font_sizes/font_size = 32
+text = "Press Space or Mouse Button to Continue"
