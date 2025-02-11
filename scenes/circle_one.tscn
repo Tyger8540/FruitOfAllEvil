@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://8ry7vsq3tgij"]
+[gd_scene load_steps=38 format=3 uid="uid://8ry7vsq3tgij"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5ld1y"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_57ctm"]
@@ -34,6 +34,8 @@
 [ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="32_adxfo"]
 [ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="33_f8f60"]
 [ext_resource type="PackedScene" uid="uid://deyl37osklxet" path="res://scenes/charon.tscn" id="34_a82wn"]
+[ext_resource type="Texture2D" uid="uid://c4x0jd6j5dm8h" path="res://final_art/Waves.png" id="35_2jchb"]
+[ext_resource type="Texture2D" uid="uid://5e4mfftlggrp" path="res://final_art/Clouds(Heavy).png" id="36_ddg8j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68bps"]
 
@@ -43,6 +45,11 @@ script = ExtResource("1_5ld1y")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="DialogueController" parent="." instance=ExtResource("2_57ctm")]
+
+[node name="Clouds(heavy)" type="Sprite2D" parent="."]
+position = Vector2(0, -313)
+scale = Vector2(1.50556, 1.50556)
+texture = ExtResource("36_ddg8j")
 
 [node name="ShopManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -101,9 +108,13 @@ text = "Start Next Day"
 autowrap_mode = 1
 script = ExtResource("5_i3bld")
 
+[node name="Clouds(heavy)2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("36_ddg8j")
+
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(615, -230)
+position = Vector2(1040, -230)
 script = ExtResource("6_cdtph")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
@@ -114,6 +125,7 @@ one_shot = true
 position = Vector2(-960, -539)
 
 [node name="BrownBackground" type="TextureRect" parent="."]
+visible = false
 offset_left = 1199.0
 offset_top = 4597.0
 offset_right = 2351.0
@@ -122,10 +134,18 @@ rotation = 3.14159
 scale = Vector2(2.16, 2.6)
 texture = ExtResource("7_ns6bw")
 
+[node name="Waves" type="Sprite2D" parent="."]
+position = Vector2(0, 180)
+texture = ExtResource("35_2jchb")
+
+[node name="Waves2" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+texture = ExtResource("35_2jchb")
+
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_nr4x3")
-num_days = 1
+num_days = 3
 
 [node name="TrashButton" parent="." instance=ExtResource("9_gvi8i")]
 offset_left = -960.0
@@ -367,6 +387,7 @@ layout_mode = 2
 texture = ExtResource("22_yuhif")
 
 [node name="AppleButton2" parent="FruitHBox" instance=ExtResource("12_1yb5l")]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("13_hmdw7")
 stretch_mode = 5

@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	$Money.text = "Money: " + str(Globals.money)
-	$Day.text = "Day: " + str(%WaveManager.cur_day)
+	$Day.text = "Wave: " + str(%WaveManager.cur_day)
 
 
 func on_life_lost() -> void:

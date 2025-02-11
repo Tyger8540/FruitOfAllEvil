@@ -20,7 +20,8 @@ Virgil grinned. "Not even if we pay a fee?"
 Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
 set circle_num = 1
 set location = "level"
-set section = "C1_level_charon"
+set section = "C1_level_virgil1"
+set cutscene_speaker = "Virgil"
 set get_tree().change_scene_to_file("res://scenes/circle_one.tscn")
 => END
 
@@ -34,6 +35,12 @@ Virgil: Some customers will even want a smoothie, sliced fruit, and a whole frui
 Virgil: Be prepared to prepare your customer's order as efficiently as possible.
 Virgil: I hear the faster you serve, the more they give in return.
 Virgil: Until next time, destined traveler.
+set location = "level"
+set section = "C1_level_virgil2"
+set dialogue_ready = false
+set cutscene_speaker = "Virgil"
+set SignalManager.tutorial_ended.emit()
+=> END
 
 ~ C1_level_virgil2
 # THE FIRST TIME THE UPGRADE / VIRGIL'S RENTAL STAND is introduced, after round complete
@@ -48,15 +55,18 @@ Virgil: These effects shall only last until you finish up for the day, so don't 
 Virgil: Oh, and just a reminder: disatisfied customers may leave disgruntled and damage your stand.
 Virgil: I, of course, shall repair your cart at the end of the day...
 Virgil: And yes, for a small fee.
+set section = "C1_level_charon"
+set cutscene_speaker = "Charon"
+=> END
 
 ~ C1_level_charon
 # intro text, when charon first appears on screen
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
 Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
-set location = "level"
 set section = "C1_level_charon2"
 set boss_queued = true
+set cutscene_speaker = "Charon"
 => END
 #- Continue => C1_level_charon2
 

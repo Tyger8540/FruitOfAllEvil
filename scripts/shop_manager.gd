@@ -17,6 +17,12 @@ func on_day_end() -> void:
 		State.dialogue_ready = true
 		return
 		# TODO make this check for which circle you are in
+	elif State.circle_num == 0:
+		%WaveManager.start_day()
+		return
+	# CHECKS FOR WHEN THE INTRODUCTION TO THE SHOP HAPPENS
+	if %WaveManager.cur_day == 1 and State.circle_num == 1:
+		State.dialogue_ready = true
 	var upgrades_indices_picked: Array[int]
 	for i in range(0, 4):
 		var r = randi_range(0, Enums.Upgrade_Type.size() - 2)  # random int that gets an upgrade that is not NONE

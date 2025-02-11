@@ -38,7 +38,7 @@ func check_completed() -> void:
 		if !checkmarks[i].visible:
 			return
 	# the for loop finished, so everything was checked off
-	%CoinGet.play()
+	#%CoinGet.play()
 	start_leave_sequence()
 
 
@@ -58,7 +58,7 @@ func start_leave_sequence() -> void:
 	else:
 		var i = randi_range(0, damage_strings.size() - 1)
 		$Panel/Label.text = damage_strings[i]
-	$Panel/Label.visible = true
+	#$Panel/Label.visible = true
 	$LeaveTimer.start()
 
 

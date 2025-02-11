@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b404ka0y0mvfw"]
+[gd_scene load_steps=36 format=3 uid="uid://b404ka0y0mvfw"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_4h2xc"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_qxvf6"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="32_j21x4"]
 [ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="33_882y8"]
 [ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="34_5rnyc"]
+[ext_resource type="Texture2D" uid="uid://kip3ja1vh3gw" path="res://final_art/Dark Forest (Tester).png" id="34_ysxdh"]
 [ext_resource type="Script" path="res://scripts/hover_button.gd" id="35_i8kuw"]
 [ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="36_8g7qy"]
 
@@ -41,7 +42,9 @@ script = ExtResource("1_4h2xc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="DialogueController" parent="." instance=ExtResource("2_qxvf6")]
+[node name="DarkForest(tester)" type="Sprite2D" parent="."]
+position = Vector2(-1, -359)
+texture = ExtResource("34_ysxdh")
 
 [node name="ShopManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -100,9 +103,11 @@ text = "Start Next Day"
 autowrap_mode = 1
 script = ExtResource("8_vt3u0")
 
+[node name="DialogueController" parent="." instance=ExtResource("2_qxvf6")]
+
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(615, -230)
+position = Vector2(1040, -230)
 script = ExtResource("9_0l071")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
@@ -121,7 +126,7 @@ texture = ExtResource("10_emxwy")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_of06s")
-num_days = 1
+num_days = 3
 
 [node name="TrashButton" parent="." instance=ExtResource("12_yabyy")]
 offset_left = -960.0
@@ -366,6 +371,7 @@ layout_mode = 2
 texture = ExtResource("25_b58im")
 
 [node name="AppleButton2" parent="FruitHBox" instance=ExtResource("15_sgfmh")]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("16_trgab")
 stretch_mode = 5
@@ -394,6 +400,7 @@ layout_mode = 2
 texture = ExtResource("17_kt37m")
 
 [node name="GUI" type="Panel" parent="."]
+visible = false
 offset_left = -960.0
 offset_top = -540.0
 offset_right = -824.0

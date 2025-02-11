@@ -7,6 +7,8 @@ func _ready() -> void:
 	SignalManager.player_lost.connect(on_player_lost)
 	Globals.grabbable_fruit_type.append(Enums.Fruit_Type.NONE)
 	Globals.grabbable_fruit_type.append(Enums.Fruit_Type.NONE)
+	if State.circle_num == 1:
+		State.dialogue_ready = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

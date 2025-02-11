@@ -95,6 +95,11 @@ func _ready() -> void:
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
+	match State.cutscene_speaker:
+		"Virgil":
+			$Speaker.texture = load("res://final_art/Virgil_Test_360.png")
+		"Charon":
+			$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
 
 
 func _unhandled_input(_event: InputEvent) -> void:

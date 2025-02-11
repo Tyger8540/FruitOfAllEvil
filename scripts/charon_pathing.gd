@@ -40,6 +40,8 @@ func _process(delta: float) -> void:
 			if charon.wave_in_progress:
 				# Only wait off screen if the wave is still in progress
 				%OffScreenTimer.start(5.0)
+	elif paused_off_screen and not is_charon and get_child_count() > 0 and not get_child(0) in charon.customers:
+		get_child(0).queue_free()
 	
 	if not paused_on_screen and not paused_off_screen:
 		loop_movement(delta)

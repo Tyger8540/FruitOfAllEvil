@@ -40,10 +40,11 @@ func handle_input() -> void:
 		"intro":
 			balloon = FULLSCREEN_BALLOON.instantiate()
 		"level":
-			if State.level_defeated:
-				balloon = CUTSCENE_BALLOON.instantiate()
-			else:
-				return
+			#if State.level_defeated:
+				#balloon = CUTSCENE_BALLOON.instantiate()
+			#else:
+				#return
+			balloon = CUTSCENE_BALLOON.instantiate()
 		"boss":
 			match State.next_boss:
 				"Charon":

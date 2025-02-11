@@ -77,15 +77,28 @@ func start_boss_fight() -> void:
 	#super()  # Makes sure this is the boss fight that should start
 	
 	for customer in customers:
-		# TODO Make the difficulties and stuff revolve around the wave number
-		var rand_difficulty := randi_range(12, 12)
+		var rand_difficulty: int
+		var difficulty_pool: Array[int]
+		match cur_wave:
+			1:
+				difficulty_pool = [1, 2, 3, 4, 5, 6]
+			2:
+				difficulty_pool = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+			3:
+				difficulty_pool = [4, 5, 6, 7, 8, 9]
+			4:
+				difficulty_pool = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+			5:
+				difficulty_pool = [7, 8, 9, 10, 11, 12]
+		rand_difficulty = difficulty_pool.pick_random()
 		var customer_sprite: Texture2D
 		var i = randi_range(1, 2)
 		if i == 1:
 			customer_sprite = load("res://final_art/Grotesquelimbo_ok_360.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
 		else:
 			customer_sprite = load("res://final_art/Grotesquelimbo_sadge_360.png")
-		customer.initialize(customer_sprite, rand_difficulty, 1, 62.0, 0, 0)  # TODO CHANGE FROM ALWAYS 62.0
+		var rand_time: float = 30.0 + rand_difficulty * 3.0
+		customer.initialize(customer_sprite, rand_difficulty, 1, rand_time, 0, 0)  # TODO MAKE BETTER RAND TIME SYSTEM MAYBE
 	wave_in_progress = true
 	SignalManager.boss_fight_started.emit()
 
@@ -96,7 +109,7 @@ func on_customer_created() -> void:
 
 func on_customer_finished(customer: Customer) -> void:
 	customers.erase(customer)
-	customer.queue_free()
+	#customer.queue_free()
 
 
 func reset_customers() -> void:

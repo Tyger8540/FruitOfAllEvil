@@ -70,7 +70,7 @@ func die() -> void:
 
 
 func set_stand_position(index: int) -> void:
-	stand_position = Vector2(-1015.0 + (index * 200), 0.0)
+	stand_position = Vector2(-1450.0 + (index * 200), 0.0)
 
 
 func set_patience_timers(base_time: float = 32.0) -> void:
@@ -138,8 +138,8 @@ func form_options() -> void:
 	for entry in num_items:
 		grab_types.append(get_random_grab_type(num_grab_types))
 		var i = randi_range(1, 5)
-		while i == 5 and grab_types.back() == Enums.Grabbable_Type.CHOPPED_FRUIT:  # don't have sprite for chopped grapes
-			i = randi_range(1, 5)
+		#while i == 5 and grab_types.back() == Enums.Grabbable_Type.CHOPPED_FRUIT:  # don't have sprite for chopped grapes
+			#i = randi_range(1, 5)
 		fruits.append(get_random_fruit(i))
 		if grab_types.back() == Enums.Grabbable_Type.BLENDED_FRUIT:
 			var j = randi_range(1, 6)
@@ -285,7 +285,7 @@ func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit
 
 func _on_green_patience_timer_timeout() -> void:
 	# remove the reward gained from completing this customer's order
-	%Hungry.play()
+	#%Hungry.play()
 	red_patience_timer.start()
 
 
