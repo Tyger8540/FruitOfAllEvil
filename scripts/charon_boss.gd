@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if wave_in_progress and customers.size() == 0:
 		wave_in_progress = false
 		charon_path.start_on_screen_timer(0.01)
-		%WaveIntermissionTimer.start(10.0)
+		%WaveIntermissionTimer.start(5.0)
 	
 	if State.boss_queued or new_wave_queued:
 		if cur_wave > num_waves:
