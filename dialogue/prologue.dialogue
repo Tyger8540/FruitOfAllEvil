@@ -137,7 +137,6 @@ set State.dialogue_file = "res://dialogue/circle1.dialogue"
 set State.dialogue_ready = true
 set State.location = "intro"
 set State.section = "C1_intro"
-set cutscene_speaker = "Virgil"
 set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
 #=> END
 - Continue => C0_market

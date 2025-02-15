@@ -19,4 +19,4 @@ func initialize(_vendor_name, _vendor_index) -> void:
 	vendor_name = _vendor_name
 	$Sprite2D.texture = Globals.vendor_sprites[vendor_name]
 	vendor_index = _vendor_index
-	position = Vector2(vendor_index * 1920.0, 0.0)
+	position = Vector2(vendor_index * 1920.0, -1080.0)

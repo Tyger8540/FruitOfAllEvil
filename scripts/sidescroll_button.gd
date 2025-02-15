@@ -27,3 +27,7 @@ func _on_button_up() -> void:
 		SignalManager.sidescrolled_left.emit()
 	elif direction == Directions.RIGHT:
 		SignalManager.sidescrolled_right.emit()
+	elif direction == Directions.UP:
+		SignalManager.sidescrolled_up.emit()
+	elif direction == Directions.DOWN:
+		SignalManager.sidescrolled_down.emit()

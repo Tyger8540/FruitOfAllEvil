@@ -80,6 +80,7 @@ Charon: Let us hope you do not meet the same fates as the previous ones he broug
 	set location = "market"
 	set section = "C1_market"
 	set level_defeated = false
+	set cutscene_speaker = ""
 	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
 	=> END
 

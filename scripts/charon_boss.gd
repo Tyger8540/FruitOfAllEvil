@@ -94,9 +94,9 @@ func start_boss_fight() -> void:
 		var customer_sprite: Texture2D
 		var i = randi_range(1, 2)
 		if i == 1:
-			customer_sprite = load("res://final_art/Grotesquelimbo_ok_360.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
+			customer_sprite = load("res://final_art/grotesquelimbo_ok_360.png")  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
 		else:
-			customer_sprite = load("res://final_art/Grotesquelimbo_sadge_360.png")
+			customer_sprite = load("res://final_art/grotesquelimbo_sadge_360.png")
 		var rand_time: float = 30.0 + rand_difficulty * 3.0
 		customer.initialize(customer_sprite, rand_difficulty, 1, rand_time, 0, 0)  # TODO MAKE BETTER RAND TIME SYSTEM MAYBE
 	wave_in_progress = true
