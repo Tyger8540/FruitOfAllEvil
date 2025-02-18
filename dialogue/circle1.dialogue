@@ -30,6 +30,30 @@ Charon: Do not disappoint these tormented souls.
 Charon: And do not disappoint me.
 - Continue => C1_level_charon2
 
+~ C1_level_charon_barks_new
+# barks when Charon arrives on boat with a new set of customers
+Charon: And here we have a living soul and their fruit stand...
+% Charon: Ho, a new boat of customers!
+% Charon: You shall serve these tormented souls!
+
+~ C1_level_charon_barks_complete
+# barks when Charon's boat orders have been completely fulfilled.
+Charon: Lo, you hear their cries of satisfaction?!
+% Charon: Very impressive work, living soul!
+% Charon: The demand will only get stronger...
+
+~ C1_level_charon_barks_arrive
+# barks when Charon arrives on boat (incomplete orders)
+Charon: Impatience grows wave by wave...
+% Charon: Will you satisfy this boat of souls?
+% Charon: This seems to be taking a toll on you...
+
+~ C1_level_charon_barks_depart
+# barks when Charon departs on boat (incomplete orders)
+Charon: A strong wave incoming, hold onto your souls!
+% Charon: Acheron, calm your tides!
+% Charon: I shall fetch some more souls soon.
+
 ~ C1_level_charon2
 # level complete
 Charon: You have earned the right to pass through.
