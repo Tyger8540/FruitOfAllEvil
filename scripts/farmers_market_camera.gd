@@ -18,6 +18,8 @@ var sidescrolling:= false
 var fading_out:= false
 var fading_in:= false
 
+var at_entrance:= true
+
 @onready var left_sidescroll_button: SidescrollButton = $"../UI/LeftSidescrollButton"
 @onready var right_sidescroll_button: SidescrollButton = $"../UI/RightSidescrollButton"
 @onready var up_sidescroll_button: SidescrollButton = $"../UI/UpSidescrollButton"
@@ -55,7 +57,6 @@ func _process(delta: float) -> void:
 		position = position.move_toward(new_position, PAN_SPEED * delta)
 	
 	if fading_out:
-		print("hi")
 		if black_screen.modulate.a >= 0.99:
 			black_screen.modulate.a = 1.0
 			fading_out = false
@@ -64,7 +65,6 @@ func _process(delta: float) -> void:
 			#black_screen.set("modulate", Color(1, 1, 1, FADE_FACTOR * delta))
 			#black_screen.modulate = Color(1, 1, 1, black_screen.modulate.a + 1 / (FADE_FACTOR * delta))
 			black_screen.modulate.a += FADE_FACTOR * delta
-			print(black_screen.modulate.a)
 	
 	if fading_in:
 		if black_screen.modulate.a <= 0.01:
@@ -81,15 +81,22 @@ func set_camera_position(pos: Vector2) -> void:
 
 
 func set_sidescroll_button_visibility() -> void:
-	if position_index == 0:
+	if not at_entrance:  # Not at the entrance to the farmers market
+		down_sidescroll_button.visible = true
+		if position_index == 0:
+			left_sidescroll_button.visible = false
+		else:
+			left_sidescroll_button.visible = true
+		
+		if position_index == max_index:
+			right_sidescroll_button.visible = false
+		else:
+			right_sidescroll_button.visible = true
+	else:  # At the entrance to the farmers market
 		left_sidescroll_button.visible = false
-	else:
-		left_sidescroll_button.visible = true
-	
-	if position_index == max_index:
 		right_sidescroll_button.visible = false
-	else:
-		right_sidescroll_button.visible = true
+		up_sidescroll_button.visible = true
+		down_sidescroll_button.visible = true
 
 
 func update_num_vendors(_num_vendors: int) -> void:
@@ -129,7 +136,7 @@ func on_sidescrolled_up() -> void:
 	# Fade back in
 	# Show buttons
 	set_sidescroll_buttons_invisible()
-	queued_position = new_position + Vector2(0.0, -PAN_DISTANCE_Y)
+	queued_position = position + Vector2(PAN_DISTANCE_X * position_index, -PAN_DISTANCE_Y)
 	fading_out = true
 
 
@@ -149,15 +156,36 @@ func on_sidescrolled_down() -> void:
 			# If choose to leave
 				# Fade out
 				# Fade into map movement / circle intro text
-	pass
+	
+	if not at_entrance:  # Case 1
+		set_sidescroll_buttons_invisible()
+		queued_position = Vector2(0.0, 0.0)
+		fading_out = true
+	else:  # Case 2
+		# TODO Placeholder 3 lines below for showing that the player is trying to leave
+		set_sidescroll_buttons_invisible()
+		queued_position = position + Vector2(0.0, 0.0)
+		fading_out = true
+		start_leave_prompt()
 
 
 func on_faded_out() -> void:
 	new_position = queued_position
 	position = new_position
-	queued_position = Vector2(0.0, 0.0)
+	queued_position = Vector2(0.0, 0.0)  # Don't really need this line, just resetting it
 	fading_in = true
 
 
 func on_faded_in() -> void:
+	if is_zero_approx(position.y):
+		at_entrance = true
+	else:
+		at_entrance = false
 	set_sidescroll_button_visibility()
+
+
+func start_leave_prompt() -> void:
+	pass
+	# Prompt the player
+		# Ex1: You should check out the shop vendors before you continue your journey
+		# Ex2: Continue to Circle X?
