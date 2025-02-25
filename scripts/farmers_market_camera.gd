@@ -135,19 +135,14 @@ func on_sidescrolled_right() -> void:
 
 
 func on_sidescrolled_up() -> void:
-	# TODO
-	# Hide sidescroll buttons
 	# Fade out
-	# Set camera position to 0, -1080
+	# Set camera position
 	# Fade back in
-	# Show buttons
-	#set_sidescroll_buttons_invisible()
 	queued_position = position + Vector2(PAN_DISTANCE_X * position_index, -PAN_DISTANCE_Y)
 	fading_out = true
 
 
 func on_sidescrolled_down() -> void:
-	# TODO
 	# 2 cases:
 		# 1. At a vendor and want to go back to market entrance
 			# Hide sidescroll buttons
@@ -164,35 +159,36 @@ func on_sidescrolled_down() -> void:
 				# Fade into map movement / circle intro text
 	
 	if not at_entrance:  # Case 1
-		#set_sidescroll_buttons_invisible()
 		queued_position = Vector2(0.0, 0.0)
 		fading_out = true
 	else:  # Case 2
-		# TODO Placeholder 3 lines below for showing that the player is trying to leave
-		#set_sidescroll_buttons_invisible()
+		# TODO Placeholder 2 lines below for showing that the player is trying to leave
 		queued_position = position + Vector2(0.0, 0.0)
 		fading_out = true
 		start_leave_prompt()
 
 
 func on_faded_out() -> void:
+	# Set the camera's position based on what was queued from a button press
 	new_position = queued_position
 	position = new_position
 	queued_position = Vector2(0.0, 0.0)  # Don't really need this line, just resetting it
+	
+	# Set where the player is ending up, entrance or vendors
 	if is_zero_approx(position.y):
 		at_entrance = true
 	else:
 		at_entrance = false
+	
+	# Set button visibility before fading back in for more seamless transitions
 	set_sidescroll_button_visibility()
 	fading_in = true
 
 
 func on_faded_in() -> void:
-	if is_zero_approx(position.y):
-		at_entrance = true
-	else:
-		at_entrance = false
-	set_sidescroll_button_visibility()
+	# TODO Something might need to be added here, but for now everything needed is done in on_faded_out()
+	#set_sidescroll_button_visibility()
+	pass
 
 
 func start_leave_prompt() -> void:
