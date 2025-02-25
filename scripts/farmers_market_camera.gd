@@ -20,11 +20,12 @@ var fading_in:= false
 
 var at_entrance:= true
 
-@onready var left_sidescroll_button: SidescrollButton = $"../UI/LeftSidescrollButton"
-@onready var right_sidescroll_button: SidescrollButton = $"../UI/RightSidescrollButton"
-@onready var up_sidescroll_button: SidescrollButton = $"../UI/UpSidescrollButton"
-@onready var down_sidescroll_button: SidescrollButton = $"../UI/DownSidescrollButton"
+@onready var left_sidescroll_button: SidescrollButton = $"../UI/SidescrollButtons/LeftSidescrollButton"
+@onready var right_sidescroll_button: SidescrollButton = $"../UI/SidescrollButtons/RightSidescrollButton"
+@onready var up_sidescroll_button: SidescrollButton = $"../UI/SidescrollButtons/UpSidescrollButton"
+@onready var down_sidescroll_button: SidescrollButton = $"../UI/SidescrollButtons/DownSidescrollButton"
 @onready var black_screen: ColorRect = $"../UI/BlackScreen"
+@onready var sidescroll_buttons: Control = $"../UI/SidescrollButtons"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -59,20 +60,24 @@ func _process(delta: float) -> void:
 	if fading_out:
 		if black_screen.modulate.a >= 0.99:
 			black_screen.modulate.a = 1.0
+			sidescroll_buttons.modulate.a = 0.0
 			fading_out = false
 			on_faded_out()
 		else:
 			#black_screen.set("modulate", Color(1, 1, 1, FADE_FACTOR * delta))
 			#black_screen.modulate = Color(1, 1, 1, black_screen.modulate.a + 1 / (FADE_FACTOR * delta))
 			black_screen.modulate.a += FADE_FACTOR * delta
+			sidescroll_buttons.modulate.a -= FADE_FACTOR * delta
 	
 	if fading_in:
 		if black_screen.modulate.a <= 0.01:
 			black_screen.modulate.a = 0.0
+			sidescroll_buttons.modulate.a = 1.0
 			fading_in = false
 			on_faded_in()
 		else:
 			black_screen.modulate.a -= FADE_FACTOR * delta
+			sidescroll_buttons.modulate.a += FADE_FACTOR * delta
 
 
 func set_camera_position(pos: Vector2) -> void:
@@ -82,6 +87,7 @@ func set_camera_position(pos: Vector2) -> void:
 
 func set_sidescroll_button_visibility() -> void:
 	if not at_entrance:  # Not at the entrance to the farmers market
+		up_sidescroll_button.visible = false
 		down_sidescroll_button.visible = true
 		if position_index == 0:
 			left_sidescroll_button.visible = false
@@ -135,7 +141,7 @@ func on_sidescrolled_up() -> void:
 	# Set camera position to 0, -1080
 	# Fade back in
 	# Show buttons
-	set_sidescroll_buttons_invisible()
+	#set_sidescroll_buttons_invisible()
 	queued_position = position + Vector2(PAN_DISTANCE_X * position_index, -PAN_DISTANCE_Y)
 	fading_out = true
 
@@ -158,12 +164,12 @@ func on_sidescrolled_down() -> void:
 				# Fade into map movement / circle intro text
 	
 	if not at_entrance:  # Case 1
-		set_sidescroll_buttons_invisible()
+		#set_sidescroll_buttons_invisible()
 		queued_position = Vector2(0.0, 0.0)
 		fading_out = true
 	else:  # Case 2
 		# TODO Placeholder 3 lines below for showing that the player is trying to leave
-		set_sidescroll_buttons_invisible()
+		#set_sidescroll_buttons_invisible()
 		queued_position = position + Vector2(0.0, 0.0)
 		fading_out = true
 		start_leave_prompt()
@@ -173,6 +179,11 @@ func on_faded_out() -> void:
 	new_position = queued_position
 	position = new_position
 	queued_position = Vector2(0.0, 0.0)  # Don't really need this line, just resetting it
+	if is_zero_approx(position.y):
+		at_entrance = true
+	else:
+		at_entrance = false
+	set_sidescroll_button_visibility()
 	fading_in = true
 
 

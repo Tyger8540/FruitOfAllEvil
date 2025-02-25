@@ -31,12 +31,20 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="LeftSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+[node name="SidescrollButtons" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="LeftSidescrollButton" parent="UI/SidescrollButtons" instance=ExtResource("4_be2uh")]
+layout_mode = 1
 offset_top = 136.0
 offset_bottom = -136.0
 icon = ExtResource("6_o0jw3")
 
-[node name="RightSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+[node name="RightSidescrollButton" parent="UI/SidescrollButtons" instance=ExtResource("4_be2uh")]
+layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -48,7 +56,8 @@ grow_horizontal = 0
 icon = ExtResource("7_7b3oy")
 direction = 3
 
-[node name="UpSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+[node name="UpSidescrollButton" parent="UI/SidescrollButtons" instance=ExtResource("4_be2uh")]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 anchor_bottom = 0.0
@@ -61,7 +70,8 @@ icon = ExtResource("8_30yfo")
 icon_alignment = 1
 direction = 0
 
-[node name="DownSidescrollButton" parent="UI" instance=ExtResource("4_be2uh")]
+[node name="DownSidescrollButton" parent="UI/SidescrollButtons" instance=ExtResource("4_be2uh")]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
