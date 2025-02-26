@@ -48,3 +48,4 @@ func _on_button_up() -> void:
 		else:
 			State.section = "market_" + State.vendor.to_lower() + "_default"
 		State.dialogue_ready = true
+		%FarmersMarketCamera.set_sidescroll_buttons_invisible()

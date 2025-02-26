@@ -121,7 +121,9 @@ Charon: Let us hope you do not meet the same fates as the previous ones he broug
 
 ~ market_end
 Are you sure you want to leave?
-- No => END
+- No
+	set SignalManager.market_dialogue_ended.emit()
+	=> END
 - Yes
 	set dialogue_file = "res://dialogue/circle2.dialogue"
 	set dialogue_ready = true
@@ -183,10 +185,8 @@ Virgil: Thank you for your patronage.
 
 ~ market_virgil_end
 Virgil: Until next time, destined traveler.
-- Continue
-	set vendor = ""
-	set section = "C1_market"
-	=> C1_market
+set SignalManager.market_dialogue_ended.emit()
+=> END
 
 ~ market_ovid_default
 Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
@@ -226,7 +226,5 @@ Ovid: And your payments shall transform me!
 
 ~ market_ovid_end
 Ovid: Safe travels, I hope you soar through the depths of Hell...
-- Continue
-	set vendor = ""
-	set section = "C1_market"
-	=> C1_market
+set SignalManager.market_dialogue_ended.emit()
+=> END

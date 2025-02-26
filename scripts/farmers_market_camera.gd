@@ -35,9 +35,9 @@ func _ready() -> void:
 	SignalManager.sidescrolled_right.connect(on_sidescrolled_right)
 	SignalManager.sidescrolled_up.connect(on_sidescrolled_up)
 	SignalManager.sidescrolled_down.connect(on_sidescrolled_down)
+	SignalManager.market_dialogue_ended.connect(on_dialogue_ended)
 	set_camera_position(position)
 	set_sidescroll_button_visibility()
-	#State.dialogue_ready = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -211,6 +211,7 @@ func on_faded_in() -> void:
 func start_leave_prompt() -> void:
 	State.section = "market_end"
 	State.dialogue_ready = true
+	set_sidescroll_buttons_invisible()
 	# Prompt the player
 		# Ex1: You should check out the shop vendors before you continue your journey
 		# Ex2: Continue to Circle X?
@@ -221,3 +222,7 @@ func set_vendor(index = -1) -> void:
 		State.vendor = ""
 	else:
 		State.vendor = %VendorController.vendor_names[index]
+
+
+func on_dialogue_ended() -> void:
+	set_sidescroll_button_visibility()

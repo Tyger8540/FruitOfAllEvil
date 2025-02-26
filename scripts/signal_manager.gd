@@ -20,3 +20,4 @@ signal charon_customer_created
 signal charon_customer_finished
 signal charon_defeated
 signal tutorial_ended
+signal market_dialogue_ended

@@ -66,7 +66,9 @@ if location == "market" and vendor == "Virgil"
 
 ~ market_end
 Are you sure you want to leave?
-- No => END
+- No
+	set SignalManager.market_dialogue_ended.emit()
+	=> END
 - Yes
 	set dialogue_file = "res://dialogue/circle1.dialogue"
 	set dialogue_ready = true
@@ -123,6 +125,7 @@ Virgil: Welcome to my humble stand, destined traveler.
 ~ market_virgil_end
 if received_blender:
 	Virgil: Until next time, destined traveler.
+	set SignalManager.market_dialogue_ended.emit()
 	=> END
 else:
 	# Once you are done and want to exit Virgil's stand, this mandatory text begins.
@@ -144,4 +147,6 @@ Virgil: Oh no, I suppose then you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: Everything you earn shall be forfeited to me by the end of your journey!
 Virgil: But enough talk, we shall move onward!
-- Continue => END
+- Continue
+	set SignalManager.market_dialogue_ended.emit()
+	=> END
