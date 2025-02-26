@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://h2mxmd3rs5uj"]
+
+[ext_resource type="Script" path="res://scripts/vendor_button.gd" id="1_22lqu"]
+
+[node name="VendorButton" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("1_22lqu")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -67.0
+offset_right = 512.0
+theme_override_font_sizes/font_size = 48
+text = "Virgil's Stand"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

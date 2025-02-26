@@ -56,6 +56,8 @@ func handle_input() -> void:
 					pass
 				"Ovid":
 					pass
+				"":
+					pass
 				_:
 					return
 		_:

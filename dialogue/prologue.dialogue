@@ -51,7 +51,6 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
 set location = "market"
 set section = "C0_market"
-set vendor = "Virgil"  # TODO This should not be Virgil in full implementation, as you do not start at his stand but at the farmers market entrance, not yet implemented
 set State.level_defeated = false
 - Continue
 	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
@@ -67,8 +66,15 @@ if location == "market" and vendor == "Virgil"
 
 ~ market_end
 Are you sure you want to leave?
-- No => C0_market
-- Yes => END
+- No => END
+- Yes
+	set dialogue_file = "res://dialogue/circle1.dialogue"
+	set dialogue_ready = true
+	set location = "intro"
+	set section = "C1_intro"
+	set talked_to_virgil = false
+	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
 
 ~ market_virgil_intro
 # Upon first interacting with Virgil's stand, which is mandatory before moving on
@@ -121,6 +127,7 @@ Virgil: Your arrival has been making ripples across the Circles.
 Virgil: Now everyone in Hell will be craving for a taste of your fruits.
 Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mine.
 Virgil: Go ahead.
+set received_blender = true
 - Continue => market_virgil_end2 
 
 ~ market_virgil_end2
@@ -133,10 +140,4 @@ Virgil: Oh no, I suppose then you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: Everything you earn shall be forfeited to me by the end of your journey!
 Virgil: But enough talk, we shall move onward!
-set State.dialogue_file = "res://dialogue/circle1.dialogue"
-set State.dialogue_ready = true
-set State.location = "intro"
-set State.section = "C1_intro"
-set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
-#=> END
-- Continue => C0_market
+- Continue => END

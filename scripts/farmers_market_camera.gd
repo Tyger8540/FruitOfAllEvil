@@ -41,16 +41,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if State.vendor == "Virgil" and position_index != 0:
-		position_index = 0
-		set_camera_position(Vector2(position_index * PAN_DISTANCE_X, 0.0))
-	elif State.vendor == "Ovid" and position_index != 1:
-		position_index = 1
-		set_camera_position(Vector2(position_index * PAN_DISTANCE_X, 0.0))
+	#if State.vendor == "Virgil" and position_index != 0:
+		#position_index = 0
+		#set_camera_position(Vector2(position_index * PAN_DISTANCE_X, 0.0))
+	#elif State.vendor == "Ovid" and position_index != 1:
+		#position_index = 1
+		#set_camera_position(Vector2(position_index * PAN_DISTANCE_X, 0.0))
 	
 	if position == new_position:
 		if sidescrolling:
-			# Finished sidescrolling, set buttons to correct visibility
+			# Finished sidescrolling, set buttons to correct visibility and set correct vendor
+			set_vendor(position_index)
 			sidescrolling = false
 			set_sidescroll_button_visibility()
 	else:
@@ -102,7 +103,11 @@ func set_sidescroll_button_visibility() -> void:
 		left_sidescroll_button.visible = false
 		right_sidescroll_button.visible = false
 		up_sidescroll_button.visible = true
-		down_sidescroll_button.visible = true
+		# Check if the player has completed the manatory chat w/ Virgil
+		if State.circle_num == 0 and not State.received_blender:
+			down_sidescroll_button.visible = false
+		else:
+			down_sidescroll_button.visible = true
 
 
 func update_num_vendors(_num_vendors: int) -> void:
@@ -123,6 +128,7 @@ func on_sidescrolled_left() -> void:
 		position_index -= 1
 		set_sidescroll_buttons_invisible()
 		set_camera_position(new_position + Vector2(-PAN_DISTANCE_X, 0.0))
+		set_vendor()
 		sidescrolling = true
 
 
@@ -131,6 +137,7 @@ func on_sidescrolled_right() -> void:
 		position_index += 1
 		set_sidescroll_buttons_invisible()
 		set_camera_position(new_position + Vector2(PAN_DISTANCE_X, 0.0))
+		set_vendor()
 		sidescrolling = true
 
 
@@ -160,11 +167,12 @@ func on_sidescrolled_down() -> void:
 	
 	if not at_entrance:  # Case 1
 		queued_position = Vector2(0.0, 0.0)
+		set_vendor()
 		fading_out = true
 	else:  # Case 2
 		# TODO Placeholder 2 lines below for showing that the player is trying to leave
-		queued_position = position + Vector2(0.0, 0.0)
-		fading_out = true
+		#queued_position = position + Vector2(0.0, 0.0)
+		#fading_out = true
 		start_leave_prompt()
 
 
@@ -186,13 +194,24 @@ func on_faded_out() -> void:
 
 
 func on_faded_in() -> void:
-	# TODO Something might need to be added here, but for now everything needed is done in on_faded_out()
-	#set_sidescroll_button_visibility()
-	pass
+	if at_entrance:
+		# Set the current vendor to nothing
+		set_vendor()
+	else:
+		# Set the current vendor
+		set_vendor(position_index)
 
 
 func start_leave_prompt() -> void:
-	pass
+	State.section = "market_end"
+	State.dialogue_ready = true
 	# Prompt the player
 		# Ex1: You should check out the shop vendors before you continue your journey
 		# Ex2: Continue to Circle X?
+
+
+func set_vendor(index = -1) -> void:
+	if index == -1:
+		State.vendor = ""
+	else:
+		State.vendor = %VendorController.vendor_names[index]

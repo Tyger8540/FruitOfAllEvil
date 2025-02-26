@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=11 format=3 uid="uid://b16mrjlcqcw2s"]
 
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="1_qn2do"]
 [ext_resource type="PackedScene" uid="uid://cbgw5mfukn2xf" path="res://scenes/sidescrolling_player.tscn" id="1_un1fx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2nk5q4x8qs2o" path="res://final_art/Sidescroll_arrow_right.png" id="7_7b3oy"]
 [ext_resource type="Texture2D" uid="uid://ctktm0jjcufli" path="res://final_art/Sidescroll_arrow_up.png" id="8_30yfo"]
 [ext_resource type="Texture2D" uid="uid://dvt53ihscorqp" path="res://final_art/Sidescroll_arrow_down.png" id="9_de3mi"]
+[ext_resource type="PackedScene" uid="uid://h2mxmd3rs5uj" path="res://scenes/vendor_button.tscn" id="10_8370b"]
 
 [node name="FarmersMarket" type="Node2D"]
 
@@ -24,6 +25,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="BlackScreen" type="ColorRect" parent="UI"]
 modulate = Color(1, 1, 1, 0)
@@ -83,3 +85,10 @@ grow_vertical = 0
 icon = ExtResource("9_de3mi")
 icon_alignment = 1
 direction = 1
+
+[node name="VendorButton" parent="UI/SidescrollButtons" instance=ExtResource("10_8370b")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 284.0
+offset_right = 1216.0
+offset_bottom = 796.0

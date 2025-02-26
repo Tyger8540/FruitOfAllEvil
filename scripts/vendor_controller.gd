@@ -8,6 +8,8 @@ var vendors_spawned: bool = false
 var vendors_spawning: bool = false
 var num_vendors: int
 
+var vendor_names: Array[String]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +24,7 @@ func _process(_delta: float) -> void:
 
 
 func create_vendor(vendor_name, vendor_index) -> void:
+	vendor_names.append(vendor_name)
 	var vendor = VENDOR.instantiate()
 	add_child(vendor)
 	vendor.initialize(vendor_name, vendor_index)

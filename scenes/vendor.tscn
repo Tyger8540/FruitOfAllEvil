@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hl3lea6np4u8"]
+[gd_scene load_steps=3 format=3 uid="uid://hl3lea6np4u8"]
 
 [ext_resource type="Script" path="res://scripts/vendor.gd" id="1_b2ual"]
+[ext_resource type="Texture2D" uid="uid://lr64urssr721" path="res://final_art/Virgil_Test_512.png" id="2_lt1ub"]
 
 [node name="Vendor" type="Node2D"]
 script = ExtResource("1_b2ual")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lt1ub")

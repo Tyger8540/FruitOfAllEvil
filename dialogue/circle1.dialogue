@@ -111,20 +111,25 @@ Charon: Let us hope you do not meet the same fates as the previous ones he broug
 ~ C1_market
 - Virgil's Stand
 	set location = "market_virgil_intro"
-	set vendor = "Virgil"
 #	=> END
 	=> market_virgil_intro
 - Ovid's Stand
 	set location = "market_ovid_default"
-	set vendor = "Ovid"
 #	=> END
 	=> market_ovid_default
 - Onward to Next Circle => market_end
 
 ~ market_end
 Are you sure you want to leave?
-- No => C1_market
-- Yes => END
+- No => END
+- Yes
+	set dialogue_file = "res://dialogue/circle2.dialogue"
+	set dialogue_ready = true
+	set location = "intro"
+	set section = "C2_intro"
+	set talked_to_virgil = false
+	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
 
 ~ market_virgil_intro
 Virgil: Oh, how low can you go, destined traveler?
