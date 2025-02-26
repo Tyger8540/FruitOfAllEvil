@@ -6,7 +6,7 @@ enum Appliance_Type {
 	NONE,
 	CHOPPING_BOARD,
 	BLENDER,
-	OVEN,
+	SHELF,
 }
 
 const GRABBABLE_SCENE = preload("res://scenes/grabbable.tscn")
@@ -42,9 +42,10 @@ func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
 	SignalManager.upgrade_purchased.connect(on_upgrade_purchased)
 	
-	# Sets icons for the appliance & its action button
+	# Sets icons for the appliance & its action button (if it has one)
 	icon = appliance_icon
-	action_button.icon = action_icon
+	if appliance_type != Appliance_Type.SHELF:
+		action_button.icon = action_icon
 	
 	# Sets the correct size for the fruit and grab_type arrays by appending NONE values
 	for i in num_slots:

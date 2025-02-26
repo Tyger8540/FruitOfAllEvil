@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://8ry7vsq3tgij"]
+[gd_scene load_steps=39 format=3 uid="uid://8ry7vsq3tgij"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5ld1y"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_57ctm"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://deyl37osklxet" path="res://scenes/charon.tscn" id="34_a82wn"]
 [ext_resource type="Texture2D" uid="uid://c4x0jd6j5dm8h" path="res://final_art/Waves.png" id="35_2jchb"]
 [ext_resource type="Texture2D" uid="uid://5e4mfftlggrp" path="res://final_art/Clouds(Heavy).png" id="36_ddg8j"]
+[ext_resource type="PackedScene" uid="uid://e8c57x3pn5ph" path="res://scenes/shelf_button.tscn" id="37_7jab3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68bps"]
 
@@ -514,6 +515,12 @@ stream = ExtResource("32_adxfo")
 unique_name_in_owner = true
 stream = ExtResource("33_f8f60")
 volume_db = -20.0
+
+[node name="ShelfButton" parent="." instance=ExtResource("37_7jab3")]
+offset_left = 569.0
+offset_top = 38.0
+offset_right = 713.0
+offset_bottom = 182.0
 
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

@@ -1,8 +1,8 @@
 extends Node
 
 
-var location: String = "market"
-var section: String = "C1_market"
+var location: String = "intro"
+var section: String = "C1_intro"
 var vendor: String = ""
 var dialogue_ready: bool = false  # Should be set to true by default
 var dialogue_file: String = "res://dialogue/circle1.dialogue"

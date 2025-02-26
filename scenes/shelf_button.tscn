@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://e8c57x3pn5ph"]
+
+[ext_resource type="Script" path="res://scripts/shelf_button.gd" id="1_cem5q"]
+[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="2_a82uc"]
+
+[node name="ShelfButton" type="Button"]
+offset_right = 144.0
+offset_bottom = 144.0
+script = ExtResource("1_cem5q")
+appliance_type = 3
+num_slots = 1
+appliance_icon = ExtResource("2_a82uc")
+
+[node name="GrabbableTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 104.0
+offset_bottom = 104.0
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
