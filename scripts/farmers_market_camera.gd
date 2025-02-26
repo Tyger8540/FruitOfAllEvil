@@ -26,6 +26,7 @@ var at_entrance:= true
 @onready var down_sidescroll_button: SidescrollButton = $"../UI/SidescrollButtons/DownSidescrollButton"
 @onready var black_screen: ColorRect = $"../UI/BlackScreen"
 @onready var sidescroll_buttons: Control = $"../UI/SidescrollButtons"
+@onready var vendor_button: VendorButton = $"../UI/SidescrollButtons/VendorButton"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +55,7 @@ func _process(delta: float) -> void:
 			set_vendor(position_index)
 			sidescrolling = false
 			set_sidescroll_button_visibility()
+			vendor_button.set_label_visible(true)
 	else:
 		# Pan camera toward new position
 		position = position.move_toward(new_position, PAN_SPEED * delta)
@@ -121,6 +123,7 @@ func set_sidescroll_buttons_invisible() -> void:
 	right_sidescroll_button.visible = false
 	up_sidescroll_button.visible = false
 	down_sidescroll_button.visible = false
+	vendor_button.set_label_visible(false)
 
 
 func on_sidescrolled_left() -> void:
@@ -146,6 +149,7 @@ func on_sidescrolled_up() -> void:
 	# Set camera position
 	# Fade back in
 	queued_position = position + Vector2(PAN_DISTANCE_X * position_index, -PAN_DISTANCE_Y)
+	vendor_button.set_label_visible(false)
 	fading_out = true
 
 
@@ -167,6 +171,7 @@ func on_sidescrolled_down() -> void:
 	
 	if not at_entrance:  # Case 1
 		queued_position = Vector2(0.0, 0.0)
+		vendor_button.set_label_visible(false)
 		set_vendor()
 		fading_out = true
 	else:  # Case 2
@@ -200,6 +205,7 @@ func on_faded_in() -> void:
 	else:
 		# Set the current vendor
 		set_vendor(position_index)
+	vendor_button.set_label_visible(true)
 
 
 func start_leave_prompt() -> void:

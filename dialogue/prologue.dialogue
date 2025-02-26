@@ -121,14 +121,18 @@ Virgil: Welcome to my humble stand, destined traveler.
 - Back => market_virgil_default
 
 ~ market_virgil_end
-# Once you are done and want to exit Virgil's stand, this mandatory text begins.
-Virgil: Destined traveler, I believe it would be in your best interest to invest in that fruit stand of yours.
-Virgil: Your arrival has been making ripples across the Circles.
-Virgil: Now everyone in Hell will be craving for a taste of your fruits.
-Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mine.
-Virgil: Go ahead.
-set received_blender = true
-- Continue => market_virgil_end2 
+if received_blender:
+	Virgil: Until next time, destined traveler.
+	=> END
+else:
+	# Once you are done and want to exit Virgil's stand, this mandatory text begins.
+	Virgil: Destined traveler, I believe it would be in your best interest to invest in that fruit stand of yours.
+	Virgil: Your arrival has been making ripples across the Circles.
+	Virgil: Now everyone in Hell will be craving for a taste of your fruits.
+	Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mine.
+	Virgil: Go ahead.
+	set received_blender = true
+	- Continue => market_virgil_end2 
 
 ~ market_virgil_end2
 # The player will drag and "purchase" the blender, which will be used for gameplay in the next Circle

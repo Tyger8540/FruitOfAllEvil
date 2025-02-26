@@ -23,11 +23,12 @@ func _process(delta: float) -> void:
 
 
 func _on_button_up() -> void:
-	if direction == Directions.LEFT:
-		SignalManager.sidescrolled_left.emit()
-	elif direction == Directions.RIGHT:
-		SignalManager.sidescrolled_right.emit()
-	elif direction == Directions.UP:
-		SignalManager.sidescrolled_up.emit()
-	elif direction == Directions.DOWN:
-		SignalManager.sidescrolled_down.emit()
+	if not %FarmersMarketCamera.fading_in and not %FarmersMarketCamera.fading_out:
+		if direction == Directions.LEFT:
+			SignalManager.sidescrolled_left.emit()
+		elif direction == Directions.RIGHT:
+			SignalManager.sidescrolled_right.emit()
+		elif direction == Directions.UP:
+			SignalManager.sidescrolled_up.emit()
+		elif direction == Directions.DOWN:
+			SignalManager.sidescrolled_down.emit()
