@@ -46,7 +46,7 @@ func pickup() -> void:
 	if is_occupied:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		grabbable.initialize(fruits, grab_types[0])
-		add_child(grabbable)
+		get_tree().get_root().add_child(grabbable)
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type

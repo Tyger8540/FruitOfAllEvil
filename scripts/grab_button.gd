@@ -28,7 +28,7 @@ func _on_button_up() -> void:
 		var fruit_array: Array[Enums.Fruit_Type]
 		fruit_array.append(fruit)
 		grabbable.initialize(fruit_array, grab_type)
-		add_child(grabbable)
+		get_tree().get_root().add_child(grabbable)
 		Globals.is_grabbing = true
 	elif Globals.is_grabbing and Globals.grabbable_fruit_type[0] == fruit and Globals.grabbable_grab_type == grab_type:
 		SignalManager.grabbable_placed.emit()

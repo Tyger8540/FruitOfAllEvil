@@ -62,7 +62,7 @@ func pickup() -> void:
 		var fruit_array: Array[Enums.Fruit_Type]
 		fruit_array.append(fruits[0])
 		grabbable.initialize(fruit_array, grab_types[0])
-		add_child(grabbable)
+		get_tree().get_root().add_child(grabbable)
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
@@ -77,7 +77,7 @@ func pickup() -> void:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		if grab_types[0] == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
 			grabbable.initialize(fruits, grab_types[0])
-			add_child(grabbable)
+			get_tree().get_root().add_child(grabbable)
 			%Grab.play()
 			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 			Globals.grabbable_grab_type = grabbable.grab_type
@@ -99,7 +99,7 @@ func pickup() -> void:
 			var fruit_array: Array[Enums.Fruit_Type]
 			fruit_array.append(fruits[1])
 			grabbable.initialize(fruit_array, grab_types[1])
-			add_child(grabbable)
+			get_tree().get_root().add_child(grabbable)
 			%Grab.play()
 			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 			Globals.grabbable_grab_type = grabbable.grab_type

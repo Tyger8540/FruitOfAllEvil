@@ -239,6 +239,13 @@ visible = false
 layout_mode = 2
 index = 3
 
+[node name="ShelfButton" parent="." instance=ExtResource("37_7jab3")]
+offset_left = 569.0
+offset_top = 38.0
+offset_right = 713.0
+offset_bottom = 182.0
+icon_alignment = 1
+
 [node name="FruitHBox" type="HBoxContainer" parent="."]
 offset_left = -857.0
 offset_top = 396.0
@@ -515,12 +522,6 @@ stream = ExtResource("32_adxfo")
 unique_name_in_owner = true
 stream = ExtResource("33_f8f60")
 volume_db = -20.0
-
-[node name="ShelfButton" parent="." instance=ExtResource("37_7jab3")]
-offset_left = 569.0
-offset_top = 38.0
-offset_right = 713.0
-offset_bottom = 182.0
 
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

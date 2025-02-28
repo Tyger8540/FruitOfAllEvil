@@ -18,11 +18,9 @@ func on_day_start() -> void:
 
 
 func place() -> void:
-	print("hi")
 	$GrabbableTexture.texture = Globals.grabbable_sprite
 	%Drop.play()
 	is_occupied = true
-	print(Globals.grabbable_fruit_type)
 	for i in Globals.grabbable_fruit_type.size():
 		if Globals.grabbable_fruit_type[i] != Enums.Fruit_Type.NONE:
 			fruits[i] = Globals.grabbable_fruit_type[i]
@@ -42,7 +40,7 @@ func pickup() -> void:
 	if is_occupied:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		grabbable.initialize(fruits, grab_types[0])
-		add_child(grabbable)
+		get_tree().get_root().add_child(grabbable)
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
