@@ -25,7 +25,7 @@ func on_upgrade_purchased() -> void:
 
 
 func place() -> void:
-	if Globals.grabbable_grab_type == Enums.Grabbable_Type.FRUIT:
+	if Globals.grabbable_grab_type in [Enums.Grabbable_Type.FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT]:
 		$GrabbableTexture.texture = Globals.grabbable_sprite
 		%Drop.play()
 		is_occupied = true

@@ -37,20 +37,23 @@ func place() -> void:
 
 
 func pickup() -> void:
-	if is_occupied:
+	print("pickup start")
+	if temp_is_occupied:
 		var grabbable = GRABBABLE_SCENE.instantiate()
-		grabbable.initialize(fruits, grab_types[0])
+		grabbable.initialize(temp_fruits, temp_grab_types[0])
 		get_tree().get_root().add_child(grabbable)
 		%Grab.play()
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
-		if grab_types[0] == Enums.Grabbable_Type.FRUIT or grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
+		if temp_grab_types[0] == Enums.Grabbable_Type.FRUIT or temp_grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
 			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
-		$GrabbableTexture.texture = null
-		is_occupied = false
+		if not swapping:
+			$GrabbableTexture.texture = null
+		temp_is_occupied = false
 		Globals.is_grabbing = true
-		fruits[0] = Enums.Fruit_Type.NONE
-		fruits[1] = Enums.Fruit_Type.NONE
-		grab_types[0] = Enums.Grabbable_Type.NONE
-		num_slots_filled -= 1
+		temp_fruits[0] = Enums.Fruit_Type.NONE
+		temp_fruits[1] = Enums.Fruit_Type.NONE
+		temp_grab_types[0] = Enums.Grabbable_Type.NONE
+		temp_num_slots_filled -= 1
+	super()

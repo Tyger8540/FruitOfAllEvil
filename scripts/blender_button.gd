@@ -25,10 +25,7 @@ func on_upgrade_purchased() -> void:
 
 
 func place() -> void:
-	if (
-			Globals.grabbable_grab_type == Enums.Grabbable_Type.FRUIT or
-			Globals.grabbable_grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT
-	):
+	if Globals.grabbable_grab_type in [Enums.Grabbable_Type.FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT]:
 		# Grabbable is blendable (not necessarily just a regular fruit)
 		if is_part_occupied:
 			$GrabbableTexture.texture = Globals.grabbable_sprite
@@ -41,15 +38,42 @@ func place() -> void:
 			Globals.grabbable_fruit_type[i] = Enums.Fruit_Type.NONE
 			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		num_slots_filled += 1
-	else:
-		return
-	
-	if num_slots_filled == num_slots:
-		is_occupied = true
-		is_part_occupied = false
-	else:
-		is_occupied = false
-		is_part_occupied = true
+		if num_slots_filled == num_slots:
+			is_occupied = true
+			is_part_occupied = false
+		else:
+			is_occupied = false
+			is_part_occupied = true
+	elif Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
+		if is_part_occupied:
+			#if Globals.grabbable_fruit_type[1] != Enums.Fruit_Type.NONE:
+				## Trying to place a two-fruit smoothie in a half-full blender
+				#return
+			#elif grab_types[0] != Enums.Grabbable_Type.BLENDED_FRUIT:
+				## Trying to place a one-fruit smoothie into a blender with raw ingredients
+				#return
+			#else:
+				## Placing a half smoothie on another half smoothie
+				#fruits[1] = Globals.grabbable_fruit_type[0]
+			return
+		else:
+			for i in 2:
+				if Globals.grabbable_fruit_type[i] != Enums.Fruit_Type.NONE:
+					fruits[i] = Globals.grabbable_fruit_type[i]
+					Globals.grabbable_fruit_type[i] = Enums.Fruit_Type.NONE
+					num_slots_filled += 1
+				else:
+					break
+			grab_types[0] = Globals.grabbable_grab_type
+			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
+		if num_slots_filled == num_slots:
+			is_occupied = true
+			is_part_occupied = false
+		else:
+			is_occupied = false
+			is_part_occupied = true
+		
+		set_blender_icon()
 	
 	# If this line was reached, the grabbable was able to be placed
 	SignalManager.grabbable_placed.emit()
@@ -121,6 +145,12 @@ func start_action() -> void:
 func finish_action() -> void:
 	%Blender.stop()
 	
+	set_blender_icon()
+	
+	super()
+
+
+func set_blender_icon() -> void:
 	match fruits[0]:
 		Enums.Fruit_Type.APPLE:
 			$GrabbableTexture2.texture = null
@@ -252,5 +282,3 @@ func finish_action() -> void:
 					Enums.Fruit_Type.PLUM:
 						icon = Globals.BLENDER_PLUM_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
-	
-	super()

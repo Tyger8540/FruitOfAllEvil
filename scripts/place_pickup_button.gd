@@ -32,6 +32,16 @@ var is_in_action:= false
 var is_part_occupied:= false
 var num_slots_filled:= 0
 
+var swapping:= false
+
+# Temporary arrays that hold the fruits and grab types of those fruits
+var temp_fruits: Array[Enums.Fruit_Type]
+var temp_grab_types: Array[Enums.Grabbable_Type]
+
+var temp_is_occupied:= false
+var temp_is_part_occupied:= false
+var temp_num_slots_filled:= 0
+
 @onready var action_button: Button = $ActionButton
 @onready var action_timer: Timer = $ActionTimer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -80,7 +90,48 @@ func place() -> void:
 
 
 func pickup() -> void:
-	pass
+	if not swapping:
+		print("not swapping")
+		set_vars()
+	else:
+		print("swapping")
+		swapping = false
+
+
+func set_temp_vars() -> void:
+	temp_fruits = fruits
+	print("temp fruits: " + str(temp_fruits))
+	print("fruits: " + str(fruits))
+	temp_grab_types = grab_types
+	temp_is_occupied = is_occupied
+	temp_is_part_occupied = is_part_occupied
+	temp_num_slots_filled = num_slots_filled
+	print("set_temp_vars end")
+
+
+func set_vars() -> void:
+	fruits = temp_fruits
+	grab_types = temp_grab_types
+	is_occupied = temp_is_occupied
+	is_part_occupied = temp_is_part_occupied
+	num_slots_filled = temp_num_slots_filled
+
+
+func clear() -> void:
+	for i in fruits.size():
+		fruits[i] = Enums.Fruit_Type.NONE
+	grab_types[0] = Enums.Grabbable_Type.NONE
+	is_occupied = false
+	is_part_occupied = false
+	num_slots_filled = 0
+
+
+func swap() -> void:
+	swapping = true
+	set_temp_vars()
+	clear()
+	place()
+	pickup()
 
 
 func start_action() -> void:
@@ -97,12 +148,17 @@ func finish_action() -> void:
 
 func _on_button_up() -> void:
 	# Triggers when the PlacePickupButton is clicked; accounts for if the player is holding an item
-	if Globals.is_grabbing and !is_occupied:
-		# player is holding a grabbable and this button is to be placed on
+	if Globals.is_grabbing and not is_occupied and not is_in_action:
+		# Player is holding a grabbable and this button is unoccupied and to be placed on
 		place()
-	elif !Globals.is_grabbing and !is_in_action:
-		# player is not holding anything and this button has something on it to be picked up
+	elif not Globals.is_grabbing and not is_in_action:
+		# Player is not holding anything and this button has something on it to be picked up
+		set_temp_vars()
 		pickup()
+	elif Globals.is_grabbing and is_occupied and not is_in_action:
+		# Player is holding a grabbable and this button is occupied, leading to a swap
+		swap()
+	
 
 
 func _on_action_button_button_up() -> void:
