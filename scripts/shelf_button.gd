@@ -6,6 +6,7 @@ extends PlacePickupButton
 func _ready() -> void:
 	super()
 	fruits.append(Enums.Fruit_Type.NONE)
+	temp_fruits.append(Enums.Fruit_Type.NONE)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

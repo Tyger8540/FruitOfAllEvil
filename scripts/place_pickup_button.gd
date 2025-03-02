@@ -60,7 +60,9 @@ func _ready() -> void:
 	# Sets the correct size for the fruit and grab_type arrays by appending NONE values
 	for i in num_slots:
 		fruits.append(Enums.Fruit_Type.NONE)
-		grab_types.append(Enums.Fruit_Type.NONE)
+		grab_types.append(Enums.Grabbable_Type.NONE)
+		temp_fruits.append(Enums.Fruit_Type.NONE)
+		temp_grab_types.append(Enums.Grabbable_Type.NONE)
 	
 	on_day_start()
 
@@ -99,19 +101,18 @@ func pickup() -> void:
 
 
 func set_temp_vars() -> void:
-	temp_fruits = fruits
-	print("temp fruits: " + str(temp_fruits))
-	print("fruits: " + str(fruits))
-	temp_grab_types = grab_types
+	for i in fruits.size():
+		temp_fruits[i] = fruits[i]
+	temp_grab_types[0] = grab_types[0]
 	temp_is_occupied = is_occupied
 	temp_is_part_occupied = is_part_occupied
 	temp_num_slots_filled = num_slots_filled
-	print("set_temp_vars end")
 
 
 func set_vars() -> void:
-	fruits = temp_fruits
-	grab_types = temp_grab_types
+	for i in temp_fruits.size():
+		fruits[i] = temp_fruits[i]
+	grab_types[0] = temp_grab_types[0]
 	is_occupied = temp_is_occupied
 	is_part_occupied = temp_is_part_occupied
 	num_slots_filled = temp_num_slots_filled
@@ -126,12 +127,22 @@ func clear() -> void:
 	num_slots_filled = 0
 
 
+func clear_temp() -> void:
+	for i in temp_fruits.size():
+		temp_fruits[i] = Enums.Fruit_Type.NONE
+	temp_grab_types[0] = Enums.Grabbable_Type.NONE
+	temp_is_occupied = false
+	temp_is_part_occupied = false
+	temp_num_slots_filled = 0
+
+
 func swap() -> void:
 	swapping = true
 	set_temp_vars()
 	clear()
 	place()
 	pickup()
+	clear_temp()
 
 
 func start_action() -> void:
