@@ -98,9 +98,17 @@ func pickup() -> void:
 	else:
 		print("swapping")
 		swapping = false
+	clear_temp()
 
 
-func set_temp_vars() -> void:
+func set_temp_vars(last_slot: bool) -> void:
+	#if last_slot:
+		#temp_fruits[0] = fruits[num_slots - 1]
+		#temp_grab_types[0] = grab_types[num_slots - 1]
+		#temp_is_occupied = is_occupied
+		#temp_is_part_occupied = is_part_occupied
+		#temp_num_slots_filled = num_slots_filled
+	#else:
 	for i in fruits.size():
 		temp_fruits[i] = fruits[i]
 	temp_grab_types[0] = grab_types[0]
@@ -118,13 +126,20 @@ func set_vars() -> void:
 	num_slots_filled = temp_num_slots_filled
 
 
-func clear() -> void:
-	for i in fruits.size():
-		fruits[i] = Enums.Fruit_Type.NONE
-	grab_types[0] = Enums.Grabbable_Type.NONE
-	is_occupied = false
-	is_part_occupied = false
-	num_slots_filled = 0
+func clear(last_slot: bool) -> void:
+	if last_slot:
+		fruits[num_slots - 1] = Enums.Fruit_Type.NONE
+		grab_types[num_slots - 1] = Enums.Grabbable_Type.NONE
+		is_occupied = false
+		is_part_occupied = true
+		num_slots_filled -= 1
+	else:
+		for i in fruits.size():
+			fruits[i] = Enums.Fruit_Type.NONE
+		grab_types[0] = Enums.Grabbable_Type.NONE
+		is_occupied = false
+		is_part_occupied = false
+		num_slots_filled = 0
 
 
 func clear_temp() -> void:
@@ -138,11 +153,14 @@ func clear_temp() -> void:
 
 func swap() -> void:
 	swapping = true
-	set_temp_vars()
-	clear()
+	var last_slot:= false
+	if num_slots > 1 and grab_types[1] != Enums.Grabbable_Type.NONE:
+		last_slot = true
+	print("last slot: " + str(last_slot))
+	set_temp_vars(last_slot)
+	clear(last_slot)
 	place()
 	pickup()
-	clear_temp()
 
 
 func start_action() -> void:
@@ -164,7 +182,7 @@ func _on_button_up() -> void:
 		place()
 	elif not Globals.is_grabbing and not is_in_action:
 		# Player is not holding anything and this button has something on it to be picked up
-		set_temp_vars()
+		set_temp_vars(false)
 		pickup()
 	elif Globals.is_grabbing and is_occupied and not is_in_action:
 		# Player is holding a grabbable and this button is occupied, leading to a swap
