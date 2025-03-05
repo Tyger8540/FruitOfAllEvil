@@ -111,7 +111,8 @@ func set_temp_vars(last_slot: bool) -> void:
 	#else:
 	for i in fruits.size():
 		temp_fruits[i] = fruits[i]
-	temp_grab_types[0] = grab_types[0]
+	for j in grab_types.size():
+		temp_grab_types[j] = grab_types[j]
 	temp_is_occupied = is_occupied
 	temp_is_part_occupied = is_part_occupied
 	temp_num_slots_filled = num_slots_filled
@@ -120,7 +121,8 @@ func set_temp_vars(last_slot: bool) -> void:
 func set_vars() -> void:
 	for i in temp_fruits.size():
 		fruits[i] = temp_fruits[i]
-	grab_types[0] = temp_grab_types[0]
+	for j in temp_grab_types.size():
+		grab_types[j] = temp_grab_types[j]
 	is_occupied = temp_is_occupied
 	is_part_occupied = temp_is_part_occupied
 	num_slots_filled = temp_num_slots_filled
@@ -136,7 +138,8 @@ func clear(last_slot: bool) -> void:
 	else:
 		for i in fruits.size():
 			fruits[i] = Enums.Fruit_Type.NONE
-		grab_types[0] = Enums.Grabbable_Type.NONE
+		for j in grab_types.size():
+			grab_types[j] = Enums.Grabbable_Type.NONE
 		is_occupied = false
 		is_part_occupied = false
 		num_slots_filled = 0
@@ -145,7 +148,8 @@ func clear(last_slot: bool) -> void:
 func clear_temp() -> void:
 	for i in temp_fruits.size():
 		temp_fruits[i] = Enums.Fruit_Type.NONE
-	temp_grab_types[0] = Enums.Grabbable_Type.NONE
+	for j in temp_grab_types.size():
+		temp_grab_types[j] = Enums.Grabbable_Type.NONE
 	temp_is_occupied = false
 	temp_is_part_occupied = false
 	temp_num_slots_filled = 0
@@ -183,6 +187,7 @@ func _on_button_up() -> void:
 	elif not Globals.is_grabbing and not is_in_action:
 		# Player is not holding anything and this button has something on it to be picked up
 		set_temp_vars(false)
+		clear(false)
 		pickup()
 	elif Globals.is_grabbing and is_occupied and not is_in_action:
 		# Player is holding a grabbable and this button is occupied, leading to a swap

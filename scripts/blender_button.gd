@@ -108,7 +108,8 @@ func pickup() -> void:
 			Globals.grabbable_grab_type = grabbable.grab_type
 			Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
 			temp_is_occupied = false
-			icon = BLENDER_EMPTY
+			if grab_types[0] != Enums.Grabbable_Type.BLENDED_FRUIT:
+				icon = BLENDER_EMPTY
 			temp_fruits[0] = Enums.Fruit_Type.NONE
 			temp_fruits[1] = Enums.Fruit_Type.NONE
 			temp_grab_types[0] = Enums.Grabbable_Type.NONE
@@ -155,6 +156,8 @@ func finish_action() -> void:
 
 
 func set_blender_icon() -> void:
+	print("setting blender icon")
+	grab_types[1] = Enums.Grabbable_Type.NONE
 	match fruits[0]:
 		Enums.Fruit_Type.APPLE:
 			$GrabbableTexture2.texture = null
@@ -286,3 +289,4 @@ func set_blender_icon() -> void:
 					Enums.Fruit_Type.PLUM:
 						icon = Globals.BLENDER_PLUM_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
+	print("icon: " + str(icon))
