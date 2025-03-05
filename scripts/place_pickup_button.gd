@@ -187,7 +187,6 @@ func _on_button_up() -> void:
 	elif Globals.is_grabbing and is_occupied and not is_in_action:
 		# Player is holding a grabbable and this button is occupied, leading to a swap
 		swap()
-	
 
 
 func _on_action_button_button_up() -> void:

@@ -103,6 +103,16 @@ func _ready() -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
+	# Skip the circle 1 intro dialogue
+	if Input.is_action_just_pressed("shift"):
+		if State.section == "C1_intro":
+			State.circle_num = 1
+			State.location = "level"
+			State.section = "C1_level_virgil1"
+			State.cutscene_speaker = "Virgil"
+			get_tree().change_scene_to_file("res://scenes/circle_one.tscn")
+			return
+	
 	# Only the balloon is allowed to handle input while it's showing
 	get_viewport().set_input_as_handled()
 
