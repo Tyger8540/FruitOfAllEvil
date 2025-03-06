@@ -19,17 +19,25 @@ func _process(_delta: float) -> void:
 
 func _on_button_up() -> void:
 	if !Globals.is_grabbing:
-		var grabbable = GRABBABLE_SCENE.instantiate()
-		%Grab.play()
-		Globals.grabbable_fruit_type[0] = fruit
-		Globals.grabbable_grab_type = grab_type
-		if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
-			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
-		var fruit_array: Array[Enums.Fruit_Type]
-		fruit_array.append(fruit)
-		grabbable.initialize(fruit_array, grab_type)
-		get_tree().get_root().add_child(grabbable)
-		Globals.is_grabbing = true
-	elif Globals.is_grabbing and Globals.grabbable_fruit_type[0] == fruit and Globals.grabbable_grab_type == grab_type:
-		SignalManager.grabbable_placed.emit()
-		%PlaceOrGrabBackup.play()
+		grab_fruit()
+	elif Globals.is_grabbing:
+		if Globals.grabbable_grab_type == grab_type:
+			SignalManager.grabbable_placed.emit()
+			if Globals.grabbable_fruit_type[0] == fruit:
+				%PlaceOrGrabBackup.play()
+			else:
+				grab_fruit()
+
+
+func grab_fruit() -> void:
+	var grabbable = GRABBABLE_SCENE.instantiate()
+	%Grab.play()
+	Globals.grabbable_fruit_type[0] = fruit
+	Globals.grabbable_grab_type = grab_type
+	if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
+		Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
+	var fruit_array: Array[Enums.Fruit_Type]
+	fruit_array.append(fruit)
+	grabbable.initialize(fruit_array, grab_type)
+	get_tree().get_root().add_child(grabbable)
+	Globals.is_grabbing = true
