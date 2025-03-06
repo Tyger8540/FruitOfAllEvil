@@ -45,27 +45,36 @@ func place() -> void:
 			is_occupied = false
 			is_part_occupied = true
 	elif Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
+		# Holding a smoothie
 		if is_part_occupied:
-			#if Globals.grabbable_fruit_type[1] != Enums.Fruit_Type.NONE:
-				## Trying to place a two-fruit smoothie in a half-full blender
-				#return
-			#elif grab_types[0] != Enums.Grabbable_Type.BLENDED_FRUIT:
-				## Trying to place a one-fruit smoothie into a blender with raw ingredients
-				#return
-			#else:
-				## Placing a half smoothie on another half smoothie
-				#fruits[1] = Globals.grabbable_fruit_type[0]
+			# Blender is half full already
+			swap()
 			return
 		else:
-			for i in 2:
-				if Globals.grabbable_fruit_type[i] != Enums.Fruit_Type.NONE:
-					fruits[i] = Globals.grabbable_fruit_type[i]
-					Globals.grabbable_fruit_type[i] = Enums.Fruit_Type.NONE
-					num_slots_filled += 1
-				else:
-					break
-			grab_types[0] = Globals.grabbable_grab_type
-			Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
+			# Blender is full/occupied already
+			if (
+					swapping
+					and temp_grab_types[0] == Enums.Grabbable_Type.BLENDED_FRUIT
+					and temp_fruits[1] == Enums.Fruit_Type.NONE
+					and Globals.grabbable_fruit_type[1] == Enums.Fruit_Type.NONE
+			):
+				# Blender is holding a half smoothie and grabbing a half smoothie
+				fruits[0] = temp_fruits[0]
+				fruits[1] = Globals.grabbable_fruit_type[0]
+				num_slots_filled = 2
+				temp_is_occupied = false
+				Globals.grabbable_fruit_type[0] = Enums.Fruit_Type.NONE
+				Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
+			else:
+				for i in 2:
+					if Globals.grabbable_fruit_type[i] != Enums.Fruit_Type.NONE:
+						fruits[i] = Globals.grabbable_fruit_type[i]
+						Globals.grabbable_fruit_type[i] = Enums.Fruit_Type.NONE
+						num_slots_filled += 1
+					else:
+						break
+				grab_types[0] = Globals.grabbable_grab_type
+				Globals.grabbable_grab_type = Enums.Grabbable_Type.NONE
 		if num_slots_filled == num_slots:
 			is_occupied = true
 			is_part_occupied = false
