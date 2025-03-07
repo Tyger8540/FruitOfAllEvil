@@ -93,10 +93,8 @@ func place() -> void:
 
 func pickup() -> void:
 	if not swapping:
-		print("not swapping")
 		set_vars()
 	else:
-		print("swapping")
 		swapping = false
 	clear_temp()
 
@@ -160,7 +158,6 @@ func swap() -> void:
 	var last_slot:= false
 	if num_slots > 1 and grab_types[1] != Enums.Grabbable_Type.NONE:
 		last_slot = true
-	print("last slot: " + str(last_slot))
 	set_temp_vars(last_slot)
 	clear(last_slot)
 	place()

@@ -165,7 +165,6 @@ func finish_action() -> void:
 
 
 func set_blender_icon() -> void:
-	print("setting blender icon")
 	grab_types[1] = Enums.Grabbable_Type.NONE
 	match fruits[0]:
 		Enums.Fruit_Type.APPLE:
@@ -298,4 +297,3 @@ func set_blender_icon() -> void:
 					Enums.Fruit_Type.PLUM:
 						icon = Globals.BLENDER_PLUM_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
-	print("icon: " + str(icon))
