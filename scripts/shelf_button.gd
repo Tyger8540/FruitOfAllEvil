@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -38,7 +38,6 @@ func place() -> void:
 
 
 func pickup() -> void:
-	print("pickup start")
 	if temp_is_occupied:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		grabbable.initialize(temp_fruits, temp_grab_types[0])

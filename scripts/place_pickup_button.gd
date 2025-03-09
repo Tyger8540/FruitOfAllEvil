@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 		progress_bar.value = action_timer.wait_time - action_timer.time_left
 	elif hovering:
 		# Shouldn't highlight anything unless the appliance is not in action
-		if num_slots_filled == 0:
+		if num_slots_filled == 0 and Globals.is_grabbing:
 			if highlighting:
 				highlight_target.modulate.v += HIGHLIGHT_FACTOR * delta
 				if highlight_target.modulate.v >= HIGH_HIGHLIGHT_BOUND:
@@ -215,6 +215,10 @@ func set_highlight(mouse_entered: bool) -> void:
 		# Mouse entered
 		hovering = true
 		if not is_in_action:
+			# Only highlight if button not in action
+			if num_slots_filled == 0 and not Globals.is_grabbing:
+				# Does not highlight if the player cannot interact with empty button
+				return
 			highlighting = true
 			if Globals.is_grabbing and num_slots_filled != num_slots:
 				# Button is highlighted when trying to place inside of it
@@ -244,7 +248,7 @@ func set_highlight(mouse_entered: bool) -> void:
 			highlight_target.scale *= SCALE_FACTOR
 	else:
 		# Mouse exited
-		if is_in_action:
+		if is_in_action or (num_slots_filled == 0 and not Globals.is_grabbing):
 			hovering = false
 		elif highlight_target != null:
 			hovering = false

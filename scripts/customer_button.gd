@@ -70,6 +70,30 @@ func play_eat_sound() -> void:
 		%Eat2.play()
 
 
+func set_highlight(mouse_entered: bool) -> void:
+	#if mouse_entered:
+		## Mouse entered
+		#hovering = true
+		#if Globals.is_grabbing:
+			## Customer button is highlighted when trying to give an item
+			#highlighting = true
+			#highlight_target = get_parent()
+			#highlight_target.scale *= SCALE_FACTOR
+	#else:
+		## Mouse exited
+		#if is_in_action:
+			#hovering = false
+		#elif highlight_target != null:
+			#hovering = false
+			#highlighting = false
+			#highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
+			#highlight_target.scale /= SCALE_FACTOR
+			#if appliance_type != Appliance_Type.SHELF:
+				#$RemoteTransform2D.update_position = true
+			#highlight_target = null
+	pass
+
+
 func _on_button_up() -> void:
 	if Globals.is_grabbing:
 		for i in range(0, fruit.size()):
@@ -84,3 +108,11 @@ func _on_button_up() -> void:
 
 func _on_leave_timer_timeout() -> void:
 	get_parent().die()
+
+
+func _on_mouse_entered() -> void:
+	set_highlight(true)
+
+
+func _on_mouse_exited() -> void:
+	set_highlight(false)
