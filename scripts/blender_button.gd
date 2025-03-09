@@ -28,9 +28,9 @@ func place() -> void:
 	if Globals.grabbable_grab_type in [Enums.Grabbable_Type.FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT]:
 		# Grabbable is blendable (not necessarily just a regular fruit)
 		if is_part_occupied:
-			$GrabbableTexture.texture = Globals.grabbable_sprite
-		else:
 			$GrabbableTexture2.texture = Globals.grabbable_sprite
+		else:
+			$GrabbableTexture.texture = Globals.grabbable_sprite
 		%Drop.play()
 		fruits[num_slots_filled] = Globals.grabbable_fruit_type[0]
 		grab_types[num_slots_filled] = Globals.grabbable_grab_type
@@ -100,7 +100,7 @@ func pickup() -> void:
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		if not swapping:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 		temp_is_part_occupied = false
 		Globals.is_grabbing = true
 		temp_fruits[0] = Enums.Fruit_Type.NONE
@@ -124,7 +124,7 @@ func pickup() -> void:
 			temp_grab_types[0] = Enums.Grabbable_Type.NONE
 			temp_grab_types[1] = Enums.Grabbable_Type.NONE
 			if not swapping:
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 			
 			# Checks for if it was a full blender or half-full
 			if Globals.grabbable_fruit_type[1] == Enums.Fruit_Type.NONE:
@@ -142,7 +142,7 @@ func pickup() -> void:
 			temp_is_part_occupied = true
 			temp_is_occupied = false
 			if not swapping:
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 			temp_fruits[1] = Enums.Fruit_Type.NONE
 			temp_grab_types[1] = Enums.Grabbable_Type.NONE
 			temp_num_slots_filled -= 1
@@ -168,7 +168,7 @@ func set_blender_icon() -> void:
 	grab_types[1] = Enums.Grabbable_Type.NONE
 	match fruits[0]:
 		Enums.Fruit_Type.APPLE:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 			if is_part_occupied: # blended a single fruit
 				icon = Globals.BLENDER_APPLE
 				grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
@@ -176,7 +176,7 @@ func set_blender_icon() -> void:
 				is_occupied = true
 				fruits[1] = Enums.Fruit_Type.NONE
 			else:  # blended two fruits
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 				match fruits[1]:
 					Enums.Fruit_Type.APPLE:
 						icon = Globals.BLENDER_APPLE_APPLE
@@ -194,7 +194,7 @@ func set_blender_icon() -> void:
 						icon = Globals.BLENDER_APPLE_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.ORANGE:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 			if is_part_occupied: # blended a single fruit
 				icon = Globals.BLENDER_ORANGE
 				grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
@@ -202,7 +202,7 @@ func set_blender_icon() -> void:
 				is_occupied = true
 				fruits[1] = Enums.Fruit_Type.NONE
 			else:  # blended two fruits
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 				match fruits[1]:
 					Enums.Fruit_Type.APPLE:
 						icon = Globals.BLENDER_ORANGE_APPLE
@@ -220,7 +220,7 @@ func set_blender_icon() -> void:
 						icon = Globals.BLENDER_ORANGE_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BANANA:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 			if is_part_occupied: # blended a single fruit
 				icon = Globals.BLENDER_BANANA
 				grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
@@ -228,7 +228,7 @@ func set_blender_icon() -> void:
 				is_occupied = true
 				fruits[1] = Enums.Fruit_Type.NONE
 			else:  # blended two fruits
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 				match fruits[1]:
 					Enums.Fruit_Type.APPLE:
 						icon = Globals.BLENDER_BANANA_APPLE
@@ -246,7 +246,7 @@ func set_blender_icon() -> void:
 						icon = Globals.BLENDER_BANANA_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.BLUEBERRIES:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 			if is_part_occupied: # blended a single fruit
 				icon = Globals.BLENDER_BLUEBERRY
 				grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
@@ -254,7 +254,7 @@ func set_blender_icon() -> void:
 				is_occupied = true
 				fruits[1] = Enums.Fruit_Type.NONE
 			else:  # blended two fruits
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 				match fruits[1]:
 					Enums.Fruit_Type.APPLE:
 						icon = Globals.BLENDER_BLUEBERRY_APPLE
@@ -272,7 +272,7 @@ func set_blender_icon() -> void:
 						icon = Globals.BLENDER_BLUEBERRY_PLUM
 						grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
 		Enums.Fruit_Type.PLUM:
-			$GrabbableTexture2.texture = null
+			$GrabbableTexture.texture = null
 			if is_part_occupied: # blended a single fruit
 				icon = Globals.BLENDER_PLUM
 				grab_types[0] = Enums.Grabbable_Type.BLENDED_FRUIT
@@ -280,7 +280,7 @@ func set_blender_icon() -> void:
 				is_occupied = true
 				fruits[1] = Enums.Fruit_Type.NONE
 			else:  # blended two fruits
-				$GrabbableTexture.texture = null
+				$GrabbableTexture2.texture = null
 				match fruits[1]:
 					Enums.Fruit_Type.APPLE:
 						icon = Globals.BLENDER_PLUM_APPLE

@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://e8c57x3pn5ph"]
+[gd_scene load_steps=4 format=3 uid="uid://e8c57x3pn5ph"]
 
 [ext_resource type="Script" path="res://scripts/shelf_button.gd" id="1_cem5q"]
 [ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="2_a82uc"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e2wm"]
+
 [node name="ShelfButton" type="Button"]
 offset_right = 144.0
 offset_bottom = 144.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5e2wm")
 script = ExtResource("1_cem5q")
 appliance_type = 3
 num_slots = 1
@@ -19,3 +22,5 @@ offset_right = 104.0
 offset_bottom = 104.0
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

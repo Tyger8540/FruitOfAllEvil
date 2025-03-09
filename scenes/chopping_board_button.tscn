@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsm5cve406wkh"]
+[gd_scene load_steps=9 format=3 uid="uid://bsm5cve406wkh"]
 
 [ext_resource type="Texture2D" uid="uid://rpy2knnaoj7f" path="res://final_art/Cuttingboard.png" id="1_l64tn"]
 [ext_resource type="Script" path="res://scripts/chopping_board_button.gd" id="1_s00hn"]
 [ext_resource type="Texture2D" uid="uid://bvh74wvvc3yn0" path="res://art/other/Chop Button.png" id="3_sotc4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv6kk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cvsk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mx4sc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twc3c"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64oab"]
 
@@ -14,6 +20,9 @@ layout_direction = 2
 offset_right = 144.0
 offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qv6kk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4cvsk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mx4sc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_twc3c")
 icon = ExtResource("1_l64tn")
 icon_alignment = 1
 vertical_icon_alignment = 2
@@ -24,24 +33,9 @@ num_slots = 1
 appliance_icon = ExtResource("1_l64tn")
 action_icon = ExtResource("3_sotc4")
 
-[node name="ActionButton" type="Button" parent="."]
-layout_mode = 0
-offset_top = 146.0
-offset_right = 144.0
-offset_bottom = 182.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_64oab")
-icon_alignment = 1
-
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_top = -20.0
-offset_right = 144.0
-offset_bottom = -2.0
-show_percentage = false
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
 layout_mode = 0
@@ -58,6 +52,28 @@ offset_right = 108.0
 offset_bottom = 78.0
 stretch_mode = 3
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Nonscale")
+update_scale = false
+
+[node name="Nonscale" type="Node2D" parent="."]
+top_level = true
+
+[node name="ActionButton" type="Button" parent="Nonscale"]
+offset_top = 146.0
+offset_right = 144.0
+offset_bottom = 182.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_64oab")
+icon_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Nonscale"]
+offset_top = -20.0
+offset_right = 144.0
+offset_bottom = -2.0
+show_percentage = false
+
 [connection signal="button_up" from="." to="." method="_on_button_up"]
-[connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="button_up" from="Nonscale/ActionButton" to="." method="_on_action_button_button_up"]

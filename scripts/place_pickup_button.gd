@@ -16,6 +16,11 @@ const CUTTING_BOARD = preload("res://art/other/Cutting Board.png")
 const BLEND_BUTTON = preload("res://art/other/Blend Button.png")
 const CHOP_BUTTON = preload("res://art/other/Chop Button.png")
 
+const HIGHLIGHT_FACTOR = 0.5
+const LOW_HIGHLIGHT_BOUND = 1.0
+const HIGH_HIGHLIGHT_BOUND = 1.25
+const SCALE_FACTOR = 1.25
+
 @export var appliance_type: Appliance_Type
 @export var num_slots: int
 @export var action_speed: float
@@ -42,15 +47,28 @@ var temp_is_occupied:= false
 var temp_is_part_occupied:= false
 var temp_num_slots_filled:= 0
 
-@onready var action_button: Button = $ActionButton
+var highlight_target: Node = null
+var hovering:= false
+var highlighting:= false
+
+@onready var action_button: Button = $Nonscale/ActionButton
 @onready var action_timer: Timer = $ActionTimer
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: ProgressBar = $Nonscale/ProgressBar
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
 	SignalManager.upgrade_purchased.connect(on_upgrade_purchased)
+	
+	pivot_offset = Vector2(size.x / 2, size.y)  # Scales up from the center of the object
+	# Set pivot for every grabbable texture
+	for i in range(1, num_slots + 1):
+		var texture_name = "GrabbableTexture"
+		if i > 1:
+			texture_name += str(i)
+		var node:= get_node(texture_name)
+		node.pivot_offset = Vector2(node.size.x / 2, node.size.y)
 	
 	# Sets icons for the appliance & its action button (if it has one)
 	icon = appliance_icon
@@ -68,10 +86,23 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Provides a visual for the duration of an appliance's use
 	if is_in_action:
 		progress_bar.value = action_timer.wait_time - action_timer.time_left
+	elif hovering:
+		# Shouldn't highlight anything unless the appliance is not in action
+		if num_slots_filled == 0:
+			if highlighting:
+				highlight_target.modulate.v += HIGHLIGHT_FACTOR * delta
+				if highlight_target.modulate.v >= HIGH_HIGHLIGHT_BOUND:
+					highlight_target.modulate.v = HIGH_HIGHLIGHT_BOUND
+					highlighting = false
+			else:
+				highlight_target.modulate.v -= HIGHLIGHT_FACTOR * delta
+				if highlight_target.modulate.v <= LOW_HIGHLIGHT_BOUND:
+					highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
+					highlighting = true
 
 
 func on_day_start() -> void:
@@ -174,6 +205,55 @@ func finish_action() -> void:
 	is_in_action = false
 	progress_bar.value = progress_bar.min_value
 	progress_bar.visible = false
+	
+	if hovering:
+		set_highlight(true)
+
+
+func set_highlight(mouse_entered: bool) -> void:
+	if mouse_entered:
+		# Mouse entered
+		hovering = true
+		if not is_in_action:
+			highlighting = true
+			if Globals.is_grabbing and num_slots_filled != num_slots:
+				# Button is highlighted when trying to place inside of it
+				highlight_target = self
+			else:
+				# Not grabbing or num_slots_filled == num_slots
+				if num_slots_filled != 0:
+					# Non-empty button
+					if num_slots_filled == num_slots:
+						if num_slots > 1:
+							if grab_types[1] == Enums.Grabbable_Type.NONE:
+								# Finished product with >1 slot (blender)
+								highlight_target = self
+					
+					if highlight_target == null:
+						var texture_name:= "GrabbableTexture"
+						if num_slots_filled > 1:
+							texture_name += str(num_slots_filled)
+						highlight_target = get_node(texture_name)
+				else:
+					# Empty button
+					highlight_target = self
+			
+			if appliance_type != Appliance_Type.SHELF:
+				$RemoteTransform2D.update_position = false
+			
+			highlight_target.scale *= SCALE_FACTOR
+	else:
+		# Mouse exited
+		if is_in_action:
+			hovering = false
+		elif highlight_target != null:
+			hovering = false
+			highlighting = false
+			highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
+			highlight_target.scale /= SCALE_FACTOR
+			if appliance_type != Appliance_Type.SHELF:
+				$RemoteTransform2D.update_position = true
+			highlight_target = null
 
 
 func _on_button_up() -> void:
@@ -215,3 +295,11 @@ func _on_action_timer_timeout() -> void:
 			#pass
 		#Enums.Fruit_Type.PLUM:
 			#pass
+
+
+func _on_mouse_entered() -> void:
+	set_highlight(true)
+
+
+func _on_mouse_exited() -> void:
+	set_highlight(false)

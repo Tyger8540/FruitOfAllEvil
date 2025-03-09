@@ -14,24 +14,9 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_lbssq")
 
-[node name="ActionButton" type="Button" parent="."]
-layout_mode = 0
-offset_top = 74.0
-offset_right = 72.0
-offset_bottom = 92.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kuso3")
-icon_alignment = 1
-
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_top = -11.0
-offset_right = 72.0
-offset_bottom = -2.0
-show_percentage = false
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
 layout_mode = 0
@@ -48,6 +33,28 @@ offset_right = 52.0
 offset_bottom = 36.0
 stretch_mode = 3
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Nonscale")
+update_scale = false
+
+[node name="Nonscale" type="Node2D" parent="."]
+top_level = true
+
+[node name="ActionButton" type="Button" parent="Nonscale"]
+offset_top = 74.0
+offset_right = 72.0
+offset_bottom = 92.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kuso3")
+icon_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Nonscale"]
+offset_top = -11.0
+offset_right = 72.0
+offset_bottom = -2.0
+show_percentage = false
+
 [connection signal="button_up" from="." to="." method="_on_button_up"]
-[connection signal="button_up" from="ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="button_up" from="Nonscale/ActionButton" to="." method="_on_action_button_button_up"]
