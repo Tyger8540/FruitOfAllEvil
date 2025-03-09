@@ -97,3 +97,10 @@ func finish_action() -> void:
 			grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 	
 	super()
+
+
+func placeable() -> bool:
+	if Globals.grabbable_grab_type in [Enums.Grabbable_Type.FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT]:
+		return true
+	else:
+		return false

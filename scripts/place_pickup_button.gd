@@ -92,17 +92,18 @@ func _process(delta: float) -> void:
 		progress_bar.value = action_timer.wait_time - action_timer.time_left
 	elif hovering:
 		# Shouldn't highlight anything unless the appliance is not in action
-		if num_slots_filled == 0 and Globals.is_grabbing:
-			if highlighting:
-				highlight_target.modulate.v += HIGHLIGHT_FACTOR * delta
-				if highlight_target.modulate.v >= HIGH_HIGHLIGHT_BOUND:
-					highlight_target.modulate.v = HIGH_HIGHLIGHT_BOUND
-					highlighting = false
-			else:
-				highlight_target.modulate.v -= HIGHLIGHT_FACTOR * delta
-				if highlight_target.modulate.v <= LOW_HIGHLIGHT_BOUND:
-					highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
-					highlighting = true
+		if highlight_target != null:
+			if num_slots_filled == 0 and Globals.is_grabbing:
+				if highlighting:
+					highlight_target.modulate.v += HIGHLIGHT_FACTOR * delta
+					if highlight_target.modulate.v >= HIGH_HIGHLIGHT_BOUND:
+						highlight_target.modulate.v = HIGH_HIGHLIGHT_BOUND
+						highlighting = false
+				else:
+					highlight_target.modulate.v -= HIGHLIGHT_FACTOR * delta
+					if highlight_target.modulate.v <= LOW_HIGHLIGHT_BOUND:
+						highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
+						highlighting = true
 
 
 func on_day_start() -> void:
@@ -210,6 +211,10 @@ func finish_action() -> void:
 		set_highlight(true)
 
 
+func placeable() -> bool:
+	return true
+
+
 func set_highlight(mouse_entered: bool) -> void:
 	if mouse_entered:
 		# Mouse entered
@@ -219,6 +224,10 @@ func set_highlight(mouse_entered: bool) -> void:
 			if num_slots_filled == 0 and not Globals.is_grabbing:
 				# Does not highlight if the player cannot interact with empty button
 				return
+			elif Globals.is_grabbing and not placeable():
+				# Does not highlight if the grabbable is not placeable on this button
+				return
+			
 			highlighting = true
 			if Globals.is_grabbing and num_slots_filled != num_slots:
 				# Button is highlighted when trying to place inside of it
