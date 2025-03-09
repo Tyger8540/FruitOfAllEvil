@@ -1,6 +1,11 @@
 class_name CustomerButton
 extends Button
 
+const HIGHLIGHT_FACTOR = 0.5
+const LOW_HIGHLIGHT_BOUND = 1.0
+const HIGH_HIGHLIGHT_BOUND = 1.25
+const SCALE_FACTOR = 1.25
+
 var slots: Array[TextureRect]
 var checkmarks: Array[TextureRect]
 
@@ -10,6 +15,12 @@ var fruit2: Array[Enums.Fruit_Type]
 
 var late_order_strings: Array[String]
 var damage_strings: Array[String]
+
+var hovering:= false
+var highlighting:= false
+
+@onready var sprite_2d: Sprite2D = $"../Sprite2D"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -71,26 +82,25 @@ func play_eat_sound() -> void:
 
 
 func set_highlight(mouse_entered: bool) -> void:
-	#if mouse_entered:
-		## Mouse entered
-		#hovering = true
-		#if Globals.is_grabbing:
-			## Customer button is highlighted when trying to give an item
-			#highlighting = true
-			#highlight_target = get_parent()
-			#highlight_target.scale *= SCALE_FACTOR
-	#else:
-		## Mouse exited
-		#if is_in_action:
-			#hovering = false
-		#elif highlight_target != null:
-			#hovering = false
-			#highlighting = false
-			#highlight_target.modulate.v = LOW_HIGHLIGHT_BOUND
-			#highlight_target.scale /= SCALE_FACTOR
-			#if appliance_type != Appliance_Type.SHELF:
-				#$RemoteTransform2D.update_position = true
-			#highlight_target = null
+	if mouse_entered:
+		# Mouse entered
+		hovering = true
+		if Globals.is_grabbing:
+			# Customer button is highlighted when trying to give an item
+			highlighting = true
+			sprite_2d.scale *= SCALE_FACTOR
+			sprite_2d.position.y += 40.0
+			#scale *= SCALE_FACTOR
+	else:
+		# Mouse exited
+		hovering = false
+		if Globals.is_grabbing:
+			highlighting = false
+			sprite_2d.modulate.v = LOW_HIGHLIGHT_BOUND
+			#modulate.v = LOW_HIGHLIGHT_BOUND
+			sprite_2d.scale /= SCALE_FACTOR
+			sprite_2d.position.y -= 40.0
+			#scale /= SCALE_FACTOR
 	pass
 
 
@@ -100,6 +110,7 @@ func _on_button_up() -> void:
 			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type[0] and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type[1]:
 				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				checkmarks[i].visible = true
+				set_highlight(false)
 				play_eat_sound()
 				SignalManager.grabbable_placed.emit()
 				check_completed()
