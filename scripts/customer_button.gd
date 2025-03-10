@@ -18,6 +18,7 @@ var damage_strings: Array[String]
 
 var hovering:= false
 var highlighting:= false
+var result: Dictionary
 
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
 
@@ -81,40 +82,65 @@ func play_eat_sound() -> void:
 		%Eat2.play()
 
 
+func grabbable_needed() -> Dictionary:
+	for i in range(0, fruit.size()):
+		if (
+				not checkmarks[i].visible
+				and fruit[i] == Globals.grabbable_fruit_type[0]
+				and grab_type[i] == Globals.grabbable_grab_type
+				and fruit2[i] == Globals.grabbable_fruit_type[1]
+		):
+			return {"needed": true, "index": i}
+	return {"needed": false}
+
+
 func set_highlight(mouse_entered: bool) -> void:
 	if mouse_entered:
 		# Mouse entered
 		hovering = true
-		if Globals.is_grabbing:
-			# Customer button is highlighted when trying to give an item
-			highlighting = true
-			sprite_2d.scale *= SCALE_FACTOR
-			sprite_2d.position.y += 40.0
-			#scale *= SCALE_FACTOR
+		if (
+				$GreenPatienceTimer.is_stopped() and not $RedPatienceTimer.is_stopped()
+				or not $GreenPatienceTimer.is_stopped() and $RedPatienceTimer.is_stopped()
+		):
+			# Customer is interactable
+			if Globals.is_grabbing:
+				result = grabbable_needed()
+				if result["needed"]:
+					# Customer button is highlighted when trying to give an item they want
+					highlighting = true
+					sprite_2d.scale *= SCALE_FACTOR
+					sprite_2d.position.y += 40.0
+					#scale *= SCALE_FACTOR
 	else:
 		# Mouse exited
 		hovering = false
-		if Globals.is_grabbing:
-			highlighting = false
-			sprite_2d.modulate.v = LOW_HIGHLIGHT_BOUND
-			#modulate.v = LOW_HIGHLIGHT_BOUND
-			sprite_2d.scale /= SCALE_FACTOR
-			sprite_2d.position.y -= 40.0
-			#scale /= SCALE_FACTOR
+		if (
+				$GreenPatienceTimer.is_stopped() and not $RedPatienceTimer.is_stopped()
+				or not $GreenPatienceTimer.is_stopped() and $RedPatienceTimer.is_stopped()
+		):
+			# Customer is interactable
+			if Globals.is_grabbing:
+				# Grabbing
+				if result["needed"]:
+					highlighting = false
+					sprite_2d.modulate.v = LOW_HIGHLIGHT_BOUND
+					#modulate.v = LOW_HIGHLIGHT_BOUND
+					sprite_2d.scale /= SCALE_FACTOR
+					sprite_2d.position.y -= 40.0
+					#scale /= SCALE_FACTOR
 	pass
 
 
 func _on_button_up() -> void:
 	if Globals.is_grabbing:
-		for i in range(0, fruit.size()):
-			if !checkmarks[i].visible and fruit[i] == Globals.grabbable_fruit_type[0] and grab_type[i] == Globals.grabbable_grab_type and fruit2[i] == Globals.grabbable_fruit_type[1]:
-				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
-				checkmarks[i].visible = true
-				set_highlight(false)
-				play_eat_sound()
-				SignalManager.grabbable_placed.emit()
-				check_completed()
-				break
+		if result["needed"]:
+			# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
+			var i: int = result["index"]
+			checkmarks[i].visible = true
+			set_highlight(false)
+			play_eat_sound()
+			SignalManager.grabbable_placed.emit()
+			check_completed()
 
 
 func _on_leave_timer_timeout() -> void:
