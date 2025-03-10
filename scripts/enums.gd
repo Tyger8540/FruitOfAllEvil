@@ -24,3 +24,9 @@ enum Upgrade_Type {
 	BLENDER,
 	BLEND_SPEED,
 }
+
+enum Audio_Type {
+	NONE,
+	SFX,
+	MUSIC,
+}

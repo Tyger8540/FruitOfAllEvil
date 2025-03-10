@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhguxfqqurpyb"]
+[gd_scene load_steps=16 format=3 uid="uid://dhguxfqqurpyb"]
 
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dehy6nd1injy2" path="res://audio/sfx/Coin_Get.wav" id="8_t2gr1"]
 [ext_resource type="AudioStream" uid="uid://bppalx81duhnf" path="res://audio/sfx/Eat_3.wav" id="9_2p3ax"]
 [ext_resource type="AudioStream" uid="uid://us8yjjkrrd1s" path="res://audio/sfx/Eat_2.wav" id="9_d21vj"]
+[ext_resource type="AudioStream" uid="uid://cv4bxisaij6y7" path="res://audio/sfx/satisfied (2).wav" id="13_6o8ma"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
 
@@ -148,28 +149,34 @@ horizontal_alignment = 1
 wait_time = 2.0
 one_shot = true
 
-[node name="Hungry" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hungry" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("8_ovxc0")
 volume_db = -10.0
 
-[node name="CoinGet" type="AudioStreamPlayer" parent="."]
+[node name="CoinGet" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("8_t2gr1")
 
-[node name="Eat1" type="AudioStreamPlayer" parent="."]
+[node name="Eat1" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("8_nkqr7")
 volume_db = -10.0
 
-[node name="Eat2" type="AudioStreamPlayer" parent="."]
+[node name="Eat2" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("9_d21vj")
 volume_db = -10.0
 
-[node name="Eat3" type="AudioStreamPlayer" parent="."]
+[node name="Eat3" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("9_2p3ax")
+
+[node name="Satisfied" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("13_6o8ma")
 
 [connection signal="button_up" from="CustomerButton" to="CustomerButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="CustomerButton" to="CustomerButton" method="_on_mouse_entered"]

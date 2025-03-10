@@ -1,6 +1,5 @@
 extends Node
 
-
 const APPLE = preload("res://final_art/Apple.png")
 const CHOPPED_APPLE = preload("res://final_art/Apple_Chopped.png")
 const BLENDED_APPLE = preload("res://placeholder_art/Apple3.png")

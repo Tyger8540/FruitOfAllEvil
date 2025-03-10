@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m80v0n2k0wj4"
+path="res://.godot/imported/result screen.wav-1770720d8586516180eb9096a3fd1341.sample"
+
+[deps]
+
+source_file="res://audio/sfx/result screen.wav"
+dest_files=["res://.godot/imported/result screen.wav-1770720d8586516180eb9096a3fd1341.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

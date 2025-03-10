@@ -20,6 +20,8 @@ var hovering:= false
 var highlighting:= false
 var result: Dictionary
 
+var audio_stream_players: Array[AudioStreamPlayer]
+
 @onready var sprite_2d: Sprite2D = $"../Sprite2D"
 
 
@@ -57,6 +59,8 @@ func check_completed() -> void:
 func start_leave_sequence() -> void:
 	if $GreenPatienceBar.value > 0:
 		$GreenPatienceTimer.stop()
+		CustomAudioStreamPlayer
+		play_sound("res://audio/sfx/satisfied (2).wav", Enums.Audio_Type.SFX, -10.0)
 		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
 			$Panel/Label.text = "$" + str(get_parent().sell_value)
 			Globals.money += get_parent().sell_value
@@ -65,6 +69,7 @@ func start_leave_sequence() -> void:
 			Globals.money += get_parent().sell_value / 2
 	elif $RedPatienceBar.value > 0:
 		$RedPatienceTimer.stop()
+		play_sound("res://audio/sfx/disatisfied.wav", Enums.Audio_Type.SFX)
 		var i = randi_range(0, late_order_strings.size() - 1)
 		$Panel/Label.text = late_order_strings[i]
 	else:
@@ -74,12 +79,20 @@ func start_leave_sequence() -> void:
 	$LeaveTimer.start()
 
 
+func play_sound(audio_file_name: String, audio_type: Enums.Audio_Type, volume: float = 0.0) -> void:
+	var new_audio:= CustomAudioStreamPlayer.new()
+	add_child(new_audio)
+	audio_stream_players.append(new_audio)
+	new_audio.initialize_and_play(audio_file_name, audio_type, volume)
+
+
 func play_eat_sound() -> void:
-	var i = randi_range(1, 2)
-	if i == 1:
-		%Eat1.play()
-	else:
-		%Eat2.play()
+	return
+	#var i = randi_range(1, 2)
+	#if i == 1:
+		#%Eat1.play()
+	#else:
+		#%Eat2.play()
 
 
 func grabbable_needed() -> Dictionary:

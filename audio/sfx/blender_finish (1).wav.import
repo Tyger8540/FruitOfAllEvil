@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjud18nr6u5d4"
+path="res://.godot/imported/blender_finish (1).wav-77abee91b33d55c8f6875055848b80ad.sample"
+
+[deps]
+
+source_file="res://audio/sfx/blender_finish (1).wav"
+dest_files=["res://.godot/imported/blender_finish (1).wav-77abee91b33d55c8f6875055848b80ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
