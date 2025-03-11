@@ -27,7 +27,7 @@ AudioManager="*res://scripts/audio_manager.gd"
 [dialogue_manager]
 
 general/states=["State"]
-general/balloon_path="res://dialogue/cutscene_balloon.tscn"
+general/balloon_path="res://dialogue/character_balloon.tscn"
 
 [display]
 

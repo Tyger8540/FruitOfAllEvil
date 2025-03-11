@@ -123,7 +123,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Charon Boss" parent="." instance=ExtResource("34_a82wn")]
-position = Vector2(-960, -539)
+position = Vector2(-764, -539)
 
 [node name="BrownBackground" type="TextureRect" parent="."]
 visible = false
@@ -146,7 +146,7 @@ texture = ExtResource("35_2jchb")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_nr4x3")
-num_days = 3
+num_days = 2
 
 [node name="TrashButton" parent="." instance=ExtResource("9_gvi8i")]
 offset_left = -960.0
@@ -211,33 +211,29 @@ layout_mode = 2
 index = 3
 
 [node name="ApplianceGrid3" type="GridContainer" parent="ApplianceHBox"]
-visible = false
 layout_direction = 2
 layout_mode = 2
 theme_override_constants/h_separation = 160
 theme_override_constants/v_separation = 80
 columns = 2
 
-[node name="ChoppingBoardButton2" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("11_bwl7h")]
+[node name="ShelfButton" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("37_7jab3")]
+layout_mode = 2
+
+[node name="ShelfButton2" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("37_7jab3")]
 visible = false
 layout_mode = 2
 
-[node name="ChoppingBoardButton3" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("11_bwl7h")]
+[node name="ShelfButton3" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("37_7jab3")]
 visible = false
 layout_mode = 2
-index = 1
 
-[node name="ChoppingBoardButton4" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("11_bwl7h")]
+[node name="ShelfButton4" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("37_7jab3")]
 visible = false
 layout_mode = 2
-index = 2
-
-[node name="ChoppingBoardButton5" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("11_bwl7h")]
-visible = false
-layout_mode = 2
-index = 3
 
 [node name="ShelfButton" parent="." instance=ExtResource("37_7jab3")]
+visible = false
 offset_left = 569.0
 offset_top = 38.0
 offset_right = 713.0

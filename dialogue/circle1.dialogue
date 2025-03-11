@@ -75,24 +75,28 @@ set cutscene_speaker = "Charon"
 Charon: And here we have a living soul and their fruit stand...
 % Charon: Ho, a new boat of customers!
 % Charon: You shall serve these tormented souls!
+=> END
 
 ~ C1_level_charon_barks_complete
 # barks when Charon's boat orders have been completely fulfilled.
 Charon: Lo, you hear their cries of satisfaction?!
 % Charon: Very impressive work, living soul!
 % Charon: The demand will only get stronger...
+=> END
 
 ~ C1_level_charon_barks_arrive
 # barks when Charon arrives on boat (incomplete orders)
 Charon: Impatience grows wave by wave...
 % Charon: Will you satisfy this boat of souls?
 % Charon: This seems to be taking a toll on you...
+=> END
 
 ~ C1_level_charon_barks_depart
 # barks when Charon departs on boat (incomplete orders)
 Charon: A strong wave incoming, hold onto your souls!
 % Charon: Acheron, calm your tides!
 % Charon: I shall fetch some more souls soon.
+=> END
 
 ~ C1_level_charon2
 # level complete

@@ -11,6 +11,7 @@ var cutscene_speaker: String = ""
 
 var circle_num: int = 1
 var next_boss: String = "Charon"
+var current_boss: String = ""
 var boss_queued: bool = false
 
 var next_vendor: String = ""

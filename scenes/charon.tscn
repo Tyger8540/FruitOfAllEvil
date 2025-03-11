@@ -13,6 +13,7 @@ _data = {
 point_count = 3
 
 [node name="Charon Boss" type="Node2D" node_paths=PackedStringArray("charon_path")]
+position = Vector2(200, 0)
 script = ExtResource("1_7j0h7")
 charon_path = NodePath("Path2D/PathFollow2D")
 boss_name = "Charon"
@@ -123,6 +124,7 @@ is_charon = true
 charon = NodePath("../..")
 
 [node name="CharonFullBoatNoBack" type="Sprite2D" parent="Path2D8/PathFollow2D"]
+unique_name_in_owner = true
 position = Vector2(313.365, -89.6926)
 texture = ExtResource("5_0cwbg")
 

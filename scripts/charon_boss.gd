@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 
 
 func start_boss_fight() -> void:
-	#super()  # Makes sure this is the boss fight that should start
+	super()  # Makes sure this is the boss fight that should start
 	
 	for customer in customers:
 		var rand_difficulty: int
@@ -101,6 +101,7 @@ func start_boss_fight() -> void:
 		customer.initialize(customer_sprite, rand_difficulty, 1, rand_time, 0, 0)  # TODO MAKE BETTER RAND TIME SYSTEM MAYBE
 	wave_in_progress = true
 	SignalManager.boss_fight_started.emit()
+	talk(State.dialogue_file, "C1_level_charon_barks_new")
 
 
 func on_customer_created() -> void:

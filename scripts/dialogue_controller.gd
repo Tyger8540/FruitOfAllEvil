@@ -4,6 +4,7 @@ extends Node
 const FULLSCREEN_BALLOON = preload("res://dialogue/fullscreen_balloon.tscn")
 const FARMERS_MARKET_BALLOON = preload("res://dialogue/farmers_market_balloon.tscn")
 const CUTSCENE_BALLOON = preload("res://dialogue/cutscene_balloon.tscn")
+const CHARACTER_BALLOON = preload("res://dialogue/character_balloon.tscn")
 
 #var dialogue_ready: bool = true
 #var intro_started: bool = false
@@ -48,7 +49,7 @@ func handle_input() -> void:
 		"boss":
 			match State.next_boss:
 				"Charon":
-					return
+					pass
 		"market":
 			balloon = FARMERS_MARKET_BALLOON.instantiate()
 			match State.vendor:

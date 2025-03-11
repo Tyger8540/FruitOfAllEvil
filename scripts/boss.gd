@@ -1,6 +1,8 @@
 class_name Boss
 extends Node2D
 
+const CHARACTER_BALLOON = preload("res://dialogue/character_balloon.tscn")
+
 @export var boss_name: String
 
 
@@ -20,3 +22,12 @@ func start_boss_fight() -> void:
 	# Logic for starting the boss fight when signal is received (will be done in subclasses)
 	if State.next_boss != boss_name:
 		return
+	else:
+		State.next_boss = ""
+		State.current_boss = boss_name
+
+
+func talk(dialogue_file: String, section: String) -> void:
+	var balloon = CHARACTER_BALLOON.instantiate()
+	add_child(balloon)
+	balloon.start(load(dialogue_file), section)

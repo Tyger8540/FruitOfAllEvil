@@ -1,4 +1,4 @@
-class_name DialogueManagerExampleBalloon extends CanvasLayer
+extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
@@ -6,6 +6,9 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
+
+## Determines if the balloon should follow its parent
+@export var is_following: bool = false
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -101,6 +104,15 @@ func _ready() -> void:
 				$Speaker.texture = load("res://final_art/Virgil_Test_360.png")
 			"Charon":
 				$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
+	
+	if State.current_boss == "Charon":
+		$AdvanceDialogueTimer.start(5.0)
+
+
+func _process(_delta: float) -> void:
+	if State.current_boss == "Charon":
+		offset = $"../Path2D8/PathFollow2D/".position + Vector2(1100.0 - 2123.0, -750.0 + 202.0)
+		#offset = %CharonFullBoatNoBack.position + Vector2(850.0 - 313.365, -900.0 + 89.693)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -183,3 +195,7 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_advance_dialogue_timer_timeout() -> void:
+	next(dialogue_line.next_id)
