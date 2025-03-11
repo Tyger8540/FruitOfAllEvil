@@ -8,7 +8,7 @@ var initialized: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	SignalManager.audio_stopped.connect(on_audio_stopped)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,3 +23,8 @@ func initialize_and_play(_file_name: String, _type: Enums.Audio_Type, _volume: f
 	volume_db = _volume
 	play()
 	initialized = true
+
+
+func on_audio_stopped(_parent: Node, _file_name: String) -> void:
+	if get_parent() == _parent and load(_file_name) == stream:
+		queue_free()

@@ -236,7 +236,7 @@ func set_highlight(mouse_entered: bool) -> void:
 				# Not grabbing or num_slots_filled == num_slots
 				if num_slots_filled != 0:
 					# Non-empty button
-					if num_slots_filled == num_slots:
+					if num_slots_filled < num_slots:
 						if num_slots > 1:
 							if grab_types[1] == Enums.Grabbable_Type.NONE:
 								# Finished product with >1 slot (blender)

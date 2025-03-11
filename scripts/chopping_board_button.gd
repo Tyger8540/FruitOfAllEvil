@@ -27,7 +27,7 @@ func on_upgrade_purchased() -> void:
 func place() -> void:
 	if Globals.grabbable_grab_type in [Enums.Grabbable_Type.FRUIT, Enums.Grabbable_Type.CHOPPED_FRUIT]:
 		$GrabbableTexture.texture = Globals.grabbable_sprite
-		%Drop.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Drop.wav", Enums.Audio_Type.SFX)
 		is_occupied = true
 		fruits[0] = Globals.grabbable_fruit_type[0]
 		grab_types[0] = Globals.grabbable_grab_type
@@ -53,7 +53,7 @@ func pickup() -> void:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		grabbable.initialize(temp_fruits, temp_grab_types[0])
 		get_tree().get_root().add_child(grabbable)
-		%Grab.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		if temp_grab_types[0] == Enums.Grabbable_Type.FRUIT or temp_grab_types[0] == Enums.Grabbable_Type.CHOPPED_FRUIT:
@@ -73,11 +73,12 @@ func pickup() -> void:
 func start_action() -> void:
 	if is_occupied:
 		super()
-		%Cut.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Cut.wav", Enums.Audio_Type.SFX)
 
 
 func finish_action() -> void:
-	%Cut.stop()
+	SignalManager.audio_stopped.emit(self, "res://audio/sfx/Cut.wav")
+	AudioManager.play_sound(self, "res://audio/sfx/cuttingBoard_finish (4).wav", Enums.Audio_Type.SFX)
 	
 	match fruits[0]:
 		Enums.Fruit_Type.APPLE:

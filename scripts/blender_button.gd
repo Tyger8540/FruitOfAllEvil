@@ -31,7 +31,7 @@ func place() -> void:
 			$GrabbableTexture2.texture = Globals.grabbable_sprite
 		else:
 			$GrabbableTexture.texture = Globals.grabbable_sprite
-		%Drop.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Drop.wav", Enums.Audio_Type.SFX)
 		fruits[num_slots_filled] = Globals.grabbable_fruit_type[0]
 		grab_types[num_slots_filled] = Globals.grabbable_grab_type
 		for i in num_slots:
@@ -96,7 +96,7 @@ func pickup() -> void:
 		fruit_array.append(temp_fruits[0])
 		grabbable.initialize(fruit_array, temp_grab_types[0])
 		get_tree().get_root().add_child(grabbable)
-		%Grab.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		if not swapping:
@@ -112,7 +112,7 @@ func pickup() -> void:
 		if temp_grab_types[0] == Enums.Grabbable_Type.BLENDED_FRUIT:  # already blended
 			grabbable.initialize(temp_fruits, temp_grab_types[0])
 			get_tree().get_root().add_child(grabbable)
-			%Grab.play()
+			AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 			Globals.grabbable_grab_type = grabbable.grab_type
 			Globals.grabbable_fruit_type[1] = grabbable.fruit[1]
@@ -136,7 +136,7 @@ func pickup() -> void:
 			fruit_array.append(temp_fruits[1])
 			grabbable.initialize(fruit_array, temp_grab_types[1])
 			get_tree().get_root().add_child(grabbable)
-			%Grab.play()
+			AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 			Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 			Globals.grabbable_grab_type = grabbable.grab_type
 			temp_is_part_occupied = true
@@ -153,11 +153,12 @@ func pickup() -> void:
 func start_action() -> void:
 	if is_occupied or is_part_occupied:
 		super()
-		%Blender.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Blender.wav", Enums.Audio_Type.SFX, -10.0)
 
 
 func finish_action() -> void:
-	%Blender.stop()
+	SignalManager.audio_stopped.emit(self, "res://audio/sfx/Blender.wav")
+	AudioManager.play_sound(self, "res://audio/sfx/blender_finish (1).wav", Enums.Audio_Type.SFX, -5.0)
 	
 	set_blender_icon()
 	

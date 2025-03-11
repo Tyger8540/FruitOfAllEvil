@@ -173,7 +173,6 @@ columns = 2
 layout_mode = 2
 
 [node name="BlenderButton2" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("10_hxnmb")]
-visible = false
 layout_mode = 2
 index = 1
 
@@ -198,7 +197,6 @@ columns = 2
 layout_mode = 2
 
 [node name="ChoppingBoardButton3" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("11_bwl7h")]
-visible = false
 layout_mode = 2
 index = 1
 
