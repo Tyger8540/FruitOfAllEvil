@@ -38,6 +38,8 @@ func _ready() -> void:
 	SignalManager.market_dialogue_ended.connect(on_dialogue_ended)
 	set_camera_position(position)
 	set_sidescroll_button_visibility()
+	AudioManager.stop_music()
+	AudioManager.play_sound(self, "res://audio/music/Hip Hop Vol2 Convos Main.wav", Enums.Audio_Type.MUSIC)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

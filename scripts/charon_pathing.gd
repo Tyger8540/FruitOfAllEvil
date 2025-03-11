@@ -66,10 +66,12 @@ func on_screen_timeout() -> void:
 			charon.talking = true
 			start_on_screen_timer(5.0)
 			charon.talk(State.dialogue_file, "C1_level_charon_barks_depart", 2.5)
+			AudioManager.play_sound(self, "res://audio/sfx/warning (4).wav", Enums.Audio_Type.SFX)
 			return
 	
 	if is_actually_charon:
 		charon.talking = false
+		AudioManager.play_sound(self, "res://audio/sfx/water_splash.wav", Enums.Audio_Type.SFX)
 	paused_on_screen = false
 
 
@@ -77,6 +79,8 @@ func off_screen_timeout() -> void:
 	paused_off_screen = false
 	progress_ratio = 0.0
 	moving_in = true
+	if is_actually_charon:
+		AudioManager.play_sound(self, "res://audio/sfx/water_splash.wav", Enums.Audio_Type.SFX)
 
 
 func create_customer(customer_indices: Array[int]) -> void:

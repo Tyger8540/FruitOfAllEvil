@@ -105,6 +105,7 @@ func start_boss_fight() -> void:
 	SignalManager.boss_fight_started.emit()
 	talk(State.dialogue_file, "C1_level_charon_barks_new", 5.0)
 	talking = true
+	AudioManager.play_sound(self, "res://audio/sfx/water_splash.wav", Enums.Audio_Type.SFX)
 
 
 func on_customer_created() -> void:

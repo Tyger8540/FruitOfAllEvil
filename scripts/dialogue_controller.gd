@@ -40,6 +40,8 @@ func handle_input() -> void:
 	match State.location:
 		"intro":
 			balloon = FULLSCREEN_BALLOON.instantiate()
+			AudioManager.stop_music()
+			AudioManager.play_sound(self, "res://audio/music/Epic Vol2 Challenger Intensity 1.wav", Enums.Audio_Type.MUSIC)
 		"level":
 			#if State.level_defeated:
 				#balloon = CUTSCENE_BALLOON.instantiate()

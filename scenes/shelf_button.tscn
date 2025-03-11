@@ -1,25 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://e8c57x3pn5ph"]
+[gd_scene load_steps=7 format=3 uid="uid://e8c57x3pn5ph"]
 
 [ext_resource type="Script" path="res://scripts/shelf_button.gd" id="1_cem5q"]
-[ext_resource type="Texture2D" uid="uid://osaik37tnoc6" path="res://icon.svg" id="2_a82uc"]
+[ext_resource type="Texture2D" uid="uid://c45s450haa0r4" path="res://final_art/Shelf.png" id="2_dgxob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e2wm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gulvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1nttl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_616xw"]
 
 [node name="ShelfButton" type="Button"]
 offset_right = 144.0
 offset_bottom = 144.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5e2wm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gulvr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1nttl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_616xw")
+icon = ExtResource("2_dgxob")
 script = ExtResource("1_cem5q")
 appliance_type = 3
 num_slots = 1
-appliance_icon = ExtResource("2_a82uc")
+appliance_icon = ExtResource("2_dgxob")
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 104.0
-offset_bottom = 104.0
+offset_left = 32.0
+offset_top = -24.0
+offset_right = 96.0
+offset_bottom = 40.0
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -15,6 +15,9 @@ func on_day_end() -> void:
 	if %WaveManager.cur_day == %WaveManager.num_days:
 		State.level_defeated = true
 		State.dialogue_ready = true
+		if State.circle_num == 1:
+			AudioManager.stop_music()
+			AudioManager.play_sound(self, "res://audio/music/freya_intensity3.mp3", Enums.Audio_Type.MUSIC)
 		return
 		# TODO make this check for which circle you are in
 	elif State.circle_num == 0:

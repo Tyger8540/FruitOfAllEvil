@@ -27,6 +27,8 @@ set get_tree().change_scene_to_file("res://scenes/circle_one.tscn")
 
 ~ C1_level_virgil1
 # additional tutorialization, at the START of the stand gameplay
+set AudioManager.stop_music()
+set AudioManager.play_sound(self, "res://audio/music/freya_intensity2.mp3", Enums.Audio_Type.MUSIC)
 Virgil: Pardon my intrusion, destined traveler.
 Virgil: Since you have purchased the blender from me, I suppose I owe you a piece of advice.
 Virgil: Some customers will desire a fruit in a liquid format, what you call a "smoothie".
