@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 @export var is_charon: bool
+@export var is_actually_charon: bool
 @export var customer_index: int
 @export var customer_position: Vector2
 @export var charon: CharonBoss
@@ -34,6 +35,11 @@ func _process(delta: float) -> void:
 		paused_on_screen = true
 		if is_charon:
 			%OnScreenTimer.start(randf_range(15.0, 25.0))
+		if is_actually_charon:
+			if not charon.talking:
+				charon.talk(State.dialogue_file, "C1_level_charon_barks_arrive", 5.0)
+			else:
+				charon.talking = false
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:
@@ -52,6 +58,18 @@ func loop_movement(delta):
 
 
 func on_screen_timeout() -> void:
+	if charon.wave_in_progress and not charon.talking:
+		if not is_actually_charon:
+			start_on_screen_timer(5.0)
+			return
+		else:
+			charon.talking = true
+			start_on_screen_timer(5.0)
+			charon.talk(State.dialogue_file, "C1_level_charon_barks_depart", 2.5)
+			return
+	
+	if is_actually_charon:
+		charon.talking = false
 	paused_on_screen = false
 
 

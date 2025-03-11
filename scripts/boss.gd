@@ -27,7 +27,8 @@ func start_boss_fight() -> void:
 		State.current_boss = boss_name
 
 
-func talk(dialogue_file: String, section: String) -> void:
+func talk(dialogue_file: String, section: String, time: float) -> void:
 	var balloon = CHARACTER_BALLOON.instantiate()
 	add_child(balloon)
+	balloon.advance_time = time
 	balloon.start(load(dialogue_file), section)

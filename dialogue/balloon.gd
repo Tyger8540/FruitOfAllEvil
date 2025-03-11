@@ -10,6 +10,8 @@ extends CanvasLayer
 ## Determines if the balloon should follow its parent
 @export var is_following: bool = false
 
+var advance_time: float = 2.5
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -106,7 +108,7 @@ func _ready() -> void:
 				$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
 	
 	if State.current_boss == "Charon":
-		$AdvanceDialogueTimer.start(5.0)
+		$AdvanceDialogueTimer.start(advance_time)
 
 
 func _process(_delta: float) -> void:

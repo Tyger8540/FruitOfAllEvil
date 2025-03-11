@@ -65,6 +65,8 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="CharacterBalloon" type="CanvasLayer"]
 layer = 100
+offset = Vector2(1200, 0)
+transform = Transform2D(1, 0, 0, 1, 1200, 0)
 script = ExtResource("1_36de5")
 is_following = true
 

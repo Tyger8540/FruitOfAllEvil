@@ -171,6 +171,8 @@ unique_name_in_owner = true
 stream = ExtResource("12_rqioh")
 
 [connection signal="button_up" from="CustomerButton" to="CustomerButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="CustomerButton" to="CustomerButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CustomerButton" to="CustomerButton" method="_on_mouse_exited"]
 [connection signal="timeout" from="CustomerButton/RedPatienceTimer" to="." method="_on_red_patience_timer_timeout"]
 [connection signal="timeout" from="CustomerButton/GreenPatienceTimer" to="." method="_on_green_patience_timer_timeout"]
 [connection signal="timeout" from="CustomerButton/LeaveTimer" to="CustomerButton" method="_on_leave_timer_timeout"]

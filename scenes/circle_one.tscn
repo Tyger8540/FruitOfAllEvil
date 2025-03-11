@@ -146,7 +146,7 @@ texture = ExtResource("35_2jchb")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_nr4x3")
-num_days = 2
+num_days = 3
 
 [node name="TrashButton" parent="." instance=ExtResource("9_gvi8i")]
 offset_left = -960.0
@@ -173,6 +173,7 @@ columns = 2
 layout_mode = 2
 
 [node name="BlenderButton2" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("10_hxnmb")]
+visible = false
 layout_mode = 2
 index = 1
 
@@ -197,6 +198,7 @@ columns = 2
 layout_mode = 2
 
 [node name="ChoppingBoardButton3" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("11_bwl7h")]
+visible = false
 layout_mode = 2
 index = 1
 

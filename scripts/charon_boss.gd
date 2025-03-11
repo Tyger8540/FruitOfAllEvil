@@ -2,7 +2,7 @@ class_name CharonBoss
 extends Boss
 
 @export var customers: Array[Customer]
-@export var num_waves: int = 5
+@export var num_waves: int = 3
 @export var charon_path: PathFollow2D
 
 var num_customers_spawned: int = 0
@@ -12,6 +12,7 @@ var new_wave_queued: bool = false
 var cur_wave: int = 1
 var wave_in_progress: bool = false
 
+var talking: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +25,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if wave_in_progress and customers.size() == 0:
 		wave_in_progress = false
-		charon_path.start_on_screen_timer(0.01)
-		%WaveIntermissionTimer.start(5.0)
+		talk(State.dialogue_file, "C1_level_charon_barks_complete", 2.5)
+		charon_path.start_on_screen_timer(5.0)
+		%WaveIntermissionTimer.start(10.0)
 	
 	if State.boss_queued or new_wave_queued:
 		if cur_wave > num_waves:
@@ -43,25 +45,25 @@ func _process(delta: float) -> void:
 						index = possible_indices.pick_random()
 						possible_indices.erase(index)
 						customer_indices.append(index)
+				#2:
+					#num_customers = 3
+					#for i in range(num_customers):
+						#index = possible_indices.pick_random()
+						#possible_indices.erase(index)
+						#customer_indices.append(index)
 				2:
-					num_customers = 3
-					for i in range(num_customers):
-						index = possible_indices.pick_random()
-						possible_indices.erase(index)
-						customer_indices.append(index)
-				3:
 					num_customers = 4
 					for i in range(num_customers):
 						index = possible_indices.pick_random()
 						possible_indices.erase(index)
 						customer_indices.append(index)
-				4:
-					num_customers = 5
-					for i in range(num_customers):
-						index = possible_indices.pick_random()
-						possible_indices.erase(index)
-						customer_indices.append(index)
-				5:
+				#4:
+					#num_customers = 5
+					#for i in range(num_customers):
+						#index = possible_indices.pick_random()
+						#possible_indices.erase(index)
+						#customer_indices.append(index)
+				3:
 					num_customers = 6
 					customer_indices = possible_indices
 			
@@ -101,7 +103,8 @@ func start_boss_fight() -> void:
 		customer.initialize(customer_sprite, rand_difficulty, 1, rand_time, 0, 0)  # TODO MAKE BETTER RAND TIME SYSTEM MAYBE
 	wave_in_progress = true
 	SignalManager.boss_fight_started.emit()
-	talk(State.dialogue_file, "C1_level_charon_barks_new")
+	talk(State.dialogue_file, "C1_level_charon_barks_new", 5.0)
+	talking = true
 
 
 func on_customer_created() -> void:

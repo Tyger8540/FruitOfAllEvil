@@ -121,6 +121,7 @@ rotates = false
 loop = false
 script = ExtResource("2_jwt5x")
 is_charon = true
+is_actually_charon = true
 charon = NodePath("../..")
 
 [node name="CharonFullBoatNoBack" type="Sprite2D" parent="Path2D8/PathFollow2D"]
