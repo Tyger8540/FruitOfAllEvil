@@ -291,4 +291,5 @@ func _on_green_patience_timer_timeout() -> void:
 
 func _on_red_patience_timer_timeout() -> void:
 	SignalManager.life_lost.emit()
+	AudioManager.play_sound(self, "res://audio/sfx/damage (2).wav", Enums.Audio_Type.SFX)
 	$CustomerButton.start_leave_sequence()
