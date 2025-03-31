@@ -78,3 +78,5 @@ show_percentage = false
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="button_up" from="Nonscale/ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="mouse_entered" from="Nonscale/ActionButton" to="." method="_on_action_button_mouse_entered"]
+[connection signal="mouse_exited" from="Nonscale/ActionButton" to="." method="_on_action_button_mouse_exited"]

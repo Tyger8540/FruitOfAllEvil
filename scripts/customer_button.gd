@@ -137,15 +137,18 @@ func set_highlight(mouse_entered: bool) -> void:
 
 
 func _on_button_up() -> void:
-	if Globals.is_grabbing:
-		if result["needed"]:
-			# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
-			var i: int = result["index"]
-			checkmarks[i].visible = true
-			set_highlight(false)
-			play_eat_sound()
-			SignalManager.grabbable_placed.emit()
-			check_completed()
+	# Only complete a button press if the player is hovering the button when released
+	# Fixes the issue of trying to click and drag
+	if hovering:
+		if Globals.is_grabbing:
+			if result["needed"]:
+				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
+				var i: int = result["index"]
+				checkmarks[i].visible = true
+				set_highlight(false)
+				play_eat_sound()
+				SignalManager.grabbable_placed.emit()
+				check_completed()
 
 
 func _on_leave_timer_timeout() -> void:

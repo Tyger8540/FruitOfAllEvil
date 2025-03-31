@@ -1,6 +1,8 @@
 class_name TrashButton
 extends Button
 
+var hovering:= false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +15,15 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_up() -> void:
-	SignalManager.grabbable_placed.emit()
+	# Only complete a button press if the player is hovering the button when released
+	# Fixes the issue of trying to click and drag
+	if hovering:
+		SignalManager.grabbable_placed.emit()
+
+
+func _on_mouse_entered() -> void:
+	hovering = true
+
+
+func _on_mouse_exited() -> void:
+	hovering = false

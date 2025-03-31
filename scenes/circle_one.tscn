@@ -521,5 +521,9 @@ volume_db = -20.0
 
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
+[connection signal="mouse_entered" from="TrashButton" to="TrashButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TrashButton" to="TrashButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TrashButton2" to="TrashButton2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TrashButton2" to="TrashButton2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="HoverButton" to="HoverButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HoverButton" to="HoverButton" method="_on_mouse_exited"]

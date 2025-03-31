@@ -41,15 +41,18 @@ func _process(delta: float) -> void:
 
 
 func _on_button_up() -> void:
-	if !Globals.is_grabbing:
-		grab_fruit()
-	elif Globals.is_grabbing:
-		if Globals.grabbable_grab_type == grab_type:
-			SignalManager.grabbable_placed.emit()
-			if Globals.grabbable_fruit_type[0] == fruit:
-				%PlaceOrGrabBackup.play()
-			else:
-				grab_fruit()
+	# Only complete a button press if the player is hovering the button when released
+	# Fixes the issue of trying to click and drag
+	if hovering:
+		if !Globals.is_grabbing:
+			grab_fruit()
+		elif Globals.is_grabbing:
+			if Globals.grabbable_grab_type == grab_type:
+				SignalManager.grabbable_placed.emit()
+				if Globals.grabbable_fruit_type[0] == fruit:
+					%PlaceOrGrabBackup.play()
+				else:
+					grab_fruit()
 
 
 func grab_fruit() -> void:

@@ -51,6 +51,8 @@ var highlight_target: Node = null
 var hovering:= false
 var highlighting:= false
 
+var action_button_hovering:= false
+
 @onready var action_button: Button = $Nonscale/ActionButton
 @onready var action_timer: Timer = $ActionTimer
 @onready var progress_bar: ProgressBar = $Nonscale/ProgressBar
@@ -269,24 +271,30 @@ func set_highlight(mouse_entered: bool) -> void:
 
 
 func _on_button_up() -> void:
-	# Triggers when the PlacePickupButton is clicked; accounts for if the player is holding an item
-	if Globals.is_grabbing and not is_occupied and not is_in_action:
-		# Player is holding a grabbable and this button is unoccupied and to be placed on
-		place()
-	elif not Globals.is_grabbing and not is_in_action:
-		# Player is not holding anything and this button has something on it to be picked up
-		set_temp_vars(false)
-		clear(false)
-		pickup()
-	elif Globals.is_grabbing and is_occupied and not is_in_action:
-		# Player is holding a grabbable and this button is occupied, leading to a swap
-		swap()
+	# Only complete a button press if the player is hovering the button when released
+	# Fixes the issue of trying to click and drag
+	if hovering:
+		# Triggers when the PlacePickupButton is clicked; accounts for if the player is holding an item
+		if Globals.is_grabbing and not is_occupied and not is_in_action:
+			# Player is holding a grabbable and this button is unoccupied and to be placed on
+			place()
+		elif not Globals.is_grabbing and not is_in_action:
+			# Player is not holding anything and this button has something on it to be picked up
+			set_temp_vars(false)
+			clear(false)
+			pickup()
+		elif Globals.is_grabbing and is_occupied and not is_in_action:
+			# Player is holding a grabbable and this button is occupied, leading to a swap
+			swap()
 
 
 func _on_action_button_button_up() -> void:
-	# Triggers when the appliance's power button is pressed
-	if !is_in_action:
-		start_action()
+	# Only complete a button press if the player is hovering the button when released
+	# Fixes the issue of trying to click and drag
+	if action_button_hovering:
+		# Triggers when the appliance's power button is pressed
+		if !is_in_action:
+			start_action()
 
 
 func _on_action_timer_timeout() -> void:
@@ -315,3 +323,11 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	set_highlight(false)
+
+
+func _on_action_button_mouse_entered() -> void:
+	action_button_hovering = true
+
+
+func _on_action_button_mouse_exited() -> void:
+	action_button_hovering = false

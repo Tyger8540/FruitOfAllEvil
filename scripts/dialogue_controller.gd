@@ -31,8 +31,9 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		handle_input()
+	pass
+	#if Input.is_action_just_pressed("ui_accept"):
+		#handle_input()
 
 
 func handle_input() -> void:
