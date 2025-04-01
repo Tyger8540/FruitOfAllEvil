@@ -33,13 +33,14 @@ func _process(delta: float) -> void:
 		progress_ratio = 0.5
 		moving_in = false
 		paused_on_screen = true
-		if is_charon:
-			%OnScreenTimer.start(randf_range(15.0, 25.0))
-		if is_actually_charon:
-			if not charon.talking:
-				charon.talk(State.dialogue_file, "C1_level_charon_barks_arrive", 5.0)
-			else:
-				charon.talking = false
+		if %OnScreenTimer.is_stopped():
+			if is_charon:
+				%OnScreenTimer.start(randf_range(15.0, 25.0))
+			if is_actually_charon:
+				if not charon.talking:
+					charon.talk(State.dialogue_file, "C1_level_charon_barks_arrive", 5.0)
+				else:
+					charon.talking = false
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:

@@ -75,7 +75,10 @@ func start_leave_sequence() -> void:
 		var i = randi_range(0, damage_strings.size() - 1)
 		$Panel/Label.text = damage_strings[i]
 	#$Panel/Label.visible = true
-	$LeaveTimer.start()
+	if get_parent() is CharonCustomer:
+		get_parent().die()
+	else:
+		$LeaveTimer.start()
 
 
 func play_eat_sound() -> void:

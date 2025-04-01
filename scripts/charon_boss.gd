@@ -25,15 +25,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if wave_in_progress and customers.size() == 0:
 		wave_in_progress = false
-		talk(State.dialogue_file, "C1_level_charon_barks_complete", 2.5)
-		charon_path.start_on_screen_timer(5.0)
-		%WaveIntermissionTimer.start(10.0)
+		print("wave completed")
+		if charon_path.moving_in or charon_path.paused_on_screen:
+			talk(State.dialogue_file, "C1_level_charon_barks_complete", 2.5)
+			charon_path.start_on_screen_timer(5.0)
+			%WaveIntermissionTimer.start(10.0)
+		else:
+			%WaveIntermissionTimer.start(5.0)
 	
 	if State.boss_queued or new_wave_queued:
+		# A new boss wave is queued, whether the first wave or a later wave
 		if cur_wave > num_waves:
+			# Defeated the last wave
 			new_wave_queued = false
 			State.dialogue_ready = true
 		elif not customers_spawning:
+			# Customers have not started spawning, need to start doing that
 			customers_spawning = true
 			var customer_indices: Array[int]
 			var possible_indices: Array[int] = [0, 1, 2, 3, 4, 5]
@@ -45,30 +52,19 @@ func _process(delta: float) -> void:
 						index = possible_indices.pick_random()
 						possible_indices.erase(index)
 						customer_indices.append(index)
-				#2:
-					#num_customers = 3
-					#for i in range(num_customers):
-						#index = possible_indices.pick_random()
-						#possible_indices.erase(index)
-						#customer_indices.append(index)
 				2:
 					num_customers = 4
 					for i in range(num_customers):
 						index = possible_indices.pick_random()
 						possible_indices.erase(index)
 						customer_indices.append(index)
-				#4:
-					#num_customers = 5
-					#for i in range(num_customers):
-						#index = possible_indices.pick_random()
-						#possible_indices.erase(index)
-						#customer_indices.append(index)
 				3:
 					num_customers = 6
 					customer_indices = possible_indices
 			
 			SignalManager.charon_started.emit(customer_indices)
 		elif num_customers_spawned == num_customers:
+			# Customers have finished spawning, time to start the boss fight
 			State.boss_queued = false
 			new_wave_queued = false
 			customers_spawning = false
@@ -85,12 +81,8 @@ func start_boss_fight() -> void:
 			1:
 				difficulty_pool = [1, 2, 3, 4, 5, 6]
 			2:
-				difficulty_pool = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-			3:
 				difficulty_pool = [4, 5, 6, 7, 8, 9]
-			4:
-				difficulty_pool = [4, 5, 6, 7, 8, 9, 10, 11, 12]
-			5:
+			3:
 				difficulty_pool = [7, 8, 9, 10, 11, 12]
 		rand_difficulty = difficulty_pool.pick_random()
 		var customer_sprite: Texture2D
