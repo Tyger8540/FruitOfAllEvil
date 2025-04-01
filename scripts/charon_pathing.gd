@@ -33,14 +33,16 @@ func _process(delta: float) -> void:
 		progress_ratio = 0.5
 		moving_in = false
 		paused_on_screen = true
-		if %OnScreenTimer.is_stopped():
-			if is_charon:
+		print("%OnScreenTimer.is_stopped():" + str(%OnScreenTimer.is_stopped()))
+		#if %OnScreenTimer.is_stopped():
+		if is_charon:
+			if %OnScreenTimer.is_stopped():
 				%OnScreenTimer.start(randf_range(15.0, 25.0))
-			if is_actually_charon:
-				if not charon.talking:
-					charon.talk(State.dialogue_file, "C1_level_charon_barks_arrive", 5.0)
-				else:
-					charon.talking = false
+		if is_actually_charon:
+			if not charon.talking:
+				charon.talk(State.dialogue_file, "C1_level_charon_barks_arrive", 5.0)
+			else:
+				charon.talking = false
 	elif not moving_in and progress_ratio >= 0.999 and not paused_off_screen:
 		paused_off_screen = true
 		if is_charon:
@@ -60,13 +62,16 @@ func loop_movement(delta):
 
 func on_screen_timeout() -> void:
 	if charon.wave_in_progress and not charon.talking:
+		print("wave in progress and not talking")
 		if not is_actually_charon:
 			start_on_screen_timer(5.0)
 			return
 		else:
+			# Is actually Charon
 			charon.talking = true
 			start_on_screen_timer(5.0)
 			charon.talk(State.dialogue_file, "C1_level_charon_barks_depart", 2.5)
+			print("I am actually Charon")
 			AudioManager.play_sound(self, "res://audio/sfx/warning (4).wav", Enums.Audio_Type.SFX)
 			return
 	
