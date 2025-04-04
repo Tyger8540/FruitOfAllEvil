@@ -14,6 +14,7 @@ var wave_in_progress: bool = false
 
 var talking: bool = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.charon_customer_created.connect(on_customer_created)
@@ -25,7 +26,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if wave_in_progress and customers.size() == 0:
 		wave_in_progress = false
-		print("wave completed")
 		if charon_path.moving_in or charon_path.paused_on_screen:
 			talk(State.dialogue_file, "C1_level_charon_barks_complete", 2.5)
 			charon_path.start_on_screen_timer(5.0)
