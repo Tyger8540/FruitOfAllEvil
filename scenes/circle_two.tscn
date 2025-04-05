@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="4_8kavy"]
 [ext_resource type="PackedScene" uid="uid://nwb4n4gtqpwn" path="res://scenes/shop_button.tscn" id="5_obpb6"]
+[ext_resource type="Script" path="res://scripts/lust_customer_manager.gd" id="6_00fvx"]
 [ext_resource type="Script" path="res://scripts/start_day_button.gd" id="6_sklra"]
-[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="7_cb75x"]
 [ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="9_u5bae"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="11_0keo5"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_vp5wo"]
@@ -96,8 +96,8 @@ script = ExtResource("6_sklra")
 
 [node name="CustomerManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1040, -230)
-script = ExtResource("7_cb75x")
+position = Vector2(0, -305)
+script = ExtResource("6_00fvx")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
 wait_time = 10.0

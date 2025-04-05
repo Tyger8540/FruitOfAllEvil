@@ -3,7 +3,7 @@ extends Node2D
 
 
 @export var num_days: int
-var cur_day:= 0
+var cur_wave:= 0
 var day_started: bool = false
 
 
@@ -27,11 +27,11 @@ func start_day() -> void:
 	var value_array: Array[int]
 	var wait_time: float
 	
-	cur_day += 1
+	cur_wave += 1
 	# setup for every day (15 for demo)
 	match State.circle_num:
 		0:
-			match cur_day:
+			match cur_wave:
 				1:
 					num_items = 5
 					difficulty_array = [1, 1, 1, 1, 1]
@@ -48,7 +48,7 @@ func start_day() -> void:
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					wait_time = 6.0
 		1:
-			match cur_day:
+			match cur_wave:
 				1:
 					num_items = 1
 					difficulty_array = [1]
@@ -80,7 +80,18 @@ func start_day() -> void:
 					#patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					#wait_time = 6.0
 		2:
-			match cur_day:
+			match cur_wave:
+				1:
+					num_items = 12
+					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					wait_time = 4.0
+				2:
+					pass
+				3:
+					pass
+		3:
+			match cur_wave:
 				1:
 					num_items = 5
 					difficulty_array = [1, 1, 1, 1, 1]
