@@ -91,6 +91,7 @@ func play_eat_sound() -> void:
 
 
 func grabbable_needed() -> Dictionary:
+	# Checks if the grabbable is needed by this customer
 	for i in range(0, fruit.size()):
 		if (
 				not checkmarks[i].visible
@@ -136,7 +137,6 @@ func set_highlight(mouse_entered: bool) -> void:
 					sprite_2d.scale /= SCALE_FACTOR
 					sprite_2d.position.y -= 40.0
 					#scale /= SCALE_FACTOR
-	pass
 
 
 func _on_button_up() -> void:
@@ -145,7 +145,7 @@ func _on_button_up() -> void:
 	if hovering:
 		if Globals.is_grabbing:
 			if result["needed"]:
-				# the grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
+				# The grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				var i: int = result["index"]
 				checkmarks[i].visible = true
 				set_highlight(false)

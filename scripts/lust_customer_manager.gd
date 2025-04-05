@@ -6,6 +6,7 @@ const LUST_CUSTOMER = preload("res://scenes/lust_customer.tscn")
 const MAX_CUSTOMERS = 8
 
 var customer_pairs: Array[LustPair]
+var index: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +24,6 @@ func create_customer_pair() -> void:
 	var pair = LUST_PAIR.instantiate()
 	customer_pairs.append(pair)
 	add_child(pair)
-	pair.initialize()
 	
 	# Get the sprites for the pair of customers
 	var customer_sprites: Array[Texture2D]
@@ -57,6 +57,14 @@ func create_customer_pair() -> void:
 	# Allow the lovers to see and easily reference each other
 	customer1.lover = customer2
 	customer2.lover = customer1
+	
+	# Allow the customers to see the customer manager
+	customer1.customer_manager = self
+	customer2.customer_manager = self
+	
+	# Initialize the lust pair
+	pair.initialize(index)
+	index += 1
 	
 	# Check if there is room for more customers to spawn in
 	if customer_array.size() < MAX_CUSTOMERS and customer_timer.is_stopped() and !difficulty_queue.is_empty():

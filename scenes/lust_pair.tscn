@@ -1,16 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://du2daa58q2v3u"]
+[gd_scene load_steps=2 format=3 uid="uid://du2daa58q2v3u"]
 
 [ext_resource type="Script" path="res://scripts/lust_pair.gd" id="1_u2jcx"]
 
-[sub_resource type="Gradient" id="Gradient_gyrj2"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fus7m"]
-gradient = SubResource("Gradient_gyrj2")
-
 [node name="LustPair" type="Node2D"]
 script = ExtResource("1_u2jcx")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.62939e-06, 1.52588e-05)
-scale = Vector2(0.257813, 143.711)
-texture = SubResource("GradientTexture1D_fus7m")
