@@ -20,7 +20,7 @@ func on_day_start() -> void:
 
 func place() -> void:
 	$GrabbableTexture.texture = Globals.grabbable_sprite
-	%Drop.play()
+	AudioManager.play_sound(self, "res://audio/sfx/Drop.wav", Enums.Audio_Type.SFX)
 	is_occupied = true
 	for i in Globals.grabbable_fruit_type.size():
 		if Globals.grabbable_fruit_type[i] != Enums.Fruit_Type.NONE:
@@ -42,7 +42,7 @@ func pickup() -> void:
 		var grabbable = GRABBABLE_SCENE.instantiate()
 		grabbable.initialize(temp_fruits, temp_grab_types[0])
 		get_tree().get_root().add_child(grabbable)
-		%Grab.play()
+		AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 		Globals.grabbable_fruit_type[0] = grabbable.fruit[0]
 		Globals.grabbable_grab_type = grabbable.grab_type
 		Globals.grabbable_fruit_type[1] = grabbable.fruit[1]

@@ -36,7 +36,7 @@ func create_customer(difficulty_level: int, patience_level: int, value: int) -> 
 	customer_array.append(customer)
 	add_child(customer)
 	customer.initialize(customer_sprite, difficulty_level, patience_level, 32.0 + 2.0 * difficulty_level, value, customer_array.size() - 1)
-	%DingCustomer.play()
+	AudioManager.play_sound(self, "res://audio/sfx/Ding_Customer.wav", Enums.Audio_Type.SFX)
 	if customer_array.size() <= 4 and customer_timer.is_stopped() and !difficulty_queue.is_empty():
 		customer_timer.start()
 

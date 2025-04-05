@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://du2daa58q2v3u"]
+
+[ext_resource type="PackedScene" uid="uid://db64mc2w61adr" path="res://scenes/lust_customer.tscn" id="1_7ede1"]
+
+[node name="LustPair" type="Node2D"]
+
+[node name="LustCustomer1" parent="." instance=ExtResource("1_7ede1")]
+
+[node name="LustCustomer2" parent="." instance=ExtResource("1_7ede1")]

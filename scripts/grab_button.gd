@@ -50,14 +50,14 @@ func _on_button_up() -> void:
 			if Globals.grabbable_grab_type == grab_type:
 				SignalManager.grabbable_placed.emit()
 				if Globals.grabbable_fruit_type[0] == fruit:
-					%PlaceOrGrabBackup.play()
+					AudioManager.play_sound(self, "res://audio/sfx/Place or Grab_backup.wav", Enums.Audio_Type.SFX)
 				else:
 					grab_fruit()
 
 
 func grab_fruit() -> void:
 	var grabbable = GRABBABLE_SCENE.instantiate()
-	%Grab.play()
+	AudioManager.play_sound(self, "res://audio/sfx/Grab.wav", Enums.Audio_Type.SFX)
 	Globals.grabbable_fruit_type[0] = fruit
 	Globals.grabbable_grab_type = grab_type
 	if grab_type == Enums.Grabbable_Type.FRUIT or grab_type == Enums.Grabbable_Type.CHOPPED_FRUIT:
