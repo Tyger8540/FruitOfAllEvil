@@ -39,6 +39,8 @@ func die() -> void:
 		customer_manager.on_customer_left(0)
 		#SignalManager.customer_left.emit(0)
 		get_parent().queue_free()
+	else:
+		get_parent().speed_up_patience_timers()
 
 
 func _on_green_patience_timer_timeout() -> void:

@@ -104,6 +104,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="BrownBackground" type="TextureRect" parent="."]
+visible = false
 offset_left = 1199.0
 offset_top = 4597.0
 offset_right = 2351.0

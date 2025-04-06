@@ -47,6 +47,33 @@ func set_patience_timers() -> void:
 	red_patience_bar.value = red_patience_bar.max_value
 
 
+func speed_up_patience_timers() -> void:
+	var temp_green_wait_time = green_patience_timer.wait_time
+	var temp_red_wait_time = red_patience_timer.wait_time
+	if lover1.is_completed:
+		green_patience_timer.wait_time = lover2.green_patience_timer.wait_time
+	elif lover2.is_completed:
+		green_patience_timer.wait_time = lover1.green_patience_timer.wait_time
+	else:
+		return
+	
+	red_patience_timer.wait_time = green_patience_timer.wait_time * 2
+	
+	green_patience_bar.max_value = green_patience_timer.wait_time
+	red_patience_bar.max_value = red_patience_timer.wait_time
+	
+	if not green_patience_timer.is_stopped():
+		# Still on the green patience bar
+		# New value based on sped up timer
+		var new_value = green_patience_bar.value * green_patience_timer.wait_time / temp_green_wait_time
+		green_patience_timer.start(new_value)
+	elif not red_patience_timer.is_stopped():
+		# On the red patience bar
+		# New value based on sped up timer
+		var new_value = red_patience_bar.value * red_patience_timer.wait_time / temp_red_wait_time
+		red_patience_timer.start(new_value)
+
+
 func _on_green_patience_timer_timeout() -> void:
 	red_patience_timer.start()
 
