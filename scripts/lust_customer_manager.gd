@@ -70,5 +70,11 @@ func create_customer_pair() -> void:
 	if customer_array.size() < MAX_CUSTOMERS and customer_timer.is_stopped() and !difficulty_queue.is_empty():
 		customer_timer.start()
 
+
 func _on_customer_timer_timeout() -> void:
 	create_customer_pair()
+
+
+func on_customer_left(index: int) -> void:
+	if customer_timer.is_stopped() and !difficulty_queue.is_empty():
+		customer_timer.start()

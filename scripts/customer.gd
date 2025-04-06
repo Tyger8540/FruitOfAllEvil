@@ -78,6 +78,7 @@ func set_patience_timers(base_time: float = 32.0) -> void:
 	green_patience_bar.max_value = green_patience_timer.wait_time
 	red_patience_timer.wait_time = 2 * green_patience_timer.wait_time
 	red_patience_bar.max_value = red_patience_timer.wait_time
+	red_patience_bar.value = red_patience_bar.max_value
 
 
 func on_customer_left(index: int) -> void:

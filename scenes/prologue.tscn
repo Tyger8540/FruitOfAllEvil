@@ -126,7 +126,7 @@ texture = ExtResource("10_emxwy")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_of06s")
-num_days = 3
+num_waves = 3
 
 [node name="TrashButton" parent="." instance=ExtResource("12_yabyy")]
 offset_left = -960.0

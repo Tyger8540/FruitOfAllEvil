@@ -104,7 +104,6 @@ wait_time = 10.0
 one_shot = true
 
 [node name="BrownBackground" type="TextureRect" parent="."]
-visible = false
 offset_left = 1199.0
 offset_top = 4597.0
 offset_right = 2351.0
@@ -116,7 +115,7 @@ texture = ExtResource("9_u5bae")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_0keo5")
-num_days = 3
+num_waves = 3
 
 [node name="TrashButton" parent="." instance=ExtResource("12_vp5wo")]
 offset_left = -960.0

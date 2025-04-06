@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://du2daa58q2v3u"]
+[gd_scene load_steps=5 format=3 uid="uid://du2daa58q2v3u"]
 
 [ext_resource type="Script" path="res://scripts/lust_pair.gd" id="1_u2jcx"]
+[ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="2_jyisr"]
+[ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="3_fkbtq"]
+[ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="4_3tdt7"]
 
 [node name="LustPair" type="Node2D"]
 script = ExtResource("1_u2jcx")
+
+[node name="RedPatienceBar" type="TextureProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -300.0
+offset_right = -32.0
+offset_bottom = -292.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("2_jyisr")
+texture_progress = ExtResource("3_fkbtq")
+
+[node name="GreenPatienceBar" type="TextureProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -300.0
+offset_right = -32.0
+offset_bottom = -292.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_progress = ExtResource("4_3tdt7")
+
+[node name="RedPatienceTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GreenPatienceTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="RedPatienceTimer" to="." method="_on_red_patience_timer_timeout"]
+[connection signal="timeout" from="GreenPatienceTimer" to="." method="_on_green_patience_timer_timeout"]

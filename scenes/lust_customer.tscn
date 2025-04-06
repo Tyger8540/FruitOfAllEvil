@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/lust_customer.gd" id="1_yp3k3"]
 [ext_resource type="Texture2D" uid="uid://bsf31fmn7d04t" path="res://final_art/grotesquelimbo_ok_360.png" id="2_e0ien"]
-[ext_resource type="Script" path="res://scripts/customer_button.gd" id="3_mbpmy"]
+[ext_resource type="Script" path="res://scripts/lust_customer_button.gd" id="3_ale7i"]
 [ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="4_005rx"]
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="5_6ivrn"]
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="6_x8bs5"]
@@ -28,7 +28,7 @@ theme_type_variation = &"FlatButton"
 theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ydud7")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2jm78")
-script = ExtResource("3_mbpmy")
+script = ExtResource("3_ale7i")
 
 [node name="RedPatienceBar" type="TextureProgressBar" parent="CustomerButton"]
 visible = false
@@ -54,8 +54,10 @@ value = 100.0
 texture_progress = ExtResource("6_x8bs5")
 
 [node name="RedPatienceTimer" type="Timer" parent="CustomerButton"]
+one_shot = true
 
 [node name="GreenPatienceTimer" type="Timer" parent="CustomerButton"]
+one_shot = true
 
 [node name="Panel" type="Panel" parent="CustomerButton"]
 visible = false

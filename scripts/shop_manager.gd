@@ -12,7 +12,7 @@ func on_day_start() -> void:
 
 
 func on_day_end() -> void:
-	if %WaveManager.cur_day == %WaveManager.num_days:
+	if %WaveManager.cur_wave == %WaveManager.num_waves:
 		State.level_defeated = true
 		State.dialogue_ready = true
 		if State.circle_num == 1:
@@ -24,14 +24,14 @@ func on_day_end() -> void:
 		%WaveManager.start_day()
 		return
 	# CHECKS FOR WHEN THE INTRODUCTION TO THE SHOP HAPPENS
-	if %WaveManager.cur_day == 1 and State.circle_num == 1:
+	if %WaveManager.cur_wave == 1 and State.circle_num == 1:
 		State.dialogue_ready = true
 	var upgrades_indices_picked: Array[int]
 	for i in range(0, 4):
 		var r = randi_range(0, Enums.Upgrade_Type.size() - 2)  # random int that gets an upgrade that is not NONE
 		while r in upgrades_indices_picked:
 			r = randi_range(0, Enums.Upgrade_Type.size() - 2)  # random int that gets an upgrade that is not NONE
-		if %WaveManager.cur_day == 1 and !upgrades_indices_picked.has(2):
+		if %WaveManager.cur_wave == 1 and !upgrades_indices_picked.has(2):
 			r = 2  # makes sure day one shop has chop speed upgrade
 		upgrades_indices_picked.append(r)
 		match i:

@@ -52,10 +52,17 @@ func check_completed() -> void:
 		if !checkmarks[i].visible:
 			return
 	# the for loop finished, so everything was checked off
+	if get_parent() is LustCustomer:
+		get_parent().is_completed = true
 	start_leave_sequence()
 
 
 func start_leave_sequence() -> void:
+	print("starting leave sequence")
+	if get_parent() is LustCustomer and get_parent().lover.is_completed:
+		print("pausing timers")
+		get_parent().pause_timers()
+	
 	if $GreenPatienceBar.value > 0:
 		$GreenPatienceTimer.stop()
 		AudioManager.play_sound(self, "res://audio/sfx/Coin_Get.wav", Enums.Audio_Type.SFX)
@@ -144,7 +151,8 @@ func _on_button_up() -> void:
 	# Fixes the issue of trying to click and drag
 	if hovering:
 		if Globals.is_grabbing:
-			if result["needed"]:
+			#if result["needed"]:
+			if highlighting:
 				# The grabbed fruit can be placed here when it has not been checked off and matches fruit and grab_type
 				var i: int = result["index"]
 				checkmarks[i].visible = true

@@ -2,7 +2,7 @@ class_name WaveManager
 extends Node2D
 
 
-@export var num_days: int
+@export var num_waves: int
 var cur_wave:= 0
 var day_started: bool = false
 
@@ -85,11 +85,17 @@ func start_day() -> void:
 					num_items = 12
 					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-					wait_time = 4.0
+					wait_time = -14.0
 				2:
-					pass
+					num_items = 12
+					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					wait_time = -14.0
 				3:
-					pass
+					num_items = 12
+					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					wait_time = -14.0
 		3:
 			match cur_wave:
 				1:
