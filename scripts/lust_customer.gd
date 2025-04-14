@@ -15,11 +15,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-	if not panel.visible:
-		panel.visible = true
-		#green_patience_bar.visible = true
-		#red_patience_bar.visible = true
-		green_patience_timer.start()
+	#if not panel.visible:
+		#panel.visible = true
+		##green_patience_bar.visible = true
+		##red_patience_bar.visible = true
+		#green_patience_timer.start()
 
 
 func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:

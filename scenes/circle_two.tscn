@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://o3omt8mgs28d"]
+[gd_scene load_steps=31 format=3 uid="uid://o3omt8mgs28d"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3bwh3"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
@@ -29,6 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="30_56up4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0aa8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f017j"]
+size = Vector2(294, 1688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3eru"]
+size = Vector2(3093.5, 446.5)
 
 [node name="CircleTwo" type="Node2D"]
 script = ExtResource("1_3bwh3")
@@ -102,6 +108,30 @@ script = ExtResource("6_00fvx")
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
 wait_time = 10.0
 one_shot = true
+
+[node name="SpawnArea" type="Node2D" parent="CustomerManager"]
+unique_name_in_owner = true
+
+[node name="LeftArea" type="Area2D" parent="CustomerManager/SpawnArea"]
+unique_name_in_owner = true
+position = Vector2(-1401, -297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerManager/SpawnArea/LeftArea"]
+shape = SubResource("RectangleShape2D_f017j")
+
+[node name="RightArea" type="Area2D" parent="CustomerManager/SpawnArea"]
+unique_name_in_owner = true
+position = Vector2(1398, -297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerManager/SpawnArea/RightArea"]
+shape = SubResource("RectangleShape2D_f017j")
+
+[node name="UpperArea" type="Area2D" parent="CustomerManager/SpawnArea"]
+unique_name_in_owner = true
+position = Vector2(0, -918.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerManager/SpawnArea/UpperArea"]
+shape = SubResource("RectangleShape2D_e3eru")
 
 [node name="BrownBackground" type="TextureRect" parent="."]
 visible = false
