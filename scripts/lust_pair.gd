@@ -66,11 +66,17 @@ func speed_up_patience_timers() -> void:
 		# Still on the green patience bar
 		# New value based on sped up timer
 		var new_value = green_patience_bar.value * green_patience_timer.wait_time / temp_green_wait_time
+		# TODO MAKE THIS NOT STUTTER IN THE PATIENCE BAR
+		green_patience_timer.stop()
+		green_patience_bar.value = new_value
 		green_patience_timer.start(new_value)
+		red_patience_bar.value = red_patience_bar.max_value
 	elif not red_patience_timer.is_stopped():
 		# On the red patience bar
 		# New value based on sped up timer
 		var new_value = red_patience_bar.value * red_patience_timer.wait_time / temp_red_wait_time
+		red_patience_bar.value = new_value
+		red_patience_timer.stop()
 		red_patience_timer.start(new_value)
 
 

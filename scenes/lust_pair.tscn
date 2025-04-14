@@ -15,6 +15,7 @@ offset_right = -32.0
 offset_bottom = -292.0
 scale = Vector2(4, 4)
 value = 100.0
+allow_greater = true
 texture_under = ExtResource("2_jyisr")
 texture_progress = ExtResource("3_fkbtq")
 
@@ -25,6 +26,7 @@ offset_right = -32.0
 offset_bottom = -292.0
 scale = Vector2(4, 4)
 value = 100.0
+allow_greater = true
 texture_progress = ExtResource("4_3tdt7")
 
 [node name="RedPatienceTimer" type="Timer" parent="."]

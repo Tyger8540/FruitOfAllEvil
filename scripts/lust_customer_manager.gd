@@ -5,8 +5,16 @@ const LUST_PAIR = preload("res://scenes/lust_pair.tscn")
 const LUST_CUSTOMER = preload("res://scenes/lust_customer.tscn")
 const MAX_CUSTOMERS = 8
 
+const LEFT_BOUND = -650.0
+const RIGHT_BOUND = 800.0
+const UPPER_BOUND = 70.0
+const LOWER_BOUND = 20.0
+const PAIR_X_DISTANCE = 300.0
+
 var customer_pairs: Array[LustPair]
 var index: int = 0
+
+var pair_positions: Array[Vector2]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -71,10 +79,40 @@ func create_customer_pair() -> void:
 		customer_timer.start()
 
 
-func _on_customer_timer_timeout() -> void:
-	create_customer_pair()
+func create_customer_queue(difficulty_array: Array[int], patience_array: Array[int], value_array: Array[int], waiting_time: float) -> void:
+	generate_pair_positions(difficulty_array.size() / 2)
+	super(difficulty_array, patience_array, value_array, waiting_time)
 
 
 func on_customer_left(index: int) -> void:
 	if customer_timer.is_stopped() and !difficulty_queue.is_empty():
 		customer_timer.start()
+
+
+func generate_pair_positions(num_pairs: int) -> void:
+	# Spread out customer pairs to ensure no overlapping
+	var x_pos: float
+	var y_pos: float
+	for i in num_pairs:
+		if i == 0:
+			x_pos = randf_range(LEFT_BOUND, RIGHT_BOUND)
+			y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
+			pair_positions.append(Vector2(x_pos, y_pos))
+			print("first x pos: " + str(x_pos))
+		else:
+			var valid_pos = false
+			while not valid_pos:
+				x_pos = randf_range(LEFT_BOUND, RIGHT_BOUND)
+				y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
+				for pos in pair_positions:
+					if pos.x - PAIR_X_DISTANCE >= x_pos or pos.x + PAIR_X_DISTANCE <= x_pos:
+						valid_pos = true
+					else:
+						valid_pos = false
+						print("invalid x pos: " + str(x_pos))
+						break
+			pair_positions.append(Vector2(x_pos, y_pos))
+			print("valid x pos: " + str(x_pos))
+
+func _on_customer_timer_timeout() -> void:
+	create_customer_pair()
