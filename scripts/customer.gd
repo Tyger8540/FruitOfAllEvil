@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 const SPEED = 350.0
 
+const GRABBABLE_TEXTURE = preload("res://scenes/grabbable_texture.tscn")
+
 #@export var customer_type: CustomerType
 
 var stand_position: Vector2
@@ -88,7 +90,7 @@ func on_customer_left(index: int) -> void:
 
 
 func form_options() -> void:
-	var textures: Array[Texture2D]
+	var textures: Array[GrabbableTexture]
 	var fruits: Array[Enums.Fruit_Type]
 	var grab_types: Array[Enums.Grabbable_Type]
 	var fruits2: Array[Enums.Fruit_Type]
@@ -147,7 +149,10 @@ func form_options() -> void:
 			fruits2.append(get_random_fruit(j))
 		else:
 			fruits2.append(Enums.Fruit_Type.NONE)
-		textures.append(get_texture(fruits.back(), grab_types.back(), fruits2.back()))
+		
+		var new_texture = GRABBABLE_TEXTURE.instantiate()
+		new_texture.initialize(fruits.back(), grab_types.back(), fruits2.back())
+		textures.append(new_texture)
 	$CustomerButton.set_grid(textures, fruits, grab_types, fruits2)
 
 
@@ -162,7 +167,7 @@ func get_random_fruit(index: int) -> Enums.Fruit_Type:
 		4:
 			return Enums.Fruit_Type.BLUEBERRIES
 		5:
-			return Enums.Fruit_Type.PLUM
+			return Enums.Fruit_Type.GRAPES
 		6:
 			return Enums.Fruit_Type.NONE
 	return Enums.Fruit_Type.NONE
@@ -179,109 +184,109 @@ func get_random_grab_type(num_types: int) -> Enums.Grabbable_Type:
 	return Enums.Grabbable_Type.NONE
 
 
-func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit2: Enums.Fruit_Type) -> Texture2D:
-	match fruit:
-		Enums.Fruit_Type.APPLE:
-			match grab_type:
-				Enums.Grabbable_Type.FRUIT:
-					return Globals.APPLE
-				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					return Globals.CHOPPED_APPLE
-				Enums.Grabbable_Type.BLENDED_FRUIT:
-					match fruit2:
-						Enums.Fruit_Type.APPLE:
-							return Globals.CUP_APPLE_APPLE
-						Enums.Fruit_Type.ORANGE:
-							return Globals.CUP_APPLE_ORANGE
-						Enums.Fruit_Type.BANANA:
-							return Globals.CUP_APPLE_BANANA
-						Enums.Fruit_Type.BLUEBERRIES:
-							return Globals.CUP_APPLE_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							return Globals.CUP_APPLE_PLUM
-						Enums.Fruit_Type.NONE:
-							return Globals.CUP_APPLE
-		Enums.Fruit_Type.ORANGE:
-			match grab_type:
-				Enums.Grabbable_Type.FRUIT:
-					return Globals.ORANGE
-				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					return Globals.CHOPPED_ORANGE
-				Enums.Grabbable_Type.BLENDED_FRUIT:
-					match fruit2:
-						Enums.Fruit_Type.APPLE:
-							return Globals.CUP_ORANGE_APPLE
-						Enums.Fruit_Type.ORANGE:
-							return Globals.CUP_ORANGE_ORANGE
-						Enums.Fruit_Type.BANANA:
-							return Globals.CUP_ORANGE_BANANA
-						Enums.Fruit_Type.BLUEBERRIES:
-							return Globals.CUP_ORANGE_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							return Globals.CUP_ORANGE_PLUM
-						Enums.Fruit_Type.NONE:
-							return Globals.CUP_ORANGE
-		Enums.Fruit_Type.BANANA:
-			match grab_type:
-				Enums.Grabbable_Type.FRUIT:
-					return Globals.BANANA
-				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					return Globals.CHOPPED_BANANA
-				Enums.Grabbable_Type.BLENDED_FRUIT:
-					match fruit2:
-						Enums.Fruit_Type.APPLE:
-							return Globals.CUP_BANANA_APPLE
-						Enums.Fruit_Type.ORANGE:
-							return Globals.CUP_BANANA_ORANGE
-						Enums.Fruit_Type.BANANA:
-							return Globals.CUP_BANANA_BANANA
-						Enums.Fruit_Type.BLUEBERRIES:
-							return Globals.CUP_BANANA_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							return Globals.CUP_BANANA_PLUM
-						Enums.Fruit_Type.NONE:
-							return Globals.CUP_BANANA
-		Enums.Fruit_Type.BLUEBERRIES:
-			match grab_type:
-				Enums.Grabbable_Type.FRUIT:
-					return Globals.BLUEBERRIES
-				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					return Globals.CHOPPED_BLUEBERRIES
-				Enums.Grabbable_Type.BLENDED_FRUIT:
-					match fruit2:
-						Enums.Fruit_Type.APPLE:
-							return Globals.CUP_BLUEBERRY_APPLE
-						Enums.Fruit_Type.ORANGE:
-							return Globals.CUP_BLUEBERRY_ORANGE
-						Enums.Fruit_Type.BANANA:
-							return Globals.CUP_BLUEBERRY_BANANA
-						Enums.Fruit_Type.BLUEBERRIES:
-							return Globals.CUP_BLUEBERRY_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							return Globals.CUP_BLUEBERRY_PLUM
-						Enums.Fruit_Type.NONE:
-							return Globals.CUP_BLUEBERRY
-		Enums.Fruit_Type.PLUM:
-			match grab_type:
-				Enums.Grabbable_Type.FRUIT:
-					return Globals.PLUM
-				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					return Globals.CHOPPED_PLUM
-				Enums.Grabbable_Type.BLENDED_FRUIT:
-					match fruit2:
-						Enums.Fruit_Type.APPLE:
-							return Globals.CUP_PLUM_APPLE
-						Enums.Fruit_Type.ORANGE:
-							return Globals.CUP_PLUM_ORANGE
-						Enums.Fruit_Type.BANANA:
-							return Globals.CUP_PLUM_BANANA
-						Enums.Fruit_Type.BLUEBERRIES:
-							return Globals.CUP_PLUM_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							return Globals.CUP_PLUM_PLUM
-						Enums.Fruit_Type.NONE:
-							return Globals.CUP_PLUM
-	return null
+#func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit2: Enums.Fruit_Type) -> Texture2D:
+	#match fruit:
+		#Enums.Fruit_Type.APPLE:
+			#match grab_type:
+				#Enums.Grabbable_Type.FRUIT:
+					#return Globals.APPLE
+				#Enums.Grabbable_Type.CHOPPED_FRUIT:
+					#return Globals.CHOPPED_APPLE
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#match fruit2:
+						#Enums.Fruit_Type.APPLE:
+							#return Globals.CUP_APPLE_APPLE
+						#Enums.Fruit_Type.ORANGE:
+							#return Globals.CUP_APPLE_ORANGE
+						#Enums.Fruit_Type.BANANA:
+							#return Globals.CUP_APPLE_BANANA
+						#Enums.Fruit_Type.BLUEBERRIES:
+							#return Globals.CUP_APPLE_BLUEBERRY
+						#Enums.Fruit_Type.GRAPES:
+							#return Globals.CUP_APPLE_PLUM
+						#Enums.Fruit_Type.NONE:
+							#return Globals.CUP_APPLE
+		#Enums.Fruit_Type.ORANGE:
+			#match grab_type:
+				#Enums.Grabbable_Type.FRUIT:
+					#return Globals.ORANGE
+				#Enums.Grabbable_Type.CHOPPED_FRUIT:
+					#return Globals.CHOPPED_ORANGE
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#match fruit2:
+						#Enums.Fruit_Type.APPLE:
+							#return Globals.CUP_ORANGE_APPLE
+						#Enums.Fruit_Type.ORANGE:
+							#return Globals.CUP_ORANGE_ORANGE
+						#Enums.Fruit_Type.BANANA:
+							#return Globals.CUP_ORANGE_BANANA
+						#Enums.Fruit_Type.BLUEBERRIES:
+							#return Globals.CUP_ORANGE_BLUEBERRY
+						#Enums.Fruit_Type.GRAPES:
+							#return Globals.CUP_ORANGE_PLUM
+						#Enums.Fruit_Type.NONE:
+							#return Globals.CUP_ORANGE
+		#Enums.Fruit_Type.BANANA:
+			#match grab_type:
+				#Enums.Grabbable_Type.FRUIT:
+					#return Globals.BANANA
+				#Enums.Grabbable_Type.CHOPPED_FRUIT:
+					#return Globals.CHOPPED_BANANA
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#match fruit2:
+						#Enums.Fruit_Type.APPLE:
+							#return Globals.CUP_BANANA_APPLE
+						#Enums.Fruit_Type.ORANGE:
+							#return Globals.CUP_BANANA_ORANGE
+						#Enums.Fruit_Type.BANANA:
+							#return Globals.CUP_BANANA_BANANA
+						#Enums.Fruit_Type.BLUEBERRIES:
+							#return Globals.CUP_BANANA_BLUEBERRY
+						#Enums.Fruit_Type.GRAPES:
+							#return Globals.CUP_BANANA_PLUM
+						#Enums.Fruit_Type.NONE:
+							#return Globals.CUP_BANANA
+		#Enums.Fruit_Type.BLUEBERRIES:
+			#match grab_type:
+				#Enums.Grabbable_Type.FRUIT:
+					#return Globals.BLUEBERRIES
+				#Enums.Grabbable_Type.CHOPPED_FRUIT:
+					#return Globals.CHOPPED_BLUEBERRIES
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#match fruit2:
+						#Enums.Fruit_Type.APPLE:
+							#return Globals.CUP_BLUEBERRY_APPLE
+						#Enums.Fruit_Type.ORANGE:
+							#return Globals.CUP_BLUEBERRY_ORANGE
+						#Enums.Fruit_Type.BANANA:
+							#return Globals.CUP_BLUEBERRY_BANANA
+						#Enums.Fruit_Type.BLUEBERRIES:
+							#return Globals.CUP_BLUEBERRY_BLUEBERRY
+						#Enums.Fruit_Type.GRAPES:
+							#return Globals.CUP_BLUEBERRY_PLUM
+						#Enums.Fruit_Type.NONE:
+							#return Globals.CUP_BLUEBERRY
+		#Enums.Fruit_Type.GRAPES:
+			#match grab_type:
+				#Enums.Grabbable_Type.FRUIT:
+					#return Globals.GRAPES
+				#Enums.Grabbable_Type.CHOPPED_FRUIT:
+					#return Globals.CHOPPED_GRAPES
+				#Enums.Grabbable_Type.BLENDED_FRUIT:
+					#match fruit2:
+						#Enums.Fruit_Type.APPLE:
+							#return Globals.CUP_PLUM_APPLE
+						#Enums.Fruit_Type.ORANGE:
+							#return Globals.CUP_PLUM_ORANGE
+						#Enums.Fruit_Type.BANANA:
+							#return Globals.CUP_PLUM_BANANA
+						#Enums.Fruit_Type.BLUEBERRIES:
+							#return Globals.CUP_PLUM_BLUEBERRY
+						#Enums.Fruit_Type.GRAPES:
+							#return Globals.CUP_PLUM_PLUM
+						#Enums.Fruit_Type.NONE:
+							#return Globals.CUP_PLUM
+	#return null
 
 
 func _on_green_patience_timer_timeout() -> void:

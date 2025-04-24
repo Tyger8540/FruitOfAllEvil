@@ -1,6 +1,8 @@
 class_name Grabbable
 extends Node2D
 
+@export var top_blended_fruit: TextureRect
+@export var bottom_blended_fruit: TextureRect
 
 var fruit: Array[Enums.Fruit_Type]
 var grab_type: Enums.Grabbable_Type
@@ -23,8 +25,6 @@ func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grab
 			fruit.append(Enums.Fruit_Type.NONE)
 		fruit[i] = fruit_types[i]
 	grab_type = grabbable_type
-	#if grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
-		#scale = Vector2(2.0, 2.0)
 	match fruit[0]:
 		Enums.Fruit_Type.APPLE:
 			match grab_type:
@@ -35,20 +35,22 @@ func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grab
 					$Sprite2D.texture = Globals.CHOPPED_APPLE
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.BLENDED_FRUIT:
+					$Sprite2D.texture = Globals.BLENDED_CUP
+					bottom_blended_fruit.texture = Globals.CUP_APPLE2
 					match fruit[1]:
 						Enums.Fruit_Type.APPLE:
-							$Sprite2D.texture = Globals.CUP_APPLE_APPLE
+							top_blended_fruit.texture = Globals.CUP_APPLE2  # TODO CHANGE FROM 2 ONCE CUSTOMER BUTTON IS FIGURED OUT
 						Enums.Fruit_Type.ORANGE:
-							$Sprite2D.texture = Globals.CUP_APPLE_ORANGE
+							top_blended_fruit.texture = Globals.CUP_ORANGE2
 						Enums.Fruit_Type.BANANA:
-							$Sprite2D.texture = Globals.CUP_APPLE_BANANA
+							top_blended_fruit.texture = Globals.CUP_BANANA2
 						Enums.Fruit_Type.BLUEBERRIES:
-							$Sprite2D.texture = Globals.CUP_APPLE_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							$Sprite2D.texture = Globals.CUP_APPLE_PLUM
+							top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+						Enums.Fruit_Type.GRAPES:
+							top_blended_fruit.texture = Globals.CUP_GRAPES
 						Enums.Fruit_Type.NONE:
-							$Sprite2D.texture = Globals.CUP_APPLE
-					Globals.grabbable_sprite = $Sprite2D.texture
+							top_blended_fruit.texture = null
+					Globals.grabbable_sprite = Globals.BLENDED_CUP
 		Enums.Fruit_Type.ORANGE:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -58,20 +60,22 @@ func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grab
 					$Sprite2D.texture = Globals.CHOPPED_ORANGE
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.BLENDED_FRUIT:
+					$Sprite2D.texture = Globals.BLENDED_CUP
+					bottom_blended_fruit.texture = Globals.CUP_ORANGE2
 					match fruit[1]:
 						Enums.Fruit_Type.APPLE:
-							$Sprite2D.texture = Globals.CUP_ORANGE_APPLE
+							top_blended_fruit.texture = Globals.CUP_APPLE2
 						Enums.Fruit_Type.ORANGE:
-							$Sprite2D.texture = Globals.CUP_ORANGE_ORANGE
+							top_blended_fruit.texture = Globals.CUP_ORANGE2
 						Enums.Fruit_Type.BANANA:
-							$Sprite2D.texture = Globals.CUP_ORANGE_BANANA
+							top_blended_fruit.texture = Globals.CUP_BANANA2
 						Enums.Fruit_Type.BLUEBERRIES:
-							$Sprite2D.texture = Globals.CUP_ORANGE_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							$Sprite2D.texture = Globals.CUP_ORANGE_PLUM
+							top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+						Enums.Fruit_Type.GRAPES:
+							top_blended_fruit.texture = Globals.CUP_GRAPES
 						Enums.Fruit_Type.NONE:
-							$Sprite2D.texture = Globals.CUP_ORANGE
-					Globals.grabbable_sprite = $Sprite2D.texture
+							top_blended_fruit.texture = null
+					Globals.grabbable_sprite = Globals.BLENDED_CUP
 		Enums.Fruit_Type.BANANA:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -81,20 +85,22 @@ func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grab
 					$Sprite2D.texture = Globals.CHOPPED_BANANA
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.BLENDED_FRUIT:
+					$Sprite2D.texture = Globals.BLENDED_CUP
+					bottom_blended_fruit.texture = Globals.CUP_BANANA2
 					match fruit[1]:
 						Enums.Fruit_Type.APPLE:
-							$Sprite2D.texture = Globals.CUP_BANANA_APPLE
+							top_blended_fruit.texture = Globals.CUP_APPLE2
 						Enums.Fruit_Type.ORANGE:
-							$Sprite2D.texture = Globals.CUP_BANANA_ORANGE
+							top_blended_fruit.texture = Globals.CUP_ORANGE2
 						Enums.Fruit_Type.BANANA:
-							$Sprite2D.texture = Globals.CUP_BANANA_BANANA
+							top_blended_fruit.texture = Globals.CUP_BANANA2
 						Enums.Fruit_Type.BLUEBERRIES:
-							$Sprite2D.texture = Globals.CUP_BANANA_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							$Sprite2D.texture = Globals.CUP_BANANA_PLUM
+							top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+						Enums.Fruit_Type.GRAPES:
+							top_blended_fruit.texture = Globals.CUP_GRAPES
 						Enums.Fruit_Type.NONE:
-							$Sprite2D.texture = Globals.CUP_BANANA
-					Globals.grabbable_sprite = $Sprite2D.texture
+							top_blended_fruit.texture = null
+					Globals.grabbable_sprite = Globals.BLENDED_CUP
 		Enums.Fruit_Type.BLUEBERRIES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
@@ -104,43 +110,47 @@ func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grab
 					$Sprite2D.texture = Globals.CHOPPED_BLUEBERRIES
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.BLENDED_FRUIT:
+					$Sprite2D.texture = Globals.BLENDED_CUP
+					bottom_blended_fruit.texture = Globals.CUP_BLUEBERRIES
 					match fruit[1]:
 						Enums.Fruit_Type.APPLE:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY_APPLE
+							top_blended_fruit.texture = Globals.CUP_APPLE2
 						Enums.Fruit_Type.ORANGE:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY_ORANGE
+							top_blended_fruit.texture = Globals.CUP_ORANGE2
 						Enums.Fruit_Type.BANANA:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY_BANANA
+							top_blended_fruit.texture = Globals.CUP_BANANA2
 						Enums.Fruit_Type.BLUEBERRIES:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY_PLUM
+							top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+						Enums.Fruit_Type.GRAPES:
+							top_blended_fruit.texture = Globals.CUP_GRAPES
 						Enums.Fruit_Type.NONE:
-							$Sprite2D.texture = Globals.CUP_BLUEBERRY
-					Globals.grabbable_sprite = $Sprite2D.texture
-		Enums.Fruit_Type.PLUM:
+							top_blended_fruit.texture = null
+					Globals.grabbable_sprite = Globals.BLENDED_CUP
+		Enums.Fruit_Type.GRAPES:
 			match grab_type:
 				Enums.Grabbable_Type.FRUIT:
-					$Sprite2D.texture = Globals.PLUM
+					$Sprite2D.texture = Globals.GRAPES
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.CHOPPED_FRUIT:
-					$Sprite2D.texture = Globals.CHOPPED_PLUM
+					$Sprite2D.texture = Globals.CHOPPED_GRAPES
 					Globals.grabbable_sprite = $Sprite2D.texture
 				Enums.Grabbable_Type.BLENDED_FRUIT:
+					$Sprite2D.texture = Globals.BLENDED_CUP
+					bottom_blended_fruit.texture = Globals.CUP_GRAPES
 					match fruit[1]:
 						Enums.Fruit_Type.APPLE:
-							$Sprite2D.texture = Globals.CUP_PLUM_APPLE
+							top_blended_fruit.texture = Globals.CUP_APPLE2
 						Enums.Fruit_Type.ORANGE:
-							$Sprite2D.texture = Globals.CUP_PLUM_ORANGE
+							top_blended_fruit.texture = Globals.CUP_ORANGE2
 						Enums.Fruit_Type.BANANA:
-							$Sprite2D.texture = Globals.CUP_PLUM_BANANA
+							top_blended_fruit.texture = Globals.CUP_BANANA2
 						Enums.Fruit_Type.BLUEBERRIES:
-							$Sprite2D.texture = Globals.CUP_PLUM_BLUEBERRY
-						Enums.Fruit_Type.PLUM:
-							$Sprite2D.texture = Globals.CUP_PLUM_PLUM
+							top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+						Enums.Fruit_Type.GRAPES:
+							top_blended_fruit.texture = Globals.CUP_GRAPES
 						Enums.Fruit_Type.NONE:
-							$Sprite2D.texture = Globals.CUP_PLUM
-					Globals.grabbable_sprite = $Sprite2D.texture
+							top_blended_fruit.texture = null
+					Globals.grabbable_sprite = Globals.BLENDED_CUP
 
 
 func on_grabbable_placed() -> void:

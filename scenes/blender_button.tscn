@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2eul6xmbt8yw"]
+[gd_scene load_steps=10 format=3 uid="uid://d2eul6xmbt8yw"]
 
 [ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
 [ext_resource type="Texture2D" uid="uid://b0x0lm6547qno" path="res://final_art/Blender.png" id="2_tq5sm"]
 [ext_resource type="Texture2D" uid="uid://bkkqq06shvlnm" path="res://art/other/Blend Button.png" id="3_wa07b"]
 [ext_resource type="Texture2D" uid="uid://ds7wbwahmaqm2" path="res://final_art/Blender Glass.png" id="4_janlq"]
-[ext_resource type="Texture2D" uid="uid://bq7j36xa1o4vn" path="res://final_art/AppleInBlender.png" id="4_w61a2"]
-[ext_resource type="Texture2D" uid="uid://b6mljuuikxa2b" path="res://final_art/BananaInBlender.png" id="5_vm8xs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
 
@@ -74,26 +72,26 @@ offset_right = 144.0
 offset_bottom = -2.0
 show_percentage = false
 
-[node name="BlenderGlass" type="TextureRect" parent="."]
+[node name="BlendedTextures" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 144.0
 offset_bottom = 144.0
 texture = ExtResource("4_janlq")
 
-[node name="TopFruit" type="TextureRect" parent="BlenderGlass"]
+[node name="TopBlendedFruit" type="TextureRect" parent="BlendedTextures"]
 show_behind_parent = true
 layout_mode = 0
-offset_top = -44.0
+offset_top = -45.0
 offset_right = 144.0
-offset_bottom = 100.0
-texture = ExtResource("5_vm8xs")
+offset_bottom = 99.0
 
-[node name="BottomFruit" type="TextureRect" parent="BlenderGlass"]
+[node name="BottomBlendedFruit" type="TextureRect" parent="BlendedTextures"]
 show_behind_parent = true
 layout_mode = 0
+offset_top = -1.0
 offset_right = 144.0
-offset_bottom = 144.0
-texture = ExtResource("4_w61a2")
+offset_bottom = 143.0
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

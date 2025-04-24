@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://3u27ra2d1u0i"]
-
-[node name="DynamicBlender" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

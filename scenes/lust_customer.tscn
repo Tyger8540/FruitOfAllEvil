@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db64mc2w61adr"]
+[gd_scene load_steps=11 format=3 uid="uid://db64mc2w61adr"]
 
 [ext_resource type="Script" path="res://scripts/lust_customer.gd" id="1_yp3k3"]
 [ext_resource type="Texture2D" uid="uid://bsf31fmn7d04t" path="res://final_art/grotesquelimbo_ok_360.png" id="2_e0ien"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="4_005rx"]
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="5_6ivrn"]
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="6_x8bs5"]
+[ext_resource type="PackedScene" uid="uid://cgrky05cppge6" path="res://scenes/grabbable_texture.tscn" id="7_g6g0c"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_w114m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydud7"]
@@ -81,16 +82,16 @@ offset_right = 134.0
 offset_bottom = 134.0
 columns = 2
 
-[node name="Slot1" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+[node name="Slot1" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
 
-[node name="Slot2" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+[node name="Slot2" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
 
-[node name="Slot3" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+[node name="Slot3" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
 
-[node name="Slot4" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
+[node name="Slot4" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
 
 [node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhguxfqqurpyb"]
+[gd_scene load_steps=11 format=3 uid="uid://dhguxfqqurpyb"]
 
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="1_m2x0k"]
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rovlt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="4_j4383"]
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="5_mumj0"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_2eesi"]
+[ext_resource type="Script" path="res://scripts/grabbable_texture.gd" id="7_vxdkl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b33s"]
 
@@ -83,15 +84,19 @@ columns = 2
 
 [node name="Slot1" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
 layout_mode = 2
+script = ExtResource("7_vxdkl")
 
 [node name="Slot2" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
 layout_mode = 2
+script = ExtResource("7_vxdkl")
 
 [node name="Slot3" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
 layout_mode = 2
+script = ExtResource("7_vxdkl")
 
 [node name="Slot4" type="TextureRect" parent="CustomerButton/Panel/ItemGrid"]
 layout_mode = 2
+script = ExtResource("7_vxdkl")
 
 [node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false

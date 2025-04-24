@@ -2,7 +2,25 @@
 
 [ext_resource type="Script" path="res://scripts/grabbable.gd" id="1_83osf"]
 
-[node name="Grabbable" type="Node2D"]
+[node name="Grabbable" type="Node2D" node_paths=PackedStringArray("top_blended_fruit", "bottom_blended_fruit")]
 script = ExtResource("1_83osf")
+top_blended_fruit = NodePath("Sprite2D/TopBlendedFruit")
+bottom_blended_fruit = NodePath("Sprite2D/BottomBlendedFruit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TopBlendedFruit" type="TextureRect" parent="Sprite2D"]
+show_behind_parent = true
+offset_left = -32.0
+offset_top = -34.0
+offset_right = 32.0
+offset_bottom = 30.0
+mouse_filter = 2
+
+[node name="BottomBlendedFruit" type="TextureRect" parent="Sprite2D"]
+show_behind_parent = true
+offset_left = -32.0
+offset_top = -18.0
+offset_right = 32.0
+offset_bottom = 46.0
+mouse_filter = 2

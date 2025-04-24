@@ -1,6 +1,9 @@
 class_name ShelfButton
 extends PlacePickupButton
 
+@export var top_blended_fruit: TextureRect
+@export var bottom_blended_fruit: TextureRect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +22,8 @@ func on_day_start() -> void:
 
 
 func place() -> void:
+	if Globals.grabbable_grab_type == Enums.Grabbable_Type.BLENDED_FRUIT:
+		set_blended_textures()
 	$GrabbableTexture.texture = Globals.grabbable_sprite
 	AudioManager.play_sound(self, "res://audio/sfx/Drop.wav", Enums.Audio_Type.SFX)
 	is_occupied = true
@@ -50,6 +55,7 @@ func pickup() -> void:
 			Globals.grabbable_fruit_type[1] = Enums.Fruit_Type.NONE
 		if not swapping:
 			$GrabbableTexture.texture = null
+		clear_blended_textures()
 		temp_is_occupied = false
 		Globals.is_grabbing = true
 		temp_fruits[0] = Enums.Fruit_Type.NONE
@@ -57,3 +63,37 @@ func pickup() -> void:
 		temp_grab_types[0] = Enums.Grabbable_Type.NONE
 		temp_num_slots_filled -= 1
 	super()
+
+
+func set_blended_textures() -> void:
+	match Globals.grabbable_fruit_type[0]:
+		Enums.Fruit_Type.APPLE:
+			bottom_blended_fruit.texture = Globals.CUP_APPLE2
+		Enums.Fruit_Type.ORANGE:
+			bottom_blended_fruit.texture = Globals.CUP_ORANGE2
+		Enums.Fruit_Type.BANANA:
+			bottom_blended_fruit.texture = Globals.CUP_BANANA2
+		Enums.Fruit_Type.BLUEBERRIES:
+			bottom_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+		Enums.Fruit_Type.GRAPES:
+			bottom_blended_fruit.texture = Globals.CUP_GRAPES
+		Enums.Fruit_Type.NONE:
+			bottom_blended_fruit.texture = null
+	match Globals.grabbable_fruit_type[1]:
+		Enums.Fruit_Type.APPLE:
+			top_blended_fruit.texture = Globals.CUP_APPLE2
+		Enums.Fruit_Type.ORANGE:
+			top_blended_fruit.texture = Globals.CUP_ORANGE2
+		Enums.Fruit_Type.BANANA:
+			top_blended_fruit.texture = Globals.CUP_BANANA2
+		Enums.Fruit_Type.BLUEBERRIES:
+			top_blended_fruit.texture = Globals.CUP_BLUEBERRIES
+		Enums.Fruit_Type.GRAPES:
+			top_blended_fruit.texture = Globals.CUP_GRAPES
+		Enums.Fruit_Type.NONE:
+			top_blended_fruit.texture = null
+
+
+func clear_blended_textures() -> void:
+	top_blended_fruit.texture = null
+	bottom_blended_fruit.texture = null

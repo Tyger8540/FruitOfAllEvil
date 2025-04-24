@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgrky05cppge6"]
+
+[ext_resource type="Script" path="res://scripts/grabbable_texture.gd" id="1_pusj0"]
+
+[node name="GrabbableTexture" type="TextureRect" node_paths=PackedStringArray("top_blended_fruit", "bottom_blended_fruit")]
+script = ExtResource("1_pusj0")
+top_blended_fruit = NodePath("TopBlendedFruit")
+bottom_blended_fruit = NodePath("BottomBlendedFruit")
+
+[node name="TopBlendedFruit" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -2.0
+offset_right = 64.0
+offset_bottom = 62.0
+
+[node name="BottomBlendedFruit" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_top = 14.0
+offset_right = 64.0
+offset_bottom = 78.0

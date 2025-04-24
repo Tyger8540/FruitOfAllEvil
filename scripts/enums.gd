@@ -6,7 +6,7 @@ enum Fruit_Type {
 	ORANGE,
 	BANANA,
 	BLUEBERRIES,
-	PLUM,
+	GRAPES,
 }
 
 enum Grabbable_Type {

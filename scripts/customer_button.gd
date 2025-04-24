@@ -6,7 +6,7 @@ const LOW_HIGHLIGHT_BOUND = 1.0
 const HIGH_HIGHLIGHT_BOUND = 1.25
 const SCALE_FACTOR = 1.25
 
-var slots: Array[TextureRect]
+var slots: Array[GrabbableTexture]
 var checkmarks: Array[TextureRect]
 
 var fruit: Array[Enums.Fruit_Type]
@@ -38,9 +38,15 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func set_grid(texture_array: Array[Texture2D], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type], fruit_array2: Array[Enums.Fruit_Type]) -> void:
+func set_grid(texture_array: Array[GrabbableTexture], fruit_array: Array[Enums.Fruit_Type], grab_type_array: Array[Enums.Grabbable_Type], fruit_array2: Array[Enums.Fruit_Type]) -> void:
 	for i in range(0, texture_array.size()):
-		slots[i].texture = texture_array[i]
+		print("texture: " + str(texture_array[i].texture))
+		#slots[i] = texture_array[i]
+		#slots[i].texture = texture_array[i].texture
+		#slots[i].top_blended_fruit.texture = texture_array[i].top_blended_fruit.texture
+		#slots[i].bottom_blended_fruit.texture = texture_array[i].bottom_blended_fruit.texture
+		slots[i].set_grabbable_texture(texture_array[i])
+		print("slot texture: " + str(slots[i].texture))
 		fruit.append(fruit_array[i])
 		grab_type.append(grab_type_array[i])
 		fruit2.append(fruit_array2[i])

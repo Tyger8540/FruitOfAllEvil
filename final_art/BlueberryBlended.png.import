@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b37odshjm27px"
-path="res://.godot/imported/Blender.png-d390f2b2460f2cf72f65f9e1288a71cb.ctex"
+uid="uid://chslecivnlqyp"
+path="res://.godot/imported/BlueberryBlended.png-21bc25775d3495a155c386ba9cdbb8ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Blender.png"
-dest_files=["res://.godot/imported/Blender.png-d390f2b2460f2cf72f65f9e1288a71cb.ctex"]
+source_file="res://final_art/BlueberryBlended.png"
+dest_files=["res://.godot/imported/BlueberryBlended.png-21bc25775d3495a155c386ba9cdbb8ff.ctex"]
 
 [params]
 

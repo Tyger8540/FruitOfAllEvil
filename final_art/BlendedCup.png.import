@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgjtt57yrgwix"
-path="res://.godot/imported/BluberryinBlender.png-0dac0b651caf029d312ace3008507f64.ctex"
+uid="uid://d02gt8genq304"
+path="res://.godot/imported/BlendedCup.png-899e7910a4117f950a654d3a78a1d327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/BluberryinBlender.png"
-dest_files=["res://.godot/imported/BluberryinBlender.png-0dac0b651caf029d312ace3008507f64.ctex"]
+source_file="res://final_art/BlendedCup.png"
+dest_files=["res://.godot/imported/BlendedCup.png-899e7910a4117f950a654d3a78a1d327.ctex"]
 
 [params]
 

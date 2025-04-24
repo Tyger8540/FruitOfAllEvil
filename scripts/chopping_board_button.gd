@@ -93,8 +93,8 @@ func finish_action() -> void:
 		Enums.Fruit_Type.BLUEBERRIES:
 			$GrabbableTexture.texture = Globals.CHOPPED_BLUEBERRIES
 			grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
-		Enums.Fruit_Type.PLUM:
-			$GrabbableTexture.texture = Globals.CHOPPED_PLUM
+		Enums.Fruit_Type.GRAPES:
+			$GrabbableTexture.texture = Globals.CHOPPED_GRAPES
 			grab_types[0] = Enums.Grabbable_Type.CHOPPED_FRUIT
 	
 	super()
