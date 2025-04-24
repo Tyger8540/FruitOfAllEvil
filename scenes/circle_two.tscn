@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://o3omt8mgs28d"]
+[gd_scene load_steps=32 format=3 uid="uid://o3omt8mgs28d"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3bwh3"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/lust_customer_manager.gd" id="6_00fvx"]
 [ext_resource type="Script" path="res://scripts/start_day_button.gd" id="6_sklra"]
 [ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="9_u5bae"]
+[ext_resource type="Texture2D" uid="uid://fq4wrjdd3si5" path="res://final_art/Fruit Stand(Base).png" id="10_or6ub"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="11_0keo5"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_vp5wo"]
 [ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="13_v2x00"]
@@ -159,6 +160,9 @@ offset_left = 816.0
 offset_top = 396.0
 offset_right = 960.0
 offset_bottom = 540.0
+
+[node name="FruitStand(full)" type="Sprite2D" parent="."]
+texture = ExtResource("10_or6ub")
 
 [node name="ApplianceHBox" type="HBoxContainer" parent="."]
 offset_left = -832.0

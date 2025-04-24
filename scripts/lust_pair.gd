@@ -50,6 +50,8 @@ func _process(delta: float) -> void:
 			lover2.panel.visible = true
 			green_patience_timer.start()
 			started_timer = true
+			lover1.check_hovering()
+			lover2.check_hovering()
 	
 	move_and_slide()
 

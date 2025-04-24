@@ -184,6 +184,11 @@ func get_random_grab_type(num_types: int) -> Enums.Grabbable_Type:
 	return Enums.Grabbable_Type.NONE
 
 
+func check_hovering():
+	if $CustomerButton.hovering:
+		$CustomerButton.set_highlight(true)
+
+
 #func get_texture(fruit: Enums.Fruit_Type, grab_type: Enums.Grabbable_Type, fruit2: Enums.Fruit_Type) -> Texture2D:
 	#match fruit:
 		#Enums.Fruit_Type.APPLE:
