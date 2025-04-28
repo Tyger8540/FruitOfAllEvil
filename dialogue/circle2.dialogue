@@ -1,10 +1,90 @@
-~ C2_intro
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ C2_intro1
+Leaving the castle meadows, Danny Pigrim had entered a dark space.
+Harrowing shrieks flew past them, a storm of anguished cries...
+"Lo," Virgil said, "hear the eternal screams of the condemned?"
+"This is the home of those who sin in lust. Lovers eternal, eternal suffering."
+"Oh well, at least they're not alone."
+Just then, a figure began to emerge from the darkness...
+A woman. She went up to Danny Pilgrim, who they learned was Francesca Da Rimini.
+She told them of her present grief, past happiness, her joyous moments with her lover, Paolo...
+Her story moved Danny Pilgrim to their core, that pity took hold of them...
+And brought Danny Pilgrim to faint and fall to Hell's floor.
+Danny Pilgrim fell into a dark space of his own making.
+"..."
+Francesca scratched her head. "Uh, is your friend okay?"
+=> END
+
+~ C2_intro2
+# this comes right after C2_intro1, now in the castle meadows
+When Danny Pilgrim opened their eyes, they found themselves back at the castle meadows.
+Was that a bad dream?
+"Oh destined traveler, you have awakened!"
+# SFX: DJ RECORD SCRATCH, show Virgil in his DJ outfit
+Virgil stood before them, donning the garbs of the disco dance floor.
+This must be a bad dream.
+"You had fainting during Francesca's story," He said. "She was both flattered and concerned for your well-being."
+"I suppose you need to gulp down some fruit smoothies yourself."
+Virgil waved his hand.
+"But not now. For you have been tasked with an important honor."
+"The grand honor of serving this great banquet and dance party!"
+Danny Pilgrim looked around and found countless pairs of people occupying the grassy meadows.
+"These are the esteemed guests of lust," Virgil said, "granted one day of reprieve from that pitiful darkness..."
+"Oh, you don't remember signing up for this?"
+Virgil smiled. "Silly goose, it was YOUR idea, was it not? You must've forgetten when you fainted."
+"Anywho, these lusty pairs are willing to give anything for your fruits."
+"So chop, chop, destined traveler."
+"Or should I say, cha, cha?"
+Danny Pilgrim stood before their next challenge.
+This must be a bad dream.
+=> END
+
+~ C2_level_virgil1
+# at the start of the level, hint/tutorial to the gimmick
+# SFX: DJ RECORD SCRATCH
+Virgil: Danger on the dance floor!
+Virgil: Well, potentially. You see, your customers right now are all paired up.
+Virgil: Please be sure that you serve BOTH of their orders in a timely manner.
+Virgil: Patience runs thin when one has to wait while their partner is already chowing down on that fruity goodness.
+Virgil: The lusty sinners have brought their doom and gloom to this reception.
+Virgil: So I entrust your great services will cheer them up!
+Virgil: As for me, I have the important duties of the disc jockey.
+Virgil: See you on the flipside, destined traveler. 
+# SFX: DJ RECORD SCRATCH
+=> END
+
+~ C2_level_virgil2
+# before stage 2 begins, to indicate the additional gimmick of rotating customers
+# SFX: DJ RECORD SCRATCH
+Virgil: The mood is picking up, how wonderful!
+Virgil: I believe it is about time to switch up the song as well.
+Virgil: Don't be surprised if the customers begin to dance amongst themselves.
+Virgil: Their bodies simply cannot help but be moved by the masterful artistry of my disc jockey capabilities.
+Virgil: Keep up your great service, destined traveler. 
+Virgil: The reputation of V-Catering Services, subsidiary of the Hell branch of V-Corps, is under your good hands.
+=> END
+
+~ C2_level_virgil3
+# before stage 3 begins, to indicate the final additional gimmick of rotation + movement across the screen
+Virgil: Magnifique! 
+Virgil: The mood has lifted to dazzling levels!
+Virgil: I am moving onto the final song on my set list, and I am going all out.
+Virgil: The customers will do the same as well. So don't panic at the disco!
+Virgil: Hm? Copyright? 
+Virgil: Do not worry, none of that matters in Hell.
+Virgil: Anwyays, just try not to get carried away by the groove of the music, the shuffling feet of the guests...
+Virgil: Let us end this reception with a bang!
+
+~ C2_level_complete
+# end of the level
+Francesca: Danny Pilgrim, was it?
+Francesca: I must give my deepest gratitude for your invitation to this wonderful reception.
+Francesca: My dear Paolo, my friends, the other guests... they immensely enjoyed it all.
+Francesca: To do all of this out of your own volition, you must love the work you do!
+Francesca: Alas, we must return to that darkened void soon, but I will forever cherish this.
+Francesca: Ah, please don't faint again.
+Francesca: Otherwise, we'd have to get that lover of yours to carry you around again...
+Francesca: Oh? You're not in a relationship with that man, Virgil?
+Francesca: It's more of a business relationship? Oh I see, I have been mistaken.
+Francesca: Danny, are you feeling well? You look gloomy all of the sudden...
+Francesca: Workers' rights? Unfornately, I do not believe any of that exists in Hell...
 => END
