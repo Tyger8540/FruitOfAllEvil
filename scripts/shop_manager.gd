@@ -24,7 +24,7 @@ func on_day_end() -> void:
 		%WaveManager.start_day()
 		return
 	# CHECKS FOR WHEN THE INTRODUCTION TO THE SHOP HAPPENS
-	if %WaveManager.cur_wave == 1 and State.circle_num == 1:
+	if %WaveManager.cur_wave == 1 and (State.circle_num == 1 or State.circle_num == 2):
 		State.dialogue_ready = true
 	var upgrades_indices_picked: Array[int]
 	for i in range(0, 4):

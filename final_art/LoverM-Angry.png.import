@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dalg4waak8hmw"
-path="res://.godot/imported/Lover(F).png-dedca48d72296f2e650750c20c9dd3e6.ctex"
+uid="uid://dmuqparu0is8f"
+path="res://.godot/imported/LoverM-Angry.png-0696af7f1ccfb79b252b0c7edab48174.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/Lover(F).png"
-dest_files=["res://.godot/imported/Lover(F).png-dedca48d72296f2e650750c20c9dd3e6.ctex"]
+source_file="res://final_art/LoverM-Angry.png"
+dest_files=["res://.godot/imported/LoverM-Angry.png-0696af7f1ccfb79b252b0c7edab48174.ctex"]
 
 [params]
 

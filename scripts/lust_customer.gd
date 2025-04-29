@@ -2,6 +2,7 @@ class_name LustCustomer
 extends Customer
 
 @export var lover: LustCustomer
+@export var customer_button: LustCustomerButton
 
 var is_completed: bool = false
 var customer_manager: CustomerManager

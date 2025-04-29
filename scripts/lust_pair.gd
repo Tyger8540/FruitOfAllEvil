@@ -1,7 +1,7 @@
 class_name LustPair
 extends CharacterBody2D
 
-const LOVER_OFFSET = 70.0
+const LOVER_OFFSET = 68.0
 
 const SPEED = 450.0
 
@@ -62,8 +62,9 @@ func initialize(customer_pairs: Array[LustPair]) -> void:
 	#position = Vector2(-800.0 + 300.0 * index, 70.0)
 	generate_spawn_position()
 	generate_target_position(customer_pairs)
-	lover1.position.x -= LOVER_OFFSET
-	lover2.position.x += LOVER_OFFSET
+	#lover1.position.x -= LOVER_OFFSET
+	lover1.customer_button.position.x -= lover1.customer_button.size.x
+	#lover2.position.x += LOVER_OFFSET
 	set_patience_timers()
 	#green_patience_timer.start()
 	initialized = true

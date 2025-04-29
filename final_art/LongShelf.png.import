@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://whilxlk1nv8k"
-path="res://.godot/imported/LilVirg.png-4a2945eeedf00ddecd32d5da30b13e79.ctex"
+uid="uid://cg6nsd2iocycv"
+path="res://.godot/imported/LongShelf.png-1ff27e8be864a830c53e1e6d5c7c539d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/LilVirg.png"
-dest_files=["res://.godot/imported/LilVirg.png-4a2945eeedf00ddecd32d5da30b13e79.ctex"]
+source_file="res://final_art/LongShelf.png"
+dest_files=["res://.godot/imported/LongShelf.png-1ff27e8be864a830c53e1e6d5c7c539d.ctex"]
 
 [params]
 

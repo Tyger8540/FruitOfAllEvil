@@ -104,6 +104,8 @@ func _ready() -> void:
 		match State.cutscene_speaker:
 			"Virgil":
 				$Speaker.texture = load("res://final_art/Virgil_Test_360.png")
+			"DJ Virgil":
+				$Speaker.texture = load("res://final_art/DJ_Virgil.png")
 			"Charon":
 				$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
 	

@@ -1,29 +1,48 @@
-[gd_scene load_steps=11 format=3 uid="uid://db64mc2w61adr"]
+[gd_scene load_steps=15 format=3 uid="uid://db64mc2w61adr"]
 
 [ext_resource type="Script" path="res://scripts/lust_customer.gd" id="1_yp3k3"]
 [ext_resource type="Texture2D" uid="uid://bsf31fmn7d04t" path="res://final_art/grotesquelimbo_ok_360.png" id="2_e0ien"]
 [ext_resource type="Script" path="res://scripts/lust_customer_button.gd" id="3_ale7i"]
+[ext_resource type="Texture2D" uid="uid://cri3f6bxw330h" path="res://final_art/LoverM.png" id="3_ldghs"]
+[ext_resource type="Texture2D" uid="uid://bl6xa4yc8l20h" path="res://final_art/LoverF.png" id="3_uh05a"]
 [ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="4_005rx"]
 [ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="5_6ivrn"]
+[ext_resource type="Texture2D" uid="uid://lfh7agm025sr" path="res://final_art/Lovers.png" id="5_wbyqx"]
 [ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="6_x8bs5"]
 [ext_resource type="PackedScene" uid="uid://cgrky05cppge6" path="res://scenes/grabbable_texture.tscn" id="7_g6g0c"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_w114m"]
+[ext_resource type="Texture2D" uid="uid://cl5ap3r1bgmwj" path="res://final_art/Orange.png" id="11_ql62j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydud7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jm78"]
 
-[node name="LustCustomer" type="CharacterBody2D"]
+[node name="LustCustomer" type="CharacterBody2D" node_paths=PackedStringArray("customer_button")]
 script = ExtResource("1_yp3k3")
+customer_button = NodePath("CustomerButton")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2Dold" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(40, 48)
 texture = ExtResource("2_e0ien")
 
+[node name="LoverF" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-28, 59)
+texture = ExtResource("3_uh05a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 59)
+texture = ExtResource("3_ldghs")
+
+[node name="Lovers" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-28, 59)
+texture = ExtResource("5_wbyqx")
+
 [node name="CustomerButton" type="Button" parent="."]
-offset_left = -68.0
 offset_top = -257.0
-offset_right = 68.0
+offset_right = 136.0
 offset_bottom = 143.0
 theme_type_variation = &"FlatButton"
 theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
@@ -61,7 +80,6 @@ one_shot = true
 one_shot = true
 
 [node name="Panel" type="Panel" parent="CustomerButton"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.062
@@ -84,15 +102,19 @@ columns = 2
 
 [node name="Slot1" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
+texture = ExtResource("11_ql62j")
 
 [node name="Slot2" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
+texture = ExtResource("11_ql62j")
 
 [node name="Slot3" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
+texture = ExtResource("11_ql62j")
 
 [node name="Slot4" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
+texture = ExtResource("11_ql62j")
 
 [node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false
@@ -131,6 +153,90 @@ offset_bottom = 134.0
 texture = ExtResource("7_w114m")
 
 [node name="Label" type="Label" parent="CustomerButton/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = -1.0
+text = "Bye"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CustomerButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.062
+anchor_top = -0.023
+anchor_right = -0.062
+anchor_bottom = -0.023
+offset_left = -127.568
+offset_top = 9.2
+offset_right = 8.432
+offset_bottom = 145.2
+mouse_filter = 2
+
+[node name="ItemGrid" type="GridContainer" parent="CustomerButton/Panel2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 134.0
+offset_bottom = 134.0
+columns = 2
+
+[node name="Slot1" parent="CustomerButton/Panel2/ItemGrid" instance=ExtResource("7_g6g0c")]
+layout_mode = 2
+texture = ExtResource("11_ql62j")
+
+[node name="Slot2" parent="CustomerButton/Panel2/ItemGrid" instance=ExtResource("7_g6g0c")]
+layout_mode = 2
+texture = ExtResource("11_ql62j")
+
+[node name="Slot3" parent="CustomerButton/Panel2/ItemGrid" instance=ExtResource("7_g6g0c")]
+layout_mode = 2
+texture = ExtResource("11_ql62j")
+
+[node name="Slot4" parent="CustomerButton/Panel2/ItemGrid" instance=ExtResource("7_g6g0c")]
+layout_mode = 2
+texture = ExtResource("11_ql62j")
+
+[node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel2"]
+visible = false
+layout_mode = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 66.0
+offset_bottom = 66.0
+texture = ExtResource("7_w114m")
+
+[node name="Checkmark2" type="TextureRect" parent="CustomerButton/Panel2"]
+visible = false
+layout_mode = 2
+offset_left = 70.0
+offset_top = 2.0
+offset_right = 134.0
+offset_bottom = 66.0
+texture = ExtResource("7_w114m")
+
+[node name="Checkmark3" type="TextureRect" parent="CustomerButton/Panel2"]
+visible = false
+layout_mode = 2
+offset_left = 2.0
+offset_top = 70.0
+offset_right = 66.0
+offset_bottom = 134.0
+texture = ExtResource("7_w114m")
+
+[node name="Checkmark4" type="TextureRect" parent="CustomerButton/Panel2"]
+visible = false
+layout_mode = 2
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 134.0
+offset_bottom = 134.0
+texture = ExtResource("7_w114m")
+
+[node name="Label" type="Label" parent="CustomerButton/Panel2"]
 visible = false
 layout_mode = 0
 offset_left = 16.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://e8c57x3pn5ph"]
 
 [ext_resource type="Script" path="res://scripts/shelf_button.gd" id="1_cem5q"]
-[ext_resource type="Texture2D" uid="uid://c45s450haa0r4" path="res://final_art/Shelf.png" id="2_dgxob"]
+[ext_resource type="Texture2D" uid="uid://cg6nsd2iocycv" path="res://final_art/LongShelf.png" id="1_euyf2"]
 [ext_resource type="Script" path="res://scripts/grabbable_texture.gd" id="3_pf5hy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e2wm"]
@@ -19,20 +19,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5e2wm")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_gulvr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1nttl")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_616xw")
-icon = ExtResource("2_dgxob")
+icon = ExtResource("1_euyf2")
 script = ExtResource("1_cem5q")
 top_blended_fruit = NodePath("GrabbableTexture/TopBlendedFruit")
 bottom_blended_fruit = NodePath("GrabbableTexture/BottomBlendedFruit")
 appliance_type = 3
 num_slots = 1
-appliance_icon = ExtResource("2_dgxob")
+appliance_icon = ExtResource("1_euyf2")
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_top = -24.0
-offset_right = 96.0
-offset_bottom = 40.0
+offset_left = 61.0
+offset_top = 87.0
+offset_right = 125.0
+offset_bottom = 151.0
 script = ExtResource("3_pf5hy")
 
 [node name="TopBlendedFruit" type="TextureRect" parent="GrabbableTexture"]

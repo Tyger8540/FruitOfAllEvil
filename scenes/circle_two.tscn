@@ -1,35 +1,48 @@
-[gd_scene load_steps=53 format=3 uid="uid://o3omt8mgs28d"]
+[gd_scene load_steps=66 format=3 uid="uid://o3omt8mgs28d"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3bwh3"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
+[ext_resource type="Texture2D" uid="uid://m8745clid0fr" path="res://final_art/Ring 2_Meadow.png" id="3_5rsuy"]
 [ext_resource type="Script" path="res://scripts/shop_manager.gd" id="4_8kavy"]
 [ext_resource type="PackedScene" uid="uid://nwb4n4gtqpwn" path="res://scenes/shop_button.tscn" id="5_obpb6"]
 [ext_resource type="Script" path="res://scripts/lust_customer_manager.gd" id="6_00fvx"]
 [ext_resource type="Script" path="res://scripts/start_day_button.gd" id="6_sklra"]
+[ext_resource type="Texture2D" uid="uid://bl6xa4yc8l20h" path="res://final_art/LoverF.png" id="8_dltia"]
 [ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="9_u5bae"]
+[ext_resource type="Texture2D" uid="uid://lgxpo0nm5wly" path="res://final_art/LoverF-Angry.png" id="9_ydv1q"]
+[ext_resource type="Texture2D" uid="uid://lesrghowpk4u" path="res://final_art/LoverF-Deadpan.png" id="10_nfxme"]
 [ext_resource type="Texture2D" uid="uid://fq4wrjdd3si5" path="res://final_art/Fruit Stand(Base).png" id="10_or6ub"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="11_0keo5"]
+[ext_resource type="Texture2D" uid="uid://853etlekla6a" path="res://final_art/LoverF-Happy.png" id="11_2di7u"]
 [ext_resource type="Texture2D" uid="uid://b060iey7pvimb" path="res://final_art/FruitBasket1(Apples).png" id="11_giq1d"]
 [ext_resource type="Texture2D" uid="uid://rh6gvp0fxsjx" path="res://final_art/FruitStand(Full).png" id="12_3qyby"]
 [ext_resource type="Texture2D" uid="uid://gbwu05hr64ed" path="res://final_art/FruitBasket1.png" id="12_ejxwi"]
+[ext_resource type="Texture2D" uid="uid://cn4rrss81gild" path="res://final_art/LoverF-Sad_Annoyed.png" id="12_fpiqo"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_vp5wo"]
 [ext_resource type="Texture2D" uid="uid://dv5mqa5g3m1v6" path="res://final_art/Trash.png" id="13_6d8va"]
+[ext_resource type="Texture2D" uid="uid://dhg5u4i4bmsp1" path="res://final_art/LoverF-Surprised.png" id="13_8qbot"]
 [ext_resource type="Texture2D" uid="uid://dbdd8gj26kp0p" path="res://final_art/FruitBasket2.png" id="13_ovpdw"]
 [ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="13_v2x00"]
 [ext_resource type="PackedScene" uid="uid://bsm5cve406wkh" path="res://scenes/chopping_board_button.tscn" id="14_fhjbi"]
 [ext_resource type="Texture2D" uid="uid://pqnf7ghvop72" path="res://final_art/FruitBasket3.png" id="14_lspmb"]
+[ext_resource type="Texture2D" uid="uid://cri3f6bxw330h" path="res://final_art/LoverM.png" id="14_mvsgf"]
 [ext_resource type="Texture2D" uid="uid://2vx62ow4ibr" path="res://final_art/FruitBasket4.png" id="15_cqqfv"]
 [ext_resource type="PackedScene" uid="uid://e8c57x3pn5ph" path="res://scenes/shelf_button.tscn" id="15_poo50"]
 [ext_resource type="Texture2D" uid="uid://b0i2kgvsdhys" path="res://final_art/FruitBasket5(Grapes).png" id="15_qcg61"]
+[ext_resource type="Texture2D" uid="uid://dmuqparu0is8f" path="res://final_art/LoverM-Angry.png" id="15_rvvps"]
 [ext_resource type="Texture2D" uid="uid://da56cwxs1ttvg" path="res://final_art/FruitBasket2(Oranges).png" id="16_ew014"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="16_hjq24"]
 [ext_resource type="Texture2D" uid="uid://s0141vtguoia" path="res://final_art/FruitBasket5.png" id="16_qfyj1"]
+[ext_resource type="Texture2D" uid="uid://c2i5d6fgjndb4" path="res://final_art/LoverM-Deadpan.png" id="16_vu1oc"]
 [ext_resource type="Texture2D" uid="uid://dul4b3nn6s6qy" path="res://final_art/Basket_fulla_apples.png" id="17_7jtcl"]
+[ext_resource type="Texture2D" uid="uid://d4iadyqeji86a" path="res://final_art/LoverM-Happy.png" id="17_20hql"]
 [ext_resource type="Texture2D" uid="uid://dj3iq2js2uoa2" path="res://final_art/Fruit Stand(Full).png" id="17_jsd1w"]
 [ext_resource type="Texture2D" uid="uid://c1nbc1x7p4lnb" path="res://final_art/FruitBasket3(Bananas).png" id="17_v2llq"]
 [ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="18_2rngc"]
+[ext_resource type="Texture2D" uid="uid://dfy7snvd2fpp2" path="res://final_art/LoverM-Sad_Annoyed.png" id="18_43uoj"]
 [ext_resource type="Texture2D" uid="uid://vr5binnkamv1" path="res://final_art/FruitBasket4(BlueBerries).png" id="18_xykhw"]
 [ext_resource type="Texture2D" uid="uid://dnq7c6kvmrj0g" path="res://final_art/Basket_fulla_oranges.png" id="19_04xlm"]
+[ext_resource type="Texture2D" uid="uid://byhcwh23i2t8h" path="res://final_art/LoverM-Surprised.png" id="19_apdxi"]
 [ext_resource type="Texture2D" uid="uid://ywupnbty5ebn" path="res://final_art/FruitBasketFrontsAll.png" id="20_6nbb0"]
 [ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="20_h6dmv"]
 [ext_resource type="Texture2D" uid="uid://uwlq7p86wwyq" path="res://final_art/basket_fulla_bananas.png" id="21_quays"]
@@ -61,7 +74,6 @@ size = Vector2(3093.5, 446.5)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efof5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3ok6"]
-load_path = "res://.godot/imported/ApplesInBasket.png-a5e120329fcc9a93e3a3eaf0754f732c.ctex"
 
 [node name="CircleTwo" type="Node2D"]
 script = ExtResource("1_3bwh3")
@@ -69,6 +81,10 @@ script = ExtResource("1_3bwh3")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="DialogueController" parent="." instance=ExtResource("2_8x3au")]
+
+[node name="Ring2Meadow" type="Sprite2D" parent="."]
+position = Vector2(0, -270)
+texture = ExtResource("3_5rsuy")
 
 [node name="ShopManager" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -131,6 +147,8 @@ script = ExtResource("6_sklra")
 unique_name_in_owner = true
 position = Vector2(0, -305)
 script = ExtResource("6_00fvx")
+female_sprites = Array[Texture2D]([ExtResource("8_dltia"), ExtResource("9_ydv1q"), ExtResource("10_nfxme"), ExtResource("11_2di7u"), ExtResource("12_fpiqo"), ExtResource("13_8qbot")])
+male_sprites = Array[Texture2D]([ExtResource("14_mvsgf"), ExtResource("15_rvvps"), ExtResource("16_vu1oc"), ExtResource("17_20hql"), ExtResource("18_43uoj"), ExtResource("19_apdxi")])
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
 wait_time = 10.0
@@ -322,21 +340,21 @@ position = Vector2(-644, 5)
 
 [node name="BlenderButton" parent="Appliances" instance=ExtResource("13_v2x00")]
 offset_left = 30.0
-offset_top = -78.0
+offset_top = 40.0
 offset_right = 222.0
-offset_bottom = 114.0
+offset_bottom = 232.0
 
 [node name="BlenderButton2" parent="Appliances" instance=ExtResource("13_v2x00")]
 offset_left = 222.0
-offset_top = -78.0
+offset_top = 40.0
 offset_right = 414.0
-offset_bottom = 114.0
+offset_bottom = 232.0
 
 [node name="BlenderButton3" parent="Appliances" instance=ExtResource("13_v2x00")]
 offset_left = 414.0
-offset_top = -78.0
+offset_top = 40.0
 offset_right = 606.0
-offset_bottom = 114.0
+offset_bottom = 232.0
 
 [node name="ChoppingBoardButton" parent="Appliances" instance=ExtResource("14_fhjbi")]
 offset_left = 760.0
@@ -356,6 +374,12 @@ offset_top = 224.0
 offset_right = 904.0
 offset_bottom = 313.0
 
+[node name="ShelfButton" parent="Appliances" instance=ExtResource("15_poo50")]
+offset_left = 1408.0
+offset_top = 11.0
+offset_right = 1598.0
+offset_bottom = 323.0
+
 [node name="RecipeHoverButton" type="TextureButton" parent="." node_paths=PackedStringArray("child")]
 offset_left = -947.0
 offset_top = 64.0
@@ -367,6 +391,7 @@ child = NodePath("RecipeExpanded")
 
 [node name="RecipeExpanded" type="TextureRect" parent="RecipeHoverButton"]
 visible = false
+z_index = 2
 layout_mode = 0
 offset_left = -4.0
 offset_top = -61.0

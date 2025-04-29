@@ -10,7 +10,7 @@ var day_started: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.tutorial_ended.connect(start_day)
-	if not day_started and not State.circle_num == 1:
+	if not day_started and not (State.circle_num == 1 or State.circle_num == 2):
 		start_day()
 
 
@@ -83,17 +83,17 @@ func start_day() -> void:
 			match cur_wave:
 				1:
 					num_items = 12
-					difficulty_array = [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
+					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					wait_time = 5.0
 				2:
 					num_items = 12
-					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					wait_time = 5.0
 				3:
 					num_items = 12
-					difficulty_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					wait_time = 5.0
 		3:

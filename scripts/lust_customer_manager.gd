@@ -5,6 +5,9 @@ const LUST_PAIR = preload("res://scenes/lust_pair.tscn")
 const LUST_CUSTOMER = preload("res://scenes/lust_customer.tscn")
 const MAX_CUSTOMERS = 8
 
+@export var female_sprites: Array[Texture2D]
+@export var male_sprites: Array[Texture2D]
+
 var customer_pairs: Array[LustPair]
 #var index: int = 0
 
@@ -33,8 +36,8 @@ func create_customer_pair() -> void:
 	
 	# Get the sprites for the pair of customers
 	var customer_sprites: Array[Texture2D]
-	customer_sprites.append(load("res://final_art/grotesquelimbo_ok_360.png"))  # CHANGE THIS TO BE RANDOM WHEN HAVE MORE CUSTOMER SPRITES
-	customer_sprites.append(load("res://final_art/grotesquelimbo_sadge_360.png"))
+	customer_sprites.append(female_sprites.pick_random())
+	customer_sprites.append(male_sprites.pick_random())
 	
 	# Get the stats for the first member of the pair
 	var difficulty_level: int = difficulty_queue.pop_front()

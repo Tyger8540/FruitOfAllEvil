@@ -12,7 +12,8 @@ And brought Danny Pilgrim to faint and fall to Hell's floor.
 Danny Pilgrim fell into a dark space of his own making.
 "..."
 Francesca scratched her head. "Uh, is your friend okay?"
-=> END
+# TODO change this v later
+=> C2_intro2
 
 ~ C2_intro2
 # this comes right after C2_intro1, now in the castle meadows
@@ -36,11 +37,19 @@ Virgil smiled. "Silly goose, it was YOUR idea, was it not? You must've forgetten
 "Or should I say, cha, cha?"
 Danny Pilgrim stood before their next challenge.
 This must be a bad dream.
+set location = "level"
+set section = "C2_level_virgil1"
+set dialogue_ready = true
+set cutscene_speaker = "DJ Virgil"
+# TODO change this v later?
 => END
 
 ~ C2_level_virgil1
 # at the start of the level, hint/tutorial to the gimmick
+set AudioManager.stop_music()
+set AudioManager.play_sound(self, "res://audio/music/SlowDance_prelim.mp3", Enums.Audio_Type.MUSIC)
 # SFX: DJ RECORD SCRATCH
+#set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: Danger on the dance floor!
 Virgil: Well, potentially. You see, your customers right now are all paired up.
 Virgil: Please be sure that you serve BOTH of their orders in a timely manner.
@@ -48,19 +57,32 @@ Virgil: Patience runs thin when one has to wait while their partner is already c
 Virgil: The lusty sinners have brought their doom and gloom to this reception.
 Virgil: So I entrust your great services will cheer them up!
 Virgil: As for me, I have the important duties of the disc jockey.
+set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: See you on the flipside, destined traveler. 
 # SFX: DJ RECORD SCRATCH
+set location = "level"
+set section = "C2_level_virgil2"
+set dialogue_ready = false
+set cutscene_speaker = "DJ Virgil"
+set SignalManager.tutorial_ended.emit()
 => END
 
 ~ C2_level_virgil2
 # before stage 2 begins, to indicate the additional gimmick of rotating customers
 # SFX: DJ RECORD SCRATCH
+set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: The mood is picking up, how wonderful!
 Virgil: I believe it is about time to switch up the song as well.
+set AudioManager.stop_music()
+set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Audio_Type.MUSIC)
 Virgil: Don't be surprised if the customers begin to dance amongst themselves.
 Virgil: Their bodies simply cannot help but be moved by the masterful artistry of my disc jockey capabilities.
 Virgil: Keep up your great service, destined traveler. 
 Virgil: The reputation of V-Catering Services, subsidiary of the Hell branch of V-Corps, is under your good hands.
+set location = "level"
+set section = "C2_level_virgil3"
+set dialogue_ready = false
+set cutscene_speaker = "DJ Virgil"
 => END
 
 ~ C2_level_virgil3
@@ -73,6 +95,11 @@ Virgil: Hm? Copyright?
 Virgil: Do not worry, none of that matters in Hell.
 Virgil: Anwyays, just try not to get carried away by the groove of the music, the shuffling feet of the guests...
 Virgil: Let us end this reception with a bang!
+set location = "level"
+set section = "C2_level_complete"
+set dialogue_ready = false
+set cutscene_speaker = "DJ Virgil"
+=> END
 
 ~ C2_level_complete
 # end of the level
