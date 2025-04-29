@@ -22,8 +22,6 @@ func _process(delta: float) -> void:
 			red_patience_bar.visible = true
 			green_patience_timer.start()
 			check_hovering()
-			#if $CustomerButton.hovering:
-				#$CustomerButton.set_highlight(true)
 
 
 func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:

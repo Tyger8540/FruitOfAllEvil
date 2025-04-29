@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8shi4ko0k6gq"
-path="res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"
+uid="uid://dgrro8sm6y71y"
+path="res://.godot/imported/ChoppingBoard.png-bb50afc91b8a7ee91e2b7934f796cf62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/OrangeInBlender.png"
-dest_files=["res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"]
+source_file="res://final_art/ChoppingBoard.png"
+dest_files=["res://.godot/imported/ChoppingBoard.png-bb50afc91b8a7ee91e2b7934f796cf62.ctex"]
 
 [params]
 

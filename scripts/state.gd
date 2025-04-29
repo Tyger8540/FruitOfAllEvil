@@ -2,7 +2,7 @@ extends Node
 
 
 var location: String = "intro"
-var section: String = "C2_intro"
+var section: String = "C2_intro1"
 var vendor: String = ""
 var dialogue_ready: bool = true  # Should be set to true by default
 var dialogue_file: String = "res://dialogue/circle2.dialogue"

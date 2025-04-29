@@ -73,7 +73,7 @@ func _on_mouse_entered() -> void:
 	hovering = true
 	fading_in = true
 	fading_out = false
-	scale *= SCALE_FACTOR
+	#scale *= SCALE_FACTOR
 
 
 func _on_mouse_exited() -> void:
@@ -81,4 +81,4 @@ func _on_mouse_exited() -> void:
 	fading_in = false
 	fading_out = false
 	modulate.v = LOW_FADE_BOUND
-	scale /= SCALE_FACTOR
+	#scale /= SCALE_FACTOR

@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsm5cve406wkh"]
+[gd_scene load_steps=12 format=3 uid="uid://bsm5cve406wkh"]
 
-[ext_resource type="Texture2D" uid="uid://rpy2knnaoj7f" path="res://final_art/Cuttingboard.png" id="1_l64tn"]
+[ext_resource type="Texture2D" uid="uid://dgrro8sm6y71y" path="res://final_art/ChoppingBoard.png" id="1_nwsmb"]
 [ext_resource type="Script" path="res://scripts/chopping_board_button.gd" id="1_s00hn"]
-[ext_resource type="Texture2D" uid="uid://bvh74wvvc3yn0" path="res://art/other/Chop Button.png" id="3_sotc4"]
+[ext_resource type="Texture2D" uid="uid://nmu62seop0px" path="res://final_art/CuttingBoardButtonIdle.png" id="3_q0606"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv6kk"]
 
@@ -14,30 +14,36 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64oab"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_geytp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lodcw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyslv"]
+
 [node name="ChoppingBoardButton" type="Button"]
-custom_minimum_size = Vector2(144, 144)
 layout_direction = 2
 offset_right = 144.0
-offset_bottom = 144.0
+offset_bottom = 89.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qv6kk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4cvsk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mx4sc")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_twc3c")
-icon = ExtResource("1_l64tn")
+icon = ExtResource("1_nwsmb")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 script = ExtResource("1_s00hn")
 appliance_type = 1
 num_slots = 1
-appliance_icon = ExtResource("1_l64tn")
-action_icon = ExtResource("3_sotc4")
+appliance_icon = ExtResource("1_nwsmb")
+action_icon = ExtResource("3_q0606")
 
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 24.0
@@ -47,9 +53,9 @@ offset_bottom = 56.0
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 44.0
-offset_top = 14.0
+offset_top = 2.0
 offset_right = 108.0
-offset_bottom = 78.0
+offset_bottom = 66.0
 stretch_mode = 3
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
@@ -60,16 +66,23 @@ update_scale = false
 top_level = true
 
 [node name="ActionButton" type="Button" parent="Nonscale"]
-offset_top = 146.0
-offset_right = 144.0
-offset_bottom = 182.0
+offset_left = 164.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 82.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_64oab")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_geytp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lodcw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fyslv")
+icon = ExtResource("3_q0606")
 icon_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="Nonscale"]
-offset_top = -20.0
-offset_right = 144.0
-offset_bottom = -2.0
+offset_left = -26.0
+offset_top = 89.0
+offset_right = 63.0
+offset_bottom = 107.0
+rotation = -1.5708
 show_percentage = false
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

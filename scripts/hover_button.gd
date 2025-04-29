@@ -1,5 +1,5 @@
 class_name HoverButton
-extends Button
+extends TextureButton
 
 
 @export var child:= TextureRect

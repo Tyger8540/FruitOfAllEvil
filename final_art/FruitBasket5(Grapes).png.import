@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8shi4ko0k6gq"
-path="res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"
+uid="uid://b0i2kgvsdhys"
+path="res://.godot/imported/FruitBasket5(Grapes).png-d7ed2ab92c669f382b8c7a0c6c7dc950.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/OrangeInBlender.png"
-dest_files=["res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"]
+source_file="res://final_art/FruitBasket5(Grapes).png"
+dest_files=["res://.godot/imported/FruitBasket5(Grapes).png-d7ed2ab92c669f382b8c7a0c6c7dc950.ctex"]
 
 [params]
 

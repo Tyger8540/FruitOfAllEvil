@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2eul6xmbt8yw"]
+[gd_scene load_steps=13 format=3 uid="uid://d2eul6xmbt8yw"]
 
 [ext_resource type="Script" path="res://scripts/blender_button.gd" id="1_7psl8"]
 [ext_resource type="Texture2D" uid="uid://b0x0lm6547qno" path="res://final_art/Blender.png" id="2_tq5sm"]
-[ext_resource type="Texture2D" uid="uid://bkkqq06shvlnm" path="res://art/other/Blend Button.png" id="3_wa07b"]
+[ext_resource type="Texture2D" uid="uid://cb0ofjiov8jkf" path="res://final_art/BlenderButtonIdle.png" id="4_8grpm"]
 [ext_resource type="Texture2D" uid="uid://ds7wbwahmaqm2" path="res://final_art/Blender Glass.png" id="4_janlq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o4xf"]
@@ -15,8 +15,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3x0o6"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83jvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmrtg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j83ms"]
+
 [node name="BlenderButton" type="Button"]
-custom_minimum_size = Vector2(144, 144)
+custom_minimum_size = Vector2(192, 192)
 layout_direction = 2
 offset_right = 144.0
 offset_bottom = 144.0
@@ -31,7 +37,7 @@ script = ExtResource("1_7psl8")
 appliance_type = 2
 num_slots = 2
 appliance_icon = ExtResource("2_tq5sm")
-action_icon = ExtResource("3_wa07b")
+action_icon = ExtResource("4_8grpm")
 
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -39,17 +45,17 @@ one_shot = true
 
 [node name="GrabbableTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 44.0
-offset_right = 101.0
-offset_bottom = 108.0
+offset_left = 60.0
+offset_top = 76.0
+offset_right = 124.0
+offset_bottom = 140.0
 
 [node name="GrabbableTexture2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 26.0
-offset_right = 112.0
-offset_bottom = 90.0
+offset_left = 80.0
+offset_top = 37.0
+offset_right = 144.0
+offset_bottom = 101.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../Nonscale")
@@ -59,39 +65,44 @@ update_scale = false
 top_level = true
 
 [node name="ActionButton" type="Button" parent="Nonscale"]
-offset_top = 146.0
-offset_right = 144.0
-offset_bottom = 182.0
+offset_left = 30.0
+offset_top = 200.0
+offset_right = 158.0
+offset_bottom = 274.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3x0o6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_83jvv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jmrtg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j83ms")
+icon = ExtResource("4_8grpm")
 icon_alignment = 1
 expand_icon = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Nonscale"]
+offset_left = 38.0
 offset_top = -20.0
-offset_right = 144.0
+offset_right = 166.0
 offset_bottom = -2.0
 show_percentage = false
 
 [node name="BlendedTextures" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_right = 144.0
-offset_bottom = 144.0
+offset_right = 192.0
+offset_bottom = 192.0
 texture = ExtResource("4_janlq")
 
 [node name="TopBlendedFruit" type="TextureRect" parent="BlendedTextures"]
 show_behind_parent = true
 layout_mode = 0
-offset_top = -45.0
-offset_right = 144.0
-offset_bottom = 99.0
+offset_top = -57.0
+offset_right = 192.0
+offset_bottom = 135.0
 
 [node name="BottomBlendedFruit" type="TextureRect" parent="BlendedTextures"]
 show_behind_parent = true
 layout_mode = 0
 offset_top = -1.0
-offset_right = 144.0
-offset_bottom = 143.0
+offset_right = 192.0
+offset_bottom = 191.0
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

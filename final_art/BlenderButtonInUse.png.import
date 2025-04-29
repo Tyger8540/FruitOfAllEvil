@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8shi4ko0k6gq"
-path="res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"
+uid="uid://3cnie346g3d5"
+path="res://.godot/imported/BlenderButtonInUse.png-d85d3193b0a9ad29ad8005574b02fd9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://final_art/OrangeInBlender.png"
-dest_files=["res://.godot/imported/OrangeInBlender.png-db8a593e30d4f2128ccada88bf68a893.ctex"]
+source_file="res://final_art/BlenderButtonInUse.png"
+dest_files=["res://.godot/imported/BlenderButtonInUse.png-d85d3193b0a9ad29ad8005574b02fd9f.ctex"]
 
 [params]
 
