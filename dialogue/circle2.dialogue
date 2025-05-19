@@ -2,16 +2,16 @@
 Leaving the castle meadows, Danny Pigrim had entered a dark space.
 Harrowing shrieks flew past them, a storm of anguished cries...
 "Lo," Virgil said, "hear the eternal screams of the condemned?"
-"This is the home of those who sin in lust. Lovers eternal, eternal suffering."
+"This is home of those who sin in Lust. Lovers eternal, eternal suffering."
 "Oh well, at least they're not alone."
 Just then, a figure began to emerge from the darkness...
-A woman. She went up to Danny Pilgrim, who they learned was Francesca Da Rimini.
+It was a woman. She went up to Danny Pilgrim, who they learned was Francesca.
 She told them of her present grief, past happiness, her joyous moments with her lover, Paolo...
-Her story moved Danny Pilgrim to their core, that pity took hold of them...
+Francesca's story moved Danny Pilgrim to their core, that pity took hold of them...
 And brought Danny Pilgrim to faint and fall to Hell's floor.
-Danny Pilgrim fell into a dark space of his own making.
+Danny Pilgrim fell into a dark space of their own making.
 "..."
-Francesca scratched her head. "Uh, is your friend okay?"
+Francesca scratched her head. "Um, is your friend okay?"
 # TODO change this v later
 => C2_intro2
 
@@ -21,18 +21,18 @@ When Danny Pilgrim opened their eyes, they found themselves back at the castle m
 Was that a bad dream?
 "Oh destined traveler, you have awakened!"
 # SFX: DJ RECORD SCRATCH, show Virgil in his DJ outfit
-Virgil stood before them, donning the garbs of the disco dance floor.
+Virgil stood before them, donning the garbs of the dance floor.
 This must be a bad dream.
-"You had fainting during Francesca's story," He said. "She was both flattered and concerned for your well-being."
-"I suppose you need to gulp down some fruit smoothies yourself."
+"You had fainted during Francesca's story," He said. "She was both flattered and concerned for your well-being."
+"Perhaps you should consider getting a kale smoothie yourself."
 Virgil waved his hand.
-"But not now. For you have been tasked with an important honor."
+"But not now. For you have been tasked with an important honor..."
 "The grand honor of serving this great banquet and dance party!"
 Danny Pilgrim looked around and found countless pairs of people occupying the grassy meadows.
-"These are the esteemed guests of lust," Virgil said, "granted one day of reprieve from that pitiful darkness..."
+"These are the esteemed guests of Lust," Virgil said, "granted one day of reprieve from that pitiful darkness..."
 "Oh, you don't remember signing up for this?"
 Virgil smiled. "Silly goose, it was YOUR idea, was it not? You must've forgetten when you fainted."
-"Anywho, these lusty pairs are willing to give anything for your fruits."
+"Anywho, these lusty pairs are willing to give anything for your products."
 "So chop, chop, destined traveler."
 "Or should I say, cha, cha?"
 Danny Pilgrim stood before their next challenge.
@@ -51,10 +51,10 @@ set AudioManager.play_sound(self, "res://audio/music/SlowDance_prelim.mp3", Enum
 # SFX: DJ RECORD SCRATCH
 #set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: Danger on the dance floor!
-Virgil: Well, potentially. You see, your customers right now are all paired up.
+Virgil: Well, potentially. You see, your currents customers are all paired up.
 Virgil: Please be sure that you serve BOTH of their orders in a timely manner.
 Virgil: Patience runs thin when one has to wait while their partner is already chowing down on that fruity goodness.
-Virgil: The lusty sinners have brought their doom and gloom to this reception.
+Virgil: These lusty sinners have brought their doom and gloom to this reception.
 Virgil: So I entrust your great services will cheer them up!
 Virgil: As for me, I have the important duties of the disc jockey.
 set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
@@ -71,12 +71,12 @@ set SignalManager.tutorial_ended.emit()
 # before stage 2 begins, to indicate the additional gimmick of rotating customers
 # SFX: DJ RECORD SCRATCH
 set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
-Virgil: The mood is picking up, how wonderful!
+Virgil: The mood is picking up, wonderful!
 Virgil: I believe it is about time to switch up the song as well.
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Audio_Type.MUSIC)
 Virgil: Don't be surprised if the customers begin to dance amongst themselves.
-Virgil: Their bodies simply cannot help but be moved by the masterful artistry of my disc jockey capabilities.
+Virgil: Their bodies cannot help but be moved by the masterful artistry of my disc jockey capabilities.
 Virgil: Keep up your great service, destined traveler. 
 Virgil: The reputation of V-Catering Services, subsidiary of the Hell branch of V-Corps, is under your good hands.
 set location = "level"
@@ -89,11 +89,11 @@ set cutscene_speaker = "DJ Virgil"
 # before stage 3 begins, to indicate the final additional gimmick of rotation + movement across the screen
 Virgil: Magnifique! 
 Virgil: The mood has lifted to dazzling levels!
-Virgil: I am moving onto the final song on my set list, and I am going all out.
+Virgil: I am moving onto the final song on my setlist, and I shall go all out.
 Virgil: The customers will do the same as well. So don't panic at the disco!
 Virgil: Hm? Copyright? 
 Virgil: Do not worry, none of that matters in Hell.
-Virgil: Anwyays, just try not to get carried away by the groove of the music, the shuffling feet of the guests...
+Virgil: Anwyays, try not to get carried away by the groove of the music, the shuffling feet of the guests...
 Virgil: Let us end this reception with a bang!
 set location = "level"
 set section = "C2_level_complete"
@@ -114,4 +114,112 @@ Francesca: Oh? You're not in a relationship with that man, Virgil?
 Francesca: It's more of a business relationship? Oh I see, I have been mistaken.
 Francesca: Danny, are you feeling well? You look gloomy all of the sudden...
 Francesca: Workers' rights? Unfornately, I do not believe any of that exists in Hell...
+=> END
+
+~ C2_market
+- Virgil's Stand
+	set location = "market_virgil_intro"
+#	=> END
+	=> market_virgil_default
+- Francesca's Stand
+	set location = "market_francesca_default"
+#	=> END
+	=> market_francesca_default
+- Onward to Next Circle => market_end
+
+~ market_end
+Are you sure you want to leave?
+- No
+	set SignalManager.market_dialogue_ended.emit()
+	=> END
+- Yes
+	set dialogue_file = "res://dialogue/circle3.dialogue"
+	set dialogue_ready = true
+	set location = "intro"
+	set section = "C3_intro"
+	set talked_to_virgil = false
+	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
+
+~ market_virgil_default
+Virgil: Welcome to my humble stand, destined traveler.
+- Shop => market_virgil_shop
+- Chat => market_virgil_chat
+- Exit => market_virgil_end
+
+~ market_virgil_shop
+Virgil: What seems ripe for the picking?
+- Buy => market_virgil_shop_thanks
+- Back => market_virgil_default
+
+~ market_virgil_shop_thanks
+Virgil: Thank you for your patronage.
+- Continue => market_virgil_shop
+
+~ market_virgil_chat
+- Charon was an interesting fellow. /// About Francesca
+	Virgil: Indeed, he is. It's a shame he despises me so much.
+	Virgil: That's the price I pay for always going in and out of Hell...
+	Virgil: Anyways, it's likely you'll encounter unfriendly characters like him.
+	Virgil: Be prepared for any disturbances to your ways of fruit preparation.
+	=> market_virgil_chat
+- About the other ones you've guided... // Lovers, Lust
+	Virgil: Oh? Did Charon tell you about that?
+	Virgil: Pay no mind to his hateful remarks.
+	Virgil: Every human I've brought over is in good shape.
+	Virgil: They're just toiling endlessly in Hell to repay their debts to me.
+	=> market_virgil_chat
+- Who do you work for? // About V-Corps
+	Virgil: I work with many clients.
+	Virgil: ...
+	Virgil: Not satisfied? Fine.
+	Virgil: I currently work for Lucifer—to bring you over, of course.
+	Virgil: Angels, devils, humans... I'm not picky, as long as you have what I want.
+	=> market_virgil_chat
+- Back => market_virgil_default
+
+~ market_virgil_end
+Virgil: Until next time, destined traveler.
+set SignalManager.market_dialogue_ended.emit()
+=> END
+
+~ market_francesca_default
+Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
+- Shop => market_francesca_shop
+- Chat => market_francesca_chat
+- Exit => market_francesca_end
+
+~ market_francesca_shop
+Ovid: These goods shall transform you...
+- Buy => market_francesca_shop_thanks
+- Back => market_francesca_default
+
+~ market_francesca_shop_thanks
+Ovid: And your payments shall transform me!
+- Continue => market_francesca_shop
+
+~ market_francesca_chat
+- Why are you here? /// Paolo
+	Ovid: That is quite a broad question. From what I understand, many of us here did not believe in God.
+	Ovid: But none of us have commited any vice in His eyes.
+	Ovid: Thus, we are relegated to this quiet area for eternity...
+	Ovid: I suppose we should be honored to have such a pleasant resting place.
+	=> market_francesca_chat
+- What were you doing before you died? /// History
+	Ovid: Hm... Forgive me, it has been such a long time.
+	Ovid: I would like to believe I had been writing poetry...
+	Ovid: Maybe something about tragic lovers, finding each other in death, in different forms...
+	Ovid: Perhaps my works still exist somewhere on Earth...
+	=> market_francesca_chat
+- Have you met Virgil before? // Reception, some people 
+	Ovid: Oh, the man who follows you around?
+	Ovid: Hm... His face seems quite familiar...
+	Ovid: He and I might've known each other, when we were both living on Earth.
+	Ovid: But I suppose that's been a long time ago... We're complete strangers at this point.
+	=> market_francesca_chat
+- Back => market_francesca_default
+
+~ market_francesca_end
+Ovid: Safe travels, I hope you soar through the depths of Hell...
+set SignalManager.market_dialogue_ended.emit()
 => END
