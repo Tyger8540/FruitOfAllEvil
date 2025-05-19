@@ -151,7 +151,8 @@ func pickup() -> void:
 			temp_grab_types[1] = Enums.Grabbable_Type.NONE
 			temp_num_slots_filled -= 1
 		Globals.is_grabbing = true
-		blended_textures.visible = false
+		if not swapping:
+			blended_textures.visible = false
 	super()
 
 
