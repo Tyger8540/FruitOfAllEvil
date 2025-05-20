@@ -96,6 +96,21 @@ func start_day() -> void:
 					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
 					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 					wait_time = 5.0
+				#1:
+					#num_items = 2
+					#difficulty_array = [1, 1]
+					#patience_array = [1, 1]
+					#wait_time = 5.0
+				#2:
+					#num_items = 2
+					#difficulty_array = [1, 1]
+					#patience_array = [1, 1]
+					#wait_time = 5.0
+				#3:
+					#num_items = 2
+					#difficulty_array = [1, 1]
+					#patience_array = [1, 1]
+					#wait_time = 5.0
 		3:
 			match cur_wave:
 				1:

@@ -104,4 +104,5 @@ const OVID_512 = preload("res://final_art/Ovid_512.png")
 var vendor_sprites: Dictionary = {
 	"Virgil": VIRGIL_TEST_512,
 	"Ovid": OVID_512,
+	"Francesca": OVID_512,
 }

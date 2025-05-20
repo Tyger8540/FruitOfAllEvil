@@ -41,8 +41,9 @@ position = Vector2(-28, 59)
 texture = ExtResource("5_wbyqx")
 
 [node name="CustomerButton" type="Button" parent="."]
+offset_left = 4.0
 offset_top = -257.0
-offset_right = 136.0
+offset_right = 140.0
 offset_bottom = 143.0
 theme_type_variation = &"FlatButton"
 theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
@@ -102,19 +103,15 @@ columns = 2
 
 [node name="Slot1" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
-texture = ExtResource("11_ql62j")
 
 [node name="Slot2" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
-texture = ExtResource("11_ql62j")
 
 [node name="Slot3" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
-texture = ExtResource("11_ql62j")
 
 [node name="Slot4" parent="CustomerButton/Panel/ItemGrid" instance=ExtResource("7_g6g0c")]
 layout_mode = 2
-texture = ExtResource("11_ql62j")
 
 [node name="Checkmark1" type="TextureRect" parent="CustomerButton/Panel"]
 visible = false

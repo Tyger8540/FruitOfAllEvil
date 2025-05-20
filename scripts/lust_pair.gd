@@ -26,11 +26,16 @@ var started_timer: bool = false
 
 var spawnpoint_index: int
 
+var dancing: bool = false
+
 @onready var green_patience_bar: TextureProgressBar = $GreenPatienceBar
 @onready var red_patience_bar: TextureProgressBar = $RedPatienceBar
 
 @onready var green_patience_timer: Timer = $GreenPatienceTimer
 @onready var red_patience_timer: Timer = $RedPatienceTimer
+
+@onready var dance_timer: Timer = $DanceTimer
+@onready var dance_intermission_timer: Timer = $DanceIntermissionTimer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -61,6 +66,10 @@ func _process(delta: float) -> void:
 			lover1.check_hovering()
 			lover2.check_hovering()
 	
+	#if not dancing and %WaveManager.cur_wave >= 2:
+		#dancing = true
+		#dance_timer.start(randf_range(5.0, 15.0))
+	
 	move_and_slide()
 
 
@@ -71,7 +80,7 @@ func initialize(customer_pairs: Array[LustPair]) -> void:
 	generate_spawn_position()
 	generate_target_position(customer_pairs)
 	#lover1.position.x -= LOVER_OFFSET
-	lover1.customer_button.position.x -= lover1.customer_button.size.x
+	lover1.customer_button.position.x -= lover1.customer_button.size.x + 8.0
 	#lover2.position.x += LOVER_OFFSET
 	set_patience_timers()
 	#green_patience_timer.start()
@@ -86,8 +95,23 @@ func set_patience_timers() -> void:
 	red_patience_bar.value = red_patience_bar.max_value
 
 
-#func dance() -> void:
-	#
+func dance() -> void:
+	lover1.set_sprite(lover1.dancing_texture)
+	lover2.set_sprite(lover2.dancing_texture)
+	var customer_button_distance = absf(lover1.customer_button.position.x - lover2.customer_button.position.x)
+	var customer_button_position_1 = lover1.customer_button.position.x
+	var customer_button_position_2 = lover2.customer_button.position.x
+	lover1.customer_button.position.x = 0.0 - customer_button_distance / 2
+	lover2.customer_button.position.x = 0.0 - customer_button_distance / 2
+	dance_intermission_timer.start()
+	await dance_intermission_timer.timeout
+	lover1.set_sprite(lover1.default_texture)
+	lover2.set_sprite(lover2.default_texture)
+	lover1.customer_button.position.x = customer_button_position_2
+	lover2.customer_button.position.x = customer_button_position_1
+	lover1.invert_sprite_scale()
+	lover2.invert_sprite_scale()
+	dance_timer.start(randf_range(5.0, 15.0))
 
 
 func generate_spawn_position() -> void:
@@ -239,3 +263,11 @@ func _on_red_patience_timer_timeout() -> void:
 	SignalManager.life_lost.emit()
 	AudioManager.play_sound(self, "res://audio/sfx/damage (2).wav", Enums.Audio_Type.SFX)
 	queue_free()
+
+
+func _on_dance_timer_timeout() -> void:
+	dance()
+
+
+func _on_dance_intermission_timer_timeout() -> void:
+	pass # Replace with function body.

@@ -37,5 +37,15 @@ one_shot = true
 [node name="GreenPatienceTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DanceTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="DanceIntermissionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="RedPatienceTimer" to="." method="_on_red_patience_timer_timeout"]
 [connection signal="timeout" from="GreenPatienceTimer" to="." method="_on_green_patience_timer_timeout"]
+[connection signal="timeout" from="DanceTimer" to="." method="_on_dance_timer_timeout"]
+[connection signal="timeout" from="DanceIntermissionTimer" to="." method="_on_dance_intermission_timer_timeout"]

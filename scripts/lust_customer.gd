@@ -7,6 +7,9 @@ extends Customer
 var is_completed: bool = false
 var customer_manager: CustomerManager
 
+var default_texture: Texture2D
+var dancing_texture: Texture2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +27,7 @@ func _process(delta: float) -> void:
 
 
 func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:
+	default_texture = texture
 	super(texture, difficulty_level, patience_level, patience_time, value, new_customer_index)
 
 
@@ -43,6 +47,14 @@ func die() -> void:
 		get_parent().queue_free()
 	else:
 		get_parent().speed_up_patience_timers()
+
+
+func set_sprite(texture: Texture2D) -> void:
+	$Sprite2D.texture = texture
+
+
+func invert_sprite_scale() -> void:
+	$Sprite2D.scale.x *= -1.0
 
 
 func _on_green_patience_timer_timeout() -> void:

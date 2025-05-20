@@ -26,6 +26,8 @@ func on_day_end() -> void:
 	# CHECKS FOR WHEN THE INTRODUCTION TO THE SHOP HAPPENS
 	if %WaveManager.cur_wave == 1 and (State.circle_num == 1 or State.circle_num == 2):
 		State.dialogue_ready = true
+	if %WaveManager.cur_wave == 2 and State.circle_num == 2:
+		State.dialogue_ready = true
 	var upgrades_indices_picked: Array[int]
 	for i in range(0, 4):
 		var r = randi_range(0, Enums.Upgrade_Type.size() - 2)  # random int that gets an upgrade that is not NONE

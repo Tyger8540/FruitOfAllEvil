@@ -7,6 +7,8 @@ const MAX_CUSTOMERS = 8
 
 @export var female_sprites: Array[Texture2D]
 @export var male_sprites: Array[Texture2D]
+@export var female_dancing_sprite: Texture2D
+@export var male_dancing_sprite: Texture2D
 
 var customer_pairs: Array[LustPair]
 #var index: int = 0
@@ -34,7 +36,13 @@ func _process(_delta: float) -> void:
 	if not started_swapping and %WaveManager.cur_wave == 3:
 		started_swapping = true
 		swap_customer_pairs()
-		swap_timer.start(randf_range(5.0, 10.0))  # Arbitrary values for swapping interval
+		swap_timer.start(randf_range(2.5, 5.0))  # Arbitrary values for swapping interval'
+	# Starts dancing mechanic on wave 2
+	if %WaveManager.cur_wave >= 2:
+		for pair in customer_pairs:
+			if not pair.dancing:
+				pair.dancing = true
+				pair.dance_timer.start(randf_range(5.0, 15.0))
 	super(_delta)
 
 
@@ -59,6 +67,7 @@ func create_customer_pair() -> void:
 	customer_array.append(customer1)
 	pair.add_child(customer1)
 	customer1.initialize(customer_sprites[0], difficulty_level, patience_level, 16.0 + 2.0 * difficulty_level, value, customer_array.size() - 1)
+	customer1.dancing_texture = female_dancing_sprite
 	pair.lover1 = customer1
 	
 	# Get the stats for the second member of the pair
@@ -71,6 +80,7 @@ func create_customer_pair() -> void:
 	customer_array.append(customer2)
 	pair.add_child(customer2)
 	customer2.initialize(customer_sprites[1], difficulty_level, patience_level, 16.0 + 2.0 * difficulty_level, value, customer_array.size() - 1)
+	customer2.dancing_texture = male_dancing_sprite
 	pair.lover2 = customer2
 	
 	# Allow the lovers to see and easily reference each other

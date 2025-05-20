@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://o3omt8mgs28d"]
+[gd_scene load_steps=68 format=3 uid="uid://o3omt8mgs28d"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3bwh3"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
@@ -45,7 +45,9 @@
 [ext_resource type="Texture2D" uid="uid://byhcwh23i2t8h" path="res://final_art/LoverM-Surprised.png" id="19_apdxi"]
 [ext_resource type="Texture2D" uid="uid://ywupnbty5ebn" path="res://final_art/FruitBasketFrontsAll.png" id="20_6nbb0"]
 [ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="20_h6dmv"]
+[ext_resource type="Texture2D" uid="uid://xff1bashbmmy" path="res://final_art/LoverF-Back.png" id="20_thrre"]
 [ext_resource type="Texture2D" uid="uid://uwlq7p86wwyq" path="res://final_art/basket_fulla_bananas.png" id="21_quays"]
+[ext_resource type="Texture2D" uid="uid://c2qbijrkd4kri" path="res://final_art/LoverM-wherearmsat.png" id="21_s7la6"]
 [ext_resource type="Texture2D" uid="uid://ci04814knhh8k" path="res://art/fruit/Banana.png" id="22_qqocb"]
 [ext_resource type="Texture2D" uid="uid://bd0h02n4b7a3w" path="res://final_art/Basket_fulla_blueberries.png" id="23_lvhol"]
 [ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="24_1484l"]
@@ -149,6 +151,8 @@ position = Vector2(0, -305)
 script = ExtResource("6_00fvx")
 female_sprites = Array[Texture2D]([ExtResource("8_dltia"), ExtResource("9_ydv1q"), ExtResource("10_nfxme"), ExtResource("11_2di7u"), ExtResource("12_fpiqo"), ExtResource("13_8qbot")])
 male_sprites = Array[Texture2D]([ExtResource("14_mvsgf"), ExtResource("15_rvvps"), ExtResource("16_vu1oc"), ExtResource("17_20hql"), ExtResource("18_43uoj"), ExtResource("19_apdxi")])
+female_dancing_sprite = ExtResource("20_thrre")
+male_dancing_sprite = ExtResource("21_s7la6")
 
 [node name="CustomerTimer" type="Timer" parent="CustomerManager"]
 wait_time = 10.0

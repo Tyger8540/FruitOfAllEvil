@@ -72,9 +72,9 @@ set SignalManager.tutorial_ended.emit()
 # SFX: DJ RECORD SCRATCH
 set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: The mood is picking up, wonderful!
-Virgil: I believe it is about time to switch up the song as well.
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Audio_Type.MUSIC)
+Virgil: I believe it is about time to switch up the song as well.
 Virgil: Don't be surprised if the customers begin to dance amongst themselves.
 Virgil: Their bodies cannot help but be moved by the masterful artistry of my disc jockey capabilities.
 Virgil: Keep up your great service, destined traveler. 
@@ -89,6 +89,8 @@ set cutscene_speaker = "DJ Virgil"
 # before stage 3 begins, to indicate the final additional gimmick of rotation + movement across the screen
 Virgil: Magnifique! 
 Virgil: The mood has lifted to dazzling levels!
+set AudioManager.stop_music()
+set AudioManager.play_sound(self, "res://audio/music/Disco Temp.mp3", Enums.Audio_Type.MUSIC)
 Virgil: I am moving onto the final song on my setlist, and I shall go all out.
 Virgil: The customers will do the same as well. So don't panic at the disco!
 Virgil: Hm? Copyright? 
@@ -114,6 +116,12 @@ Francesca: Oh? You're not in a relationship with that man, Virgil?
 Francesca: It's more of a business relationship? Oh I see, I have been mistaken.
 Francesca: Danny, are you feeling well? You look gloomy all of the sudden...
 Francesca: Workers' rights? Unfornately, I do not believe any of that exists in Hell...
+- Continue
+	set location = "market"
+	set section = "C2_market"
+	set level_defeated = false
+	set cutscene_speaker = ""
+	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
 => END
 
 ~ C2_market
@@ -140,6 +148,9 @@ Are you sure you want to leave?
 	set talked_to_virgil = false
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
 	=> END
+
+~ market_virgil_intro
+=> market_virgil_default
 
 ~ market_virgil_default
 Virgil: Welcome to Paradise Lust, destined traveler.

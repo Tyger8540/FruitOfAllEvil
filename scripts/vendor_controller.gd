@@ -40,7 +40,9 @@ func spawn_vendors() -> void:
 			create_vendor("Ovid", 1)
 			num_vendors = 2
 		2:
-			pass
+			create_vendor("Virgil", 0)
+			create_vendor("Francesca", 1)
+			num_vendors = 2
 		3:
 			pass
 		4:
