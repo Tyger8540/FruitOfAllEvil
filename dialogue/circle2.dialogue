@@ -78,7 +78,7 @@ set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Au
 Virgil: Don't be surprised if the customers begin to dance amongst themselves.
 Virgil: Their bodies cannot help but be moved by the masterful artistry of my disc jockey capabilities.
 Virgil: Keep up your great service, destined traveler. 
-Virgil: The reputation of V-Catering Services, subsidiary of the Hell branch of V-Corps, is under your good hands.
+Virgil: The reputation of V-Catering, subsidiary of the Hell branch of V-Corps, is under your good hands.
 set location = "level"
 set section = "C2_level_virgil3"
 set dialogue_ready = false
@@ -118,7 +118,7 @@ Francesca: Workers' rights? Unfornately, I do not believe any of that exists in 
 
 ~ C2_market
 - Virgil's Stand
-	set location = "market_virgil_intro"
+	set location = "market_virgil_default"
 #	=> END
 	=> market_virgil_default
 - Francesca's Stand
@@ -142,7 +142,7 @@ Are you sure you want to leave?
 	=> END
 
 ~ market_virgil_default
-Virgil: Welcome to my humble stand, destined traveler.
+Virgil: Welcome to Paradise Lust, destined traveler.
 - Shop => market_virgil_shop
 - Chat => market_virgil_chat
 - Exit => market_virgil_end
@@ -157,24 +157,23 @@ Virgil: Thank you for your patronage.
 - Continue => market_virgil_shop
 
 ~ market_virgil_chat
-- Charon was an interesting fellow. /// About Francesca
-	Virgil: Indeed, he is. It's a shame he despises me so much.
-	Virgil: That's the price I pay for always going in and out of Hell...
-	Virgil: Anyways, it's likely you'll encounter unfriendly characters like him.
-	Virgil: Be prepared for any disturbances to your ways of fruit preparation.
+- Where did you even get the DJ stuff?
+	Virgil: Ah, that was but the remains of my disco dancing days...
+	Virgil: Oh how I lament the ways of the dance floor!
+	Virgil: But the ways of the disc jockey was simply more lucrative.
+	Virgil: To think you get paid to play music made from other people's sweat and tears. Quite a fabulous side hustle.
 	=> market_virgil_chat
-- About the other ones you've guided... // Lovers, Lust
-	Virgil: Oh? Did Charon tell you about that?
-	Virgil: Pay no mind to his hateful remarks.
-	Virgil: Every human I've brought over is in good shape.
-	Virgil: They're just toiling endlessly in Hell to repay their debts to me.
+- Are you in a relationship or something?
+	Virgil: Oh? Have you fallen for my charms?
+	Virgil: I'm flattered, but I'm afraid I must decline you, destined traveler.
+	Virgil: You see, I am already married.
+	Virgil: Married to this wondrous business that you are now willingly part of!
 	=> market_virgil_chat
-- Who do you work for? // About V-Corps
-	Virgil: I work with many clients.
-	Virgil: ...
-	Virgil: Not satisfied? Fine.
-	Virgil: I currently work for Lucifer—to bring you over, of course.
-	Virgil: Angels, devils, humans... I'm not picky, as long as you have what I want.
+- This is my first time hearing about V-Corps.
+	Virgil: Oh? I haven't mentioned it before?
+	Virgil: My apologies. Keeeping track of my businesses is quite difficult, with how things ebb and flow.
+	Virgil: Just recently I had to close down V-Healthcare and V-Insurance.
+	Virgil: Had to cut costs in order to lead you down to Lucifer, you know.
 	=> market_virgil_chat
 - Back => market_virgil_default
 
@@ -184,42 +183,42 @@ set SignalManager.market_dialogue_ended.emit()
 => END
 
 ~ market_francesca_default
-Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
+Francesca: Oh Danny, what an honor to see you again!
 - Shop => market_francesca_shop
 - Chat => market_francesca_chat
 - Exit => market_francesca_end
 
 ~ market_francesca_shop
-Ovid: These goods shall transform you...
+Francesca: These goods are shabby, but cared with lots of love.
 - Buy => market_francesca_shop_thanks
 - Back => market_francesca_default
 
 ~ market_francesca_shop_thanks
-Ovid: And your payments shall transform me!
+Francesca: You shall get what you desire! 
 - Continue => market_francesca_shop
 
 ~ market_francesca_chat
-- Why are you here? /// Paolo
-	Ovid: That is quite a broad question. From what I understand, many of us here did not believe in God.
-	Ovid: But none of us have commited any vice in His eyes.
-	Ovid: Thus, we are relegated to this quiet area for eternity...
-	Ovid: I suppose we should be honored to have such a pleasant resting place.
+- Where is Paolo?
+	Francesca: Oh, out and about somewhere.
+	Francesca: Now I suppose you must think we must be an inseaparable pair, but some alone time is needed now and then.
+	Francesca: Eternal suffering aside, our condition means we are not in any real rush anymore.
+	Francesca: We'd prefer not to have these howling noises, but it could have been worse.
 	=> market_francesca_chat
-- What were you doing before you died? /// History
-	Ovid: Hm... Forgive me, it has been such a long time.
-	Ovid: I would like to believe I had been writing poetry...
-	Ovid: Maybe something about tragic lovers, finding each other in death, in different forms...
-	Ovid: Perhaps my works still exist somewhere on Earth...
+- It must be unfair to be placed here.
+	Francesca: I appreciate your sympathy, Danny. Judgement works in ways unknown.
+	Francesca: Is it not just for a woman to reject an arranged marriage for the man she loves?
+	Francesca: But all of that is behind us now. At least we shall not have to fear the bloody ire of jealousy...
+	Francesca: Ah Danny, are you okay? I appreciate your sympathy, but please, there is no need to faint again.
 	=> market_francesca_chat
-- Have you met Virgil before? // Reception, some people 
-	Ovid: Oh, the man who follows you around?
-	Ovid: Hm... His face seems quite familiar...
-	Ovid: He and I might've known each other, when we were both living on Earth.
-	Ovid: But I suppose that's been a long time ago... We're complete strangers at this point.
+- What have people been saying about the reception?
+	Francesca: Oh, the reactions have been quite lovely to hear and see.
+	Francesca: Hm... though I suppose you should be aware that there have been some disgruntlement.
+	Francesca: Some of the newer couples who arrived here have said that some of the smoothies were... "mid".
+	Francesca: Perhaps it might be worth investing in other ingredients to add to your creations?
 	=> market_francesca_chat
 - Back => market_francesca_default
 
 ~ market_francesca_end
-Ovid: Safe travels, I hope you soar through the depths of Hell...
+Francesca: Until the next reception, Danny!
 set SignalManager.market_dialogue_ended.emit()
 => END
