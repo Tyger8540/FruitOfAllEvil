@@ -73,7 +73,7 @@ shift={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/prologue.dialogue", "res://dialogue/circle1.dialogue", "res://dialogue/circle2.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/prologue.dialogue", "res://dialogue/circle1.dialogue", "res://dialogue/circle2.dialogue", "res://dialogue/circle3.dialogue")
 
 [rendering]
 
