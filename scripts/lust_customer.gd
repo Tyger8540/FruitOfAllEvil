@@ -38,6 +38,7 @@ func die() -> void:
 		customer_manager.customer_array.erase(lover)
 		customer_manager.customer_pairs.erase(get_parent())
 		customer_manager.on_customer_left(0)
+		customer_manager.spawnpoint_filled[get_parent().spawnpoint_index] = false  # free up a spawn area
 		#SignalManager.customer_left.emit(0)
 		get_parent().queue_free()
 	else:

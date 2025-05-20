@@ -154,6 +154,9 @@ male_sprites = Array[Texture2D]([ExtResource("14_mvsgf"), ExtResource("15_rvvps"
 wait_time = 10.0
 one_shot = true
 
+[node name="SwapTimer" type="Timer" parent="CustomerManager"]
+one_shot = true
+
 [node name="SpawnArea" type="Node2D" parent="CustomerManager"]
 unique_name_in_owner = true
 
@@ -744,6 +747,7 @@ texture = ExtResource("13_6d8va")
 
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
+[connection signal="timeout" from="CustomerManager/SwapTimer" to="CustomerManager" method="_on_swap_timer_timeout"]
 [connection signal="mouse_entered" from="TrashButton2" to="TrashButton2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TrashButton2" to="TrashButton2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="TrashButton" to="TrashButton" method="_on_mouse_entered"]

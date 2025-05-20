@@ -28,7 +28,7 @@ texture = ExtResource("2_e0ien")
 
 [node name="LoverF" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-28, 59)
+position = Vector2(0, 59)
 texture = ExtResource("3_uh05a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

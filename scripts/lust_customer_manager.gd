@@ -13,9 +13,14 @@ var customer_pairs: Array[LustPair]
 
 var pair_positions: Array[Vector2]
 
+var spawnpoint_filled: Array[bool] = [false, false, false, false]
+
+var started_swapping: bool = false
+
 @onready var left_area: Area2D = %LeftArea
 @onready var right_area: Area2D = %RightArea
 @onready var upper_area: Area2D = %UpperArea
+@onready var swap_timer: Timer = $SwapTimer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +30,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Starts the swapping customer mechanic on wave 3
+	if not started_swapping and %WaveManager.cur_wave == 3:
+		started_swapping = true
+		swap_customer_pairs()
+		swap_timer.start(randf_range(5.0, 10.0))  # Arbitrary values for swapping interval
 	super(_delta)
 
 
@@ -89,5 +99,37 @@ func on_customer_left(index: int) -> void:
 		customer_timer.start()
 
 
+func swap_customer_pairs() -> void:
+	if customer_pairs.size() < 2:
+		return
+	
+	# Pick two of the current customer pairs
+	var pair1 = customer_pairs.pick_random()
+	var pair2 = customer_pairs.pick_random()
+	while pair1 == pair2:
+		pair2 = customer_pairs.pick_random()
+	
+	# Get the current (target) positions of the two lust pairs
+	var pos1: Vector2 = pair1.target_position
+	var pos2: Vector2 = pair2.target_position
+	
+	# Get the spawnpoint indices of the two lust pairs
+	var index1 = pair1.spawnpoint_index
+	var index2 = pair2.spawnpoint_index
+	
+	# Set new values for lust pair 1
+	pair1.target_position = pos2
+	pair1.spawnpoint_index = index2
+	
+	# Set new values for lust pair 2
+	pair2.target_position = pos1
+	pair2.spawnpoint_index = index1
+
+
 func _on_customer_timer_timeout() -> void:
 	create_customer_pair()
+
+
+func _on_swap_timer_timeout() -> void:
+	swap_customer_pairs()
+	swap_timer.start(randf_range(5.0, 15.0))

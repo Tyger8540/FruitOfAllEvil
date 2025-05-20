@@ -5,11 +5,17 @@ const LOVER_OFFSET = 68.0
 
 const SPEED = 450.0
 
-const LEFT_BOUND = -650.0
+const LEFT_BOUND = -800.0
 const RIGHT_BOUND = 800.0
 const UPPER_BOUND = 70.0
 const LOWER_BOUND = 220.0
-const PAIR_X_DISTANCE = 200.0
+const PAIR_X_DISTANCE = 280.0
+
+const LEFT_SPAWNPOINT = -600.0
+const CENTER_LEFT_SPAWNPOINT = -200.0
+const CENTER_RIGHT_SPAWNPOINT = 200.0
+const RIGHT_SPAWNPOINT = 600.0
+const SPAWNPOINT_RANGE = 50.0
 
 @export var lover1: LustCustomer
 @export var lover2: LustCustomer
@@ -17,6 +23,8 @@ const PAIR_X_DISTANCE = 200.0
 var target_position: Vector2
 var initialized: bool = false
 var started_timer: bool = false
+
+var spawnpoint_index: int
 
 @onready var green_patience_bar: TextureProgressBar = $GreenPatienceBar
 @onready var red_patience_bar: TextureProgressBar = $RedPatienceBar
@@ -78,6 +86,10 @@ func set_patience_timers() -> void:
 	red_patience_bar.value = red_patience_bar.max_value
 
 
+#func dance() -> void:
+	#
+
+
 func generate_spawn_position() -> void:
 	var area: Area2D
 	var x = randi_range(0, 2)
@@ -99,26 +111,69 @@ func generate_spawn_position() -> void:
 
 
 func generate_target_position(customer_pairs: Array[LustPair]) -> void:
+	# Get the indices of available target areas
+	var index: int = 0
+	var available_spawnpoints: Array[int]
+	for filled in get_parent().spawnpoint_filled:
+		if not filled:
+			available_spawnpoints.append(index)
+		index += 1
+	
+	spawnpoint_index = available_spawnpoints.pick_random()  # set the spawnpoint index
+	get_parent().spawnpoint_filled[spawnpoint_index] = true  # fill the spawnpoint
+	
 	# Spread out customer pairs to ensure no overlapping
 	var x_pos: float
 	var y_pos: float
 	if customer_pairs.size() == 0:
-		x_pos = randf_range(LEFT_BOUND, RIGHT_BOUND)
+		var left_bound: float
+		var right_bound: float
+		match spawnpoint_index:
+			0:
+				left_bound = LEFT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = LEFT_SPAWNPOINT + SPAWNPOINT_RANGE
+			1:
+				left_bound = CENTER_LEFT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = CENTER_LEFT_SPAWNPOINT + SPAWNPOINT_RANGE
+			2:
+				left_bound = CENTER_RIGHT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = CENTER_RIGHT_SPAWNPOINT + SPAWNPOINT_RANGE
+			3:
+				left_bound = RIGHT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = RIGHT_SPAWNPOINT + SPAWNPOINT_RANGE
+		x_pos = randf_range(left_bound, right_bound)
 		y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
 		target_position = Vector2(x_pos, y_pos)
 		print("first x pos: " + str(position.x))
 	else:
-		var valid_pos = false
-		while not valid_pos:
-			x_pos = randf_range(LEFT_BOUND, RIGHT_BOUND)
-			y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
-			for pair in customer_pairs:
-				if pair.target_position.x - PAIR_X_DISTANCE >= x_pos or pair.target_position.x + PAIR_X_DISTANCE <= x_pos:
-					valid_pos = true
-				else:
-					valid_pos = false
-					print("invalid x pos: " + str(x_pos))
-					break
+		#var valid_pos = false
+		#while not valid_pos:
+			#x_pos = randf_range(LEFT_BOUND, RIGHT_BOUND)
+			#y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
+			#for pair in customer_pairs:
+				#if pair.target_position.x - PAIR_X_DISTANCE >= x_pos or pair.target_position.x + PAIR_X_DISTANCE <= x_pos:
+					#valid_pos = true
+				#else:
+					#valid_pos = false
+					#print("invalid x pos: " + str(x_pos))
+					#break
+		var left_bound: float
+		var right_bound: float
+		match spawnpoint_index:
+			0:
+				left_bound = LEFT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = LEFT_SPAWNPOINT + SPAWNPOINT_RANGE
+			1:
+				left_bound = CENTER_LEFT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = CENTER_LEFT_SPAWNPOINT + SPAWNPOINT_RANGE
+			2:
+				left_bound = CENTER_RIGHT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = CENTER_RIGHT_SPAWNPOINT + SPAWNPOINT_RANGE
+			3:
+				left_bound = RIGHT_SPAWNPOINT - SPAWNPOINT_RANGE
+				right_bound = RIGHT_SPAWNPOINT + SPAWNPOINT_RANGE
+		x_pos = randf_range(left_bound, right_bound)
+		y_pos = randf_range(UPPER_BOUND, LOWER_BOUND)
 		target_position = Vector2(x_pos, y_pos)
 		print("valid x pos: " + str(x_pos))
 	#for pair in customer_pairs:
