@@ -41,6 +41,30 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 ???: What is this "screen" that I speak of?
 ???: Hmmm, let's not break your immersion any further...
 
+~ C0_level_barks_success
+# barks when you finish an order in a timely manner (green bar)
+% Purrrfect!
+% Juicy, juicy flesh!
+% MEOW-some!
+=> END
+
+~ C0_level_barks_late
+# barks when you finish an order late (red bar)
+% Pounce on it next time.
+% GROOOWL!
+% HISSSSS…
+% Stop preying on my time.
+% I’ve got my eyes on you…
+=> END
+
+~ C0_level_barks_damage
+# barks when you are unable to finish an order (depleted bar)
+% What a catastrophe.
+% Your flesh tastes better!
+% What a nice post to sharpen my claws…
+% Bite on this!
+=> END
+
 ~ C0_level_virgil
 # Virgil likely shows up at the end of the level, with no other customers present
 ???: Oh greetings! 

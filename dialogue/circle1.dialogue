@@ -61,6 +61,34 @@ set section = "C1_level_charon"
 set cutscene_speaker = "Charon"
 => END
 
+# THE BARKS BELOW (CIRCLE I) could actually be used for general customer types
+
+~ C1_level_barks_success
+# barks when you finish an order in a timely manner (green bar)
+% Thank the heavens…
+% Thank God I’m in Hell!
+% What a divine taste…
+% Six stars!
+=> END
+
+~ C1_level_barks_late
+# barks when you finish an order late (red bar)
+% Took you long enough!
+% Finally…
+% Time felt very slow just now.
+% Good luck dealing with Lucifer.
+% Humans really are inefficient creatures…
+=> END
+
+~ C1_level_barks_damage
+# barks when you are unable to finish an order (depleted bar)
+% You won’t last in Hell…
+% Rotting flesh is better than this.
+% Could’ve done it myself.
+% Incompetent service.
+% Zero stars.
+=> END
+
 ~ C1_level_charon
 # intro text, when charon first appears on screen
 Charon: Ho, living soul! I shall ignore your trespassing in exchange for your drink!
