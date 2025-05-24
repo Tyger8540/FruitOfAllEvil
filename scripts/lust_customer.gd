@@ -8,7 +8,9 @@ var is_completed: bool = false
 var customer_manager: CustomerManager
 
 var default_texture: Texture2D
-var dancing_texture: Texture2D
+var dancing_near_texture: Texture2D
+var dancing_far_texture: Texture2D
+var dancing_near: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,15 +38,19 @@ func pause_timers() -> void:
 	get_parent().red_patience_timer.stop()
 
 
+func clear_pair() -> void:
+	customer_manager.customer_array.erase(self)
+	customer_manager.customer_array.erase(lover)
+	customer_manager.customer_pairs.erase(get_parent())
+	customer_manager.on_customer_left(0)
+	customer_manager.spawnpoint_filled[get_parent().spawnpoint_index] = false  # free up a spawn area
+	#SignalManager.customer_left.emit(0)
+	get_parent().queue_free()
+
+
 func die() -> void:
 	if is_completed and lover.is_completed:
-		customer_manager.customer_array.erase(self)
-		customer_manager.customer_array.erase(lover)
-		customer_manager.customer_pairs.erase(get_parent())
-		customer_manager.on_customer_left(0)
-		customer_manager.spawnpoint_filled[get_parent().spawnpoint_index] = false  # free up a spawn area
-		#SignalManager.customer_left.emit(0)
-		get_parent().queue_free()
+		clear_pair()
 	else:
 		get_parent().speed_up_patience_timers()
 

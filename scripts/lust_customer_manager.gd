@@ -7,8 +7,10 @@ const MAX_CUSTOMERS = 8
 
 @export var female_sprites: Array[Texture2D]
 @export var male_sprites: Array[Texture2D]
-@export var female_dancing_sprite: Texture2D
-@export var male_dancing_sprite: Texture2D
+@export var female_dancing_near_sprite: Texture2D
+@export var female_dancing_far_sprite: Texture2D
+@export var male_dancing_near_sprite: Texture2D
+@export var male_dancing_far_sprite: Texture2D
 
 var customer_pairs: Array[LustPair]
 #var index: int = 0
@@ -67,7 +69,8 @@ func create_customer_pair() -> void:
 	customer_array.append(customer1)
 	pair.add_child(customer1)
 	customer1.initialize(customer_sprites[0], difficulty_level, patience_level, 16.0 + 2.0 * difficulty_level, value, customer_array.size() - 1)
-	customer1.dancing_texture = female_dancing_sprite
+	customer1.dancing_near_texture = female_dancing_near_sprite
+	customer1.dancing_far_texture = female_dancing_far_sprite
 	pair.lover1 = customer1
 	
 	# Get the stats for the second member of the pair
@@ -80,7 +83,8 @@ func create_customer_pair() -> void:
 	customer_array.append(customer2)
 	pair.add_child(customer2)
 	customer2.initialize(customer_sprites[1], difficulty_level, patience_level, 16.0 + 2.0 * difficulty_level, value, customer_array.size() - 1)
-	customer2.dancing_texture = male_dancing_sprite
+	customer2.dancing_near_texture = male_dancing_near_sprite
+	customer2.dancing_far_texture = male_dancing_far_sprite
 	pair.lover2 = customer2
 	
 	# Allow the lovers to see and easily reference each other

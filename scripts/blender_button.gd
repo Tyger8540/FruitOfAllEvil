@@ -123,6 +123,7 @@ func pickup() -> void:
 			temp_is_occupied = false
 			if grab_types[0] != Enums.Grabbable_Type.BLENDED_FRUIT:
 				icon = BLENDER_EMPTY
+				blended_textures.visible = false
 			temp_fruits[0] = Enums.Fruit_Type.NONE
 			temp_fruits[1] = Enums.Fruit_Type.NONE
 			temp_grab_types[0] = Enums.Grabbable_Type.NONE
@@ -157,7 +158,7 @@ func pickup() -> void:
 
 
 func start_action() -> void:
-	if is_occupied or is_part_occupied:
+	if grab_types[0] != Enums.Grabbable_Type.BLENDED_FRUIT and (is_occupied or is_part_occupied):
 		super()
 		AudioManager.play_sound(self, "res://audio/sfx/Blender.wav", Enums.Audio_Type.SFX, -10.0)
 

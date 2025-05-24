@@ -84,17 +84,17 @@ func start_day() -> void:
 				1:
 					num_items = 12
 					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
-					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]
 					wait_time = 5.0
 				2:
 					num_items = 12
 					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
-					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3]
 					wait_time = 5.0
 				3:
 					num_items = 12
 					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
-					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					patience_array = [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4]
 					wait_time = 5.0
 				#1:
 					#num_items = 2

@@ -71,7 +71,7 @@ func pickup() -> void:
 
 
 func start_action() -> void:
-	if is_occupied:
+	if grab_types[0] != Enums.Grabbable_Type.CHOPPED_FRUIT and is_occupied:
 		super()
 		AudioManager.play_sound(self, "res://audio/sfx/Cut.wav", Enums.Audio_Type.SFX)
 
