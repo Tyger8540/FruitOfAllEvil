@@ -1,48 +1,74 @@
 ~ C2_intro1
-Leaving the castle meadows, Danny Pigrim had entered a dark space.
-Harrowing shrieks flew past them, a storm of anguished cries...
-"Lo," Virgil said, "hear the eternal screams of the condemned?"
-"This is home of those who sin in Lust. Lovers eternal, eternal suffering."
-"Oh well, at least they're not alone."
-Just then, a figure began to emerge from the darkness...
-It was a woman. She went up to Danny Pilgrim, who they learned was Francesca.
-She told them of her present grief, past happiness, her joyous moments with her lover, Paolo...
-Francesca's story moved Danny Pilgrim to their core, that pity took hold of them...
-And brought Danny Pilgrim to faint and fall to Hell's floor.
-Danny Pilgrim fell into a dark space of their own making.
-"..."
-Francesca scratched her head. "Um, is your friend okay?"
+
+##### TODO: SHOW THE CIRCLE 2 POSTER INSTEAD OF THE C2_intro1 + C2_intro2
+##### TODO: MOVE INTO THE C2_level_intro DIALOGUE before C2_level_virgil1,
+#####       which should take place in the fruit stand screen
+
+#Leaving the castle meadows, Danny Pilgrim had entered a dark space.
+#Harrowing shrieks flew past them, a storm of anguished cries...
+#"Lo," Virgil said, "hear the eternal screams of the condemned?"
+#"This is home of those who sin in Lust. Lovers eternal, eternal suffering."
+#"Oh well, at least they're not alone."
+#Just then, a figure began to emerge from the darkness...
+#It was a woman. She went up to Danny Pilgrim, who they learned was Francesca.
+#She told them of her present grief, past happiness, her joyous moments with her lover, Paolo...
+#Francesca's story moved Danny Pilgrim to their core, that pity took hold of them...
+#And brought Danny Pilgrim to faint and fall to Hell's floor.
+#Danny Pilgrim fell into a dark space of their own making.
+#"..."
+#Francesca scratched her head. "Um, is your friend okay?"
+
 # TODO change this v later
 => C2_intro2
 
 ~ C2_intro2
 # this comes right after C2_intro1, now in the castle meadows
-When Danny Pilgrim opened their eyes, they found themselves back at the castle meadows.
-Was that a bad dream?
-"Oh destined traveler, you have awakened!"
-# SFX: DJ RECORD SCRATCH, show Virgil in his DJ outfit
-Virgil stood before them, donning the garbs of the dance floor.
-This must be a bad dream.
-"You had fainted during Francesca's story," He said. "She was both flattered and concerned for your well-being."
-"Perhaps you should consider getting a kale smoothie yourself."
-Virgil waved his hand.
-"But not now. For you have been tasked with an important honor..."
-"The grand honor of serving this great banquet and dance party!"
-Danny Pilgrim looked around and found countless pairs of people occupying the grassy meadows.
-"These are the esteemed guests of Lust," Virgil said, "granted one day of reprieve from that pitiful darkness..."
-"Oh, you don't remember signing up for this?"
-Virgil smiled. "Silly goose, it was YOUR idea, was it not? You must've forgetten when you fainted."
-"Anywho, these lusty pairs are willing to give anything for your products."
-"So chop, chop, destined traveler."
-"Or should I say, cha, cha?"
-Danny Pilgrim stood before their next challenge.
-This must be a bad dream.
+
+#When Danny Pilgrim opened their eyes, they found themselves back at the castle meadows.
+#Was that a bad dream?
+#"Oh destined traveler, you have awakened!"
+## SFX: DJ RECORD SCRATCH, show Virgil in his DJ outfit
+#Virgil stood before them, donning the garbs of the dance floor.
+#This must be a bad dream.
+#"You had fainted during Francesca's story," He said. "She was both flattered and concerned for your well-being."
+#"Perhaps you should consider getting a kale smoothie yourself."
+#Virgil waved his hand.
+#"But not now. For you have been tasked with an important honor..."
+#"The grand honor of serving this great banquet and dance party!"
+#Danny Pilgrim looked around and found countless pairs of people occupying the grassy meadows.
+#"These are the esteemed guests of Lust," Virgil said, "granted one day of reprieve from that pitiful darkness..."
+#"Oh, you don't remember signing up for this?"
+#Virgil smiled. "Silly goose, it was YOUR idea, was it not? You must've forgetten when you fainted."
+#"Anywho, these lusty pairs are willing to give anything for your products."
+#"So chop, chop, destined traveler."
+#"Or should I say, cha, cha?"
+#Danny Pilgrim stood before their next challenge.
+#This must be a bad dream.
 set location = "level"
 set section = "C2_level_virgil1"
 set dialogue_ready = true
 set cutscene_speaker = "DJ Virgil"
 set get_tree().change_scene_to_file("res://scenes/circle_two.tscn")
 # TODO change this v later?
+=> END
+
+~ C2_level_intro
+# This is a talk with Francesca.
+...
+???: Hello? Danny?
+???: Oh, you have awakened! This is Francesca.
+Francesca: Do you not remember? We met in the dark windstorms of Lust.
+Francesca: You were so moved by my love story with Paolo, that you fainted.
+Francesca: It was quite flattering... And quite concerning.
+Francesca: I wanted to thank you for hosting this reception. And of course, your fruit stand services.
+Francesca: Hm? You don't recall signing up for any of this?
+Francesca: But I could've sworn Virgil said this whole banquet was your idea...
+Francesca: Anyways, before I go, he wanted me to deliver a note to you. Here it is...
+"Rise and shine, destined traveler~! You may be a little confused with what's going on."
+"But don't worry about it. What you should worry about are these lusty pairs."
+"After living in darkness for so long, the castle meadows is Heaven to them. And your fruits, the most divine wine."
+"Simply put, turn their happiness into profit. Chop chop, destined traveler!"
+"Or should I say, cha, cha?"
 => END
 
 ~ C2_level_barks_success
@@ -52,7 +78,7 @@ set get_tree().change_scene_to_file("res://scenes/circle_two.tscn")
 % My dear is in love…
 % We shall come back for seconds.
 % My darling desires more!
-% Exquisite
+% Exquisite.
 => END
 
 ~ C2_level_barks_late
@@ -72,15 +98,18 @@ set get_tree().change_scene_to_file("res://scenes/circle_two.tscn")
 => END
 
 ~ C2_level_virgil1
+########## TODO: Is there anyway you can put this maybe still in stage 1 (no movement or rotations, 
+#                but maybe after one or two waves?  
+
 # at the start of the level, hint/tutorial to the gimmick
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/SlowDance_prelim.mp3", Enums.Audio_Type.MUSIC)
 # SFX: DJ RECORD SCRATCH
 #set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
-Virgil: Danger on the dance floor!
-Virgil: Well, potentially. You see, your currents customers are all paired up.
-Virgil: Please be sure that you serve BOTH of their orders in a timely manner.
-Virgil: Patience runs thin when one has to wait while their partner is already chowing down on that fruity goodness.
+Virgil: Ah, destined traveler! We finally meet on the dance floor. 
+Virgil: As you may have already noticed, your customers are all paired up.
+Virgil: Take caution to serve BOTH of their orders in a timely manner.
+Virgil: Patience runs thin when one has to wait, while their partner chows down on that fruity goodness.
 Virgil: These lusty sinners have brought their doom and gloom to this reception.
 Virgil: So I entrust your great services will cheer them up!
 Virgil: As for me, I have the important duties of the disc jockey.
@@ -98,12 +127,12 @@ set SignalManager.tutorial_ended.emit()
 # before stage 2 begins, to indicate the additional gimmick of rotating customers
 # SFX: DJ RECORD SCRATCH
 set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
-Virgil: The mood is picking up, wonderful!
+Virgil: The mood is picking up, how wonderful!
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Audio_Type.MUSIC)
-Virgil: I believe it is about time to switch up the song as well.
-Virgil: Don't be surprised if the customers begin to dance amongst themselves.
-Virgil: Their bodies cannot help but be moved by the masterful artistry of my disc jockey capabilities.
+Virgil: I believe it's time to switch up the song as well.
+Virgil: Don't be alarmed if the customers begin to dance amongst themselves.
+Virgil: Their bodies cannot help but be moved by my masterful manipulation as the disc jockey.
 Virgil: Keep up your great service, destined traveler. 
 Virgil: The reputation of V-Catering, subsidiary of the Hell branch of V-Corps, is under your good hands.
 set location = "level"
@@ -122,8 +151,8 @@ Virgil: I am moving onto the final song on my setlist, and I shall go all out.
 Virgil: The customers will do the same as well. So don't panic at the disco!
 Virgil: Hm? Copyright? 
 Virgil: Do not worry, none of that matters in Hell.
-Virgil: Anwyays, try not to get carried away by the groove of the music, the shuffling feet of the guests...
-Virgil: Let us end this reception with a bang!
+Virgil: Anyways, try not to get carried away by the groove of the music, the shuffling feet of the guests...
+Virgil: Let us end this reception with a big bang!
 set location = "level"
 set section = "C2_level_complete"
 set dialogue_ready = false
@@ -132,17 +161,16 @@ set cutscene_speaker = "DJ Virgil"
 
 ~ C2_level_complete
 # end of the level
-Francesca: Danny Pilgrim, was it?
-Francesca: I must give my deepest gratitude for your invitation to this wonderful reception.
-Francesca: My dear Paolo, my friends, the other guests... they immensely enjoyed it all.
-Francesca: To do all of this out of your own volition, you must love the work you do!
+Francesca: Oh Danny Pilgrim! My deepest gratitude for this wonderful reception.
+Francesca: My dear Paolo, my friends, the other guests... they immensely enjoyed all of it.
+Francesca: To do this out of your own volition, you must love the work you do!
 Francesca: Alas, we must return to that darkened void soon, but I will forever cherish this.
 Francesca: Ah, please don't faint again.
 Francesca: Otherwise, we'd have to get that lover of yours to carry you around again...
 Francesca: Oh? You're not in a relationship with that man, Virgil?
-Francesca: It's more of a business relationship? Oh I see, I have been mistaken.
-Francesca: Danny, are you feeling well? You look gloomy all of the sudden...
-Francesca: Workers' rights? Unfornately, I do not believe any of that exists in Hell...
+Francesca: It's more of a business relationship? Oh my apologies, I have been mistaken.
+Francesca: Danny, are you... feeling well? You look gloomy all of the sudden.
+Francesca: Workers' rights...? Unfortunately, I do not believe any of that exists in Hell...
 - Continue
 	set location = "market"
 	set section = "C2_market"
@@ -203,15 +231,15 @@ Virgil: Thank you for your patronage.
 	=> market_virgil_chat
 - Are you in a relationship or something?
 	Virgil: Oh? Have you fallen for my charms?
-	Virgil: I'm flattered, but I'm afraid I must decline you, destined traveler.
+	Virgil: I am flattered, but I'm afraid I must decline you, destined traveler.
 	Virgil: You see, I am already married.
-	Virgil: Married to this wondrous business that you are now willingly part of!
+	Virgil: Married to this wondrous business that you are so willingly part of!
 	=> market_virgil_chat
 - This is my first time hearing about V-Corps.
-	Virgil: Oh? I haven't mentioned it before?
-	Virgil: My apologies. Keeeping track of my businesses is quite difficult, with how things ebb and flow.
-	Virgil: Just recently I had to close down V-Healthcare and V-Insurance.
-	Virgil: Had to cut costs in order to lead you down to Lucifer, you know.
+	Virgil: Ah, I haven't mentioned it before?
+	Virgil: My apologies. Keeeping track of my businesses is quite difficult, with how things rise and fall.
+	Virgil: Just recently I had to close down V-Spa and V-Healthcare.
+	Virgil: Had to cut some costs so I could lead you down to Lucifer, you know.
 	=> market_virgil_chat
 - Back => market_virgil_default
 
@@ -227,7 +255,7 @@ Francesca: Oh Danny, what an honor to see you again!
 - Exit => market_francesca_end
 
 ~ market_francesca_shop
-Francesca: These goods are shabby, but cared with lots of love.
+Francesca: These goods are somewhat shabby, but imbued with lots of love.
 - Buy => market_francesca_shop_thanks
 - Back => market_francesca_default
 
@@ -239,20 +267,20 @@ Francesca: You shall get what you desire!
 - Where is Paolo?
 	Francesca: Oh, out and about somewhere.
 	Francesca: Now I suppose you must think we must be an inseaparable pair, but some alone time is needed now and then.
-	Francesca: Eternal suffering aside, our condition means we are not in any real rush anymore.
+	Francesca: Eternal suffering aside, our condition means we are not in any hurry anymore.
 	Francesca: We'd prefer not to have these howling noises, but it could have been worse.
 	=> market_francesca_chat
 - It must be unfair to be placed here.
-	Francesca: I appreciate your sympathy, Danny. Judgement works in ways unknown.
-	Francesca: Is it not just for a woman to reject an arranged marriage for the man she loves?
-	Francesca: But all of that is behind us now. At least we shall not have to fear the bloody ire of jealousy...
+	Francesca: I appreciate your sympathy, Danny. But it is God's judgement.
+	Francesca: We fell in love with each other dearly, though of course, we were both married to other individuals at the time.
+	Francesca: The green eyes of envy, the bloody altercations... It's all behind us now. In some ways, it's more peaceful down in this dark place...
 	Francesca: Ah Danny, are you okay? I appreciate your sympathy, but please, there is no need to faint again.
 	=> market_francesca_chat
 - What have people been saying about the reception?
 	Francesca: Oh, the reactions have been quite lovely to hear and see.
-	Francesca: Hm... though I suppose you should be aware that there have been some disgruntlement.
-	Francesca: Some of the newer couples who arrived here have said that some of the smoothies were... "mid".
-	Francesca: Perhaps it might be worth investing in other ingredients to add to your creations?
+	Francesca: Hm... but perhaps some impressions have begun to sour...
+	Francesca: You see, some of the newer couples here have said that some of the smoothies were... "mid."
+	Francesca: Perhaps it might be worth investing in other ingredients to add to your wonderful creations?
 	=> market_francesca_chat
 - Back => market_francesca_default
 
