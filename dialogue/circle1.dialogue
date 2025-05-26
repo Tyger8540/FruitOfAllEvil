@@ -162,8 +162,9 @@ Are you sure you want to leave?
 	set dialogue_file = "res://dialogue/circle2.dialogue"
 	set dialogue_ready = true
 	set location = "intro"
-	set section = "C2_intro"
+	set section = "C2_intro1"
 	set talked_to_virgil = false
+	set circle_num = 2
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
 	=> END
 

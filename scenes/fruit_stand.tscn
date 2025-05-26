@@ -1,0 +1,166 @@
+[gd_scene load_steps=21 format=3 uid="uid://c775rdfnsrgot"]
+
+[ext_resource type="Texture2D" uid="uid://fq4wrjdd3si5" path="res://final_art/Fruit Stand(Base).png" id="1_lrhpl"]
+[ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="2_y26v3"]
+[ext_resource type="Texture2D" uid="uid://dv5mqa5g3m1v6" path="res://final_art/Trash.png" id="3_xadwu"]
+[ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="4_aftie"]
+[ext_resource type="Texture2D" uid="uid://b060iey7pvimb" path="res://final_art/FruitBasket1(Apples).png" id="5_ipp12"]
+[ext_resource type="Texture2D" uid="uid://da56cwxs1ttvg" path="res://final_art/FruitBasket2(Oranges).png" id="6_5otrp"]
+[ext_resource type="Texture2D" uid="uid://c1nbc1x7p4lnb" path="res://final_art/FruitBasket3(Bananas).png" id="7_6v5sm"]
+[ext_resource type="Texture2D" uid="uid://vr5binnkamv1" path="res://final_art/FruitBasket4(BlueBerries).png" id="8_pglba"]
+[ext_resource type="Texture2D" uid="uid://b0i2kgvsdhys" path="res://final_art/FruitBasket5(Grapes).png" id="9_luckd"]
+[ext_resource type="Texture2D" uid="uid://ywupnbty5ebn" path="res://final_art/FruitBasketFrontsAll.png" id="10_w3j2p"]
+[ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="11_tnpn2"]
+[ext_resource type="PackedScene" uid="uid://bsm5cve406wkh" path="res://scenes/chopping_board_button.tscn" id="12_eo8a0"]
+[ext_resource type="PackedScene" uid="uid://e8c57x3pn5ph" path="res://scenes/shelf_button.tscn" id="13_3rnex"]
+[ext_resource type="Texture2D" uid="uid://copdvbfwgd1sq" path="res://final_art/Tip Jar.png" id="14_a1wu4"]
+[ext_resource type="Texture2D" uid="uid://cffse7xhnu3wf" path="res://final_art/Recipe.png" id="15_f732c"]
+[ext_resource type="Script" path="res://scripts/hover_button.gd" id="16_ehlj3"]
+[ext_resource type="Texture2D" uid="uid://n7ay847l3tux" path="res://final_art/Recipe_Expanded.png" id="17_3s2xw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a165k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxw4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy6md"]
+
+[node name="FruitStand" type="Node2D"]
+
+[node name="FruitStand(base)" type="Sprite2D" parent="."]
+texture = ExtResource("1_lrhpl")
+
+[node name="TrashButton" parent="." instance=ExtResource("2_y26v3")]
+offset_left = 677.0
+offset_top = 384.0
+offset_right = 992.0
+offset_bottom = 699.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a165k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cxw4w")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iy6md")
+icon = ExtResource("3_xadwu")
+
+[node name="FruitBaskets" type="Node2D" parent="."]
+
+[node name="FruitsInFruitBaskets" type="Node2D" parent="FruitBaskets"]
+
+[node name="AppleButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("4_aftie")]
+offset_left = -808.0
+offset_top = 352.0
+offset_right = -508.0
+offset_bottom = 512.0
+texture_normal = ExtResource("5_ipp12")
+fruit = 1
+grab_type = 1
+
+[node name="OrangeButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("4_aftie")]
+offset_left = -501.0
+offset_top = 352.0
+offset_right = -201.0
+offset_bottom = 512.0
+texture_normal = ExtResource("6_5otrp")
+fruit = 2
+grab_type = 1
+
+[node name="BananaButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("4_aftie")]
+offset_left = -189.0
+offset_top = 352.0
+offset_right = 111.0
+offset_bottom = 512.0
+texture_normal = ExtResource("7_6v5sm")
+fruit = 3
+grab_type = 1
+
+[node name="BlueberriesButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("4_aftie")]
+offset_left = 114.0
+offset_top = 352.0
+offset_right = 414.0
+offset_bottom = 512.0
+texture_normal = ExtResource("8_pglba")
+fruit = 4
+grab_type = 1
+
+[node name="GrapesButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("4_aftie")]
+offset_left = 414.0
+offset_top = 345.0
+offset_right = 714.0
+offset_bottom = 505.0
+texture_normal = ExtResource("9_luckd")
+fruit = 5
+grab_type = 1
+
+[node name="FruitBasketFrontsAll" type="Sprite2D" parent="FruitBaskets"]
+position = Vector2(-42, 487)
+scale = Vector2(1.01766, 1)
+texture = ExtResource("10_w3j2p")
+
+[node name="Appliances" type="Node2D" parent="."]
+
+[node name="BlenderButton" parent="Appliances" instance=ExtResource("11_tnpn2")]
+offset_left = -614.0
+offset_top = 45.0
+offset_right = -422.0
+offset_bottom = 237.0
+
+[node name="BlenderButton2" parent="Appliances" instance=ExtResource("11_tnpn2")]
+offset_left = -422.0
+offset_top = 45.0
+offset_right = -230.0
+offset_bottom = 237.0
+
+[node name="BlenderButton3" parent="Appliances" instance=ExtResource("11_tnpn2")]
+offset_left = -230.0
+offset_top = 45.0
+offset_right = -38.0
+offset_bottom = 237.0
+
+[node name="ChoppingBoardButton" parent="Appliances" instance=ExtResource("12_eo8a0")]
+offset_left = 116.0
+offset_top = 25.0
+offset_right = 260.0
+offset_bottom = 114.0
+
+[node name="ChoppingBoardButton2" parent="Appliances" instance=ExtResource("12_eo8a0")]
+offset_left = 116.0
+offset_top = 123.0
+offset_right = 260.0
+offset_bottom = 212.0
+
+[node name="ChoppingBoardButton3" parent="Appliances" instance=ExtResource("12_eo8a0")]
+offset_left = 116.0
+offset_top = 229.0
+offset_right = 260.0
+offset_bottom = 318.0
+
+[node name="ShelfButton2" parent="Appliances" instance=ExtResource("13_3rnex")]
+offset_left = 764.0
+offset_top = 16.0
+offset_right = 954.0
+offset_bottom = 328.0
+
+[node name="TipJar" type="Sprite2D" parent="."]
+position = Vector2(-883, -6)
+texture = ExtResource("14_a1wu4")
+
+[node name="RecipeHoverButton" type="TextureButton" parent="." node_paths=PackedStringArray("child")]
+offset_left = -947.0
+offset_top = 64.0
+offset_right = -771.0
+offset_bottom = 318.0
+texture_normal = ExtResource("15_f732c")
+script = ExtResource("16_ehlj3")
+child = NodePath("RecipeExpanded")
+
+[node name="RecipeExpanded" type="TextureRect" parent="RecipeHoverButton"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = -4.0
+offset_top = -61.0
+offset_right = 636.0
+offset_bottom = 299.0
+texture = ExtResource("17_3s2xw")
+
+[connection signal="mouse_entered" from="TrashButton" to="TrashButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TrashButton" to="TrashButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RecipeHoverButton" to="RecipeHoverButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RecipeHoverButton" to="RecipeHoverButton" method="_on_mouse_exited"]

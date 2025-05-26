@@ -99,6 +99,7 @@ Are you sure you want to leave?
 	set location = "intro"
 	set section = "C1_intro"
 	set talked_to_virgil = false
+	set circle_num = 1
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
 	=> END
 

@@ -41,6 +41,7 @@ set location = "level"
 set section = "C2_level_virgil1"
 set dialogue_ready = true
 set cutscene_speaker = "DJ Virgil"
+set get_tree().change_scene_to_file("res://scenes/circle_two.tscn")
 # TODO change this v later?
 => END
 

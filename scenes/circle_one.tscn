@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://8ry7vsq3tgij"]
+[gd_scene load_steps=31 format=3 uid="uid://8ry7vsq3tgij"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5ld1y"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_57ctm"]
@@ -24,8 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="22_yuhif"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="23_x8fa2"]
 [ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="24_aof83"]
-[ext_resource type="Script" path="res://scripts/hover_button.gd" id="25_f2sg3"]
-[ext_resource type="Texture2D" uid="uid://bjwswrasjh5mp" path="res://art/other/Fruit Key.png" id="26_v2mjl"]
+[ext_resource type="PackedScene" uid="uid://c775rdfnsrgot" path="res://scenes/fruit_stand.tscn" id="31_jsq6r"]
 [ext_resource type="PackedScene" uid="uid://deyl37osklxet" path="res://scenes/charon.tscn" id="34_a82wn"]
 [ext_resource type="Texture2D" uid="uid://c4x0jd6j5dm8h" path="res://final_art/Waves.png" id="35_2jchb"]
 [ext_resource type="Texture2D" uid="uid://5e4mfftlggrp" path="res://final_art/Clouds(Heavy).png" id="36_ddg8j"]
@@ -141,19 +140,24 @@ unique_name_in_owner = true
 script = ExtResource("8_nr4x3")
 num_waves = 3
 
+[node name="FruitStand" parent="." instance=ExtResource("31_jsq6r")]
+
 [node name="TrashButton" parent="." instance=ExtResource("9_gvi8i")]
+visible = false
 offset_left = -960.0
 offset_top = 396.0
 offset_right = -816.0
 offset_bottom = 540.0
 
 [node name="TrashButton2" parent="." instance=ExtResource("9_gvi8i")]
+visible = false
 offset_left = 816.0
 offset_top = 396.0
 offset_right = 960.0
 offset_bottom = 540.0
 
 [node name="ApplianceHBox" type="HBoxContainer" parent="."]
+visible = false
 offset_left = -832.0
 offset_top = -20.0
 offset_right = 832.0
@@ -242,6 +246,7 @@ offset_bottom = 182.0
 icon_alignment = 1
 
 [node name="FruitHBox" type="HBoxContainer" parent="."]
+visible = false
 offset_left = -857.0
 offset_top = 396.0
 offset_right = 857.0
@@ -465,29 +470,11 @@ offset_right = 132.0
 offset_bottom = 94.0
 text = "Money: $"
 
-[node name="HoverButton" type="Button" parent="." node_paths=PackedStringArray("child")]
-offset_left = -914.0
-offset_top = -79.0
-offset_right = -872.0
-offset_bottom = -37.0
-theme_override_font_sizes/font_size = 24
-text = "?"
-script = ExtResource("25_f2sg3")
-child = NodePath("FruitGuide")
-
-[node name="FruitGuide" type="TextureRect" parent="HoverButton"]
-visible = false
-layout_mode = 0
-offset_left = 59.0
-offset_right = 155.0
-offset_bottom = 192.0
-texture = ExtResource("26_v2mjl")
-
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
 [connection signal="mouse_entered" from="TrashButton" to="TrashButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TrashButton" to="TrashButton" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="TrashButton2" to="TrashButton2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TrashButton2" to="TrashButton2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="HoverButton" to="HoverButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="HoverButton" to="HoverButton" method="_on_mouse_exited"]
+
+[editable path="FruitStand"]

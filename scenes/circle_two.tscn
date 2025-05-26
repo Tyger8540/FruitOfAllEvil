@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://o3omt8mgs28d"]
+[gd_scene load_steps=51 format=3 uid="uid://o3omt8mgs28d"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3bwh3"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_8x3au"]
@@ -8,59 +8,41 @@
 [ext_resource type="Script" path="res://scripts/lust_customer_manager.gd" id="6_00fvx"]
 [ext_resource type="Script" path="res://scripts/start_day_button.gd" id="6_sklra"]
 [ext_resource type="Texture2D" uid="uid://bl6xa4yc8l20h" path="res://final_art/LoverF.png" id="8_dltia"]
-[ext_resource type="Texture2D" uid="uid://dr7jpc6sf63sx" path="res://art/other/CounterNoBG.png" id="9_u5bae"]
 [ext_resource type="Texture2D" uid="uid://lgxpo0nm5wly" path="res://final_art/LoverF-Angry.png" id="9_ydv1q"]
 [ext_resource type="Texture2D" uid="uid://lesrghowpk4u" path="res://final_art/LoverF-Deadpan.png" id="10_nfxme"]
 [ext_resource type="Texture2D" uid="uid://fq4wrjdd3si5" path="res://final_art/Fruit Stand(Base).png" id="10_or6ub"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="11_0keo5"]
 [ext_resource type="Texture2D" uid="uid://853etlekla6a" path="res://final_art/LoverF-Happy.png" id="11_2di7u"]
 [ext_resource type="Texture2D" uid="uid://b060iey7pvimb" path="res://final_art/FruitBasket1(Apples).png" id="11_giq1d"]
-[ext_resource type="Texture2D" uid="uid://rh6gvp0fxsjx" path="res://final_art/FruitStand(Full).png" id="12_3qyby"]
-[ext_resource type="Texture2D" uid="uid://gbwu05hr64ed" path="res://final_art/FruitBasket1.png" id="12_ejxwi"]
 [ext_resource type="Texture2D" uid="uid://cn4rrss81gild" path="res://final_art/LoverF-Sad_Annoyed.png" id="12_fpiqo"]
 [ext_resource type="PackedScene" uid="uid://bbqx7nohubue7" path="res://scenes/trash_button.tscn" id="12_vp5wo"]
 [ext_resource type="Texture2D" uid="uid://dv5mqa5g3m1v6" path="res://final_art/Trash.png" id="13_6d8va"]
 [ext_resource type="Texture2D" uid="uid://dhg5u4i4bmsp1" path="res://final_art/LoverF-Surprised.png" id="13_8qbot"]
-[ext_resource type="Texture2D" uid="uid://dbdd8gj26kp0p" path="res://final_art/FruitBasket2.png" id="13_ovpdw"]
 [ext_resource type="PackedScene" uid="uid://d2eul6xmbt8yw" path="res://scenes/blender_button.tscn" id="13_v2x00"]
 [ext_resource type="PackedScene" uid="uid://bsm5cve406wkh" path="res://scenes/chopping_board_button.tscn" id="14_fhjbi"]
-[ext_resource type="Texture2D" uid="uid://pqnf7ghvop72" path="res://final_art/FruitBasket3.png" id="14_lspmb"]
 [ext_resource type="Texture2D" uid="uid://cri3f6bxw330h" path="res://final_art/LoverM.png" id="14_mvsgf"]
-[ext_resource type="Texture2D" uid="uid://2vx62ow4ibr" path="res://final_art/FruitBasket4.png" id="15_cqqfv"]
 [ext_resource type="PackedScene" uid="uid://e8c57x3pn5ph" path="res://scenes/shelf_button.tscn" id="15_poo50"]
 [ext_resource type="Texture2D" uid="uid://b0i2kgvsdhys" path="res://final_art/FruitBasket5(Grapes).png" id="15_qcg61"]
 [ext_resource type="Texture2D" uid="uid://dmuqparu0is8f" path="res://final_art/LoverM-Angry.png" id="15_rvvps"]
 [ext_resource type="Texture2D" uid="uid://da56cwxs1ttvg" path="res://final_art/FruitBasket2(Oranges).png" id="16_ew014"]
 [ext_resource type="PackedScene" uid="uid://c2oc4k6cal0bp" path="res://scenes/grab_button.tscn" id="16_hjq24"]
-[ext_resource type="Texture2D" uid="uid://s0141vtguoia" path="res://final_art/FruitBasket5.png" id="16_qfyj1"]
 [ext_resource type="Texture2D" uid="uid://c2i5d6fgjndb4" path="res://final_art/LoverM-Deadpan.png" id="16_vu1oc"]
-[ext_resource type="Texture2D" uid="uid://dul4b3nn6s6qy" path="res://final_art/Basket_fulla_apples.png" id="17_7jtcl"]
 [ext_resource type="Texture2D" uid="uid://d4iadyqeji86a" path="res://final_art/LoverM-Happy.png" id="17_20hql"]
-[ext_resource type="Texture2D" uid="uid://dj3iq2js2uoa2" path="res://final_art/Fruit Stand(Full).png" id="17_jsd1w"]
 [ext_resource type="Texture2D" uid="uid://c1nbc1x7p4lnb" path="res://final_art/FruitBasket3(Bananas).png" id="17_v2llq"]
-[ext_resource type="Texture2D" uid="uid://d1veoh23rcodj" path="res://art/fruit/Apple.png" id="18_2rngc"]
 [ext_resource type="Texture2D" uid="uid://dfy7snvd2fpp2" path="res://final_art/LoverM-Sad_Annoyed.png" id="18_43uoj"]
 [ext_resource type="Texture2D" uid="uid://vr5binnkamv1" path="res://final_art/FruitBasket4(BlueBerries).png" id="18_xykhw"]
-[ext_resource type="Texture2D" uid="uid://dnq7c6kvmrj0g" path="res://final_art/Basket_fulla_oranges.png" id="19_04xlm"]
 [ext_resource type="Texture2D" uid="uid://byhcwh23i2t8h" path="res://final_art/LoverM-Surprised.png" id="19_apdxi"]
 [ext_resource type="Texture2D" uid="uid://ywupnbty5ebn" path="res://final_art/FruitBasketFrontsAll.png" id="20_6nbb0"]
-[ext_resource type="Texture2D" uid="uid://bkcgipbf7inyf" path="res://art/fruit/Orange.png" id="20_h6dmv"]
 [ext_resource type="Texture2D" uid="uid://xff1bashbmmy" path="res://final_art/LoverF-Back.png" id="20_thrre"]
 [ext_resource type="Texture2D" uid="uid://cl5ap3r1bgmwj" path="res://final_art/Orange.png" id="21_okt0v"]
-[ext_resource type="Texture2D" uid="uid://uwlq7p86wwyq" path="res://final_art/basket_fulla_bananas.png" id="21_quays"]
 [ext_resource type="Texture2D" uid="uid://c2qbijrkd4kri" path="res://final_art/LoverM-wherearmsat.png" id="21_s7la6"]
 [ext_resource type="Texture2D" uid="uid://dbl6ojuqknfsd" path="res://final_art/LoverM-Back.png" id="22_ajao6"]
-[ext_resource type="Texture2D" uid="uid://ci04814knhh8k" path="res://art/fruit/Banana.png" id="22_qqocb"]
-[ext_resource type="Texture2D" uid="uid://bd0h02n4b7a3w" path="res://final_art/Basket_fulla_blueberries.png" id="23_lvhol"]
-[ext_resource type="Texture2D" uid="uid://c5juappyqcdik" path="res://art/fruit/Blueberries.png" id="24_1484l"]
-[ext_resource type="Texture2D" uid="uid://bbl6s7btrx3sw" path="res://final_art/Basket_fulla_grapes.png" id="25_2xoq5"]
-[ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="26_4erpk"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="27_nyrnw"]
 [ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="28_thnfy"]
 [ext_resource type="Script" path="res://scripts/hover_button.gd" id="29_fw674"]
-[ext_resource type="Texture2D" uid="uid://b0x0lm6547qno" path="res://final_art/Blender.png" id="36_q17nc"]
 [ext_resource type="Texture2D" uid="uid://copdvbfwgd1sq" path="res://final_art/Tip Jar.png" id="37_iv6kw"]
 [ext_resource type="Texture2D" uid="uid://cffse7xhnu3wf" path="res://final_art/Recipe.png" id="38_ienrd"]
+[ext_resource type="PackedScene" uid="uid://c775rdfnsrgot" path="res://scenes/fruit_stand.tscn" id="44_d5l4b"]
 [ext_resource type="Texture2D" uid="uid://n7ay847l3tux" path="res://final_art/Recipe_Expanded.png" id="45_e80x5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0aa8"]
@@ -76,8 +58,6 @@ size = Vector2(3093.5, 446.5)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bnkuq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efof5"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3ok6"]
 
 [node name="CircleTwo" type="Node2D"]
 script = ExtResource("1_3bwh3")
@@ -189,44 +169,19 @@ position = Vector2(0, -918.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerManager/SpawnArea/UpperArea"]
 shape = SubResource("RectangleShape2D_e3eru")
 
-[node name="BrownBackground" type="TextureRect" parent="."]
-visible = false
-offset_left = 1199.0
-offset_top = 4597.0
-offset_right = 2351.0
-offset_bottom = 6434.0
-rotation = 3.14159
-scale = Vector2(2.16, 2.6)
-texture = ExtResource("9_u5bae")
-
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_0keo5")
 num_waves = 3
 
+[node name="FruitStand" parent="." instance=ExtResource("44_d5l4b")]
+
 [node name="FruitStand(base)" type="Sprite2D" parent="."]
-texture = ExtResource("10_or6ub")
-
-[node name="TrashButton2" parent="." instance=ExtResource("12_vp5wo")]
-visible = false
-offset_left = 816.0
-offset_top = 396.0
-offset_right = 960.0
-offset_bottom = 540.0
-
-[node name="FruitStand(full)" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("10_or6ub")
-
-[node name="FruitStand(full)2" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("17_jsd1w")
-
-[node name="FruitStand(full)3" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("12_3qyby")
 
 [node name="TrashButton" parent="." instance=ExtResource("12_vp5wo")]
+visible = false
 offset_left = 677.0
 offset_top = 384.0
 offset_right = 992.0
@@ -236,34 +191,12 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bnkuq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_efof5")
 icon = ExtResource("13_6d8va")
 
-[node name="FruitsInFruitBaskets" type="Node2D" parent="."]
-
-[node name="FruitBasket1(apples)" type="Sprite2D" parent="FruitsInFruitBaskets"]
+[node name="FruitBaskets" type="Node2D" parent="."]
 visible = false
-position = Vector2(-658, 432)
-texture = ExtResource("11_giq1d")
 
-[node name="FruitBasket2(oranges)" type="Sprite2D" parent="FruitsInFruitBaskets"]
-visible = false
-position = Vector2(-351, 432)
-texture = ExtResource("16_ew014")
+[node name="FruitsInFruitBaskets" type="Node2D" parent="FruitBaskets"]
 
-[node name="FruitBasket3(bananas)" type="Sprite2D" parent="FruitsInFruitBaskets"]
-visible = false
-position = Vector2(-39, 432)
-texture = ExtResource("17_v2llq")
-
-[node name="FruitBasket4(blueBerries)" type="Sprite2D" parent="FruitsInFruitBaskets"]
-visible = false
-position = Vector2(265, 432)
-texture = ExtResource("18_xykhw")
-
-[node name="FruitBasket5(grapes)" type="Sprite2D" parent="FruitsInFruitBaskets"]
-visible = false
-position = Vector2(565, 425)
-texture = ExtResource("15_qcg61")
-
-[node name="AppleButton" parent="FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
+[node name="AppleButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
 offset_left = -808.0
 offset_top = 352.0
 offset_right = -508.0
@@ -272,7 +205,7 @@ texture_normal = ExtResource("11_giq1d")
 fruit = 1
 grab_type = 1
 
-[node name="OrangeButton" parent="FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
+[node name="OrangeButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
 offset_left = -501.0
 offset_top = 352.0
 offset_right = -201.0
@@ -281,7 +214,7 @@ texture_normal = ExtResource("16_ew014")
 fruit = 2
 grab_type = 1
 
-[node name="BananaButton" parent="FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
+[node name="BananaButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
 offset_left = -189.0
 offset_top = 352.0
 offset_right = 111.0
@@ -290,7 +223,7 @@ texture_normal = ExtResource("17_v2llq")
 fruit = 3
 grab_type = 1
 
-[node name="BlueberriesButton" parent="FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
+[node name="BlueberriesButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
 offset_left = 114.0
 offset_top = 352.0
 offset_right = 414.0
@@ -299,7 +232,7 @@ texture_normal = ExtResource("18_xykhw")
 fruit = 4
 grab_type = 1
 
-[node name="GrapesButton" parent="FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
+[node name="GrapesButton" parent="FruitBaskets/FruitsInFruitBaskets" instance=ExtResource("16_hjq24")]
 offset_left = 414.0
 offset_top = 345.0
 offset_right = 714.0
@@ -308,90 +241,63 @@ texture_normal = ExtResource("15_qcg61")
 fruit = 5
 grab_type = 1
 
-[node name="FruitBaskets" type="Node2D" parent="."]
-position = Vector2(-960, -540)
-
-[node name="FruitBasket1" type="Sprite2D" parent="FruitBaskets"]
-visible = false
-position = Vector2(295, 1024)
-scale = Vector2(1.05, 1.05)
-texture = ExtResource("12_ejxwi")
-
-[node name="FruitBasket2" type="Sprite2D" parent="FruitBaskets"]
-visible = false
-position = Vector2(857, 632)
-texture = ExtResource("13_ovpdw")
-
-[node name="FruitBasket3" type="Sprite2D" parent="FruitBaskets"]
-visible = false
-position = Vector2(857, 632)
-texture = ExtResource("14_lspmb")
-
-[node name="FruitBasket4" type="Sprite2D" parent="FruitBaskets"]
-visible = false
-position = Vector2(857, 632)
-texture = ExtResource("15_cqqfv")
-
-[node name="FruitBasket5" type="Sprite2D" parent="FruitBaskets"]
-visible = false
-position = Vector2(857, 632)
-texture = ExtResource("16_qfyj1")
-
 [node name="FruitBasketFrontsAll" type="Sprite2D" parent="FruitBaskets"]
-position = Vector2(918, 1027)
+position = Vector2(-42, 487)
 scale = Vector2(1.01766, 1)
 texture = ExtResource("20_6nbb0")
 
+[node name="Appliances" type="Node2D" parent="."]
+visible = false
+
+[node name="BlenderButton" parent="Appliances" instance=ExtResource("13_v2x00")]
+offset_left = -614.0
+offset_top = 45.0
+offset_right = -422.0
+offset_bottom = 237.0
+
+[node name="BlenderButton2" parent="Appliances" instance=ExtResource("13_v2x00")]
+offset_left = -422.0
+offset_top = 45.0
+offset_right = -230.0
+offset_bottom = 237.0
+
+[node name="BlenderButton3" parent="Appliances" instance=ExtResource("13_v2x00")]
+offset_left = -230.0
+offset_top = 45.0
+offset_right = -38.0
+offset_bottom = 237.0
+
+[node name="ChoppingBoardButton" parent="Appliances" instance=ExtResource("14_fhjbi")]
+offset_left = 116.0
+offset_top = 25.0
+offset_right = 260.0
+offset_bottom = 114.0
+
+[node name="ChoppingBoardButton2" parent="Appliances" instance=ExtResource("14_fhjbi")]
+offset_left = 116.0
+offset_top = 123.0
+offset_right = 260.0
+offset_bottom = 212.0
+
+[node name="ChoppingBoardButton3" parent="Appliances" instance=ExtResource("14_fhjbi")]
+offset_left = 116.0
+offset_top = 229.0
+offset_right = 260.0
+offset_bottom = 318.0
+
+[node name="ShelfButton2" parent="Appliances" instance=ExtResource("15_poo50")]
+offset_left = 764.0
+offset_top = 16.0
+offset_right = 954.0
+offset_bottom = 328.0
+
 [node name="TipJar" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-883, -6)
 texture = ExtResource("37_iv6kw")
 
-[node name="Appliances" type="Node2D" parent="."]
-position = Vector2(-644, 5)
-
-[node name="BlenderButton" parent="Appliances" instance=ExtResource("13_v2x00")]
-offset_left = 30.0
-offset_top = 40.0
-offset_right = 222.0
-offset_bottom = 232.0
-
-[node name="BlenderButton2" parent="Appliances" instance=ExtResource("13_v2x00")]
-offset_left = 222.0
-offset_top = 40.0
-offset_right = 414.0
-offset_bottom = 232.0
-
-[node name="BlenderButton3" parent="Appliances" instance=ExtResource("13_v2x00")]
-offset_left = 414.0
-offset_top = 40.0
-offset_right = 606.0
-offset_bottom = 232.0
-
-[node name="ChoppingBoardButton" parent="Appliances" instance=ExtResource("14_fhjbi")]
-offset_left = 760.0
-offset_top = 20.0
-offset_right = 904.0
-offset_bottom = 109.0
-
-[node name="ChoppingBoardButton2" parent="Appliances" instance=ExtResource("14_fhjbi")]
-offset_left = 760.0
-offset_top = 118.0
-offset_right = 904.0
-offset_bottom = 207.0
-
-[node name="ChoppingBoardButton3" parent="Appliances" instance=ExtResource("14_fhjbi")]
-offset_left = 760.0
-offset_top = 224.0
-offset_right = 904.0
-offset_bottom = 313.0
-
-[node name="ShelfButton" parent="Appliances" instance=ExtResource("15_poo50")]
-offset_left = 1408.0
-offset_top = 11.0
-offset_right = 1598.0
-offset_bottom = 323.0
-
 [node name="RecipeHoverButton" type="TextureButton" parent="." node_paths=PackedStringArray("child")]
+visible = false
 offset_left = -947.0
 offset_top = 64.0
 offset_right = -771.0
@@ -409,273 +315,6 @@ offset_top = -61.0
 offset_right = 636.0
 offset_bottom = 299.0
 texture = ExtResource("45_e80x5")
-
-[node name="ApplianceHBox" type="HBoxContainer" parent="."]
-visible = false
-offset_left = -644.0
-offset_top = 5.0
-offset_right = 1020.0
-offset_bottom = 373.0
-theme_override_constants/separation = 160
-alignment = 1
-
-[node name="ApplianceGrid1" type="GridContainer" parent="ApplianceHBox"]
-layout_direction = 3
-layout_mode = 2
-theme_override_constants/h_separation = 160
-theme_override_constants/v_separation = 80
-columns = 2
-
-[node name="BlenderButton" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("13_v2x00")]
-layout_mode = 2
-
-[node name="BlenderButton2" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("13_v2x00")]
-visible = false
-layout_mode = 2
-index = 1
-
-[node name="BlenderButton3" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("13_v2x00")]
-visible = false
-layout_mode = 2
-index = 2
-
-[node name="BlenderButton4" parent="ApplianceHBox/ApplianceGrid1" instance=ExtResource("13_v2x00")]
-visible = false
-layout_mode = 2
-index = 3
-
-[node name="ApplianceGrid2" type="GridContainer" parent="ApplianceHBox"]
-layout_direction = 2
-layout_mode = 2
-theme_override_constants/h_separation = 160
-theme_override_constants/v_separation = 80
-columns = 2
-
-[node name="ChoppingBoardButton2" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("14_fhjbi")]
-layout_mode = 2
-
-[node name="ChoppingBoardButton3" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("14_fhjbi")]
-visible = false
-layout_mode = 2
-index = 1
-
-[node name="ChoppingBoardButton4" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("14_fhjbi")]
-visible = false
-layout_mode = 2
-index = 2
-
-[node name="ChoppingBoardButton5" parent="ApplianceHBox/ApplianceGrid2" instance=ExtResource("14_fhjbi")]
-visible = false
-layout_mode = 2
-index = 3
-
-[node name="ApplianceGrid3" type="GridContainer" parent="ApplianceHBox"]
-layout_direction = 2
-layout_mode = 2
-theme_override_constants/h_separation = 160
-theme_override_constants/v_separation = 160
-columns = 2
-
-[node name="ShelfButton" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("15_poo50")]
-layout_mode = 2
-
-[node name="ShelfButton2" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("15_poo50")]
-visible = false
-layout_mode = 2
-
-[node name="ShelfButton3" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("15_poo50")]
-visible = false
-layout_mode = 2
-
-[node name="ShelfButton4" parent="ApplianceHBox/ApplianceGrid3" instance=ExtResource("15_poo50")]
-visible = false
-layout_mode = 2
-
-[node name="ShelfButton" parent="." instance=ExtResource("15_poo50")]
-visible = false
-offset_left = 569.0
-offset_top = 38.0
-offset_right = 713.0
-offset_bottom = 182.0
-icon_alignment = 1
-
-[node name="FruitHBox" type="HBoxContainer" parent="."]
-visible = false
-offset_left = -894.0
-offset_top = 396.0
-offset_right = 820.0
-offset_bottom = 540.0
-theme_override_constants/separation = 80
-alignment = 1
-
-[node name="AppleButton" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-layout_mode = 2
-texture_normal = ExtResource("17_7jtcl")
-stretch_mode = 5
-fruit = 1
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/AppleButton"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/AppleButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/AppleButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/AppleButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
-
-[node name="OrangeButton" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-layout_mode = 2
-texture_normal = ExtResource("19_04xlm")
-stretch_mode = 5
-fruit = 2
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/OrangeButton"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/OrangeButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("20_h6dmv")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/OrangeButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("20_h6dmv")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/OrangeButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("20_h6dmv")
-
-[node name="BananaButton" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-layout_mode = 2
-texture_normal = ExtResource("21_quays")
-stretch_mode = 5
-fruit = 3
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/BananaButton"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/BananaButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("22_qqocb")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/BananaButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("22_qqocb")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/BananaButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("22_qqocb")
-
-[node name="BlueberriesButton" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-layout_mode = 2
-texture_normal = ExtResource("23_lvhol")
-stretch_mode = 5
-fruit = 4
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/BlueberriesButton"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/BlueberriesButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("24_1484l")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/BlueberriesButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("24_1484l")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/BlueberriesButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("24_1484l")
-
-[node name="PlumButton" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-layout_mode = 2
-texture_normal = ExtResource("25_2xoq5")
-stretch_mode = 5
-fruit = 5
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/PlumButton"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/PlumButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("26_4erpk")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/PlumButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("26_4erpk")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/PlumButton/GridContainer"]
-layout_mode = 2
-texture = ExtResource("26_4erpk")
-
-[node name="AppleButton2" parent="FruitHBox" instance=ExtResource("16_hjq24")]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("17_7jtcl")
-stretch_mode = 5
-fruit = 1
-grab_type = 1
-
-[node name="GridContainer" type="GridContainer" parent="FruitHBox/AppleButton2"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 52.0
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="FruitHBox/AppleButton2/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
-
-[node name="TextureRect2" type="TextureRect" parent="FruitHBox/AppleButton2/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
-
-[node name="TextureRect3" type="TextureRect" parent="FruitHBox/AppleButton2/GridContainer"]
-layout_mode = 2
-texture = ExtResource("18_2rngc")
 
 [node name="GUI" type="Panel" parent="."]
 offset_left = -960.0
@@ -724,40 +363,9 @@ offset_right = 132.0
 offset_bottom = 94.0
 text = "Money: $"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -798.0
-offset_top = 306.0
-offset_right = -542.0
-offset_bottom = 474.0
-texture = SubResource("CompressedTexture2D_i3ok6")
-
-[node name="Blender" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-621, 53)
-texture = ExtResource("36_q17nc")
-
-[node name="Recipe" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-859, 191)
-texture = ExtResource("38_ienrd")
-
-[node name="RecipeExpanded" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-635, 205)
-texture = ExtResource("45_e80x5")
-
-[node name="Trash" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(826, 524)
-scale = Vector2(0.34, 0.34)
-texture = ExtResource("13_6d8va")
-
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]
 [connection signal="timeout" from="CustomerManager/SwapTimer" to="CustomerManager" method="_on_swap_timer_timeout"]
-[connection signal="mouse_entered" from="TrashButton2" to="TrashButton2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="TrashButton2" to="TrashButton2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="TrashButton" to="TrashButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TrashButton" to="TrashButton" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="RecipeHoverButton" to="RecipeHoverButton" method="_on_mouse_entered"]
