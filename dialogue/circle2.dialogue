@@ -44,6 +44,32 @@ set cutscene_speaker = "DJ Virgil"
 # TODO change this v later?
 => END
 
+~ C2_level_barks_success
+# barks when you finish an order in a timely manner (green bar)
+% Perfect pairing of fruits.
+% Juiced up for the dance floor!
+% My dear is in love…
+% We shall come back for seconds.
+% My darling desires more!
+% Exquisite
+=> END
+
+~ C2_level_barks_late
+# barks when you finish an order late (red bar)
+% Kept us waiting, huh?
+% This… is not bad.
+% Hush dear, let us keep to ourselves.
+% Wait times could’ve been better. 
+=> END
+
+~ C2_level_barks_damage
+# barks when you are unable to finish an order (depleted bar)
+% Let us head elsewhere, darling.
+% Bad service ruins the mood...
+% I would like to speak to your manager...
+% Dear, don’t throw your shoes!
+=> END
+
 ~ C2_level_virgil1
 # at the start of the level, hint/tutorial to the gimmick
 set AudioManager.stop_music()
