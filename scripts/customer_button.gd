@@ -69,11 +69,17 @@ func start_leave_sequence() -> void:
 		print("pausing timers")
 		get_parent().pause_timers()
 	
+	var bark_string: String = "C" + str(State.circle_num) + "_level_barks_"
+	
 	if $GreenPatienceBar.value > 0:
 		$GreenPatienceTimer.stop()
 		AudioManager.play_sound(self, "res://audio/sfx/Coin_Get.wav", Enums.Audio_Type.SFX)
 		#AudioManager.play_sound(self, "res://audio/sfx/satisfied (2).wav", Enums.Audio_Type.SFX, -10.0)
 		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
+			if not get_parent() is LustCustomer:
+				get_parent().talk(State.dialogue_file, bark_string + "success", 5.0)
+			elif get_parent().lover.is_completed:
+				get_parent().talk(State.dialogue_file, bark_string + "success", 5.0)
 			$Panel/Label.text = "$" + str(get_parent().sell_value)
 			Globals.money += get_parent().sell_value
 		else:
@@ -82,9 +88,14 @@ func start_leave_sequence() -> void:
 	elif $RedPatienceBar.value > 0:
 		$RedPatienceTimer.stop()
 		AudioManager.play_sound(self, "res://audio/sfx/disatisfied.wav", Enums.Audio_Type.SFX)
+		if not get_parent() is LustCustomer:
+			get_parent().talk(State.dialogue_file, bark_string + "late", 5.0)
+		elif get_parent().lover.is_completed:
+			get_parent().talk(State.dialogue_file, bark_string + "late", 5.0)
 		var i = randi_range(0, late_order_strings.size() - 1)
 		$Panel/Label.text = late_order_strings[i]
 	else:
+		get_parent().talk(State.dialogue_file, bark_string + "damage", 5.0)
 		var i = randi_range(0, damage_strings.size() - 1)
 		$Panel/Label.text = damage_strings[i]
 	#$Panel/Label.visible = true

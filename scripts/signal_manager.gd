@@ -22,3 +22,4 @@ signal charon_defeated
 signal tutorial_ended
 signal market_dialogue_ended
 signal audio_stopped
+signal cutscene_speaker_changed

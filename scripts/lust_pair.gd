@@ -111,16 +111,16 @@ func dance() -> void:
 	var customer_button_position_2 = lover2.customer_button.position.x
 	lover1.customer_button.position.x = 0.0 - customer_button_distance / 2
 	lover2.customer_button.position.x = 0.0 - customer_button_distance / 2
-	lover1.panel.visible = lover1.dancing_near  # Sets the panel to visible/invisible based on if near
-	lover2.panel.visible = lover2.dancing_near  # Sets the panel to visible/invisible based on if near
+	lover1.customer_button.visible = lover1.dancing_near  # Sets the panel to visible/invisible based on if near
+	lover2.customer_button.visible = lover2.dancing_near  # Sets the panel to visible/invisible based on if near
 	dance_intermission_timer.start()
 	await dance_intermission_timer.timeout
 	lover1.dancing_near = false
 	lover2.dancing_near = false
 	lover1.set_sprite(lover1.default_texture)
 	lover2.set_sprite(lover2.default_texture)
-	lover1.panel.visible = true
-	lover2.panel.visible = true
+	lover1.customer_button.visible = true
+	lover2.customer_button.visible = true
 	lover1.customer_button.position.x = customer_button_position_2
 	lover2.customer_button.position.x = customer_button_position_1
 	lover1.invert_sprite_scale()

@@ -1,3 +1,11 @@
+~ C2_intro
+set circle_num = 2
+set location = "level"
+set section = "C2_level_intro"
+#set dialogue_ready = true
+set cutscene_speaker = "Francesca"
+set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
+
 ~ C2_intro1
 
 ##### TODO: SHOW THE CIRCLE 2 POSTER INSTEAD OF THE C2_intro1 + C2_intro2
@@ -44,11 +52,11 @@
 #"Or should I say, cha, cha?"
 #Danny Pilgrim stood before their next challenge.
 #This must be a bad dream.
-set location = "level"
-set section = "C2_level_virgil1"
-set dialogue_ready = true
-set cutscene_speaker = "DJ Virgil"
-set get_tree().change_scene_to_file("res://scenes/circle_two.tscn")
+#set location = "level"
+#set section = "C2_level_intro"
+#set dialogue_ready = true
+#set cutscene_speaker = "DJ Virgil"
+#set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 # TODO change this v later?
 => END
 
@@ -69,7 +77,7 @@ Francesca: Anyways, before I go, he wanted me to deliver a note to you. Here it 
 "After living in darkness for so long, the castle meadows is Heaven to them. And your fruits, the most divine wine."
 "Simply put, turn their happiness into profit. Chop chop, destined traveler!"
 "Or should I say, cha, cha?"
-=> END
+=> C2_level_virgil1
 
 ~ C2_level_barks_success
 # barks when you finish an order in a timely manner (green bar)
@@ -102,6 +110,8 @@ Francesca: Anyways, before I go, he wanted me to deliver a note to you. Here it 
 #                but maybe after one or two waves?  
 
 # at the start of the level, hint/tutorial to the gimmick
+set cutscene_speaker = "DJ Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/SlowDance_prelim.mp3", Enums.Audio_Type.MUSIC)
 # SFX: DJ RECORD SCRATCH
@@ -129,7 +139,7 @@ set SignalManager.tutorial_ended.emit()
 set AudioManager.play_sound(self, "res://audio/sfx/record_scratch.wav", Enums.Audio_Type.SFX)
 Virgil: The mood is picking up, how wonderful!
 set AudioManager.stop_music()
-set AudioManager.play_sound(self, "res://audio/music/Waltz_prelim.mp3", Enums.Audio_Type.MUSIC)
+set AudioManager.play_sound(self, "res://audio/music/Waltz_fast.mp3", Enums.Audio_Type.MUSIC)
 Virgil: I believe it's time to switch up the song as well.
 Virgil: Don't be alarmed if the customers begin to dance amongst themselves.
 Virgil: Their bodies cannot help but be moved by my masterful manipulation as the disc jockey.
@@ -161,6 +171,8 @@ set cutscene_speaker = "DJ Virgil"
 
 ~ C2_level_complete
 # end of the level
+set cutscene_speaker = "Francesca"
+set SignalManager.cutscene_speaker_changed.emit()
 Francesca: Oh Danny Pilgrim! My deepest gratitude for this wonderful reception.
 Francesca: My dear Paolo, my friends, the other guests... they immensely enjoyed all of it.
 Francesca: To do this out of your own volition, you must love the work you do!
@@ -192,16 +204,17 @@ Francesca: Workers' rights...? Unfortunately, I do not believe any of that exist
 
 ~ market_end
 Are you sure you want to leave?
-- No
-	set SignalManager.market_dialogue_ended.emit()
-	=> END
 - Yes
+	set get_tree().quit()
 	set dialogue_file = "res://dialogue/circle3.dialogue"
 	set dialogue_ready = true
 	set location = "intro"
 	set section = "C3_intro"
 	set talked_to_virgil = false
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
+- No
+	set SignalManager.market_dialogue_ended.emit()
 	=> END
 
 ~ market_virgil_intro

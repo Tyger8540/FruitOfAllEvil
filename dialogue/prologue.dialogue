@@ -24,7 +24,7 @@
 #It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and their unassuming fruit stand...
 set location = "level"
 set section = "C0_level_virgil"
-set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
+set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 => END
 #- Continue => C0_level_virgil
 
@@ -32,6 +32,8 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 # these are an assortment of tutorial things Virgil can say in the prologue
 # these do not have to be all integrated, but I'm including them just so we have text
 # AFTER a 10/20 seconds, IF THE PLAYER DOES NOT MOVE CURSOR TO BRING FRUIT TO CUSTOMER
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 ???: Pssst. It seems you are caught in a bind.
 ???: Move your mouse cursor, click onto the fruit, and drag it to your devilish customers!
 ???: What is this "cursor" that I speak of? 
@@ -40,6 +42,8 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 ~ C0_level_tutorial2
 # IF THE PLAYER HAS NOT INTERACTED WITH THE CUTTING BOARD 
 # (and a customer currently asked for chopped fruit)
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 ???: Ahem. It seems you are caught in a bind.
 ???: That cutting board on your screen...
 ???: If you drag a fruit to it, perhaps you can chop it into pieces for your guests!
@@ -72,6 +76,8 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 
 ~ C0_level_virgil
 # Virgil likely shows up at the end of the level, with no other customers present
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 ???: Oh greetings! 
 ???: What a nice fruit stand you have there...
 ???: You must be the destined traveler, called upon by Lucifer.
@@ -96,9 +102,6 @@ if location == "market" and vendor == "Virgil"
 
 ~ market_end
 Are you sure you want to leave?
-- No
-	set SignalManager.market_dialogue_ended.emit()
-	=> END
 - Yes
 	set dialogue_file = "res://dialogue/circle1.dialogue"
 	set dialogue_ready = true
@@ -107,6 +110,9 @@ Are you sure you want to leave?
 	set talked_to_virgil = false
 	set circle_num = 1
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
+- No
+	set SignalManager.market_dialogue_ended.emit()
 	=> END
 
 ~ market_virgil_intro

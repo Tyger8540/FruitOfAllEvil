@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0c45gbw6f4kb"]
+
+[ext_resource type="Texture2D" uid="uid://bt36tfxjy1qyr" path="res://final_art/posters/P1_Promo_rough.png" id="1_72kdr"]
+[ext_resource type="Script" path="res://scripts/poster_intro.gd" id="1_rn3yo"]
+[ext_resource type="Texture2D" uid="uid://qgl5y5kgi1uj" path="res://final_art/posters/C1_Promo_rough.png" id="1_ws55x"]
+[ext_resource type="Texture2D" uid="uid://d4ncjw3e14u3l" path="res://final_art/posters/P2_Promo_rough.png" id="2_g87g8"]
+[ext_resource type="Texture2D" uid="uid://cdgx5t1ujbju" path="res://final_art/posters/P3_Promo_rough.png" id="3_01sl2"]
+[ext_resource type="Texture2D" uid="uid://d4hw1eehwsh0k" path="res://final_art/posters/C2_Promo_rough.png" id="5_1dsit"]
+
+[node name="PosterIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rn3yo")
+
+[node name="ProloguePanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="ProloguePanel"]
+layout_mode = 0
+offset_left = 540.0
+offset_right = 1304.0
+offset_bottom = 1080.0
+texture = ExtResource("1_72kdr")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ProloguePanel"]
+visible = false
+layout_mode = 0
+offset_left = 540.0
+offset_right = 1304.0
+offset_bottom = 1080.0
+texture = ExtResource("2_g87g8")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ProloguePanel"]
+visible = false
+layout_mode = 0
+offset_left = 540.0
+offset_right = 1304.0
+offset_bottom = 1080.0
+texture = ExtResource("3_01sl2")
+expand_mode = 1
+
+[node name="Circle1Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Circle1Panel"]
+layout_mode = 0
+offset_left = 540.0
+offset_right = 1304.0
+offset_bottom = 1080.0
+texture = ExtResource("1_ws55x")
+expand_mode = 1
+
+[node name="Circle2Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Circle2Panel"]
+layout_mode = 0
+offset_left = 540.0
+offset_right = 1304.0
+offset_bottom = 1080.0
+texture = ExtResource("5_1dsit")
+expand_mode = 1

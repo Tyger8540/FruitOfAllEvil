@@ -111,12 +111,18 @@ func _ready() -> void:
 	
 	if State.current_boss == "Charon":
 		$AdvanceDialogueTimer.start(advance_time)
+	
+	#if get_parent() is Customer:
+		#$AdvanceDialogueTimer.start(advance_time)
 
 
 func _process(_delta: float) -> void:
-	if State.current_boss == "Charon":
+	if State.current_boss == "Charon" and not get_parent() is Customer:
 		offset = $"../Path2D8/PathFollow2D/".position + Vector2(1100.0 - 2123.0, -750.0 + 202.0)
 		#offset = %CharonFullBoatNoBack.position + Vector2(850.0 - 313.365, -900.0 + 89.693)
+	
+	#if get_parent() is Customer:
+		#offset = get_parent().position + Vector2(0.0, -200.0)
 
 
 func _unhandled_input(_event: InputEvent) -> void:

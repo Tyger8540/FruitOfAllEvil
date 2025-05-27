@@ -25,33 +25,50 @@
 #Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
 set circle_num = 1
 set location = "level"
-set section = "C1_level_virgil1"
+#set section = "C1_level_virgil1"
+set section = "C1_level_intro"
 set cutscene_speaker = "Virgil"
-set get_tree().change_scene_to_file("res://scenes/circle_one.tscn")
+set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 => END
 
 ~ C1_level_intro
 # the first dialogue that begins at the fruit stand screen
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 "ALL HOPE ABANDON YE WHO ENTER HERE."
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: ...Oh Charon, you are as harrowing as ever.
 Virgil: Hm? Do not mind my rambling. It's just a good friend of mine trying to be intimidating.
 Virgil: He inscribed those words onto those rocks, to scare away anyone with common sense.
 Virgil: Thankfully, it does not apply to us.
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 ???: HO! WHO GOES?!
 ???: WHO DARES CROSS THE GREAT RIVER ACHERON?!
 ???: I SHALL SMITE THEE — oh no.
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: What's up, Charon~
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 Charon: Ugh, enough with your antics...
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: Antics they are not. As you may have heard, this traveler is destined to have a date with the devil.
 Virgil: So let us cross the river, Charon. In exchange, you and your souls shall get a little sip of mankind's fruits. Deal?
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 Charon: ...I still hate you, Virgil. But I shall round up these tormented souls shortly.
 Charon: You, living soul. You better be prepared to serve them.
-=> END
+=> C1_level_virgil1
 
 ~ C1_level_virgil1
 # additional tutorialization, at the START of the stand gameplay
 set AudioManager.stop_music()
 set AudioManager.play_sound(self, "res://audio/music/freya_intensity2.mp3", Enums.Audio_Type.MUSIC)
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: Ah, it seems I have angered my dear friend. I suppose shall bestow upon you some wisdom.
 Virgil: Some customers will desire a fruit in liquid format, what you call a "smoothie."
 Virgil: Some customers will want a smoothie of two fruits mixed together.
@@ -152,9 +169,17 @@ Charon: A strong wave incoming, hold onto your souls!
 # level complete
 Charon: You have earned the right to pass through.
 Charon: Come aboard my boat, and I shall bring you across the river.
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: Oh, how generous of you, Charon.
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 Charon: My apologies, Virgil, this boat is full. Go find another way to cross the waters.
+set cutscene_speaker = "Virgil"
+set SignalManager.cutscene_speaker_changed.emit()
 Virgil: As harrowing as ever... Destined traveler, I shall meet you in the next circle! Take care...
+set cutscene_speaker = "Charon"
+set SignalManager.cutscene_speaker_changed.emit()
 ...
 Charon: Ugh, what an abhorent man... You, living soul.
 Charon: Let us hope you do not meet the same fate as the previous ones he brought over.
@@ -179,17 +204,17 @@ Charon: Let us hope you do not meet the same fate as the previous ones he brough
 
 ~ market_end
 Are you sure you want to leave?
-- No
-	set SignalManager.market_dialogue_ended.emit()
-	=> END
 - Yes
 	set dialogue_file = "res://dialogue/circle2.dialogue"
 	set dialogue_ready = true
 	set location = "intro"
-	set section = "C2_intro1"
+	set section = "C2_intro"
 	set talked_to_virgil = false
 	set circle_num = 2
 	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	=> END
+- No
+	set SignalManager.market_dialogue_ended.emit()
 	=> END
 
 ~ market_virgil_intro

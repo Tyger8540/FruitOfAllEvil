@@ -45,7 +45,7 @@ var talked_to_virgil: bool = false
 
 #region Circle 2 - Lust
 #var location: String = "intro"
-#var section: String = "C2_intro1"
+#var section: String = "C2_intro"
 #var vendor: String = ""
 #var dialogue_ready: bool = true  # Should be set to true by default
 #var dialogue_file: String = "res://dialogue/circle2.dialogue"

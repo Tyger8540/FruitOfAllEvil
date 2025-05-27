@@ -91,6 +91,7 @@ var dialogue_line: DialogueLine:
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
+	SignalManager.cutscene_speaker_changed.connect(on_speaker_changed)
 
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
@@ -98,11 +99,13 @@ func _ready() -> void:
 	if has_node("Speaker"):
 		match State.cutscene_speaker:
 			"Virgil":
-				$Speaker.texture = load("res://final_art/Virgil_Test_360.png")
+				set_speaker("res://final_art/Virgil_Test_360.png")
 			"DJ Virgil":
-				$Speaker.texture = load("res://final_art/DJ_Virgil.png")
+				set_speaker("res://final_art/DJ_Virgil.png")
 			"Charon":
-				$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
+				set_speaker("res://final_art/Charon_Solo_360h.png")
+			"Francesca":
+				set_speaker("res://final_art/LoverF-Back.png")
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -128,6 +131,22 @@ func _notification(what: int) -> void:
 		self.dialogue_line = await resource.get_next_dialogue_line(dialogue_line.id)
 		if visible_ratio < 1:
 			dialogue_label.skip_typing()
+
+
+func set_speaker(texture_name: String) -> void:
+	$Speaker.texture = load(texture_name)
+
+
+func on_speaker_changed() -> void:
+	match State.cutscene_speaker:
+		"Virgil":
+			set_speaker("res://final_art/Virgil_Test_360.png")
+		"DJ Virgil":
+			set_speaker("res://final_art/DJ_Virgil.png")
+		"Charon":
+			set_speaker("res://final_art/Charon_Solo_360h.png")
+		"Francesca":
+			set_speaker("res://final_art/LoverF-Back.png")
 
 
 ## Start some dialogue

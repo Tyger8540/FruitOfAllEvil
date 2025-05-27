@@ -10,6 +10,8 @@ const SPEED = 350.0
 
 const GRABBABLE_TEXTURE = preload("res://scenes/grabbable_texture.tscn")
 
+const CUSTOMER_BALLOON = preload("res://dialogue/customer_balloon.tscn")
+
 #@export var customer_type: CustomerType
 
 var stand_position: Vector2
@@ -69,6 +71,15 @@ func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, 
 func die() -> void:
 	SignalManager.customer_left.emit(customer_index)
 	queue_free()
+
+
+func talk(dialogue_file: String, section: String, time: float) -> void:
+	var balloon = CUSTOMER_BALLOON.instantiate()
+	add_child(balloon)
+	balloon.advance_time = time
+	balloon.offset = global_position + Vector2($CustomerButton.size.x / 2.0, -200.0)
+	balloon.start(load(dialogue_file), section)
+
 
 
 func set_stand_position(index: int) -> void:
