@@ -5,18 +5,23 @@
 # Some comments will be included to talk about how certain text may be integrated into the game
 
 ~ C0_intro
+######## TODO: THIS SHOULD INSTEAD SHOW THE PROLOGUE POSTERS
+# P1_Promo_rough
+# P2_Promo_rough
+# P3_Promo_rough
+
 # ideally, this would just be shown visually without text
-Midway along the journey of life, Danny Pilgrim ran a fruit stand.
-Peaceful and unassuming...
-Until the ground opened up below and swallowed them up.
-Danny Pilgrim woke to find themselves in a dark wood...
-With nothing but their fruit stand...
-And a leopard staring at them, hungry.
-It lept forward, straight at Danny Pilgrim!
-It sunk its teeth into flesh...
-Of a red, juicy apple. 
-The leopard was pleased.
-It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and their unassuming fruit stand...
+#Midway along the journey of life, Danny Pilgrim ran a fruit stand.
+#Peaceful and unassuming...
+#Until the ground opened up below and swallowed them up.
+#Danny Pilgrim woke to find themselves in a dark wood...
+#With nothing but their fruit stand...
+#And a leopard staring at them, hungry.
+#It lept forward, straight at Danny Pilgrim!
+#It sunk its teeth into flesh...
+#Of a red, juicy apple. 
+#The leopard was pleased.
+#It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and their unassuming fruit stand...
 set location = "level"
 set section = "C0_level_virgil"
 set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
@@ -71,8 +76,9 @@ set get_tree().change_scene_to_file("res://scenes/intro_falling_cutscene.tscn")
 ???: What a nice fruit stand you have there...
 ???: You must be the destined traveler, called upon by Lucifer.
 ???: Oh, Lucifer? Don't you know?
-???: The ruler of Hell has requested an exquisite drink from the fruits of humanity.
+???: The supreme ruler of Hell has requested an exquisite drink from the fruits of mankind.
 Virgil: I, Virgil, shall be your guide through Hell, all the way to Lucifer's chambers, where you shall serve Him.
+Virgil: Nine circles separate us from our supreme ruler, so let us make haste!
 set location = "market"
 set section = "C0_market"
 set State.level_defeated = false
@@ -111,7 +117,7 @@ Virgil: You shall have the opportunity to restock produce and fancy up your stan
 Virgil: Hm?
 Virgil: Where are you?
 Virgil: Why, you're at the entrance of Hell!
-Virgil: We shall make make haste in our journey, and venture into the First Circle of Hell...
+Virgil: Shortly, we shall venture into the first circle of Hell...
 - Continue => market_virgil_default
 
 ~ market_virgil_default
@@ -141,7 +147,7 @@ Virgil: Welcome to my humble stand, destined traveler.
 	Virgil: I am Virgil.
 	Virgil: ...
 	Virgil: Oh, you wanted more?
-	Virgil: I am Virgil, who sells fruits and appliances.
+	Virgil: I am Virgil, who sells fruits and appliances, among other things.
 	Virgil: ...
 	Virgil: You don't seem satisfied by my answer.
 	=> market_virgil_chat
@@ -155,8 +161,8 @@ if received_blender:
 else:
 	# Once you are done and want to exit Virgil's stand, this mandatory text begins.
 	Virgil: Destined traveler, I believe it would be in your best interest to invest in that fruit stand of yours.
-	Virgil: Your arrival has been making ripples across the Circles.
-	Virgil: Now everyone in Hell will be craving for a taste of your fruits.
+	Virgil: It seems that someone had spread notice of your arrival. It's been making ripples across the circles.
+	Virgil: Now, everyone in Hell is craving for a taste of your fruits.
 	Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mine.
 	Virgil: Go ahead.
 	set received_blender = true
@@ -167,11 +173,11 @@ else:
 Virgil: Perfect.
 Virgil: Now, how will you pay for it?
 Virgil: Hm...?
-Virgil: You don't have any money? Nothing?
-Virgil: Oh no, I suppose then you are now indebted to me.
+Virgil: You don't have any money? Nothing to barter?
+Virgil: Oh woe! Alas, I suppose you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: Everything you earn shall be forfeited to me by the end of your journey!
-Virgil: But enough talk, we shall move onward!
+Virgil: We shall discuss the terms and conditions later. For now, we shall move onward!
 - Continue
 	set SignalManager.market_dialogue_ended.emit()
 	=> END

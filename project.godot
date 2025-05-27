@@ -28,6 +28,7 @@ AudioManager="*res://scripts/audio_manager.gd"
 
 general/states=["State"]
 general/balloon_path="res://dialogue/character_balloon.tscn"
+general/uses_dotnet=true
 
 [display]
 
