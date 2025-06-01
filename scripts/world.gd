@@ -9,6 +9,8 @@ func _ready() -> void:
 	Globals.grabbable_fruit_type.append(Enums.Fruit_Type.NONE)
 	if State.circle_num == 1:
 		State.dialogue_ready = true
+	
+	Globals.reset_upgrades()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

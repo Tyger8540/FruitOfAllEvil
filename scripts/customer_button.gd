@@ -71,33 +71,35 @@ func start_leave_sequence() -> void:
 	
 	var bark_string: String = "C" + str(State.circle_num) + "_level_barks_"
 	
-	if $GreenPatienceBar.value > 0:
-		$GreenPatienceTimer.stop()
-		AudioManager.play_sound(self, "res://audio/sfx/Coin_Get.wav", Enums.Audio_Type.SFX)
-		#AudioManager.play_sound(self, "res://audio/sfx/satisfied (2).wav", Enums.Audio_Type.SFX, -10.0)
-		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
-			if not get_parent() is LustCustomer:
+	if not get_parent() is LustCustomer:
+		if $GreenPatienceBar.value > 0:
+			$GreenPatienceTimer.stop()
+			AudioManager.play_sound(self, "res://audio/sfx/Coin_Get.wav", Enums.Audio_Type.SFX)
+			#AudioManager.play_sound(self, "res://audio/sfx/satisfied (2).wav", Enums.Audio_Type.SFX, -10.0)
+			if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
 				get_parent().talk(State.dialogue_file, bark_string + "success", 5.0)
-			elif get_parent().lover.is_completed:
-				get_parent().talk(State.dialogue_file, bark_string + "success", 5.0)
-			$Panel/Label.text = "$" + str(get_parent().sell_value)
-			Globals.money += get_parent().sell_value
+				$Panel/Label.text = "$" + str(get_parent().sell_value)
+				Globals.money += get_parent().sell_value
+			else:
+				$Panel/Label.text = "$" + str(get_parent().sell_value / 2)
+				Globals.money += get_parent().sell_value / 2
+		elif $RedPatienceBar.value > 0:
+			$RedPatienceTimer.stop()
+			AudioManager.play_sound(self, "res://audio/sfx/disatisfied.wav", Enums.Audio_Type.SFX)
+			get_parent().talk(State.dialogue_file, bark_string + "late", 5.0)
+			var i = randi_range(0, late_order_strings.size() - 1)
+			$Panel/Label.text = late_order_strings[i]
 		else:
-			$Panel/Label.text = "$" + str(get_parent().sell_value / 2)
-			Globals.money += get_parent().sell_value / 2
-	elif $RedPatienceBar.value > 0:
-		$RedPatienceTimer.stop()
-		AudioManager.play_sound(self, "res://audio/sfx/disatisfied.wav", Enums.Audio_Type.SFX)
-		if not get_parent() is LustCustomer:
-			get_parent().talk(State.dialogue_file, bark_string + "late", 5.0)
-		elif get_parent().lover.is_completed:
-			get_parent().talk(State.dialogue_file, bark_string + "late", 5.0)
-		var i = randi_range(0, late_order_strings.size() - 1)
-		$Panel/Label.text = late_order_strings[i]
-	else:
-		get_parent().talk(State.dialogue_file, bark_string + "damage", 5.0)
-		var i = randi_range(0, damage_strings.size() - 1)
-		$Panel/Label.text = damage_strings[i]
+			get_parent().talk(State.dialogue_file, bark_string + "damage", 5.0)
+			var i = randi_range(0, damage_strings.size() - 1)
+			$Panel/Label.text = damage_strings[i]
+	else:  # get_parent() is LustCustomer
+		print("pair green value: " + str(get_parent().get_parent().green_patience_bar.value))
+		print("pair red value: " + str(get_parent().get_parent().red_patience_bar.value))
+		if not get_parent().lover.is_completed:
+			return
+		else:  # get_parent().lover.is_completed
+			get_parent().talk(State.dialogue_file, bark_string, 5.0)
 	#$Panel/Label.visible = true
 	if get_parent() is CharonCustomer:
 		get_parent().die()

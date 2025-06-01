@@ -269,14 +269,23 @@ func speed_up_patience_timers() -> void:
 		red_patience_timer.start(new_value)
 
 
+func get_bark() -> String:
+	if green_patience_bar.value > 0:
+		return "success"
+	elif red_patience_bar.value > 0:
+		return "late"
+	else:
+		return "damage"
+
+
 func _on_green_patience_timer_timeout() -> void:
 	red_patience_timer.start()
 
 
 func _on_red_patience_timer_timeout() -> void:
-	SignalManager.life_lost.emit()
-	AudioManager.play_sound(self, "res://audio/sfx/damage (2).wav", Enums.Audio_Type.SFX)
-	lover1.clear_pair()
+	var bark_string: String = "C" + str(State.circle_num) + "_level_barks_"
+	lover1.talk(State.dialogue_file, bark_string, 5.0)
+	$LeaveTimer.start()
 
 
 func _on_dance_timer_timeout() -> void:
@@ -285,3 +294,9 @@ func _on_dance_timer_timeout() -> void:
 
 func _on_dance_intermission_timer_timeout() -> void:
 	pass # Replace with function body.
+
+
+func _on_leave_timer_timeout() -> void:
+	SignalManager.life_lost.emit()
+	AudioManager.play_sound(self, "res://audio/sfx/damage (2).wav", Enums.Audio_Type.SFX)
+	lover1.clear_pair()

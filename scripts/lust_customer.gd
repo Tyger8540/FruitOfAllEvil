@@ -55,6 +55,17 @@ func die() -> void:
 		get_parent().speed_up_patience_timers()
 
 
+func talk(dialogue_file: String, section: String, time: float) -> void:
+	var balloon = CUSTOMER_BALLOON.instantiate()
+	add_child(balloon)
+	balloon.advance_time = time
+	balloon.offset = global_position + Vector2($CustomerButton.size.x / 2.0, -200.0)
+	
+	section = section + get_parent().get_bark()
+	
+	balloon.start(load(dialogue_file), section)
+
+
 func set_sprite(texture: Texture2D) -> void:
 	$Sprite2D.texture = texture
 
