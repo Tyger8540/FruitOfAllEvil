@@ -55,6 +55,8 @@ set SignalManager.cutscene_speaker_changed.emit()
 % Purrrfect!
 % Juicy, juicy flesh!
 % MEOW-some!
+% Cat-tastic!
+% Who needs catnip?
 => END
 
 ~ C0_level_barks_late
@@ -72,6 +74,7 @@ set SignalManager.cutscene_speaker_changed.emit()
 % Your flesh tastes better!
 % What a nice post to sharpen my claws…
 % Bite on this!
+% My paws are itching to scratch... YOU!
 => END
 
 ~ C0_level_virgil
@@ -101,7 +104,7 @@ if location == "market" and vendor == "Virgil"
 - Onward to Next Circle => market_end
 
 ~ market_end
-Are you sure you want to leave?
+Do you want to leave the market and move onto the next circle?
 - Yes
 	set dialogue_file = "res://dialogue/circle1.dialogue"
 	set dialogue_ready = true
@@ -117,7 +120,7 @@ Are you sure you want to leave?
 
 ~ market_virgil_intro
 # Upon first interacting with Virgil's stand, which is mandatory before moving on
-Virgil: Oh salutations, destined traveler!
+Virgil: Salutations, destined traveler!
 Virgil: Welcome to my humble shop.
 Virgil: You shall have the opportunity to restock produce and fancy up your stand.
 Virgil: Hm?
@@ -167,12 +170,12 @@ if received_blender:
 else:
 	# Once you are done and want to exit Virgil's stand, this mandatory text begins.
 	Virgil: Destined traveler, I believe it would be in your best interest to invest in that fruit stand of yours.
-	Virgil: It seems that someone had spread notice of your arrival. It's been making ripples across the circles.
-	Virgil: Now, everyone in Hell is craving for a taste of your fruits.
-	Virgil: Since yours had broken during your great fall, I suggest you take this trusty blender of mine.
+	Virgil: It seems that someone has spread notice of your arrival. It's been making ripples across the circles.
+	Virgil: Now, everyone in Hell is craving a taste for your fruits.
+	Virgil: Since yours broke during your great fall, I suggest you take this trusty blender of mine.
 	Virgil: Go ahead.
 	set received_blender = true
-	- Continue => market_virgil_end2 
+	- Take Blender => market_virgil_end2 
 
 ~ market_virgil_end2
 # The player will drag and "purchase" the blender, which will be used for gameplay in the next Circle
@@ -182,7 +185,7 @@ Virgil: Hm...?
 Virgil: You don't have any money? Nothing to barter?
 Virgil: Oh woe! Alas, I suppose you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
-Virgil: Everything you earn shall be forfeited to me by the end of your journey!
+Virgil: You shall forfeit to me everything you earned by the end of your journey!
 Virgil: We shall discuss the terms and conditions later. For now, we shall move onward!
 - Continue
 	set SignalManager.market_dialogue_ended.emit()

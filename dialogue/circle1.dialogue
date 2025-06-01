@@ -35,7 +35,7 @@ set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 # the first dialogue that begins at the fruit stand screen
 set cutscene_speaker = "Charon"
 set SignalManager.cutscene_speaker_changed.emit()
-"ALL HOPE ABANDON YE WHO ENTER HERE."
+"ALL HOPE ABANDON, YE WHO ENTER HERE."
 set cutscene_speaker = "Virgil"
 set SignalManager.cutscene_speaker_changed.emit()
 Virgil: ...Oh Charon, you are as harrowing as ever.
@@ -106,6 +106,8 @@ set cutscene_speaker = "Charon"
 % Thank God I’m in Hell!
 % What a divine taste…
 % Six stars!
+% The suffering was worth it...
+% I have ascended...
 => END
 
 ~ C1_level_barks_late
@@ -115,6 +117,7 @@ set cutscene_speaker = "Charon"
 % Time felt very slow just now.
 % Good luck dealing with Lucifer.
 % Humans really are inefficient creatures…
+% This ain't it...
 => END
 
 ~ C1_level_barks_damage
@@ -124,6 +127,7 @@ set cutscene_speaker = "Charon"
 % Could’ve done it myself.
 % Incompetent service.
 % Zero stars.
+% I'll throw you into the river!
 => END
 
 ~ C1_level_charon
@@ -182,7 +186,7 @@ Virgil: As harrowing as ever... Destined traveler, I shall meet you in the next 
 set cutscene_speaker = "Charon"
 set SignalManager.cutscene_speaker_changed.emit()
 ...
-Charon: Ugh, what an abhorent man... You, living soul.
+Charon: Ugh, what an abhorrent man... You, living soul.
 Charon: Let us hope you do not meet the same fate as the previous ones he brought over.
 - Continue
 	set location = "market"
@@ -204,7 +208,7 @@ Charon: Let us hope you do not meet the same fate as the previous ones he brough
 - Onward to Next Circle => market_end
 
 ~ market_end
-Are you sure you want to leave?
+Do you want to leave the market and move onto the next circle?
 - Yes
 	set dialogue_file = "res://dialogue/circle2.dialogue"
 	set dialogue_ready = true
@@ -305,7 +309,7 @@ Ovid: And your payments shall transform me!
 	Ovid: Oh, the man who follows you around? Quite a handsome fellow.
 	Ovid: Hm... His face seems very familiar to me.
 	Ovid: He and I might've known each other, when we were both residing on Earth.
-	Ovid: But I suppose that's been a long time ago... We're complete strangers at this point.
+	Ovid: But I suppose that was a long time ago... We're complete strangers at this point.
 	=> market_ovid_chat
 - Back => market_ovid_default
 
