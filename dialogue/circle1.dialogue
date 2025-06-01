@@ -134,6 +134,7 @@ Charon: And do not disappoint me.
 set section = "C1_level_charon2"
 set boss_queued = true
 set cutscene_speaker = "Charon"
+set SignalManager.day_started.emit()
 => END
 #- Continue => C1_level_charon2
 

@@ -62,6 +62,8 @@ func handle_input() -> void:
 					pass
 				"Francesca":
 					pass
+				"DJ Virgil":
+					pass
 				"":
 					pass
 				_:

@@ -27,90 +27,109 @@ func start_day() -> void:
 	var value_array: Array[int]
 	var wait_time: float
 	
+	if State.level_defeated:
+		finish_day()
+		return
+	
 	cur_wave += 1
 	# setup for every day (15 for demo)
 	match State.circle_num:
 		0:
 			match cur_wave:
+				#1:
+					#num_items = 5
+					#difficulty_array = [1, 1, 1, 1, 1]
+					#patience_array = [1, 1, 1, 1, 1]
+					#wait_time = 4.0
+				#2:
+					#num_items = 7
+					#difficulty_array = [1, 2, 2, 4, 4, 5, 5]
+					#patience_array = [1, 1, 1, 1, 1, 1, 1]
+					#wait_time = 5.0
+				#3:
+					#num_items = 10
+					#difficulty_array = [1, 2, 5, 4, 2, 5, 4, 2, 1, 5]
+					#patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					#wait_time = 6.0
 				1:
-					num_items = 5
-					difficulty_array = [1, 1, 1, 1, 1]
-					patience_array = [1, 1, 1, 1, 1]
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
 					wait_time = 4.0
 				2:
-					num_items = 7
-					difficulty_array = [1, 2, 2, 4, 4, 5, 5]
-					patience_array = [1, 1, 1, 1, 1, 1, 1]
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
 					wait_time = 5.0
 				3:
-					num_items = 10
-					difficulty_array = [1, 2, 5, 4, 2, 5, 4, 2, 1, 5]
-					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
 					wait_time = 6.0
 		1:
 			match cur_wave:
-				#1:
-					#num_items = 1
-					#difficulty_array = [1]
-					#patience_array = [1]
-					#wait_time = 4.0
-				#2:
-					#num_items = 1
-					#difficulty_array = [1]
-					#patience_array = [1]
-					#wait_time = 4.0
-				#3:
-					#num_items = 1
-					#difficulty_array = [1]
-					#patience_array = [1]
-					#wait_time = 4.0
 				1:
-					num_items = 5
-					difficulty_array = [3, 6, 6, 3, 6]
-					patience_array = [1, 1, 1, 1, 1]
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
 					wait_time = 4.0
 				2:
-					num_items = 7
-					difficulty_array = [3, 5, 6, 7, 2, 4, 8]
-					patience_array = [1, 1, 1, 1, 1, 1, 1]
-					wait_time = 5.0
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
+					wait_time = 4.0
 				3:
-					num_items = 10
-					difficulty_array = [4, 9, 6, 8, 5, 7, 9, 6, 8, 5]
-					patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-					wait_time = 6.0
-		2:
-			match cur_wave:
-				1:
-					num_items = 12
-					difficulty_array = [7, 9, 8, 10, 11, 11, 9, 10, 8, 11, 8, 12]
-					patience_array = [3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]
-					wait_time = 5.0
-				2:
-					num_items = 12
-					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
-					patience_array = [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3]
-					wait_time = 5.0
-				3:
-					num_items = 12
-					difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
-					patience_array = [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4]
-					wait_time = 5.0
+					num_items = 1
+					difficulty_array = [1]
+					patience_array = [1]
+					wait_time = 4.0
 				#1:
-					#num_items = 2
-					#difficulty_array = [1, 1]
-					#patience_array = [1, 1]
-					#wait_time = 5.0
+					#num_items = 5
+					#difficulty_array = [3, 6, 6, 3, 6]
+					#patience_array = [1, 1, 1, 1, 1]
+					#wait_time = 4.0
 				#2:
-					#num_items = 2
-					#difficulty_array = [1, 1]
-					#patience_array = [1, 1]
+					#num_items = 7
+					#difficulty_array = [3, 5, 6, 7, 2, 4, 8]
+					#patience_array = [1, 1, 1, 1, 1, 1, 1]
 					#wait_time = 5.0
 				#3:
-					#num_items = 2
-					#difficulty_array = [1, 1]
-					#patience_array = [1, 1]
+					#num_items = 10
+					#difficulty_array = [4, 9, 6, 8, 5, 7, 9, 6, 8, 5]
+					#patience_array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+					#wait_time = 6.0
+		2:
+			match cur_wave:
+				#1:
+					#num_items = 12
+					#difficulty_array = [7, 9, 8, 10, 11, 11, 9, 10, 8, 11, 8, 12]
+					#patience_array = [3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]
 					#wait_time = 5.0
+				#2:
+					#num_items = 12
+					#difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
+					#patience_array = [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3]
+					#wait_time = 5.0
+				#3:
+					#num_items = 12
+					#difficulty_array = [10, 10, 11, 12, 12, 11, 10, 10, 11, 11, 11, 12]
+					#patience_array = [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4]
+					#wait_time = 5.0
+				1:
+					num_items = 2
+					difficulty_array = [1, 1]
+					patience_array = [1, 1]
+					wait_time = 5.0
+				2:
+					num_items = 2
+					difficulty_array = [1, 1]
+					patience_array = [1, 1]
+					wait_time = 5.0
+				3:
+					num_items = 2
+					difficulty_array = [1, 1]
+					patience_array = [1, 1]
+					wait_time = 5.0
 		3:
 			match cur_wave:
 				1:

@@ -45,6 +45,9 @@ func _on_button_up() -> void:
 		if State.vendor == "Virgil" and not State.talked_to_virgil:
 			State.section = "market_virgil_intro"
 			State.talked_to_virgil = true
+		elif State.vendor == "DJ Virgil":
+			print("DJ Virgil")
+			State.section = "market_virgil_default"
 		else:
 			State.section = "market_" + State.vendor.to_lower() + "_default"
 		State.dialogue_ready = true

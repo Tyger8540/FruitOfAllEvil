@@ -42,7 +42,7 @@ func create_customer(difficulty_level: int, patience_level: int, value: int) -> 
 
 
 func create_customer_queue(difficulty_array: Array[int], patience_array: Array[int], value_array: Array[int], waiting_time: float) -> void:
-	difficulty_queue = difficulty_array
+	difficulty_queue = difficulty_array 
 	patience_queue = patience_array
 	value_queue = value_array
 	customer_timer.wait_time = waiting_time
