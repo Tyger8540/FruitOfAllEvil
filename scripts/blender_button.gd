@@ -24,6 +24,9 @@ func on_day_start() -> void:
 
 
 func on_upgrade_purchased() -> void:
+	print("upgrade purchased")
+	if State.circle_num == 0 and State.location != "market":
+		Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] = -1
 	if Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] >= index and !visible:
 		visible = true
 

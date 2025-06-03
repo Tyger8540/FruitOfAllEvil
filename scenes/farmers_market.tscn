@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b16mrjlcqcw2s"]
+[gd_scene load_steps=11 format=3 uid="uid://b16mrjlcqcw2s"]
 
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="1_qn2do"]
 [ext_resource type="PackedScene" uid="uid://ccbc0jxtrsw51" path="res://scenes/farmers_market_camera.tscn" id="2_ial2i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c2nk5q4x8qs2o" path="res://final_art/Sidescroll_arrow_right.png" id="7_7b3oy"]
 [ext_resource type="Texture2D" uid="uid://ctktm0jjcufli" path="res://final_art/Sidescroll_arrow_up.png" id="8_30yfo"]
 [ext_resource type="Texture2D" uid="uid://dvt53ihscorqp" path="res://final_art/Sidescroll_arrow_down.png" id="9_de3mi"]
+[ext_resource type="PackedScene" uid="uid://c775rdfnsrgot" path="res://scenes/fruit_stand.tscn" id="10_5dpur"]
 [ext_resource type="PackedScene" uid="uid://h2mxmd3rs5uj" path="res://scenes/vendor_button.tscn" id="10_8370b"]
 
 [node name="FarmersMarket" type="Node2D"]
@@ -88,3 +89,6 @@ offset_left = 704.0
 offset_top = 284.0
 offset_right = 1216.0
 offset_bottom = 796.0
+
+[node name="FruitStand" parent="." instance=ExtResource("10_5dpur")]
+position = Vector2(0, -270)

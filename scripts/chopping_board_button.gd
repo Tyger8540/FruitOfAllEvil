@@ -20,6 +20,10 @@ func on_day_start() -> void:
 
 
 func on_upgrade_purchased() -> void:
+	if State.circle_num == 0 and not State.received_blender:
+		get_parent().position = Vector2(-72.0, 25.0)
+	else:
+		get_parent().position = Vector2(116.0, 25.0)
 	if Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] >= index and !visible:
 		visible = true
 

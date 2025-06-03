@@ -61,6 +61,8 @@ func _process(delta: float) -> void:
 
 func initialize(texture: Texture2D, difficulty_level: int, patience_level: int, patience_time: float, value: int, new_customer_index: int) -> void:
 	$Sprite2D.texture = texture
+	if State.circle_num == 0:
+		$Sprite2D.position.x = 0.0
 	difficulty = difficulty_level
 	patience = patience_level
 	sell_value = value

@@ -1,10 +1,5 @@
 ~ C2_intro
-set circle_num = 2
-set location = "level"
-set section = "C2_level_intro"
-#set dialogue_ready = true
-set cutscene_speaker = "Francesca"
-set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
+=> C2_level_intro
 
 ~ C2_intro1
 
@@ -62,6 +57,12 @@ set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 
 ~ C2_level_intro
 # This is a talk with Francesca.
+set circle_num = 2
+set location = "level"
+set section = "C2_level_intro"
+set dialogue_ready = true
+set cutscene_speaker = "Francesca"
+set SignalManager.cutscene_speaker_changed.emit()
 ...
 ???: Hello? Danny?
 ???: Oh, you have awakened! This is Francesca.
@@ -185,12 +186,11 @@ Francesca: Oh? You're not in a relationship with that man, Virgil?
 Francesca: It's more of a business relationship? Oh my apologies, I have been mistaken.
 Francesca: Danny, are you... feeling well? You look gloomy all of the sudden.
 Francesca: Workers' rights...? Unfortunately, I do not believe any of that exists in Hell...
-- Continue
-	set location = "market"
-	set section = "C2_market"
-	set level_defeated = false
-	set cutscene_speaker = ""
-	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+set location = "market"
+set section = "C2_market"
+set level_defeated = false
+set cutscene_speaker = ""
+set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
 => END
 
 ~ C2_market
@@ -213,7 +213,7 @@ Do you want to leave the market and move onto the next circle?
 	set location = "intro"
 	set section = "C3_intro"
 	set talked_to_virgil = false
-	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 	=> END
 - No
 	set SignalManager.market_dialogue_ended.emit()
@@ -224,7 +224,7 @@ Do you want to leave the market and move onto the next circle?
 
 ~ market_virgil_default
 Virgil: Welcome to Paradise Lust, destined traveler.
-- Shop => market_virgil_shop
+#- Shop => market_virgil_shop
 - Chat => market_virgil_chat
 - Exit => market_virgil_end
 
@@ -235,7 +235,7 @@ Virgil: What seems ripe for the picking?
 
 ~ market_virgil_shop_thanks
 Virgil: Thank you for your patronage.
-- Continue => market_virgil_shop
+=> market_virgil_shop
 
 ~ market_virgil_chat
 - Where did you even get the DJ stuff?
@@ -265,7 +265,7 @@ set SignalManager.market_dialogue_ended.emit()
 
 ~ market_francesca_default
 Francesca: Oh Danny, what an honor to see you again!
-- Shop => market_francesca_shop
+#- Shop => market_francesca_shop
 - Chat => market_francesca_chat
 - Exit => market_francesca_end
 
@@ -276,7 +276,7 @@ Francesca: These goods are somewhat shabby, but imbued with lots of love.
 
 ~ market_francesca_shop_thanks
 Francesca: You shall get what you desire! 
-- Continue => market_francesca_shop
+=> market_francesca_shop
 
 ~ market_francesca_chat
 - Where is Paolo?

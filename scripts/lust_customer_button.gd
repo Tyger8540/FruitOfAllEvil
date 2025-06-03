@@ -33,6 +33,22 @@ func _process(delta: float) -> void:
 		sprite_2d.modulate.v = LOW_FADE_BOUND
 
 
+func start_leave_sequence() -> void:
+	if get_parent().lover.is_completed:
+		get_parent().pause_timers()
+	
+	var bark_string: String = "C" + str(State.circle_num) + "_level_barks_"
+	
+	if not get_parent().lover.is_completed:
+		return
+	else:  # get_parent().lover.is_completed
+		get_parent().talk(State.dialogue_file, bark_string, 5.0)
+	
+	get_parent().get_parent().add_money()
+	
+	$LeaveTimer.start()
+
+
 func set_highlight(mouse_entered: bool) -> void:
 	var pair = get_parent().get_parent()
 	if mouse_entered:

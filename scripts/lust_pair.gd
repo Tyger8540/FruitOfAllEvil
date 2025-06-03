@@ -278,6 +278,18 @@ func get_bark() -> String:
 		return "damage"
 
 
+func add_money() -> void:
+	if $GreenPatienceBar.value > 0:
+		$GreenPatienceTimer.stop()
+		AudioManager.play_sound(self, "res://audio/sfx/Coin_Get.wav", Enums.Audio_Type.SFX)
+		if $GreenPatienceBar.value >= $GreenPatienceTimer.wait_time / 2:
+			Globals.money = Globals.money + lover1.sell_value + lover2.sell_value
+		else:
+			Globals.money = Globals.money + lover1.sell_value / 2 + lover2.sell_value / 2
+	elif $RedPatienceBar.value > 0:
+		AudioManager.play_sound(self, "res://audio/sfx/disatisfied.wav", Enums.Audio_Type.SFX)
+
+
 func _on_green_patience_timer_timeout() -> void:
 	red_patience_timer.start()
 

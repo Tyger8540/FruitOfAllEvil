@@ -23,16 +23,16 @@
 #"You see, this traveler here is on a journey to give Lucifer the greatest drink of all kind..."
 #"Don't you and your folks want a little sip?"
 #Charon and the tormented souls surrounding him looked at each other, a curiosity growing in their brows...
+=> C1_level_intro
+
+~ C1_level_intro
+# the first dialogue that begins at the fruit stand screen
 set circle_num = 1
 set location = "level"
 #set section = "C1_level_virgil1"
 set section = "C1_level_intro"
 set cutscene_speaker = "Virgil"
-set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
-=> END
-
-~ C1_level_intro
-# the first dialogue that begins at the fruit stand screen
+set dialogue_ready = true
 set cutscene_speaker = "Charon"
 set SignalManager.cutscene_speaker_changed.emit()
 "ALL HOPE ABANDON, YE WHO ENTER HERE."
@@ -90,7 +90,7 @@ Virgil: You see, I have grown quite lonely at my stand, waiting for you to serve
 Virgil: So I have decided to open up a special stand, exclusively for you!
 Virgil: Whenever you get the chance to take a break, I'll be here to offer you some exquisite deals.
 Virgil: These deals can upgrade your equipment, fruit stand, you name it... Of course, for a small fee.
-Virgil: But don't get too attached! These effects only last for this circle.
+Virgil: But don't get too attached! Some of these effects only last for this circle.
 Virgil: Likewise, disatisfied customers may leave disgruntled and damage your stand.
 Virgil: I, of course, shall repair your cart at the end of your shift...
 Virgil: Of course, for a small fee.
@@ -188,13 +188,12 @@ set SignalManager.cutscene_speaker_changed.emit()
 ...
 Charon: Ugh, what an abhorrent man... You, living soul.
 Charon: Let us hope you do not meet the same fate as the previous ones he brought over.
-- Continue
-	set location = "market"
-	set section = "C1_market"
-	set level_defeated = false
-	set cutscene_speaker = ""
-	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
-	=> END
+set location = "market"
+set section = "C1_market"
+set level_defeated = false
+set cutscene_speaker = ""
+set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+=> END
 
 ~ C1_market
 - Virgil's Stand
@@ -211,12 +210,12 @@ Charon: Let us hope you do not meet the same fate as the previous ones he brough
 Do you want to leave the market and move onto the next circle?
 - Yes
 	set dialogue_file = "res://dialogue/circle2.dialogue"
-	set dialogue_ready = true
-	set location = "intro"
-	set section = "C2_intro"
+	set location = "level"
+	set section = "C2_level_intro"
 	set talked_to_virgil = false
 	set circle_num = 2
-	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	set dialogue_ready = true
+	set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 	=> END
 - No
 	set SignalManager.market_dialogue_ended.emit()
@@ -237,7 +236,7 @@ Virgil: After you purchase something from me, of course.
 
 ~ market_virgil_default
 Virgil: Welcome to my humble stand, destined traveler.
-- Shop => market_virgil_shop
+#- Shop => market_virgil_shop
 - Chat => market_virgil_chat
 - Exit => market_virgil_end
 
@@ -248,7 +247,7 @@ Virgil: What seems ripe for the picking?
 
 ~ market_virgil_shop_thanks
 Virgil: Thank you for your patronage.
-- Continue => market_virgil_shop
+=> market_virgil_shop
 
 ~ market_virgil_chat
 - Charon was an interesting fellow.
@@ -279,7 +278,7 @@ set SignalManager.market_dialogue_ended.emit()
 
 ~ market_ovid_default
 Ovid: Welcome to our castle grounds, traveler! Let me aid you in your journey...
-- Shop => market_ovid_shop
+#- Shop => market_ovid_shop
 - Chat => market_ovid_chat
 - Exit => market_ovid_end
 
@@ -290,7 +289,7 @@ Ovid: These goods shall transform you...
 
 ~ market_ovid_shop_thanks
 Ovid: And your payments shall transform me!
-- Continue => market_ovid_shop
+=> market_ovid_shop
 
 ~ market_ovid_chat
 - Why are you here?

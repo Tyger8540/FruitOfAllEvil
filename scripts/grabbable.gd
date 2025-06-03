@@ -17,6 +17,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# needs to followe the mouse when it is currently grabbed!
 	global_position = get_global_mouse_position()
+	if Input.is_action_just_pressed("right_click"):
+		SignalManager.grabbable_placed.emit()
 
 
 func initialize(fruit_types: Array[Enums.Fruit_Type], grabbable_type: Enums.Grabbable_Type):

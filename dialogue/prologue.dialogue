@@ -24,7 +24,9 @@
 #It called up its friends, and now there were a bunch of beasts staring at Danny Pilgrim and their unassuming fruit stand...
 set location = "level"
 set section = "C0_level_virgil"
-set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
+#set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
+set AudioManager.stop_music()
+set AudioManager.play_sound(self, "res://audio/music/Fruit evail BG_1.wav", Enums.Audio_Type.MUSIC)
 => END
 #- Continue => C0_level_virgil
 
@@ -91,9 +93,8 @@ Virgil: Nine circles separate us from our supreme ruler, so let us make haste!
 set location = "market"
 set section = "C0_market"
 set State.level_defeated = false
-- Continue
-	set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
-	=> END
+set get_tree().change_scene_to_file("res://scenes/farmers_market.tscn")
+=> END
 
 ~ C0_market
 if location == "market" and vendor == "Virgil"
@@ -107,12 +108,12 @@ if location == "market" and vendor == "Virgil"
 Do you want to leave the market and move onto the next circle?
 - Yes
 	set dialogue_file = "res://dialogue/circle1.dialogue"
-	set dialogue_ready = true
-	set location = "intro"
-	set section = "C1_intro"
+	set location = "level"
+	set section = "C1_level_intro"
 	set talked_to_virgil = false
 	set circle_num = 1
-	set get_tree().change_scene_to_file("res://scenes/fullscreen_cutscene.tscn")
+	set dialogue_ready = true
+	set get_tree().change_scene_to_file("res://scenes/poster_intro.tscn")
 	=> END
 - No
 	set SignalManager.market_dialogue_ended.emit()
@@ -127,7 +128,7 @@ Virgil: Hm?
 Virgil: Where are you?
 Virgil: Why, you're at the entrance of Hell!
 Virgil: Shortly, we shall venture into the first circle of Hell...
-- Continue => market_virgil_default
+=> market_virgil_default
 
 ~ market_virgil_default
 Virgil: Welcome to my humble stand, destined traveler.
@@ -175,6 +176,8 @@ else:
 	Virgil: Since yours broke during your great fall, I suggest you take this trusty blender of mine.
 	Virgil: Go ahead.
 	set received_blender = true
+	set Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] = 0
+	set SignalManager.upgrade_purchased.emit()
 	- Take Blender => market_virgil_end2 
 
 ~ market_virgil_end2
@@ -187,6 +190,5 @@ Virgil: Oh woe! Alas, I suppose you are now indebted to me.
 Virgil: For my services as your guide, and for the goods you have taken from me...
 Virgil: You shall forfeit to me everything you earned by the end of your journey!
 Virgil: We shall discuss the terms and conditions later. For now, we shall move onward!
-- Continue
-	set SignalManager.market_dialogue_ended.emit()
-	=> END
+set SignalManager.market_dialogue_ended.emit()
+=> END

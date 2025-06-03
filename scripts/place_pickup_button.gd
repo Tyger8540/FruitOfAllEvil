@@ -84,6 +84,7 @@ func _ready() -> void:
 		temp_fruits.append(Enums.Fruit_Type.NONE)
 		temp_grab_types.append(Enums.Grabbable_Type.NONE)
 	
+	on_upgrade_purchased()
 	on_day_start()
 
 

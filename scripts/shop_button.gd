@@ -23,23 +23,23 @@ func initialize(upgrade_type: Enums.Upgrade_Type) -> void:
 func set_up_button() -> void:
 	match upgrade:
 		Enums.Upgrade_Type.MORE_PATIENCE:
-			$Label.text = "+ Patience"
+			$Label.text = "+ Patience (" + str(Globals.upgrade_level[Enums.Upgrade_Type.MORE_PATIENCE] + 1) + ")"
 			price = 50 + (100 * Globals.upgrade_level[Enums.Upgrade_Type.MORE_PATIENCE])
 			$PricePanel/Label.text = "$" + str(price)
 		Enums.Upgrade_Type.CHOPPING_BOARD:
-			$Label.text = "+ Chop Board"
+			$Label.text = "+ Chop Board (" + str(Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] + 1) + ") [PERMANENT]"
 			price = 200 + (200 * Globals.upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD])
 			$PricePanel/Label.text = "$" + str(price)
 		Enums.Upgrade_Type.CHOP_SPEED:
-			$Label.text = "+ Chop Speed"
+			$Label.text = "+ Chop Speed (" + str(Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED] + 1) + ")"
 			price = 25 + (50 * Globals.upgrade_level[Enums.Upgrade_Type.CHOP_SPEED])
 			$PricePanel/Label.text = "$" + str(price)
 		Enums.Upgrade_Type.BLENDER:
-			$Label.text = "+ Blender"
+			$Label.text = "+ Blender (" + str(Globals.upgrade_level[Enums.Upgrade_Type.BLENDER] + 1) + ") [PERMANENT]"
 			price = 250 + (250 * Globals.upgrade_level[Enums.Upgrade_Type.BLENDER])
 			$PricePanel/Label.text = "$" + str(price)
 		Enums.Upgrade_Type.BLEND_SPEED:
-			$Label.text = "+ Blend Speed"
+			$Label.text = "+ Blend Speed (" + str(Globals.upgrade_level[Enums.Upgrade_Type.BLEND_SPEED] + 1) + ")"
 			price = 50 + (75 * Globals.upgrade_level[Enums.Upgrade_Type.BLEND_SPEED])
 			$PricePanel/Label.text = "$" + str(price)
 		Enums.Upgrade_Type.NONE:

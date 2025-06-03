@@ -117,7 +117,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
+	#pass
+	
+	if get_parent() is Customer:
+		offset = get_parent().global_position + Vector2(68.0, -200.0)
 	
 	#if get_parent() is Customer:
 		#offset = get_parent().position + Vector2(0.0, -200.0)

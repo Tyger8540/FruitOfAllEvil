@@ -113,7 +113,7 @@ var vendor_sprites: Dictionary = {
 
 func reset_upgrades() -> void:
 	upgrade_level[Enums.Upgrade_Type.MORE_PATIENCE] = 0
-	upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] = 0
+	#upgrade_level[Enums.Upgrade_Type.CHOPPING_BOARD] = 0
 	upgrade_level[Enums.Upgrade_Type.CHOP_SPEED] = 0
-	upgrade_level[Enums.Upgrade_Type.BLENDER] = 0
+	#upgrade_level[Enums.Upgrade_Type.BLENDER] = 0
 	upgrade_level[Enums.Upgrade_Type.BLEND_SPEED] = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b404ka0y0mvfw"]
+[gd_scene load_steps=28 format=3 uid="uid://b404ka0y0mvfw"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_4h2xc"]
 [ext_resource type="PackedScene" uid="uid://bvbjao5jxixwa" path="res://scenes/dialogue_controller.tscn" id="2_qxvf6"]
@@ -25,13 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://2v4o3pbq7le5" path="res://art/fruit/Plum.png" id="25_b58im"]
 [ext_resource type="Script" path="res://scripts/gui.gd" id="26_yitsu"]
 [ext_resource type="Texture2D" uid="uid://beg37axtrn03c" path="res://art/other/Heart.png" id="27_w8ryw"]
-[ext_resource type="AudioStream" uid="uid://b38u0comlejwc" path="res://audio/music/Fruit evail BG_1.wav" id="28_mavxd"]
-[ext_resource type="AudioStream" uid="uid://cl3jq3nbl471b" path="res://audio/sfx/Blender.wav" id="29_1718w"]
-[ext_resource type="AudioStream" uid="uid://c6j3f1w7s3j3b" path="res://audio/sfx/Cut.wav" id="30_wwwoi"]
-[ext_resource type="AudioStream" uid="uid://dtj68c0gb0wb2" path="res://audio/sfx/Drop.wav" id="31_jjey4"]
-[ext_resource type="AudioStream" uid="uid://ghggicnsu0h4" path="res://audio/sfx/Grab.wav" id="32_j21x4"]
-[ext_resource type="AudioStream" uid="uid://bdkg108j0jao2" path="res://audio/sfx/Place or Grab_backup.wav" id="33_882y8"]
-[ext_resource type="AudioStream" uid="uid://cdh1tac266iqg" path="res://audio/sfx/Ding_Customer.wav" id="34_5rnyc"]
 [ext_resource type="Texture2D" uid="uid://kip3ja1vh3gw" path="res://final_art/Dark Forest (Tester).png" id="34_ysxdh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68bps"]
@@ -127,7 +120,7 @@ texture = ExtResource("10_emxwy")
 [node name="WaveManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_of06s")
-num_waves = 3
+num_waves = 2
 
 [node name="FruitStand" parent="." instance=ExtResource("10_0klyp")]
 
@@ -452,41 +445,6 @@ offset_top = 71.0
 offset_right = 132.0
 offset_bottom = 94.0
 text = "Money: $"
-
-[node name="Music" type="Node2D" parent="."]
-
-[node name="FruitEvailBg1" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("28_mavxd")
-volume_db = -25.0
-autoplay = true
-
-[node name="Sounds" type="Node2D" parent="."]
-
-[node name="Blender" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("29_1718w")
-volume_db = -10.0
-
-[node name="Cut" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("30_wwwoi")
-
-[node name="Drop" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("31_jjey4")
-
-[node name="Grab" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("32_j21x4")
-
-[node name="PlaceOrGrabBackup" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("33_882y8")
-
-[node name="DingCustomer" type="AudioStreamPlayer" parent="Sounds"]
-unique_name_in_owner = true
-stream = ExtResource("34_5rnyc")
-volume_db = -20.0
 
 [connection signal="button_up" from="ShopManager/Background/StartDayButton" to="ShopManager/Background/StartDayButton" method="_on_button_up"]
 [connection signal="timeout" from="CustomerManager/CustomerTimer" to="CustomerManager" method="_on_customer_timer_timeout"]

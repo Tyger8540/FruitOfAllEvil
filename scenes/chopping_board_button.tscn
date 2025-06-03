@@ -21,6 +21,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyslv"]
 
 [node name="ChoppingBoardButton" type="Button"]
+custom_minimum_size = Vector2(144, 89)
 layout_direction = 2
 offset_right = 144.0
 offset_bottom = 89.0

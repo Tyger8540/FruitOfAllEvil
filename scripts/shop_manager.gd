@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	SignalManager.day_started.connect(on_day_start)
 	SignalManager.day_ended.connect(on_day_end)
+	SignalManager.upgrade_purchased.emit()
 
 
 func on_day_start() -> void:
