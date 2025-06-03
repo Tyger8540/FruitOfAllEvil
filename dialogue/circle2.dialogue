@@ -94,7 +94,8 @@ Francesca: Anyways, before I go, he wanted me to deliver a note to you. Here it 
 % Kept us waiting, huh?
 % This… is not bad.
 % Hush dear, let us keep to ourselves.
-% Wait times could’ve been better. 
+% Wait times could’ve been better.
+% Our disappointment is immeasurable.
 => END
 
 ~ C2_level_barks_damage
@@ -103,6 +104,7 @@ Francesca: Anyways, before I go, he wanted me to deliver a note to you. Here it 
 % Bad service ruins the mood...
 % I would like to speak to your manager...
 % Dear, don’t throw your shoes!
+% Our day is ruined.
 => END
 
 ~ C2_level_virgil1
@@ -203,7 +205,7 @@ Francesca: Workers' rights...? Unfortunately, I do not believe any of that exist
 - Onward to Next Circle => market_end
 
 ~ market_end
-Are you sure you want to leave?
+Do you want to leave the market and move onto the next circle?
 - Yes
 	set get_tree().quit()
 	set dialogue_file = "res://dialogue/circle3.dialogue"
