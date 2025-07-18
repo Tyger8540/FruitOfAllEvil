@@ -146,7 +146,7 @@ func on_speaker_changed() -> void:
 		"Charon":
 			set_speaker("res://final_art/Charon_Solo_360h.png")
 		"Francesca":
-			set_speaker("res://final_art/LoverF-Back.png")
+			set_speaker("res://final_art/Francesca.png")
 
 
 ## Start some dialogue

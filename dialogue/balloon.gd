@@ -108,6 +108,8 @@ func _ready() -> void:
 				$Speaker.texture = load("res://final_art/DJ_Virgil.png")
 			"Charon":
 				$Speaker.texture = load("res://final_art/Charon_Solo_360h.png")
+			"Francesca":
+				$Speaker.texture = load("res://final_art/Francesca.png")
 	
 	if State.current_boss == "Charon":
 		$AdvanceDialogueTimer.start(advance_time)

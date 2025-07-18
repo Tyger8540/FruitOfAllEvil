@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/charon_customer.gd" id="1_8shtn"]
 [ext_resource type="Texture2D" uid="uid://b8b6hf1rf2kye" path="res://final_art/grotesquelimbo_sadge_360.png" id="2_7h746"]
 [ext_resource type="Script" path="res://scripts/customer_button.gd" id="3_61vco"]
-[ext_resource type="Texture2D" uid="uid://byej5f8nhai73" path="res://art/other/Bar BG.png" id="4_bo1m8"]
-[ext_resource type="Texture2D" uid="uid://cbo7wcailnr6e" path="res://art/other/Bar Red.png" id="5_v3tci"]
-[ext_resource type="Texture2D" uid="uid://cwbalcxil1l4x" path="res://art/other/Bar Green.png" id="6_pf3v0"]
+[ext_resource type="Texture2D" uid="uid://bpb8fga18m830" path="res://final_art/BlackBar.png" id="4_q8hyk"]
+[ext_resource type="Texture2D" uid="uid://daoofjwd0kohc" path="res://final_art/RedBar.png" id="5_x8h77"]
+[ext_resource type="Texture2D" uid="uid://ykkxp5pxdpim" path="res://final_art/GreenBar.png" id="6_8frtu"]
 [ext_resource type="PackedScene" uid="uid://cgrky05cppge6" path="res://scenes/grabbable_texture.tscn" id="7_164mp"]
 [ext_resource type="Texture2D" uid="uid://dqkhmo51pfv3e" path="res://placeholder_art/Checkmark.png" id="7_wgbdq"]
 
@@ -37,10 +37,10 @@ offset_left = 4.0
 offset_top = -36.0
 offset_right = 36.0
 offset_bottom = -28.0
-scale = Vector2(4, 4)
+scale = Vector2(0.7, 1)
 value = 100.0
-texture_under = ExtResource("4_bo1m8")
-texture_progress = ExtResource("5_v3tci")
+texture_under = ExtResource("4_q8hyk")
+texture_progress = ExtResource("5_x8h77")
 
 [node name="GreenPatienceBar" type="TextureProgressBar" parent="CustomerButton"]
 visible = false
@@ -49,9 +49,9 @@ offset_left = 4.0
 offset_top = -36.0
 offset_right = 36.0
 offset_bottom = -28.0
-scale = Vector2(4, 4)
+scale = Vector2(0.7, 1)
 value = 100.0
-texture_progress = ExtResource("6_pf3v0")
+texture_progress = ExtResource("6_8frtu")
 
 [node name="RedPatienceTimer" type="Timer" parent="CustomerButton"]
 one_shot = true

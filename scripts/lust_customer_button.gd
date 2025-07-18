@@ -64,9 +64,13 @@ func set_highlight(mouse_entered: bool) -> void:
 				if result["needed"]:
 					# Customer button is highlighted when trying to give an item they want
 					highlighting = true
-					#sprite_2d.scale *= SCALE_FACTOR
-					#sprite_2d.position.y += 40.0
+					sprite_2d.scale *= SCALE_FACTOR
+					sprite_2d.position.y += 40.0
 					#scale *= SCALE_FACTOR
+					#get_parent().lover.highlighting = true
+					get_parent().lover.customer_button.sprite_2d.scale *= SCALE_FACTOR
+					get_parent().lover.customer_button.sprite_2d.position.y += 40.0
+					#get_parent().lover.customer_button
 	else:
 		# Mouse exited
 		hovering = false
@@ -81,6 +85,11 @@ func set_highlight(mouse_entered: bool) -> void:
 					highlighting = false
 					sprite_2d.modulate.v = LOW_HIGHLIGHT_BOUND
 					#modulate.v = LOW_HIGHLIGHT_BOUND
-					#sprite_2d.scale /= SCALE_FACTOR
-					#sprite_2d.position.y -= 40.0
+					sprite_2d.scale /= SCALE_FACTOR
+					sprite_2d.position.y -= 40.0
+					
+					#get_parent().highlighting = false
+					get_parent().lover.customer_button.sprite_2d.modulate.v = LOW_HIGHLIGHT_BOUND
+					get_parent().lover.customer_button.sprite_2d.scale /= SCALE_FACTOR
+					get_parent().lover.customer_button.sprite_2d.position.y -= 40.0
 					#scale /= SCALE_FACTOR
